@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    
+    <url>
+     <loc>/</loc>
+     <lastmod>2017-11-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+        
+    <url>
+     <loc>/steps/commonPipelineEnvironment/</loc>
+     <lastmod>2017-11-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/steps/handlePipelineStepErrors/</loc>
+     <lastmod>2017-11-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/steps/toolValidate/</loc>
+     <lastmod>2017-11-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/steps/mtaBuild/</loc>
+     <lastmod>2017-11-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/steps/neoDeploy/</loc>
+     <lastmod>2017-11-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/steps/setupCommonPipelineEnvironment/</loc>
+     <lastmod>2017-11-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>/scripts/fileUtils/</loc>
+     <lastmod>2017-11-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/scripts/utils/</loc>
+     <lastmod>2017-11-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/scripts/version/</loc>
+     <lastmod>2017-11-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+    <url>
+     <loc>/jenkins/requiredPlugins/</loc>
+     <lastmod>2017-11-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+</urlset>

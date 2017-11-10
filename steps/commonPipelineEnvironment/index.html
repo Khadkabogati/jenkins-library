@@ -1,0 +1,1324 @@
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.languages" content="">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      
+        <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      
+      <meta name="generator" content="mkdocs-0.16.3, mkdocs-material-1.12.2">
+    
+    
+      
+        <title>commonPipelineEnvironment - Jenkins 2.0 Pipelines</title>
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr-e826f8942a.js"></script>
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application-04ea671600.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-23f75ab9c7.palette.css">
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Slabo 13px:300,400,400i,700|Ubuntu+Mono">
+        <style>body,input{font-family:"Slabo 13px","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Ubuntu Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    
+  </head>
+  
+  
+  
+  
+    <body data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="Jenkins 2.0 Pipelines" class="md-header-nav__button md-logo">
+          
+            
+              <img src="../../images/piper_head_white.png" width="24" height="24">
+            
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <span class="md-flex__ellipsis md-header-nav__title">
+          
+            
+              
+                <span class="md-header-nav__parent">
+                  Library steps
+                </span>
+              
+            
+            commonPipelineEnvironment
+          
+        </span>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="search"></label>
+  <div class="md-search__inner">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" required placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
+      <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset">&#xE5CD;</button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/SAP/jenkins-library" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    <span class="md-nav__button md-logo">
+      
+        
+          <img src="../../images/piper_head_white.png">
+        
+      
+    </span>
+    Jenkins 2.0 Pipelines
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/SAP/jenkins-library" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Library steps
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Library steps
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        commonPipelineEnvironment
+      </label>
+    
+    <a href="./" title="commonPipelineEnvironment" class="md-nav__link md-nav__link--active">
+      commonPipelineEnvironment
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" title="Description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" title="Prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-details" title="Method details" class="md-nav__link">
+    Method details
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getconfigproperties" title="getConfigProperties()" class="md-nav__link">
+    getConfigProperties()
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_1" title="Description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return-value" title="Return value" class="md-nav__link">
+    Return value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#side-effects" title="Side effects" class="md-nav__link">
+    Side effects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exceptions" title="Exceptions" class="md-nav__link">
+    Exceptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" title="Example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setconfigpropertiesconfiguration" title="setConfigProperties(configuration)" class="md-nav__link">
+    setConfigProperties(configuration)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_2" title="Description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_1" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return-value_1" title="Return value" class="md-nav__link">
+    Return value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#side-effects_1" title="Side effects" class="md-nav__link">
+    Side effects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exceptions_1" title="Exceptions" class="md-nav__link">
+    Exceptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_1" title="Example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getconfigpropertykey" title="getConfigProperty(key)" class="md-nav__link">
+    getConfigProperty(key)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_3" title="Description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_2" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return-value_2" title="Return value" class="md-nav__link">
+    Return value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#side-effects_2" title="Side effects" class="md-nav__link">
+    Side effects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exceptions_2" title="Exceptions" class="md-nav__link">
+    Exceptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_2" title="Example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setconfigpropertykey-value" title="setConfigProperty(key, value)" class="md-nav__link">
+    setConfigProperty(key, value)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_4" title="Description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_3" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return-value_3" title="Return value" class="md-nav__link">
+    Return value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#side-effects_3" title="Side effects" class="md-nav__link">
+    Side effects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exceptions_3" title="Exceptions" class="md-nav__link">
+    Exceptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_3" title="Example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getmtarfilename" title="getMtarFileName()" class="md-nav__link">
+    getMtarFileName()
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_5" title="Description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_4" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#side-effects_4" title="Side effects" class="md-nav__link">
+    Side effects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exceptions_4" title="Exceptions" class="md-nav__link">
+    Exceptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_4" title="Example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setmtarfilenamename" title="setMtarFileName(name)" class="md-nav__link">
+    setMtarFileName(name)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_6" title="Description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_5" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#side-effects_5" title="Side effects" class="md-nav__link">
+    Side effects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exceptions_5" title="Exceptions" class="md-nav__link">
+    Exceptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_5" title="Example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../handlePipelineStepErrors/" title="handlePipelineStepErrors" class="md-nav__link">
+      handlePipelineStepErrors
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../toolValidate/" title="toolValidate" class="md-nav__link">
+      toolValidate
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mtaBuild/" title="mtaBuild" class="md-nav__link">
+      mtaBuild
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../neoDeploy/" title="neoDeploy" class="md-nav__link">
+      neoDeploy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../setupCommonPipelineEnvironment/" title="setupCommonPipelineEnvironment" class="md-nav__link">
+      setupCommonPipelineEnvironment
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Library scripts
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Library scripts
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../scripts/fileUtils/" title="FileUtils" class="md-nav__link">
+      FileUtils
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../scripts/utils/" title="Utils" class="md-nav__link">
+      Utils
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../scripts/version/" title="Version" class="md-nav__link">
+      Version
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../jenkins/requiredPlugins/" title="Required Plugins" class="md-nav__link">
+      Required Plugins
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" title="Description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" title="Prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-details" title="Method details" class="md-nav__link">
+    Method details
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getconfigproperties" title="getConfigProperties()" class="md-nav__link">
+    getConfigProperties()
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_1" title="Description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return-value" title="Return value" class="md-nav__link">
+    Return value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#side-effects" title="Side effects" class="md-nav__link">
+    Side effects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exceptions" title="Exceptions" class="md-nav__link">
+    Exceptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" title="Example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setconfigpropertiesconfiguration" title="setConfigProperties(configuration)" class="md-nav__link">
+    setConfigProperties(configuration)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_2" title="Description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_1" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return-value_1" title="Return value" class="md-nav__link">
+    Return value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#side-effects_1" title="Side effects" class="md-nav__link">
+    Side effects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exceptions_1" title="Exceptions" class="md-nav__link">
+    Exceptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_1" title="Example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getconfigpropertykey" title="getConfigProperty(key)" class="md-nav__link">
+    getConfigProperty(key)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_3" title="Description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_2" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return-value_2" title="Return value" class="md-nav__link">
+    Return value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#side-effects_2" title="Side effects" class="md-nav__link">
+    Side effects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exceptions_2" title="Exceptions" class="md-nav__link">
+    Exceptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_2" title="Example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setconfigpropertykey-value" title="setConfigProperty(key, value)" class="md-nav__link">
+    setConfigProperty(key, value)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_4" title="Description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_3" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return-value_3" title="Return value" class="md-nav__link">
+    Return value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#side-effects_3" title="Side effects" class="md-nav__link">
+    Side effects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exceptions_3" title="Exceptions" class="md-nav__link">
+    Exceptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_3" title="Example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getmtarfilename" title="getMtarFileName()" class="md-nav__link">
+    getMtarFileName()
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_5" title="Description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_4" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#side-effects_4" title="Side effects" class="md-nav__link">
+    Side effects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exceptions_4" title="Exceptions" class="md-nav__link">
+    Exceptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_4" title="Example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setmtarfilenamename" title="setMtarFileName(name)" class="md-nav__link">
+    setMtarFileName(name)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_6" title="Description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_5" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#side-effects_5" title="Side effects" class="md-nav__link">
+    Side effects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exceptions_5" title="Exceptions" class="md-nav__link">
+    Exceptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example_5" title="Example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/SAP/jenkins-library/edit/master/documentation/docs/steps/commonPipelineEnvironment.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="commonpipelineenvironment">commonPipelineEnvironment<a class="headerlink" href="#commonpipelineenvironment" title="Permanent link">&para;</a></h1>
+<h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
+<p>Provides project specific settings.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>none</p>
+<h2 id="method-details">Method details<a class="headerlink" href="#method-details" title="Permanent link">&para;</a></h2>
+<h3 id="getconfigproperties">getConfigProperties()<a class="headerlink" href="#getconfigproperties" title="Permanent link">&para;</a></h3>
+<h4 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h4>
+<p>Returns the map of project specific configuration properties. No defensive copy is created.
+Write operations to the map are visible further down in the pipeline.</p>
+<h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h4>
+<p>none</p>
+<h4 id="return-value">Return value<a class="headerlink" href="#return-value" title="Permanent link">&para;</a></h4>
+<p>A map containing project specific configuration properties.</p>
+<h4 id="side-effects">Side effects<a class="headerlink" href="#side-effects" title="Permanent link">&para;</a></h4>
+<p>none</p>
+<h4 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h4>
+<p>none</p>
+<h4 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="n">commonPipelineEnvironment</span><span class="o">.</span><span class="na">getConfigProperties</span><span class="o">()</span>
+</pre></div>
+
+<h3 id="setconfigpropertiesconfiguration">setConfigProperties(configuration)<a class="headerlink" href="#setconfigpropertiesconfiguration" title="Permanent link">&para;</a></h3>
+<h4 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">&para;</a></h4>
+<p>Sets the map of configuration properties. An existing map is overwritten.</p>
+<h4 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>configuration - A map containing the new configuration</li>
+</ul>
+<h4 id="return-value_1">Return value<a class="headerlink" href="#return-value_1" title="Permanent link">&para;</a></h4>
+<p>none</p>
+<h4 id="side-effects_1">Side effects<a class="headerlink" href="#side-effects_1" title="Permanent link">&para;</a></h4>
+<p>none</p>
+<h4 id="exceptions_1">Exceptions<a class="headerlink" href="#exceptions_1" title="Permanent link">&para;</a></h4>
+<p>none</p>
+<h4 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="n">commonPipelineEnvironment</span><span class="o">.</span><span class="na">setConfigProperties</span><span class="o">([</span><span class="nl">DEPLOY_HOST:</span> <span class="s1">&#39;deploy-host.com&#39;</span><span class="o">,</span> <span class="nl">DEPLOY_ACCOUNT:</span> <span class="s1">&#39;deploy-account&#39;</span><span class="o">])</span>
+</pre></div>
+
+<h3 id="getconfigpropertykey">getConfigProperty(key)<a class="headerlink" href="#getconfigpropertykey" title="Permanent link">&para;</a></h3>
+<h4 id="description_3">Description<a class="headerlink" href="#description_3" title="Permanent link">&para;</a></h4>
+<p>Gets a specific value from the configuration property.</p>
+<h4 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>key - The key of the property.</li>
+</ul>
+<h4 id="return-value_2">Return value<a class="headerlink" href="#return-value_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>The value associated with key <code>key</code>. <code>null</code> is returned in case the property does not exist.</li>
+</ul>
+<h4 id="side-effects_2">Side effects<a class="headerlink" href="#side-effects_2" title="Permanent link">&para;</a></h4>
+<p>none</p>
+<h4 id="exceptions_2">Exceptions<a class="headerlink" href="#exceptions_2" title="Permanent link">&para;</a></h4>
+<p>none</p>
+<h4 id="example_2">Example<a class="headerlink" href="#example_2" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="n">commonPipelineEnvironment</span><span class="o">.</span><span class="na">getConfigProperty</span><span class="o">(</span><span class="s1">&#39;DEPLOY_HOST&#39;</span><span class="o">)</span>
+</pre></div>
+
+<h3 id="setconfigpropertykey-value">setConfigProperty(key, value)<a class="headerlink" href="#setconfigpropertykey-value" title="Permanent link">&para;</a></h3>
+<h4 id="description_4">Description<a class="headerlink" href="#description_4" title="Permanent link">&para;</a></h4>
+<p>Sets property <code>key</code> with value <code>value</code>. Any existing property with key <code>key</code>is overwritten.</p>
+<h4 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>key</code> The key</li>
+<li><code>value</code> The value</li>
+</ul>
+<h4 id="return-value_3">Return value<a class="headerlink" href="#return-value_3" title="Permanent link">&para;</a></h4>
+<p>none</p>
+<h4 id="side-effects_3">Side effects<a class="headerlink" href="#side-effects_3" title="Permanent link">&para;</a></h4>
+<p>none</p>
+<h4 id="exceptions_3">Exceptions<a class="headerlink" href="#exceptions_3" title="Permanent link">&para;</a></h4>
+<p>none</p>
+<h4 id="example_3">Example<a class="headerlink" href="#example_3" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="n">commonPipelineEnvironment</span><span class="o">.</span><span class="na">setConfigProperty</span><span class="o">(</span><span class="s1">&#39;DEPLOY_HOST&#39;</span><span class="o">,</span> <span class="s1">&#39;my-deploy-host.com&#39;</span><span class="o">)</span>
+</pre></div>
+
+<h3 id="getmtarfilename">getMtarFileName()<a class="headerlink" href="#getmtarfilename" title="Permanent link">&para;</a></h3>
+<h4 id="description_5">Description<a class="headerlink" href="#description_5" title="Permanent link">&para;</a></h4>
+<p>Returns the name of the mtar file.</p>
+<h4 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h4>
+<p>none</p>
+<h4 id="side-effects_4">Side effects<a class="headerlink" href="#side-effects_4" title="Permanent link">&para;</a></h4>
+<p>none</p>
+<h4 id="exceptions_4">Exceptions<a class="headerlink" href="#exceptions_4" title="Permanent link">&para;</a></h4>
+<p>none</p>
+<h4 id="example_4">Example<a class="headerlink" href="#example_4" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="n">commonPipelineEnvironment</span><span class="o">.</span><span class="na">getMtarFileName</span><span class="o">()</span>
+</pre></div>
+
+<h3 id="setmtarfilenamename">setMtarFileName(name)<a class="headerlink" href="#setmtarfilenamename" title="Permanent link">&para;</a></h3>
+<h4 id="description_6">Description<a class="headerlink" href="#description_6" title="Permanent link">&para;</a></h4>
+<p>Sets the name of the mtar file. Any old value is discarded.</p>
+<h4 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">&para;</a></h4>
+<p>The name of the mtar file name.</p>
+<h4 id="side-effects_5">Side effects<a class="headerlink" href="#side-effects_5" title="Permanent link">&para;</a></h4>
+<p>none</p>
+<h4 id="exceptions_5">Exceptions<a class="headerlink" href="#exceptions_5" title="Permanent link">&para;</a></h4>
+<p>none</p>
+<h4 id="example_5">Example<a class="headerlink" href="#example_5" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="n">commonPipelineEnvironment</span><span class="o">.</span><span class="na">setMtarFileName</span><span class="o">(</span><span class="s1">&#39;foo&#39;</span><span class="o">)</span>
+</pre></div>
+                
+                  
+                
+              
+              
+                
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../.." title="Home" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Home
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../handlePipelineStepErrors/" title="handlePipelineStepErrors" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                handlePipelineStepErrors
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="http://www.mkdocs.org" title="MkDocs">MkDocs</a>
+        and
+        <a href="http://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application-946997f430.js"></script>
+      
+      
+      <script>app.initialize({version:"0.16.3",url:{base:"../.."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>
