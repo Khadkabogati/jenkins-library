@@ -32,7 +32,7 @@
     
     
       
-        <title>mtaBuild - Jenkins 2.0 Pipelines</title>
+        <title>pipelineExecute - Jenkins 2.0 Pipelines</title>
       
     
     
@@ -96,7 +96,7 @@
                 Jenkins 2.0 Pipelines
               </span>
               <span class="md-header-nav__topic">
-                mtaBuild
+                pipelineExecute
               </span>
             
           
@@ -263,30 +263,6 @@
           
           
 
-
-  <li class="md-nav__item">
-    <a href="../pipelineExecute/" title="pipelineExecute" class="md-nav__link">
-      pipelineExecute
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../toolValidate/" title="toolValidate" class="md-nav__link">
-      toolValidate
-    </a>
-  </li>
-
-        
-          
-          
-          
-
   
 
 
@@ -298,11 +274,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="toc">
-        mtaBuild
+        pipelineExecute
       </label>
     
-    <a href="./" title="mtaBuild" class="md-nav__link md-nav__link--active">
-      mtaBuild
+    <a href="./" title="pipelineExecute" class="md-nav__link md-nav__link--active">
+      pipelineExecute
     </a>
     
       
@@ -370,6 +346,30 @@
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../toolValidate/" title="toolValidate" class="md-nav__link">
+      toolValidate
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mtaBuild/" title="mtaBuild" class="md-nav__link">
+      mtaBuild
+    </a>
   </li>
 
         
@@ -557,18 +557,17 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/SAP/jenkins-library/edit/master/documentation/docs/steps/mtaBuild.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/SAP/jenkins-library/edit/master/documentation/docs/steps/pipelineExecute.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="mtabuild">mtaBuild<a class="headerlink" href="#mtabuild" title="Permanent link">&para;</a></h1>
+                <h1 id="pipelineexecute">pipelineExecute<a class="headerlink" href="#pipelineexecute" title="Permanent link">&para;</a></h1>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
-<p>Executes the SAP MTA Archive Builder to create an mtar archive of the application.</p>
+<p>Loads a pipeline from a git repository. The idea is to set up a pipeline job in Jenkins that loads a minimal pipeline, which in turn loads the shared library and then uses this step to load the actual pipeline.</p>
+<p>A centrally maintained pipeline script (Jenkinsfile) can be re-used by
+several projects using <code>pipelineExecute</code> as outlined in the example
+below.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>SAP MTA Archive Builder</strong> - available for download on the SAP Marketplace.</li>
-<li><strong>Java 8 or higher</strong> - necessary to run the <code>mta.jar</code> file.</li>
-<li><strong>NodeJS installed</strong> - the MTA Builder uses <code>npm</code> to download node module dependencies such as <code>grunt</code>.</li>
-</ul>
+<p>none</p>
 <h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -581,50 +580,50 @@
 </thead>
 <tbody>
 <tr>
-<td><code>script</code></td>
+<td><code>repoUrl</code></td>
 <td>yes</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td><code>buildTarget</code></td>
-<td>yes</td>
-<td></td>
-<td>'CF', 'NEO', 'XSA'</td>
-</tr>
-<tr>
-<td><code>mtaJarLocation</code></td>
+<td><code>branch</code></td>
 <td>no</td>
+<td>'master'</td>
 <td></td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td>no</td>
+<td>'Jenkinsfile'</td>
+<td></td>
+</tr>
+<tr>
+<td><code>credentialsId</code></td>
+<td>no</td>
+<td>An empty String</td>
 <td></td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li><code>script</code>  The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the <code>this</code> parameter, as in <code>script: this</code>. This allows the function to access the <a href="../commonPipelineEnvironment/"><code>commonPipelineEnvironment</code></a> for retrieving, for example, configuration parameters.</li>
-<li><code>buildTarget</code> The target platform to which the mtar can be deployed.</li>
-<li><code>mtaJarLocation</code> The path of the <code>mta.jar</code> file. If no parameter is provided, the path is retrieved from the Jenkins environment variables using <code>env.MTA_JAR_LOCATION</code>. If the Jenkins environment variable is not set it is assumed that <code>mta.jar</code> is located in the current working directory.</li>
+<li><code>repoUrl</code> The url to the git repository of the pipeline to be loaded.</li>
+<li><code>branch</code> The branch of the git repository from which the pipeline should be checked out.</li>
+<li><code>path</code> The path to the Jenkinsfile, inside the repository, to be loaded.</li>
+<li><code>credentialsId</code> The Jenkins credentials containing user and password needed to access a private git repository.</li>
 </ul>
 <h2 id="return-value">Return value<a class="headerlink" href="#return-value" title="Permanent link">&para;</a></h2>
-<p>The file name of the resulting archive is returned with this step. The file name is extracted from the key <code>ID</code> defined in <code>mta.yaml</code>.</p>
+<p>none</p>
 <h2 id="side-effects">Side effects<a class="headerlink" href="#side-effects" title="Permanent link">&para;</a></h2>
-<ol>
-<li>The file name of the resulting archive is written to the <code>commonPipelineEnvironment</code> with variable name <code>mtarFileName</code>.</li>
-<li>As version number the timestamp is written into the <code>mta.yaml</code> file, that is packaged into the built archive.</li>
-</ol>
+<p>none</p>
 <h2 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>AbortException</code><ul>
-<li>If there is an invalid <code>buildTarget</code>.</li>
-<li>If there is no key <code>ID</code> inside the <code>mta.yaml</code> file.</li>
+<li><code>Exception</code><ul>
+<li>If <code>repoUrl</code> is not provided.</li>
 </ul>
 </li>
 </ul>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="kt">def</span> <span class="n">mtarFileName</span>
-<span class="nf">dir</span><span class="o">(</span><span class="s1">&#39;/path/to/FioriApp&#39;</span><span class="o">){</span>
-  <span class="n">mtarFileName</span> <span class="o">=</span> <span class="n">mtaBuild</span> <span class="nl">script:</span><span class="k">this</span><span class="o">,</span> <span class="nl">buildTarget:</span> <span class="s1">&#39;NEO&#39;</span>
-<span class="o">}</span>
+<div class="codehilite"><pre><span></span><span class="n">pipelineExecute</span> <span class="nl">repoUrl:</span> <span class="s2">&quot;https://github.com/MyOrg/MyPipelineRepo.git&quot;</span><span class="o">,</span> <span class="nl">branch:</span> <span class="s1">&#39;feature1&#39;</span><span class="o">,</span> <span class="nl">path:</span> <span class="s1">&#39;path/to/Jenkinsfile&#39;</span><span class="o">,</span> <span class="nl">credentialsId:</span> <span class="s1">&#39;MY_REPO_CREDENTIALS&#39;</span>
 </pre></div>
                 
                   
@@ -644,7 +643,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../toolValidate/" title="toolValidate" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../handlePipelineStepErrors/" title="handlePipelineStepErrors" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -653,19 +652,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                toolValidate
+                handlePipelineStepErrors
               </span>
             </div>
           </a>
         
         
-          <a href="../neoDeploy/" title="neoDeploy" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../toolValidate/" title="toolValidate" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                neoDeploy
+                toolValidate
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
