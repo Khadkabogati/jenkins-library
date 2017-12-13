@@ -32,7 +32,7 @@
     
     
       
-        <title>handlePipelineStepErrors - Jenkins 2.0 Pipelines</title>
+        <title>ConfigurationMerger - Jenkins 2.0 Pipelines</title>
       
     
     
@@ -94,11 +94,11 @@
             
               
                 <span class="md-header-nav__parent">
-                  Library steps
+                  Library scripts
                 </span>
               
             
-            handlePipelineStepErrors
+            ConfigurationMerger
           
         </span>
       </div>
@@ -218,12 +218,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
       Library steps
@@ -241,8 +239,190 @@
 
 
   <li class="md-nav__item">
-    <a href="../commonPipelineEnvironment/" title="commonPipelineEnvironment" class="md-nav__link">
+    <a href="../../steps/commonPipelineEnvironment/" title="commonPipelineEnvironment" class="md-nav__link">
       commonPipelineEnvironment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../steps/handlePipelineStepErrors/" title="handlePipelineStepErrors" class="md-nav__link">
+      handlePipelineStepErrors
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../steps/pipelineExecute/" title="pipelineExecute" class="md-nav__link">
+      pipelineExecute
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../steps/toolValidate/" title="toolValidate" class="md-nav__link">
+      toolValidate
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../steps/mtaBuild/" title="mtaBuild" class="md-nav__link">
+      mtaBuild
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../steps/neoDeploy/" title="neoDeploy" class="md-nav__link">
+      neoDeploy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../steps/setupCommonPipelineEnvironment/" title="setupCommonPipelineEnvironment" class="md-nav__link">
+      setupCommonPipelineEnvironment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../steps/mavenExecute/" title="mavenExecute" class="md-nav__link">
+      mavenExecute
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../steps/dockerExecute/" title="dockerExecute" class="md-nav__link">
+      dockerExecute
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../steps/prepareDefaultValues/" title="prepareDefaultValues" class="md-nav__link">
+      prepareDefaultValues
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Library scripts
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Library scripts
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../fileUtils/" title="FileUtils" class="md-nav__link">
+      FileUtils
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../utils/" title="Utils" class="md-nav__link">
+      Utils
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../version/" title="Version" class="md-nav__link">
+      Version
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../configurationLoader/" title="ConfigurationLoader" class="md-nav__link">
+      ConfigurationLoader
     </a>
   </li>
 
@@ -262,11 +442,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="toc">
-        handlePipelineStepErrors
+        ConfigurationMerger
       </label>
     
-    <a href="./" title="handlePipelineStepErrors" class="md-nav__link md-nav__link--active">
-      handlePipelineStepErrors
+    <a href="./" title="ConfigurationMerger" class="md-nav__link md-nav__link--active">
+      ConfigurationMerger
     </a>
     
       
@@ -287,44 +467,56 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" title="Prerequisites" class="md-nav__link">
-    Prerequisites
+  <a href="#static-method-details" title="Static Method Details" class="md-nav__link">
+    Static Method Details
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#merge" title="merge" class="md-nav__link">
+    merge
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_1" title="Description" class="md-nav__link">
+    Description
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#parameters" title="Parameters" class="md-nav__link">
     Parameters
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#return-value" title="Return value" class="md-nav__link">
-    Return value
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#side-effects" title="Side effects" class="md-nav__link">
     Side effects
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#exceptions" title="Exceptions" class="md-nav__link">
-    Exceptions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#example" title="Example" class="md-nav__link">
     Example
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -334,186 +526,6 @@
   
 </nav>
     
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../pipelineExecute/" title="pipelineExecute" class="md-nav__link">
-      pipelineExecute
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../toolValidate/" title="toolValidate" class="md-nav__link">
-      toolValidate
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../mtaBuild/" title="mtaBuild" class="md-nav__link">
-      mtaBuild
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../neoDeploy/" title="neoDeploy" class="md-nav__link">
-      neoDeploy
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../setupCommonPipelineEnvironment/" title="setupCommonPipelineEnvironment" class="md-nav__link">
-      setupCommonPipelineEnvironment
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../mavenExecute/" title="mavenExecute" class="md-nav__link">
-      mavenExecute
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../dockerExecute/" title="dockerExecute" class="md-nav__link">
-      dockerExecute
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../prepareDefaultValues/" title="prepareDefaultValues" class="md-nav__link">
-      prepareDefaultValues
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
-    
-    <label class="md-nav__link" for="nav-3">
-      Library scripts
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
-        Library scripts
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../scripts/fileUtils/" title="FileUtils" class="md-nav__link">
-      FileUtils
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../scripts/utils/" title="Utils" class="md-nav__link">
-      Utils
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../scripts/version/" title="Version" class="md-nav__link">
-      Version
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../scripts/configurationLoader/" title="ConfigurationLoader" class="md-nav__link">
-      ConfigurationLoader
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../scripts/configurationMerger/" title="ConfigurationMerger" class="md-nav__link">
-      ConfigurationMerger
-    </a>
   </li>
 
         
@@ -562,44 +574,56 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" title="Prerequisites" class="md-nav__link">
-    Prerequisites
+  <a href="#static-method-details" title="Static Method Details" class="md-nav__link">
+    Static Method Details
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#merge" title="merge" class="md-nav__link">
+    merge
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_1" title="Description" class="md-nav__link">
+    Description
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#parameters" title="Parameters" class="md-nav__link">
     Parameters
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#return-value" title="Return value" class="md-nav__link">
-    Return value
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#side-effects" title="Side effects" class="md-nav__link">
     Side effects
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#exceptions" title="Exceptions" class="md-nav__link">
-    Exceptions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#example" title="Example" class="md-nav__link">
     Example
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -617,85 +641,90 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/SAP/jenkins-library/edit/master/documentation/docs/steps/handlePipelineStepErrors.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/SAP/jenkins-library/edit/master/documentation/docs/scripts/configurationMerger.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="handlepipelinesteperrors">handlePipelineStepErrors<a class="headerlink" href="#handlepipelinesteperrors" title="Permanent link">&para;</a></h1>
+                <h1 id="configurationmerger">ConfigurationMerger<a class="headerlink" href="#configurationmerger" title="Permanent link">&para;</a></h1>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
-<p>Used by other steps to make error analysis easier. Lists parameters and other data available to the step in which the error occurs.</p>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>none</p>
-<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
+<p>A helper script that can merge the configurations from multiple sources. </p>
+<h2 id="static-method-details">Static Method Details<a class="headerlink" href="#static-method-details" title="Permanent link">&para;</a></h2>
+<h3 id="merge">merge<a class="headerlink" href="#merge" title="Permanent link">&para;</a></h3>
+<h4 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h4>
+<p>A step is usually configured by default values, configuration values from the configuration file and the parameters.
+The methods can merge these sources. 
+Default values are overwritten by configuration file values. 
+These are overwritten by parameters.</p>
+<h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
 <th>parameter</th>
 <th>mandatory</th>
-<th>default</th>
-<th>possible values</th>
+<th>Class</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>stepParameters</code></td>
+<td><code>parameters</code></td>
 <td>yes</td>
-<td></td>
-<td></td>
+<td>Map</td>
 </tr>
 <tr>
-<td><code>stepName</code></td>
+<td><code>parameterKeys</code></td>
 <td>yes</td>
-<td></td>
-<td></td>
+<td>List</td>
 </tr>
 <tr>
-<td><code>echoDetails</code></td>
+<td><code>configurationMap</code></td>
 <td>yes</td>
-<td>true</td>
-<td>true, false</td>
+<td>Map</td>
+</tr>
+<tr>
+<td><code>configurationKeys</code></td>
+<td>yes</td>
+<td>List</td>
+</tr>
+<tr>
+<td><code>defaults</code></td>
+<td>yes</td>
+<td>Map</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li><code>stepParameters</code> - The parameters from the step to be executed. The list of parameters is then shown in the console output.</li>
-<li><code>stepName</code> - The name of the step executed to be shown in the console output.</li>
-<li><code>echoDetails</code> - If set to true the following will be output to the console:<ol>
-<li>Step beginning: <code>--- BEGIN LIBRARY STEP: ${stepName}.groovy ---</code></li>
-<li>Step end: <code>--- END LIBRARY STEP: ${stepName}.groovy ---</code></li>
-<li>Step errors: 
-<div class="codehilite"><pre><span></span>----------------------------------------------------------
---- ERROR OCCURED IN LIBRARY STEP: ${stepName}
-----------------------------------------------------------
-FOLLOWING PARAMETERS WERE AVAILABLE TO THIS STEP:
-***
-${stepParameters}
-***
-ERROR WAS:
-***
-${err}
-***
-FURTHER INFORMATION:
-* Documentation of step ${stepName}: .../${stepName}/
-* Pipeline documentation: https://...
-* GitHub repository for pipeline steps: https://...
-----------------------------------------------------------
-</pre></div></li>
-</ol>
-</li>
+<li><code>parameters</code> Parameters map given to the step</li>
+<li><code>parameterKeys</code> List of parameter names (keys) that should be considered while merging. </li>
+<li><code>configurationMap</code> Configuration map loaded from the configuration file.</li>
+<li><code>configurationKeys</code> List of configuration keys that should be considered while merging. </li>
+<li><code>defaults</code> Map of default values, e.g. loaded from the default value configuration file.</li>
 </ul>
-<h2 id="return-value">Return value<a class="headerlink" href="#return-value" title="Permanent link">&para;</a></h2>
+<h4 id="side-effects">Side effects<a class="headerlink" href="#side-effects" title="Permanent link">&para;</a></h4>
 <p>none</p>
-<h2 id="side-effects">Side effects<a class="headerlink" href="#side-effects" title="Permanent link">&para;</a></h2>
-<p>none</p>
-<h2 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h2>
-<p>none</p>
-<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="n">handlePipelineStepErrors</span> <span class="o">(</span><span class="nl">stepName:</span> <span class="s1">&#39;executeHealthCheck&#39;</span><span class="o">,</span> <span class="nl">stepParameters:</span> <span class="n">parameters</span><span class="o">)</span> <span class="o">{</span>
-  <span class="kt">def</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Utils</span><span class="o">().</span><span class="na">getMandatoryParameter</span><span class="o">(</span><span class="n">parameters</span><span class="o">,</span> <span class="s1">&#39;url&#39;</span><span class="o">,</span> <span class="kc">null</span><span class="o">)</span>
-  <span class="kt">def</span> <span class="n">statusCode</span> <span class="o">=</span> <span class="n">curl</span><span class="o">(</span><span class="n">url</span><span class="o">)</span>
-  <span class="k">if</span> <span class="o">(</span><span class="n">statusCode</span> <span class="o">!=</span> <span class="s1">&#39;200&#39;</span><span class="o">)</span>
-    <span class="n">error</span> <span class="s2">&quot;Health Check failed: ${statusCode}&quot;</span>
-<span class="o">}</span>
+<h4 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="n">prepareDefaultValues</span> <span class="nl">script:</span> <span class="n">script</span>
+<span class="kd">final</span> <span class="n">Map</span> <span class="n">stepDefaults</span> <span class="o">=</span> <span class="n">ConfigurationLoader</span><span class="o">.</span><span class="na">defaultStepConfiguration</span><span class="o">(</span><span class="n">script</span><span class="o">,</span> <span class="s1">&#39;mavenExecute&#39;</span><span class="o">)</span>
+
+<span class="kd">final</span> <span class="n">Map</span> <span class="n">stepConfiguration</span> <span class="o">=</span> <span class="n">ConfigurationLoader</span><span class="o">.</span><span class="na">stepConfiguration</span><span class="o">(</span><span class="n">script</span><span class="o">,</span> <span class="s1">&#39;mavenExecute&#39;</span><span class="o">)</span>
+
+<span class="n">List</span> <span class="n">parameterKeys</span> <span class="o">=</span> <span class="o">[</span>
+    <span class="s1">&#39;dockerImage&#39;</span><span class="o">,</span>
+    <span class="s1">&#39;globalSettingsFile&#39;</span><span class="o">,</span>
+    <span class="s1">&#39;projectSettingsFile&#39;</span><span class="o">,</span>
+    <span class="s1">&#39;pomPath&#39;</span><span class="o">,</span>
+    <span class="s1">&#39;flags&#39;</span><span class="o">,</span>
+    <span class="s1">&#39;goals&#39;</span><span class="o">,</span>
+    <span class="s1">&#39;m2Path&#39;</span><span class="o">,</span>
+    <span class="s1">&#39;defines&#39;</span>
+<span class="o">]</span>
+<span class="n">List</span> <span class="n">stepConfigurationKeys</span> <span class="o">=</span> <span class="o">[</span>
+    <span class="s1">&#39;dockerImage&#39;</span><span class="o">,</span>
+    <span class="s1">&#39;globalSettingsFile&#39;</span><span class="o">,</span>
+    <span class="s1">&#39;projectSettingsFile&#39;</span><span class="o">,</span>
+    <span class="s1">&#39;pomPath&#39;</span><span class="o">,</span>
+    <span class="s1">&#39;m2Path&#39;</span>
+<span class="o">]</span>
+
+<span class="n">Map</span> <span class="n">configuration</span> <span class="o">=</span> <span class="n">ConfigurationMerger</span><span class="o">.</span><span class="na">merge</span><span class="o">(</span><span class="n">parameters</span><span class="o">,</span> <span class="n">parameterKeys</span><span class="o">,</span> <span class="n">stepConfiguration</span><span class="o">,</span> <span class="n">stepConfigurationKeys</span><span class="o">,</span> <span class="n">stepDefaults</span><span class="o">)</span>
 </pre></div>
                 
                   
@@ -715,7 +744,7 @@ FURTHER INFORMATION:
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../commonPipelineEnvironment/" title="commonPipelineEnvironment" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../configurationLoader/" title="ConfigurationLoader" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -724,19 +753,19 @@ FURTHER INFORMATION:
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                commonPipelineEnvironment
+                ConfigurationLoader
               </span>
             </div>
           </a>
         
         
-          <a href="../pipelineExecute/" title="pipelineExecute" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../jenkins/requiredPlugins/" title="Required Plugins" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                pipelineExecute
+                Required Plugins
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

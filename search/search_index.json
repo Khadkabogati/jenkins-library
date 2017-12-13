@@ -1,903 +1,1208 @@
 {
     "docs": [
         {
-            "location": "/", 
-            "text": "Project \"Piper\" - extended library documentation\n\n\nOn the following pages, you can find documentation for all steps and scripts\ncontained in the library of project \"Piper\".\n\n\nWe have also compiled a list of plugins that are required for the library to\nwork.\n\n\nFor information on the project and installation of the library, please have a\nlook at our \nREADME.md\n.", 
+            "location": "/",
+            "text": "Project \"Piper\" - extended library documentation\n\u00b6\n\n\nOn the following pages, you can find documentation for all steps and scripts\ncontained in the library of project \"Piper\".\n\n\nWe have also compiled a list of plugins that are required for the library to\nwork.\n\n\nFor information on the project and installation of the library, please have a\nlook at our \nREADME.md\n.",
             "title": "Home"
-        }, 
+        },
         {
-            "location": "/#project-piper-extended-library-documentation", 
-            "text": "On the following pages, you can find documentation for all steps and scripts\ncontained in the library of project \"Piper\".  We have also compiled a list of plugins that are required for the library to\nwork.  For information on the project and installation of the library, please have a\nlook at our  README.md .", 
+            "location": "/#project-piper-extended-library-documentation",
+            "text": "On the following pages, you can find documentation for all steps and scripts\ncontained in the library of project \"Piper\".  We have also compiled a list of plugins that are required for the library to\nwork.  For information on the project and installation of the library, please have a\nlook at our  README.md .",
             "title": "Project \"Piper\" - extended library documentation"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/", 
-            "text": "commonPipelineEnvironment\n\n\nDescription\n\n\nProvides project specific settings.\n\n\nPrerequisites\n\n\nnone\n\n\nMethod details\n\n\ngetConfigProperties()\n\n\nDescription\n\n\nReturns the map of project specific configuration properties. No defensive copy is created.\nWrite operations to the map are visible further down in the pipeline.\n\n\nParameters\n\n\nnone\n\n\nReturn value\n\n\nA map containing project specific configuration properties.\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\nnone\n\n\nExample\n\n\ncommonPipelineEnvironment\n.\ngetConfigProperties\n()\n\n\n\n\n\nsetConfigProperties(configuration)\n\n\nDescription\n\n\nSets the map of configuration properties. An existing map is overwritten.\n\n\nParameters\n\n\n\n\nconfiguration - A map containing the new configuration\n\n\n\n\nReturn value\n\n\nnone\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\nnone\n\n\nExample\n\n\ncommonPipelineEnvironment\n.\nsetConfigProperties\n([\nDEPLOY_HOST:\n \ndeploy-host.com\n,\n \nDEPLOY_ACCOUNT:\n \ndeploy-account\n])\n\n\n\n\n\ngetConfigProperty(key)\n\n\nDescription\n\n\nGets a specific value from the configuration property.\n\n\nParameters\n\n\n\n\nkey - The key of the property.\n\n\n\n\nReturn value\n\n\n\n\nThe value associated with key \nkey\n. \nnull\n is returned in case the property does not exist.\n\n\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\nnone\n\n\nExample\n\n\ncommonPipelineEnvironment\n.\ngetConfigProperty\n(\nDEPLOY_HOST\n)\n\n\n\n\n\nsetConfigProperty(key, value)\n\n\nDescription\n\n\nSets property \nkey\n with value \nvalue\n. Any existing property with key \nkey\nis overwritten.\n\n\nParameters\n\n\n\n\nkey\n The key\n\n\nvalue\n The value\n\n\n\n\nReturn value\n\n\nnone\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\nnone\n\n\nExample\n\n\ncommonPipelineEnvironment\n.\nsetConfigProperty\n(\nDEPLOY_HOST\n,\n \nmy-deploy-host.com\n)\n\n\n\n\n\ngetMtarFileName()\n\n\nDescription\n\n\nReturns the name of the mtar file.\n\n\nParameters\n\n\nnone\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\nnone\n\n\nExample\n\n\ncommonPipelineEnvironment\n.\ngetMtarFileName\n()\n\n\n\n\n\nsetMtarFileName(name)\n\n\nDescription\n\n\nSets the name of the mtar file. Any old value is discarded.\n\n\nParameters\n\n\nThe name of the mtar file name.\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\nnone\n\n\nExample\n\n\ncommonPipelineEnvironment\n.\nsetMtarFileName\n(\nfoo\n)", 
+            "location": "/steps/commonPipelineEnvironment/",
+            "text": "commonPipelineEnvironment\n\u00b6\n\n\nDescription\n\u00b6\n\n\nProvides project specific settings.\n\n\nPrerequisites\n\u00b6\n\n\nnone\n\n\nMethod details\n\u00b6\n\n\ngetConfigProperties()\n\u00b6\n\n\nDescription\n\u00b6\n\n\nReturns the map of project specific configuration properties. No defensive copy is created.\nWrite operations to the map are visible further down in the pipeline.\n\n\nParameters\n\u00b6\n\n\nnone\n\n\nReturn value\n\u00b6\n\n\nA map containing project specific configuration properties.\n\n\nSide effects\n\u00b6\n\n\nnone\n\n\nExceptions\n\u00b6\n\n\nnone\n\n\nExample\n\u00b6\n\n\ncommonPipelineEnvironment\n.\ngetConfigProperties\n()\n\n\n\n\n\nsetConfigProperties(configuration)\n\u00b6\n\n\nDescription\n\u00b6\n\n\nSets the map of configuration properties. Any existing map is overwritten.\n\n\nParameters\n\u00b6\n\n\n\n\nconfiguration\n - A map containing the new configuration\n\n\n\n\nReturn value\n\u00b6\n\n\nnone\n\n\nSide effects\n\u00b6\n\n\nnone\n\n\nExceptions\n\u00b6\n\n\nnone\n\n\nExample\n\u00b6\n\n\ncommonPipelineEnvironment\n.\nsetConfigProperties\n([\nDEPLOY_HOST:\n \n'deploy-host.com'\n,\n \nDEPLOY_ACCOUNT:\n \n'deploy-account'\n])\n\n\n\n\n\ngetConfigProperty(property)\n\u00b6\n\n\nDescription\n\u00b6\n\n\nGets a specific value from the configuration property.\n\n\nParameters\n\u00b6\n\n\n\n\nproperty\n - The key of the property.\n\n\n\n\nReturn value\n\u00b6\n\n\n\n\nThe value associated with key \nproperty\n. \nnull\n is returned in case the property does not exist.\n\n\n\n\nSide effects\n\u00b6\n\n\nnone\n\n\nExceptions\n\u00b6\n\n\nnone\n\n\nExample\n\u00b6\n\n\ncommonPipelineEnvironment\n.\ngetConfigProperty\n(\n'DEPLOY_HOST'\n)\n\n\n\n\n\nsetConfigProperty(property, value)\n\u00b6\n\n\nDescription\n\u00b6\n\n\nSets property \nproperty\n with value \nvalue\n. Any existing property with key \nproperty\n is overwritten.\n\n\nParameters\n\u00b6\n\n\n\n\nproperty\n - The key of the property.\n\n\nvalue\n - The value of the property.\n\n\n\n\nReturn value\n\u00b6\n\n\nnone\n\n\nSide effects\n\u00b6\n\n\nnone\n\n\nExceptions\n\u00b6\n\n\nnone\n\n\nExample\n\u00b6\n\n\ncommonPipelineEnvironment\n.\nsetConfigProperty\n(\n'DEPLOY_HOST'\n,\n \n'my-deploy-host.com'\n)\n\n\n\n\n\ngetMtarFileName()\n\u00b6\n\n\nDescription\n\u00b6\n\n\nReturns the path of the mtar archive file.\n\n\nParameters\n\u00b6\n\n\nnone\n\n\nReturn value\n\u00b6\n\n\nThe path of the mtar archive file.\n\n\nSide effects\n\u00b6\n\n\nnone\n\n\nExceptions\n\u00b6\n\n\nnone\n\n\nExample\n\u00b6\n\n\ncommonPipelineEnvironment\n.\ngetMtarFileName\n()\n\n\n\n\n\nsetMtarFileName(name)\n\u00b6\n\n\nDescription\n\u00b6\n\n\nSets the path of the mtar archive file. Any old value is discarded.\n\n\nParameters\n\u00b6\n\n\n\n\nmtarFilePath\n - The path of the mtar archive file name.\n\n\n\n\nSide effects\n\u00b6\n\n\nnone\n\n\nExceptions\n\u00b6\n\n\nnone\n\n\nExample\n\u00b6\n\n\ncommonPipelineEnvironment\n.\nsetMtarFileName\n(\n'path/to/foo.mtar'\n)",
             "title": "commonPipelineEnvironment"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#commonpipelineenvironment", 
-            "text": "", 
+            "location": "/steps/commonPipelineEnvironment/#commonpipelineenvironment",
+            "text": "",
             "title": "commonPipelineEnvironment"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#description", 
-            "text": "Provides project specific settings.", 
+            "location": "/steps/commonPipelineEnvironment/#description",
+            "text": "Provides project specific settings.",
             "title": "Description"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#prerequisites", 
-            "text": "none", 
+            "location": "/steps/commonPipelineEnvironment/#prerequisites",
+            "text": "none",
             "title": "Prerequisites"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#method-details", 
-            "text": "", 
+            "location": "/steps/commonPipelineEnvironment/#method-details",
+            "text": "",
             "title": "Method details"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#getconfigproperties", 
-            "text": "", 
+            "location": "/steps/commonPipelineEnvironment/#getconfigproperties",
+            "text": "",
             "title": "getConfigProperties()"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#description_1", 
-            "text": "Returns the map of project specific configuration properties. No defensive copy is created.\nWrite operations to the map are visible further down in the pipeline.", 
+            "location": "/steps/commonPipelineEnvironment/#description_1",
+            "text": "Returns the map of project specific configuration properties. No defensive copy is created.\nWrite operations to the map are visible further down in the pipeline.",
             "title": "Description"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#parameters", 
-            "text": "none", 
+            "location": "/steps/commonPipelineEnvironment/#parameters",
+            "text": "none",
             "title": "Parameters"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#return-value", 
-            "text": "A map containing project specific configuration properties.", 
+            "location": "/steps/commonPipelineEnvironment/#return-value",
+            "text": "A map containing project specific configuration properties.",
             "title": "Return value"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#side-effects", 
-            "text": "none", 
+            "location": "/steps/commonPipelineEnvironment/#side-effects",
+            "text": "none",
             "title": "Side effects"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#exceptions", 
-            "text": "none", 
+            "location": "/steps/commonPipelineEnvironment/#exceptions",
+            "text": "none",
             "title": "Exceptions"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#example", 
-            "text": "commonPipelineEnvironment . getConfigProperties ()", 
+            "location": "/steps/commonPipelineEnvironment/#example",
+            "text": "commonPipelineEnvironment . getConfigProperties ()",
             "title": "Example"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#setconfigpropertiesconfiguration", 
-            "text": "", 
+            "location": "/steps/commonPipelineEnvironment/#setconfigpropertiesconfiguration",
+            "text": "",
             "title": "setConfigProperties(configuration)"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#description_2", 
-            "text": "Sets the map of configuration properties. An existing map is overwritten.", 
+            "location": "/steps/commonPipelineEnvironment/#description_2",
+            "text": "Sets the map of configuration properties. Any existing map is overwritten.",
             "title": "Description"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#parameters_1", 
-            "text": "configuration - A map containing the new configuration", 
+            "location": "/steps/commonPipelineEnvironment/#parameters_1",
+            "text": "configuration  - A map containing the new configuration",
             "title": "Parameters"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#return-value_1", 
-            "text": "none", 
+            "location": "/steps/commonPipelineEnvironment/#return-value_1",
+            "text": "none",
             "title": "Return value"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#side-effects_1", 
-            "text": "none", 
+            "location": "/steps/commonPipelineEnvironment/#side-effects_1",
+            "text": "none",
             "title": "Side effects"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#exceptions_1", 
-            "text": "none", 
+            "location": "/steps/commonPipelineEnvironment/#exceptions_1",
+            "text": "none",
             "title": "Exceptions"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#example_1", 
-            "text": "commonPipelineEnvironment . setConfigProperties ([ DEPLOY_HOST:   deploy-host.com ,   DEPLOY_ACCOUNT:   deploy-account ])", 
+            "location": "/steps/commonPipelineEnvironment/#example_1",
+            "text": "commonPipelineEnvironment . setConfigProperties ([ DEPLOY_HOST:   'deploy-host.com' ,   DEPLOY_ACCOUNT:   'deploy-account' ])",
             "title": "Example"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#getconfigpropertykey", 
-            "text": "", 
-            "title": "getConfigProperty(key)"
-        }, 
+            "location": "/steps/commonPipelineEnvironment/#getconfigpropertyproperty",
+            "text": "",
+            "title": "getConfigProperty(property)"
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#description_3", 
-            "text": "Gets a specific value from the configuration property.", 
+            "location": "/steps/commonPipelineEnvironment/#description_3",
+            "text": "Gets a specific value from the configuration property.",
             "title": "Description"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#parameters_2", 
-            "text": "key - The key of the property.", 
+            "location": "/steps/commonPipelineEnvironment/#parameters_2",
+            "text": "property  - The key of the property.",
             "title": "Parameters"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#return-value_2", 
-            "text": "The value associated with key  key .  null  is returned in case the property does not exist.", 
+            "location": "/steps/commonPipelineEnvironment/#return-value_2",
+            "text": "The value associated with key  property .  null  is returned in case the property does not exist.",
             "title": "Return value"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#side-effects_2", 
-            "text": "none", 
+            "location": "/steps/commonPipelineEnvironment/#side-effects_2",
+            "text": "none",
             "title": "Side effects"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#exceptions_2", 
-            "text": "none", 
+            "location": "/steps/commonPipelineEnvironment/#exceptions_2",
+            "text": "none",
             "title": "Exceptions"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#example_2", 
-            "text": "commonPipelineEnvironment . getConfigProperty ( DEPLOY_HOST )", 
+            "location": "/steps/commonPipelineEnvironment/#example_2",
+            "text": "commonPipelineEnvironment . getConfigProperty ( 'DEPLOY_HOST' )",
             "title": "Example"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#setconfigpropertykey-value", 
-            "text": "", 
-            "title": "setConfigProperty(key, value)"
-        }, 
+            "location": "/steps/commonPipelineEnvironment/#setconfigpropertyproperty-value",
+            "text": "",
+            "title": "setConfigProperty(property, value)"
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#description_4", 
-            "text": "Sets property  key  with value  value . Any existing property with key  key is overwritten.", 
+            "location": "/steps/commonPipelineEnvironment/#description_4",
+            "text": "Sets property  property  with value  value . Any existing property with key  property  is overwritten.",
             "title": "Description"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#parameters_3", 
-            "text": "key  The key  value  The value", 
+            "location": "/steps/commonPipelineEnvironment/#parameters_3",
+            "text": "property  - The key of the property.  value  - The value of the property.",
             "title": "Parameters"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#return-value_3", 
-            "text": "none", 
+            "location": "/steps/commonPipelineEnvironment/#return-value_3",
+            "text": "none",
             "title": "Return value"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#side-effects_3", 
-            "text": "none", 
+            "location": "/steps/commonPipelineEnvironment/#side-effects_3",
+            "text": "none",
             "title": "Side effects"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#exceptions_3", 
-            "text": "none", 
+            "location": "/steps/commonPipelineEnvironment/#exceptions_3",
+            "text": "none",
             "title": "Exceptions"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#example_3", 
-            "text": "commonPipelineEnvironment . setConfigProperty ( DEPLOY_HOST ,   my-deploy-host.com )", 
+            "location": "/steps/commonPipelineEnvironment/#example_3",
+            "text": "commonPipelineEnvironment . setConfigProperty ( 'DEPLOY_HOST' ,   'my-deploy-host.com' )",
             "title": "Example"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#getmtarfilename", 
-            "text": "", 
+            "location": "/steps/commonPipelineEnvironment/#getmtarfilename",
+            "text": "",
             "title": "getMtarFileName()"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#description_5", 
-            "text": "Returns the name of the mtar file.", 
+            "location": "/steps/commonPipelineEnvironment/#description_5",
+            "text": "Returns the path of the mtar archive file.",
             "title": "Description"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#parameters_4", 
-            "text": "none", 
+            "location": "/steps/commonPipelineEnvironment/#parameters_4",
+            "text": "none",
             "title": "Parameters"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#side-effects_4", 
-            "text": "none", 
+            "location": "/steps/commonPipelineEnvironment/#return-value_4",
+            "text": "The path of the mtar archive file.",
+            "title": "Return value"
+        },
+        {
+            "location": "/steps/commonPipelineEnvironment/#side-effects_4",
+            "text": "none",
             "title": "Side effects"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#exceptions_4", 
-            "text": "none", 
+            "location": "/steps/commonPipelineEnvironment/#exceptions_4",
+            "text": "none",
             "title": "Exceptions"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#example_4", 
-            "text": "commonPipelineEnvironment . getMtarFileName ()", 
+            "location": "/steps/commonPipelineEnvironment/#example_4",
+            "text": "commonPipelineEnvironment . getMtarFileName ()",
             "title": "Example"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#setmtarfilenamename", 
-            "text": "", 
+            "location": "/steps/commonPipelineEnvironment/#setmtarfilenamename",
+            "text": "",
             "title": "setMtarFileName(name)"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#description_6", 
-            "text": "Sets the name of the mtar file. Any old value is discarded.", 
+            "location": "/steps/commonPipelineEnvironment/#description_6",
+            "text": "Sets the path of the mtar archive file. Any old value is discarded.",
             "title": "Description"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#parameters_5", 
-            "text": "The name of the mtar file name.", 
+            "location": "/steps/commonPipelineEnvironment/#parameters_5",
+            "text": "mtarFilePath  - The path of the mtar archive file name.",
             "title": "Parameters"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#side-effects_5", 
-            "text": "none", 
+            "location": "/steps/commonPipelineEnvironment/#side-effects_5",
+            "text": "none",
             "title": "Side effects"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#exceptions_5", 
-            "text": "none", 
+            "location": "/steps/commonPipelineEnvironment/#exceptions_5",
+            "text": "none",
             "title": "Exceptions"
-        }, 
+        },
         {
-            "location": "/steps/commonPipelineEnvironment/#example_5", 
-            "text": "commonPipelineEnvironment . setMtarFileName ( foo )", 
+            "location": "/steps/commonPipelineEnvironment/#example_5",
+            "text": "commonPipelineEnvironment . setMtarFileName ( 'path/to/foo.mtar' )",
             "title": "Example"
-        }, 
+        },
         {
-            "location": "/steps/handlePipelineStepErrors/", 
-            "text": "handlePipelineStepErrors\n\n\nDescription\n\n\nUsed by other steps to make error analysis easier. Lists parameters and other data available to the step in which the error occurs.\n\n\nPrerequisites\n\n\nnone\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nstepParameters\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nstepName\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nechoDetails\n\n\nyes\n\n\ntrue\n\n\ntrue, false\n\n\n\n\n\n\n\n\n\n\nstepParameters\n - The parameters from the step to be executed. The list of parameters is then shown in the console output.\n\n\nstepName\n - The name of the step executed to be shown in the console output.\n\n\nechoDetails\n - if set to true will output the following as console output:\n\n\nStep beginning: \n--- BEGIN LIBRARY STEP: ${stepName}.groovy ---\n\n\nStep end: \n--- END LIBRARY STEP: ${stepName}.groovy ---\n\n\nStep errors: \n\n----------------------------------------------------------\n--- ERROR OCCURED IN LIBRARY STEP: ${stepName}\n----------------------------------------------------------\nFOLLOWING PARAMETERS WERE AVAILABLE TO THIS STEP:\n***\n${stepParameters}\n***\nERROR WAS:\n***\n${err}\n***\nFURTHER INFORMATION:\n* Documentation of step ${stepName}: .../${stepName}/\n* Pipeline documentation: https://...\n* GitHub repository for pipeline steps: https://...\n----------------------------------------------------------\n\n\n\n\n\n\n\n\n\nReturn value\n\n\nnone\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\nnone\n\n\nExample\n\n\nhandlePipelineStepErrors\n \n(\nstepName:\n \nexecuteHealthCheck\n,\n \nstepParameters:\n \nparameters\n)\n \n{\n\n  \ndef\n \nurl\n \n=\n \nnew\n \nUtils\n().\ngetMandatoryParameter\n(\nparameters\n,\n \nurl\n,\n \nnull\n)\n\n  \ndef\n \nstatusCode\n \n=\n \ncurl\n(\nurl\n)\n\n  \nif\n \n(\nstatusCode\n \n!=\n \n200\n)\n\n    \nerror\n \nHealth Check failed: ${statusCode}\n\n\n}", 
+            "location": "/steps/handlePipelineStepErrors/",
+            "text": "handlePipelineStepErrors\n\u00b6\n\n\nDescription\n\u00b6\n\n\nUsed by other steps to make error analysis easier. Lists parameters and other data available to the step in which the error occurs.\n\n\nPrerequisites\n\u00b6\n\n\nnone\n\n\nParameters\n\u00b6\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nstepParameters\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nstepName\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nechoDetails\n\n\nyes\n\n\ntrue\n\n\ntrue, false\n\n\n\n\n\n\n\n\n\n\nstepParameters\n - The parameters from the step to be executed. The list of parameters is then shown in the console output.\n\n\nstepName\n - The name of the step executed to be shown in the console output.\n\n\nechoDetails\n - If set to true the following will be output to the console:\n\n\nStep beginning: \n--- BEGIN LIBRARY STEP: ${stepName}.groovy ---\n\n\nStep end: \n--- END LIBRARY STEP: ${stepName}.groovy ---\n\n\nStep errors: \n\n----------------------------------------------------------\n--- ERROR OCCURED IN LIBRARY STEP: ${stepName}\n----------------------------------------------------------\nFOLLOWING PARAMETERS WERE AVAILABLE TO THIS STEP:\n***\n${stepParameters}\n***\nERROR WAS:\n***\n${err}\n***\nFURTHER INFORMATION:\n* Documentation of step ${stepName}: .../${stepName}/\n* Pipeline documentation: https://...\n* GitHub repository for pipeline steps: https://...\n----------------------------------------------------------\n\n\n\n\n\n\n\n\n\nReturn value\n\u00b6\n\n\nnone\n\n\nSide effects\n\u00b6\n\n\nnone\n\n\nExceptions\n\u00b6\n\n\nnone\n\n\nExample\n\u00b6\n\n\nhandlePipelineStepErrors\n \n(\nstepName:\n \n'executeHealthCheck'\n,\n \nstepParameters:\n \nparameters\n)\n \n{\n\n  \ndef\n \nurl\n \n=\n \nnew\n \nUtils\n().\ngetMandatoryParameter\n(\nparameters\n,\n \n'url'\n,\n \nnull\n)\n\n  \ndef\n \nstatusCode\n \n=\n \ncurl\n(\nurl\n)\n\n  \nif\n \n(\nstatusCode\n \n!=\n \n'200'\n)\n\n    \nerror\n \n\"Health Check failed: ${statusCode}\"\n\n\n}",
             "title": "handlePipelineStepErrors"
-        }, 
+        },
         {
-            "location": "/steps/handlePipelineStepErrors/#handlepipelinesteperrors", 
-            "text": "", 
+            "location": "/steps/handlePipelineStepErrors/#handlepipelinesteperrors",
+            "text": "",
             "title": "handlePipelineStepErrors"
-        }, 
+        },
         {
-            "location": "/steps/handlePipelineStepErrors/#description", 
-            "text": "Used by other steps to make error analysis easier. Lists parameters and other data available to the step in which the error occurs.", 
+            "location": "/steps/handlePipelineStepErrors/#description",
+            "text": "Used by other steps to make error analysis easier. Lists parameters and other data available to the step in which the error occurs.",
             "title": "Description"
-        }, 
+        },
         {
-            "location": "/steps/handlePipelineStepErrors/#prerequisites", 
-            "text": "none", 
+            "location": "/steps/handlePipelineStepErrors/#prerequisites",
+            "text": "none",
             "title": "Prerequisites"
-        }, 
+        },
         {
-            "location": "/steps/handlePipelineStepErrors/#parameters", 
-            "text": "parameter  mandatory  default  possible values      stepParameters  yes      stepName  yes      echoDetails  yes  true  true, false      stepParameters  - The parameters from the step to be executed. The list of parameters is then shown in the console output.  stepName  - The name of the step executed to be shown in the console output.  echoDetails  - if set to true will output the following as console output:  Step beginning:  --- BEGIN LIBRARY STEP: ${stepName}.groovy ---  Step end:  --- END LIBRARY STEP: ${stepName}.groovy ---  Step errors:  ----------------------------------------------------------\n--- ERROR OCCURED IN LIBRARY STEP: ${stepName}\n----------------------------------------------------------\nFOLLOWING PARAMETERS WERE AVAILABLE TO THIS STEP:\n***\n${stepParameters}\n***\nERROR WAS:\n***\n${err}\n***\nFURTHER INFORMATION:\n* Documentation of step ${stepName}: .../${stepName}/\n* Pipeline documentation: https://...\n* GitHub repository for pipeline steps: https://...\n----------------------------------------------------------", 
+            "location": "/steps/handlePipelineStepErrors/#parameters",
+            "text": "parameter  mandatory  default  possible values      stepParameters  yes      stepName  yes      echoDetails  yes  true  true, false      stepParameters  - The parameters from the step to be executed. The list of parameters is then shown in the console output.  stepName  - The name of the step executed to be shown in the console output.  echoDetails  - If set to true the following will be output to the console:  Step beginning:  --- BEGIN LIBRARY STEP: ${stepName}.groovy ---  Step end:  --- END LIBRARY STEP: ${stepName}.groovy ---  Step errors:  ----------------------------------------------------------\n--- ERROR OCCURED IN LIBRARY STEP: ${stepName}\n----------------------------------------------------------\nFOLLOWING PARAMETERS WERE AVAILABLE TO THIS STEP:\n***\n${stepParameters}\n***\nERROR WAS:\n***\n${err}\n***\nFURTHER INFORMATION:\n* Documentation of step ${stepName}: .../${stepName}/\n* Pipeline documentation: https://...\n* GitHub repository for pipeline steps: https://...\n----------------------------------------------------------",
             "title": "Parameters"
-        }, 
+        },
         {
-            "location": "/steps/handlePipelineStepErrors/#return-value", 
-            "text": "none", 
+            "location": "/steps/handlePipelineStepErrors/#return-value",
+            "text": "none",
             "title": "Return value"
-        }, 
+        },
         {
-            "location": "/steps/handlePipelineStepErrors/#side-effects", 
-            "text": "none", 
+            "location": "/steps/handlePipelineStepErrors/#side-effects",
+            "text": "none",
             "title": "Side effects"
-        }, 
+        },
         {
-            "location": "/steps/handlePipelineStepErrors/#exceptions", 
-            "text": "none", 
+            "location": "/steps/handlePipelineStepErrors/#exceptions",
+            "text": "none",
             "title": "Exceptions"
-        }, 
+        },
         {
-            "location": "/steps/handlePipelineStepErrors/#example", 
-            "text": "handlePipelineStepErrors   ( stepName:   executeHealthCheck ,   stepParameters:   parameters )   { \n   def   url   =   new   Utils (). getMandatoryParameter ( parameters ,   url ,   null ) \n   def   statusCode   =   curl ( url ) \n   if   ( statusCode   !=   200 ) \n     error   Health Check failed: ${statusCode}  }", 
+            "location": "/steps/handlePipelineStepErrors/#example",
+            "text": "handlePipelineStepErrors   ( stepName:   'executeHealthCheck' ,   stepParameters:   parameters )   { \n   def   url   =   new   Utils (). getMandatoryParameter ( parameters ,   'url' ,   null ) \n   def   statusCode   =   curl ( url ) \n   if   ( statusCode   !=   '200' ) \n     error   \"Health Check failed: ${statusCode}\"  }",
             "title": "Example"
-        }, 
+        },
         {
-            "location": "/steps/pipelineExecute/", 
-            "text": "pipelineExecute\n\n\nDescription\n\n\nLoads a pipeline from a git repository. The idea is to set up a pipeline job in Jenkins that loads a minimal pipeline, which in turn loads the shared library and then uses this step to load the actual pipeline.\n\n\nA centrally maintained pipeline script (Jenkinsfile) can be re-used by\nseveral projects using \npipelineExecute\n as outlined in the example\nbelow.\n\n\nPrerequisites\n\n\nnone\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nrepoUrl\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nbranch\n\n\nno\n\n\n'master'\n\n\n\n\n\n\n\n\npath\n\n\nno\n\n\n'Jenkinsfile'\n\n\n\n\n\n\n\n\ncredentialsId\n\n\nno\n\n\nAn empty String\n\n\n\n\n\n\n\n\n\n\n\n\nrepoUrl\n The url to the git repository of the pipeline to be loaded.\n\n\nbranch\n The branch of the git repository from which the pipeline should be checked out.\n\n\npath\n The path to the Jenkinsfile, inside the repository, to be loaded.\n\n\ncredentialsId\n The Jenkins credentials containing user and password needed to access a private git repository.\n\n\n\n\nReturn value\n\n\nnone\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\n\n\nException\n\n\nIf \nrepoUrl\n is not provided.\n\n\n\n\n\n\n\n\nExample\n\n\npipelineExecute\n \nrepoUrl:\n \nhttps://github.com/MyOrg/MyPipelineRepo.git\n,\n \nbranch:\n \nfeature1\n,\n \npath:\n \npath/to/Jenkinsfile\n,\n \ncredentialsId:\n \nMY_REPO_CREDENTIALS", 
+            "location": "/steps/pipelineExecute/",
+            "text": "pipelineExecute\n\u00b6\n\n\nDescription\n\u00b6\n\n\nLoads a pipeline from a git repository. The idea is to set up a pipeline job in Jenkins that loads a minimal pipeline, which in turn loads the shared library and then uses this step to load the actual pipeline.\n\n\nA centrally maintained pipeline script (Jenkinsfile) can be re-used by\nseveral projects using \npipelineExecute\n as outlined in the example\nbelow.\n\n\nPrerequisites\n\u00b6\n\n\nnone\n\n\nParameters\n\u00b6\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nrepoUrl\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nbranch\n\n\nno\n\n\n'master'\n\n\n\n\n\n\n\n\npath\n\n\nno\n\n\n'Jenkinsfile'\n\n\n\n\n\n\n\n\ncredentialsId\n\n\nno\n\n\nAn empty String\n\n\n\n\n\n\n\n\n\n\n\n\nrepoUrl\n The url to the git repository of the pipeline to be loaded.\n\n\nbranch\n The branch of the git repository from which the pipeline should be checked out.\n\n\npath\n The path to the Jenkinsfile, inside the repository, to be loaded.\n\n\ncredentialsId\n The Jenkins credentials containing user and password needed to access a private git repository.\n\n\n\n\nReturn value\n\u00b6\n\n\nnone\n\n\nSide effects\n\u00b6\n\n\nnone\n\n\nExceptions\n\u00b6\n\n\n\n\nException\n\n\nIf \nrepoUrl\n is not provided.\n\n\n\n\n\n\n\n\nExample\n\u00b6\n\n\npipelineExecute\n \nrepoUrl:\n \n\"https://github.com/MyOrg/MyPipelineRepo.git\"\n,\n \nbranch:\n \n'feature1'\n,\n \npath:\n \n'path/to/Jenkinsfile'\n,\n \ncredentialsId:\n \n'MY_REPO_CREDENTIALS'",
             "title": "pipelineExecute"
-        }, 
+        },
         {
-            "location": "/steps/pipelineExecute/#pipelineexecute", 
-            "text": "", 
+            "location": "/steps/pipelineExecute/#pipelineexecute",
+            "text": "",
             "title": "pipelineExecute"
-        }, 
+        },
         {
-            "location": "/steps/pipelineExecute/#description", 
-            "text": "Loads a pipeline from a git repository. The idea is to set up a pipeline job in Jenkins that loads a minimal pipeline, which in turn loads the shared library and then uses this step to load the actual pipeline.  A centrally maintained pipeline script (Jenkinsfile) can be re-used by\nseveral projects using  pipelineExecute  as outlined in the example\nbelow.", 
+            "location": "/steps/pipelineExecute/#description",
+            "text": "Loads a pipeline from a git repository. The idea is to set up a pipeline job in Jenkins that loads a minimal pipeline, which in turn loads the shared library and then uses this step to load the actual pipeline.  A centrally maintained pipeline script (Jenkinsfile) can be re-used by\nseveral projects using  pipelineExecute  as outlined in the example\nbelow.",
             "title": "Description"
-        }, 
+        },
         {
-            "location": "/steps/pipelineExecute/#prerequisites", 
-            "text": "none", 
+            "location": "/steps/pipelineExecute/#prerequisites",
+            "text": "none",
             "title": "Prerequisites"
-        }, 
+        },
         {
-            "location": "/steps/pipelineExecute/#parameters", 
-            "text": "parameter  mandatory  default  possible values      repoUrl  yes      branch  no  'master'     path  no  'Jenkinsfile'     credentialsId  no  An empty String       repoUrl  The url to the git repository of the pipeline to be loaded.  branch  The branch of the git repository from which the pipeline should be checked out.  path  The path to the Jenkinsfile, inside the repository, to be loaded.  credentialsId  The Jenkins credentials containing user and password needed to access a private git repository.", 
+            "location": "/steps/pipelineExecute/#parameters",
+            "text": "parameter  mandatory  default  possible values      repoUrl  yes      branch  no  'master'     path  no  'Jenkinsfile'     credentialsId  no  An empty String       repoUrl  The url to the git repository of the pipeline to be loaded.  branch  The branch of the git repository from which the pipeline should be checked out.  path  The path to the Jenkinsfile, inside the repository, to be loaded.  credentialsId  The Jenkins credentials containing user and password needed to access a private git repository.",
             "title": "Parameters"
-        }, 
+        },
         {
-            "location": "/steps/pipelineExecute/#return-value", 
-            "text": "none", 
+            "location": "/steps/pipelineExecute/#return-value",
+            "text": "none",
             "title": "Return value"
-        }, 
+        },
         {
-            "location": "/steps/pipelineExecute/#side-effects", 
-            "text": "none", 
+            "location": "/steps/pipelineExecute/#side-effects",
+            "text": "none",
             "title": "Side effects"
-        }, 
+        },
         {
-            "location": "/steps/pipelineExecute/#exceptions", 
-            "text": "Exception  If  repoUrl  is not provided.", 
+            "location": "/steps/pipelineExecute/#exceptions",
+            "text": "Exception  If  repoUrl  is not provided.",
             "title": "Exceptions"
-        }, 
+        },
         {
-            "location": "/steps/pipelineExecute/#example", 
-            "text": "pipelineExecute   repoUrl:   https://github.com/MyOrg/MyPipelineRepo.git ,   branch:   feature1 ,   path:   path/to/Jenkinsfile ,   credentialsId:   MY_REPO_CREDENTIALS", 
+            "location": "/steps/pipelineExecute/#example",
+            "text": "pipelineExecute   repoUrl:   \"https://github.com/MyOrg/MyPipelineRepo.git\" ,   branch:   'feature1' ,   path:   'path/to/Jenkinsfile' ,   credentialsId:   'MY_REPO_CREDENTIALS'",
             "title": "Example"
-        }, 
+        },
         {
-            "location": "/steps/toolValidate/", 
-            "text": "toolValidate\n\n\nDescription\n\n\nChecks the existence and compatibility of a tool, necessary for a successful pipeline execution.\nIn case a violation is found, an exception is raised.\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\ntool\n\n\nyes\n\n\n\n\n'java', 'mta', 'neo'\n\n\n\n\n\n\nhome\n\n\nyes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntool\n The tool that is checked for existence and compatible version.\n\n\nhome\n The location in the file system where Jenkins can access the tool.\n\n\n\n\nExceptions\n\n\n\n\nIllegalArgumentException\n \n\n\nIf at least one of the parameters  \ntool\n, \nhome\n is not provided.\n\n\n\n\n\n\nAbortException\n\n\nIf \ntool\n is not supported.\n\n\n\n\n\n\n\n\nExample\n\n\ntoolValidate\n \ntool:\n \nneo\n,\n \nhome:\n/path/to/neo-java-web-sdk", 
+            "location": "/steps/toolValidate/",
+            "text": "toolValidate\n\u00b6\n\n\nDescription\n\u00b6\n\n\nChecks the existence and compatibility of a tool, necessary for a successful pipeline execution.\nIn case a violation is found, an exception is raised.\n\n\nPrerequisites\n\u00b6\n\n\nnone\n\n\nParameters\n\u00b6\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\ntool\n\n\nyes\n\n\n\n\n'java', 'mta', 'neo'\n\n\n\n\n\n\nhome\n\n\nyes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntool\n The tool that is checked for existence and compatible version.\n\n\nhome\n The location in the file system where Jenkins can access the tool.\n\n\n\n\nReturn value\n\u00b6\n\n\nnone\n\n\nSide effects\n\u00b6\n\n\nnone\n\n\nExceptions\n\u00b6\n\n\n\n\nIllegalArgumentException\n:\n\n\nIf at least one of the parameters  \ntool\n, \nhome\n is not provided.\n\n\n\n\n\n\nAbortException\n:\n\n\nIf \ntool\n is not supported.\n\n\n\n\n\n\n\n\nExample\n\u00b6\n\n\ntoolValidate\n \ntool:\n \n'neo'\n,\n \nhome:\n'/path/to/neo-java-web-sdk'",
             "title": "toolValidate"
-        }, 
+        },
         {
-            "location": "/steps/toolValidate/#toolvalidate", 
-            "text": "", 
+            "location": "/steps/toolValidate/#toolvalidate",
+            "text": "",
             "title": "toolValidate"
-        }, 
+        },
         {
-            "location": "/steps/toolValidate/#description", 
-            "text": "Checks the existence and compatibility of a tool, necessary for a successful pipeline execution.\nIn case a violation is found, an exception is raised.", 
+            "location": "/steps/toolValidate/#description",
+            "text": "Checks the existence and compatibility of a tool, necessary for a successful pipeline execution.\nIn case a violation is found, an exception is raised.",
             "title": "Description"
-        }, 
+        },
         {
-            "location": "/steps/toolValidate/#parameters", 
-            "text": "parameter  mandatory  default  possible values      tool  yes   'java', 'mta', 'neo'    home  yes        tool  The tool that is checked for existence and compatible version.  home  The location in the file system where Jenkins can access the tool.", 
+            "location": "/steps/toolValidate/#prerequisites",
+            "text": "none",
+            "title": "Prerequisites"
+        },
+        {
+            "location": "/steps/toolValidate/#parameters",
+            "text": "parameter  mandatory  default  possible values      tool  yes   'java', 'mta', 'neo'    home  yes        tool  The tool that is checked for existence and compatible version.  home  The location in the file system where Jenkins can access the tool.",
             "title": "Parameters"
-        }, 
+        },
         {
-            "location": "/steps/toolValidate/#exceptions", 
-            "text": "IllegalArgumentException    If at least one of the parameters   tool ,  home  is not provided.    AbortException  If  tool  is not supported.", 
+            "location": "/steps/toolValidate/#return-value",
+            "text": "none",
+            "title": "Return value"
+        },
+        {
+            "location": "/steps/toolValidate/#side-effects",
+            "text": "none",
+            "title": "Side effects"
+        },
+        {
+            "location": "/steps/toolValidate/#exceptions",
+            "text": "IllegalArgumentException :  If at least one of the parameters   tool ,  home  is not provided.    AbortException :  If  tool  is not supported.",
             "title": "Exceptions"
-        }, 
+        },
         {
-            "location": "/steps/toolValidate/#example", 
-            "text": "toolValidate   tool:   neo ,   home: /path/to/neo-java-web-sdk", 
+            "location": "/steps/toolValidate/#example",
+            "text": "toolValidate   tool:   'neo' ,   home: '/path/to/neo-java-web-sdk'",
             "title": "Example"
-        }, 
+        },
         {
-            "location": "/steps/mtaBuild/", 
-            "text": "mtaBuild\n\n\nDescription\n\n\nExecutes the SAP MTA Archive Builder to create an mtar archive of the application.\n\n\nPrerequisites\n\n\n\n\nSAP MTA Archive Builder\n - available for download on the SAP Marketplace.\n\n\nJava 8 or higher\n - necessary to run the \nmta.jar\n file.\n\n\nNodeJS installed\n - the MTA Builder uses \nnpm\n to download node module dependencies such as \ngrunt\n.\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nscript\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nbuildTarget\n\n\nyes\n\n\n\n\n'CF', 'NEO', 'XSA'\n\n\n\n\n\n\nmtaJarLocation\n\n\nno\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nscript\n  The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the \nthis\n parameter, as in \nscript: this\n. This allows the function to access the \ncommonPipelineEnvironment\n for retrieving, for example, configuration parameters.\n\n\nbuildTarget\n The target platform to which the mtar can be deployed.\n\n\nmtaJarLocation\n The path of the \nmta.jar\n file. If no parameter is provided, the path is retrieved from the Jenkins environment variables using \nenv.MTA_JAR_LOCATION\n. If the Jenkins environment variable is not set it is assumed that \nmta.jar\n is located in the current working directory.\n\n\n\n\nReturn value\n\n\nThe file name of the resulting archive is returned with this step. The file name is extracted from the key \nID\n defined in \nmta.yaml\n.\n\n\nSide effects\n\n\n\n\nThe file name of the resulting archive is written to the \ncommonPipelineEnvironment\n with variable name \nmtarFileName\n.\n\n\nAs version number the timestamp is written into the \nmta.yaml\n file, that is packaged into the built archive.\n\n\n\n\nExceptions\n\n\n\n\nAbortException\n\n\nIf there is an invalid \nbuildTarget\n.\n\n\nIf there is no key \nID\n inside the \nmta.yaml\n file.\n\n\n\n\n\n\n\n\nExample\n\n\ndef\n \nmtarFileName\n\n\ndir\n(\n/path/to/FioriApp\n){\n\n  \nmtarFileName\n \n=\n \nmtaBuild\n \nscript:\nthis\n,\n \nbuildTarget:\n \nNEO\n\n\n}", 
+            "location": "/steps/mtaBuild/",
+            "text": "mtaBuild\n\u00b6\n\n\nDescription\n\u00b6\n\n\nExecutes the SAP MTA Archive Builder to create an mtar archive of the application.\n\n\nPrerequisites\n\u00b6\n\n\n\n\nSAP MTA Archive Builder\n - available for download on the SAP Marketplace.\n\n\nJava 8 or higher\n - necessary to run the \nmta.jar\n file.\n\n\nNodeJS installed\n - the MTA Builder uses \nnpm\n to download node module dependencies such as \ngrunt\n.\n\n\n\n\nParameters\n\u00b6\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nscript\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nbuildTarget\n\n\nyes\n\n\n\n\n'CF', 'NEO', 'XSA'\n\n\n\n\n\n\nmtaJarLocation\n\n\nno\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nscript\n - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the \nthis\n parameter, as in \nscript: this\n. This allows the function to access the \ncommonPipelineEnvironment\n for retrieving, for example, configuration parameters.\n\n\nbuildTarget\n - The target platform to which the mtar can be deployed.\n\n\nmtaJarLocation\n - The path of the \nmta.jar\n file. If no parameter is provided, the path is retrieved from the Jenkins environment variables using \nenv.MTA_JAR_LOCATION\n. If the Jenkins environment variable is not set it is assumed that \nmta.jar\n is located in the current working directory.\n\n\n\n\nReturn value\n\u00b6\n\n\nThe file name of the resulting archive is returned with this step. The file name is extracted from the key \nID\n defined in \nmta.yaml\n.\n\n\nSide effects\n\u00b6\n\n\n\n\nThe file name of the resulting archive is written to the \ncommonPipelineEnvironment\n with variable name \nmtarFileName\n.\n\n\n\n\nExceptions\n\u00b6\n\n\n\n\nAbortException\n:\n\n\nIf there is an invalid \nbuildTarget\n.\n\n\nIf there is no key \nID\n inside the \nmta.yaml\n file.\n\n\n\n\n\n\n\n\nExample\n\u00b6\n\n\ndef\n \nmtarFileName\n\n\ndir\n(\n'/path/to/FioriApp'\n){\n\n  \nmtarFileName\n \n=\n \nmtaBuild\n \nscript:\nthis\n,\n \nbuildTarget:\n \n'NEO'\n\n\n}",
             "title": "mtaBuild"
-        }, 
+        },
         {
-            "location": "/steps/mtaBuild/#mtabuild", 
-            "text": "", 
+            "location": "/steps/mtaBuild/#mtabuild",
+            "text": "",
             "title": "mtaBuild"
-        }, 
+        },
         {
-            "location": "/steps/mtaBuild/#description", 
-            "text": "Executes the SAP MTA Archive Builder to create an mtar archive of the application.", 
+            "location": "/steps/mtaBuild/#description",
+            "text": "Executes the SAP MTA Archive Builder to create an mtar archive of the application.",
             "title": "Description"
-        }, 
+        },
         {
-            "location": "/steps/mtaBuild/#prerequisites", 
-            "text": "SAP MTA Archive Builder  - available for download on the SAP Marketplace.  Java 8 or higher  - necessary to run the  mta.jar  file.  NodeJS installed  - the MTA Builder uses  npm  to download node module dependencies such as  grunt .", 
+            "location": "/steps/mtaBuild/#prerequisites",
+            "text": "SAP MTA Archive Builder  - available for download on the SAP Marketplace.  Java 8 or higher  - necessary to run the  mta.jar  file.  NodeJS installed  - the MTA Builder uses  npm  to download node module dependencies such as  grunt .",
             "title": "Prerequisites"
-        }, 
+        },
         {
-            "location": "/steps/mtaBuild/#parameters", 
-            "text": "parameter  mandatory  default  possible values      script  yes      buildTarget  yes   'CF', 'NEO', 'XSA'    mtaJarLocation  no        script   The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the  this  parameter, as in  script: this . This allows the function to access the  commonPipelineEnvironment  for retrieving, for example, configuration parameters.  buildTarget  The target platform to which the mtar can be deployed.  mtaJarLocation  The path of the  mta.jar  file. If no parameter is provided, the path is retrieved from the Jenkins environment variables using  env.MTA_JAR_LOCATION . If the Jenkins environment variable is not set it is assumed that  mta.jar  is located in the current working directory.", 
+            "location": "/steps/mtaBuild/#parameters",
+            "text": "parameter  mandatory  default  possible values      script  yes      buildTarget  yes   'CF', 'NEO', 'XSA'    mtaJarLocation  no        script  - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the  this  parameter, as in  script: this . This allows the function to access the  commonPipelineEnvironment  for retrieving, for example, configuration parameters.  buildTarget  - The target platform to which the mtar can be deployed.  mtaJarLocation  - The path of the  mta.jar  file. If no parameter is provided, the path is retrieved from the Jenkins environment variables using  env.MTA_JAR_LOCATION . If the Jenkins environment variable is not set it is assumed that  mta.jar  is located in the current working directory.",
             "title": "Parameters"
-        }, 
+        },
         {
-            "location": "/steps/mtaBuild/#return-value", 
-            "text": "The file name of the resulting archive is returned with this step. The file name is extracted from the key  ID  defined in  mta.yaml .", 
+            "location": "/steps/mtaBuild/#return-value",
+            "text": "The file name of the resulting archive is returned with this step. The file name is extracted from the key  ID  defined in  mta.yaml .",
             "title": "Return value"
-        }, 
+        },
         {
-            "location": "/steps/mtaBuild/#side-effects", 
-            "text": "The file name of the resulting archive is written to the  commonPipelineEnvironment  with variable name  mtarFileName .  As version number the timestamp is written into the  mta.yaml  file, that is packaged into the built archive.", 
+            "location": "/steps/mtaBuild/#side-effects",
+            "text": "The file name of the resulting archive is written to the  commonPipelineEnvironment  with variable name  mtarFileName .",
             "title": "Side effects"
-        }, 
+        },
         {
-            "location": "/steps/mtaBuild/#exceptions", 
-            "text": "AbortException  If there is an invalid  buildTarget .  If there is no key  ID  inside the  mta.yaml  file.", 
+            "location": "/steps/mtaBuild/#exceptions",
+            "text": "AbortException :  If there is an invalid  buildTarget .  If there is no key  ID  inside the  mta.yaml  file.",
             "title": "Exceptions"
-        }, 
+        },
         {
-            "location": "/steps/mtaBuild/#example", 
-            "text": "def   mtarFileName  dir ( /path/to/FioriApp ){ \n   mtarFileName   =   mtaBuild   script: this ,   buildTarget:   NEO  }", 
+            "location": "/steps/mtaBuild/#example",
+            "text": "def   mtarFileName  dir ( '/path/to/FioriApp' ){ \n   mtarFileName   =   mtaBuild   script: this ,   buildTarget:   'NEO'  }",
             "title": "Example"
-        }, 
+        },
         {
-            "location": "/steps/neoDeploy/", 
-            "text": "neoDeploy\n\n\nDescription\n\n\nDeploys an Application to SAP Cloud Platform (SAP CP) using the SAP Cloud Platform Console Client (Neo Java Web SDK).\n\n\nPrerequisites\n\n\n\n\nSAP CP account\n - the account to where the application is deployed.\n\n\nSAP CP user for deployment\n - a user with deployment permissions in the given account.\n\n\nJenkins credentials for deployment\n - must be configured in Jenkins credentials with a dedicated Id.\n\n\n\n\n\n\n\n\n\n\nNeo Java Web SDK\n - can be downloaded from \nMaven Central\n. The Neo Java Web SDK\nneeds to be extracted into the folder provided by \nneoHome\n. In case this parameters is not provided and there is no NEO_HOME parameter in the environment\n\nneoRoot\n/tools\n needs to be in the \nPATH\n.\n\n\n\n\n\n\nJava 8 or higher\n - needed by the \nNeo-Java-Web-SDK\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nscript\n\n\nyes\n\n\n\n\n\n\n\n\n\n\narchivePath\n\n\nyes\n\n\n\n\n\n\n\n\n\n\ndeployHost\n\n\nno\n\n\n'DEPLOY_HOST'\n from \ncommonPipelineEnvironment\n\n\n\n\n\n\n\n\ndeployAccount\n\n\nno\n\n\n'CI_DEPLOY_ACCOUNT'\n from \ncommonPipelineEnvironment\n\n\n\n\n\n\n\n\nneoCredentialsId\n\n\nno\n\n\n'CI_CREDENTIALS_ID'\n\n\n\n\n\n\n\n\nneoHome\n\n\nno\n\n\nEnvironment is checked for \nNEO_HOME\n, otherwise the neo toolset is expected in the path\n\n\n\n\n\n\n\n\n\n\n\n\nscript\n The common script environment of the Jenkinsfile run. Typically \nthis\n is passed to this parameter. This allows the function to access the \ncommonPipelineEnvironment\n for retrieving e.g. configuration parameters.\n\n\narchivePath\n The path to the archive for deployment to SAP CP.\n\n\ndeployHost\n The SAP Cloud Platform host to deploy to.\n\n\ndeployAccount\n The SAP Cloud Platform account to deploy to.\n\n\ncredentialsId\n The Jenkins credentials containing user and password used for SAP CP deployment.\n\n\nneoHome\n The path to the \nneo-java-web-sdk\n tool used for SAP CP deployment. If no parameter is provided, the path is retrieved from the Jenkins environment variables using \nenv.NEO_HOME\n. If this Jenkins environment variable is not set it is assumed that the tool is available in the \nPATH\n.\n\n\n\n\nReturn value\n\n\nnone\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\n\n\nException\n\n\nIf \narchivePath\n is not provided.\n\n\n\n\n\n\nAbortException\n\n\nIf neo-java-web-sdk is not installed, or \nneoHome\nis wrong.\n\n\nIf \ndeployHost\n is wrong.\n\n\nIf \ndeployAccount\n is wrong.\n\n\n\n\n\n\nCredentialNotFoundException\n\n\nIf the credentials cannot be resolved.\n\n\n\n\n\n\n\n\nExample\n\n\nneoDeploy\n \nscript:\n \nthis\n,\n \narchivePath:\n \npath/to/archiveFile.mtar\n,\n \ncredentialsId:\n \nmy-credentials-id", 
+            "location": "/steps/neoDeploy/",
+            "text": "neoDeploy\n\u00b6\n\n\nDescription\n\u00b6\n\n\nDeploys an Application to SAP Cloud Platform (SAP CP) using the SAP Cloud Platform Console Client (Neo Java Web SDK).\n\n\nPrerequisites\n\u00b6\n\n\n\n\nSAP CP account\n - the account to where the application is deployed.\n\n\nSAP CP user for deployment\n - a user with deployment permissions in the given account.\n\n\nJenkins credentials for deployment\n - must be configured in Jenkins credentials with a dedicated Id.\n\n\n\n\n\n\n\n\n\n\nNeo Java Web SDK\n - can be downloaded from \nMaven Central\n. The Neo Java Web SDK\nneeds to be extracted into the folder provided by \nneoHome\n. In case this parameters is not provided and there is no NEO_HOME parameter in the environment\n\n<neoRoot>/tools\n needs to be in the \nPATH\n.\n\n\n\n\n\n\nJava 8 or higher\n - needed by the \nNeo-Java-Web-SDK\n\n\n\n\n\n\nParameters\n\u00b6\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nscript\n\n\nyes\n\n\n\n\n\n\n\n\n\n\narchivePath\n\n\nyes\n\n\n\n\n\n\n\n\n\n\ndeployHost\n\n\nno\n\n\n'DEPLOY_HOST'\n from \ncommonPipelineEnvironment\n\n\n\n\n\n\n\n\ndeployAccount\n\n\nno\n\n\n'CI_DEPLOY_ACCOUNT'\n from \ncommonPipelineEnvironment\n\n\n\n\n\n\n\n\nneoCredentialsId\n\n\nno\n\n\n'CI_CREDENTIALS_ID'\n\n\n\n\n\n\n\n\nneoHome\n\n\nno\n\n\nEnvironment is checked for \nNEO_HOME\n, \notherwise the neo toolset is expected in the path\n\n\n\n\n\n\n\n\n\n\n\n\nscript\n - The common script environment of the Jenkinsfile run. Typically \nthis\n is passed to this parameter. This allows the function to access the \ncommonPipelineEnvironment\n for retrieving e.g. configuration parameters.\n\n\narchivePath\n- The path to the archive for deployment to SAP CP.\n\n\ndeployHost\n - The SAP Cloud Platform host to deploy to.\n\n\ndeployAccount\n - The SAP Cloud Platform account to deploy to.\n\n\ncredentialsId\n - The Jenkins credentials containing user and password used for SAP CP deployment.\n\n\nneoHome\n - The path to the \nneo-java-web-sdk\n tool used for SAP CP deployment. If no parameter is provided, the path is retrieved from the Jenkins environment variables using \nenv.NEO_HOME\n. If this Jenkins environment variable is not set it is assumed that the tool is available in the \nPATH\n.\n\n\n\n\nReturn value\n\u00b6\n\n\nnone\n\n\nSide effects\n\u00b6\n\n\nnone\n\n\nExceptions\n\u00b6\n\n\n\n\nException\n:\n\n\nIf \narchivePath\n is not provided.\n\n\n\n\n\n\nAbortException\n:\n\n\nIf neo-java-web-sdk is not installed, or \nneoHome\nis wrong.\n\n\nIf \ndeployHost\n is wrong.\n\n\nIf \ndeployAccount\n is wrong.\n\n\n\n\n\n\nCredentialNotFoundException\n:\n\n\nIf the credentials cannot be resolved.\n\n\n\n\n\n\n\n\nExample\n\u00b6\n\n\nneoDeploy\n \nscript:\n \nthis\n,\n \narchivePath:\n \n'path/to/archiveFile.mtar'\n,\n \ncredentialsId:\n \n'my-credentials-id'",
             "title": "neoDeploy"
-        }, 
+        },
         {
-            "location": "/steps/neoDeploy/#neodeploy", 
-            "text": "", 
+            "location": "/steps/neoDeploy/#neodeploy",
+            "text": "",
             "title": "neoDeploy"
-        }, 
+        },
         {
-            "location": "/steps/neoDeploy/#description", 
-            "text": "Deploys an Application to SAP Cloud Platform (SAP CP) using the SAP Cloud Platform Console Client (Neo Java Web SDK).", 
+            "location": "/steps/neoDeploy/#description",
+            "text": "Deploys an Application to SAP Cloud Platform (SAP CP) using the SAP Cloud Platform Console Client (Neo Java Web SDK).",
             "title": "Description"
-        }, 
+        },
         {
-            "location": "/steps/neoDeploy/#prerequisites", 
-            "text": "SAP CP account  - the account to where the application is deployed.  SAP CP user for deployment  - a user with deployment permissions in the given account.  Jenkins credentials for deployment  - must be configured in Jenkins credentials with a dedicated Id.      Neo Java Web SDK  - can be downloaded from  Maven Central . The Neo Java Web SDK\nneeds to be extracted into the folder provided by  neoHome . In case this parameters is not provided and there is no NEO_HOME parameter in the environment neoRoot /tools  needs to be in the  PATH .    Java 8 or higher  - needed by the  Neo-Java-Web-SDK", 
+            "location": "/steps/neoDeploy/#prerequisites",
+            "text": "SAP CP account  - the account to where the application is deployed.  SAP CP user for deployment  - a user with deployment permissions in the given account.  Jenkins credentials for deployment  - must be configured in Jenkins credentials with a dedicated Id.      Neo Java Web SDK  - can be downloaded from  Maven Central . The Neo Java Web SDK\nneeds to be extracted into the folder provided by  neoHome . In case this parameters is not provided and there is no NEO_HOME parameter in the environment <neoRoot>/tools  needs to be in the  PATH .    Java 8 or higher  - needed by the  Neo-Java-Web-SDK",
             "title": "Prerequisites"
-        }, 
+        },
         {
-            "location": "/steps/neoDeploy/#parameters", 
-            "text": "parameter  mandatory  default  possible values      script  yes      archivePath  yes      deployHost  no  'DEPLOY_HOST'  from  commonPipelineEnvironment     deployAccount  no  'CI_DEPLOY_ACCOUNT'  from  commonPipelineEnvironment     neoCredentialsId  no  'CI_CREDENTIALS_ID'     neoHome  no  Environment is checked for  NEO_HOME , otherwise the neo toolset is expected in the path       script  The common script environment of the Jenkinsfile run. Typically  this  is passed to this parameter. This allows the function to access the  commonPipelineEnvironment  for retrieving e.g. configuration parameters.  archivePath  The path to the archive for deployment to SAP CP.  deployHost  The SAP Cloud Platform host to deploy to.  deployAccount  The SAP Cloud Platform account to deploy to.  credentialsId  The Jenkins credentials containing user and password used for SAP CP deployment.  neoHome  The path to the  neo-java-web-sdk  tool used for SAP CP deployment. If no parameter is provided, the path is retrieved from the Jenkins environment variables using  env.NEO_HOME . If this Jenkins environment variable is not set it is assumed that the tool is available in the  PATH .", 
+            "location": "/steps/neoDeploy/#parameters",
+            "text": "parameter  mandatory  default  possible values      script  yes      archivePath  yes      deployHost  no  'DEPLOY_HOST'  from  commonPipelineEnvironment     deployAccount  no  'CI_DEPLOY_ACCOUNT'  from  commonPipelineEnvironment     neoCredentialsId  no  'CI_CREDENTIALS_ID'     neoHome  no  Environment is checked for  NEO_HOME ,  otherwise the neo toolset is expected in the path       script  - The common script environment of the Jenkinsfile run. Typically  this  is passed to this parameter. This allows the function to access the  commonPipelineEnvironment  for retrieving e.g. configuration parameters.  archivePath - The path to the archive for deployment to SAP CP.  deployHost  - The SAP Cloud Platform host to deploy to.  deployAccount  - The SAP Cloud Platform account to deploy to.  credentialsId  - The Jenkins credentials containing user and password used for SAP CP deployment.  neoHome  - The path to the  neo-java-web-sdk  tool used for SAP CP deployment. If no parameter is provided, the path is retrieved from the Jenkins environment variables using  env.NEO_HOME . If this Jenkins environment variable is not set it is assumed that the tool is available in the  PATH .",
             "title": "Parameters"
-        }, 
+        },
         {
-            "location": "/steps/neoDeploy/#return-value", 
-            "text": "none", 
+            "location": "/steps/neoDeploy/#return-value",
+            "text": "none",
             "title": "Return value"
-        }, 
+        },
         {
-            "location": "/steps/neoDeploy/#side-effects", 
-            "text": "none", 
+            "location": "/steps/neoDeploy/#side-effects",
+            "text": "none",
             "title": "Side effects"
-        }, 
+        },
         {
-            "location": "/steps/neoDeploy/#exceptions", 
-            "text": "Exception  If  archivePath  is not provided.    AbortException  If neo-java-web-sdk is not installed, or  neoHome is wrong.  If  deployHost  is wrong.  If  deployAccount  is wrong.    CredentialNotFoundException  If the credentials cannot be resolved.", 
+            "location": "/steps/neoDeploy/#exceptions",
+            "text": "Exception :  If  archivePath  is not provided.    AbortException :  If neo-java-web-sdk is not installed, or  neoHome is wrong.  If  deployHost  is wrong.  If  deployAccount  is wrong.    CredentialNotFoundException :  If the credentials cannot be resolved.",
             "title": "Exceptions"
-        }, 
+        },
         {
-            "location": "/steps/neoDeploy/#example", 
-            "text": "neoDeploy   script:   this ,   archivePath:   path/to/archiveFile.mtar ,   credentialsId:   my-credentials-id", 
+            "location": "/steps/neoDeploy/#example",
+            "text": "neoDeploy   script:   this ,   archivePath:   'path/to/archiveFile.mtar' ,   credentialsId:   'my-credentials-id'",
             "title": "Example"
-        }, 
+        },
         {
-            "location": "/steps/setupCommonPipelineEnvironment/", 
-            "text": "setupCommonPipelineEnvironment\n\n\nDescription\n\n\nInitializes the \ncommonPipelineEnvironment\n, which is used throughout the complete pipeline.\n\n\n\n\nTip\n\n\nThis step needs to run at the beginning of a pipeline right after the SCM checkout.\nThen subsequent pipeline steps consume the information from \ncommonPipelineEnvironment\n; it does not need to be passed to pipeline steps explicitly.\n\n\n\n\nPrerequisites\n\n\n\n\nA \nconfiguration file\n with properties (default location: \n.pipeline/config.properties\n). The property values are used as default values in many pipeline steps.\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nscript\n\n\nyes\n\n\n-\n\n\n\n\n\n\n\n\nconfigFile\n\n\nno\n\n\n.pipeline/config.properties\n\n\n\n\n\n\n\n\n\n\n\n\nscript\n - The reference to the pipeline script (Jenkinsfile). Normally \nthis\n needs to be provided.\n\n\nconfigFile\n - Property file defining project specific settings.\n\n\n\n\nReturn value\n\n\nnone\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\nnone \n\n\nExample\n\n\nsetupCommonPipelineEnvironment\n \nscript:\n \nthis", 
+            "location": "/steps/setupCommonPipelineEnvironment/",
+            "text": "setupCommonPipelineEnvironment\n\u00b6\n\n\nDescription\n\u00b6\n\n\nInitializes the \ncommonPipelineEnvironment\n, which is used throughout the complete pipeline.\n\n\n\n\nTip\n\n\nThis step needs to run at the beginning of a pipeline right after the SCM checkout.\nThen subsequent pipeline steps consume the information from \ncommonPipelineEnvironment\n; it does not need to be passed to pipeline steps explicitly.\n\n\n\n\nPrerequisites\n\u00b6\n\n\n\n\nA \nconfiguration file\n with properties (default location: \n.pipeline/config.properties\n). The property values are used as default values in many pipeline steps.\n\n\n\n\nParameters\n\u00b6\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nscript\n\n\nyes\n\n\n-\n\n\n\n\n\n\n\n\nconfigFile\n\n\nno\n\n\n.pipeline/config.properties\n\n\n\n\n\n\n\n\n\n\n\n\nscript\n - The reference to the pipeline script (Jenkinsfile). Normally \nthis\n needs to be provided.\n\n\nconfigFile\n - Property file defining project specific settings.\n\n\n\n\nReturn value\n\u00b6\n\n\nnone\n\n\nSide effects\n\u00b6\n\n\nnone\n\n\nExceptions\n\u00b6\n\n\nnone \n\n\nExample\n\u00b6\n\n\nsetupCommonPipelineEnvironment\n \nscript:\n \nthis",
             "title": "setupCommonPipelineEnvironment"
-        }, 
+        },
         {
-            "location": "/steps/setupCommonPipelineEnvironment/#setupcommonpipelineenvironment", 
-            "text": "", 
+            "location": "/steps/setupCommonPipelineEnvironment/#setupcommonpipelineenvironment",
+            "text": "",
             "title": "setupCommonPipelineEnvironment"
-        }, 
+        },
         {
-            "location": "/steps/setupCommonPipelineEnvironment/#description", 
-            "text": "Initializes the  commonPipelineEnvironment , which is used throughout the complete pipeline.   Tip  This step needs to run at the beginning of a pipeline right after the SCM checkout.\nThen subsequent pipeline steps consume the information from  commonPipelineEnvironment ; it does not need to be passed to pipeline steps explicitly.", 
+            "location": "/steps/setupCommonPipelineEnvironment/#description",
+            "text": "Initializes the  commonPipelineEnvironment , which is used throughout the complete pipeline.   Tip  This step needs to run at the beginning of a pipeline right after the SCM checkout.\nThen subsequent pipeline steps consume the information from  commonPipelineEnvironment ; it does not need to be passed to pipeline steps explicitly.",
             "title": "Description"
-        }, 
+        },
         {
-            "location": "/steps/setupCommonPipelineEnvironment/#prerequisites", 
-            "text": "A  configuration file  with properties (default location:  .pipeline/config.properties ). The property values are used as default values in many pipeline steps.", 
+            "location": "/steps/setupCommonPipelineEnvironment/#prerequisites",
+            "text": "A  configuration file  with properties (default location:  .pipeline/config.properties ). The property values are used as default values in many pipeline steps.",
             "title": "Prerequisites"
-        }, 
+        },
         {
-            "location": "/steps/setupCommonPipelineEnvironment/#parameters", 
-            "text": "parameter  mandatory  default  possible values      script  yes  -     configFile  no  .pipeline/config.properties       script  - The reference to the pipeline script (Jenkinsfile). Normally  this  needs to be provided.  configFile  - Property file defining project specific settings.", 
+            "location": "/steps/setupCommonPipelineEnvironment/#parameters",
+            "text": "parameter  mandatory  default  possible values      script  yes  -     configFile  no  .pipeline/config.properties       script  - The reference to the pipeline script (Jenkinsfile). Normally  this  needs to be provided.  configFile  - Property file defining project specific settings.",
             "title": "Parameters"
-        }, 
+        },
         {
-            "location": "/steps/setupCommonPipelineEnvironment/#return-value", 
-            "text": "none", 
+            "location": "/steps/setupCommonPipelineEnvironment/#return-value",
+            "text": "none",
             "title": "Return value"
-        }, 
+        },
         {
-            "location": "/steps/setupCommonPipelineEnvironment/#side-effects", 
-            "text": "none", 
+            "location": "/steps/setupCommonPipelineEnvironment/#side-effects",
+            "text": "none",
             "title": "Side effects"
-        }, 
+        },
         {
-            "location": "/steps/setupCommonPipelineEnvironment/#exceptions", 
-            "text": "none", 
+            "location": "/steps/setupCommonPipelineEnvironment/#exceptions",
+            "text": "none",
             "title": "Exceptions"
-        }, 
+        },
         {
-            "location": "/steps/setupCommonPipelineEnvironment/#example", 
-            "text": "setupCommonPipelineEnvironment   script:   this", 
+            "location": "/steps/setupCommonPipelineEnvironment/#example",
+            "text": "setupCommonPipelineEnvironment   script:   this",
             "title": "Example"
-        }, 
+        },
         {
-            "location": "/scripts/fileUtils/", 
-            "text": "FileUtils\n\n\nDescription\n\n\nProvides file system related utility functions.\n\n\nConstructor\n\n\nSince there are only static utility methods there is no need for instantiating objects. \n\n\nMethod Details\n\n\nvalidateDirectory(dir)\n\n\nDescription\n\n\nChecks whether a file exists and is a directory.\n\n\nParameters\n\n\n\n\ndir\n - directory to be checked. In case it is relative path it is checked against the\ncurrent working directory. In case of doubt use the absolute path (prefix the directory with \npwd\n).\n\n\n\n\nReturn value\n\n\nnone\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\n\n\nIllegalArgumentException\n: If the parameter \ndir\n is null or empty.\n\n\nAbortException\n: If the directory does not exist or is not a directory.\n\n\n\n\nExample\n\n\nFileUtils\n.\nvalidateDirectory\n(\n/path/to/dir\n)\n\n\n\n\n\nvalidateDirectoryIsNotEmpty(dir)\n\n\nDescription\n\n\nCheck whether a directory is not empty. Before the directory is checked, \nvalidateDirectory(dir)\n is executed.\n\n\nParameters\n\n\n\n\ndir\n - directory to be checked. In case it is relative path it is checked against the\ncurrent working directory. In case of doubt use the absolute path (prefix the directory with \npwd\n).\n\n\n\n\nReturn value\n\n\nnone\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\n\n\nIllegalArgumentException\n: If the parameter \ndir\n is null or empty.\n\n\nAbortException\n: If the directory does not exist or is not a directory or the directory is empty.\n\n\n\n\nExample\n\n\nFileUtils\n.\nvalidateDirectoryIsNotEmpty\n(\n/path/to/dir\n)", 
-            "title": "FileUtils"
-        }, 
+            "location": "/steps/mavenExecute/",
+            "text": "mavenExecute\n\u00b6\n\n\nDescription\n\u00b6\n\n\nExecutes a maven command inside a Docker container.\n\n\nParameters\n\u00b6\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\nexample values\n\n\n\n\n\n\n\n\n\n\ndockerImage\n\n\nno\n\n\n'maven:3.5-jdk-7'\n\n\n\n\n\n\n\n\nglobalSettingsFile\n\n\nno\n\n\n\n\n'local_folder/settings.xml'\n\n\n\n\n\n\nprojectSettingsFile\n\n\nno\n\n\n\n\n\n\n\n\n\n\npomPath\n\n\nno\n\n\n\n\n'local_folder/m2'\n\n\n\n\n\n\nflags\n\n\nno\n\n\n\n\n'-o'\n\n\n\n\n\n\ngoals\n\n\nno\n\n\n\n\n'clean install'\n\n\n\n\n\n\nm2Path\n\n\nno\n\n\n\n\n'local_folder/m2'\n\n\n\n\n\n\ndefines\n\n\nno\n\n\n\n\n'-Dmaven.tests.skip=true'\n\n\n\n\n\n\n\n\n\n\ndockerImage\n Name of the docker image that should be used.\n\n\nglobalSettingsFile\n Path or url to the mvn settings file that should be used as global settings file. \n\n\nprojectSettingsFile\n Path or url to the mvn settings file that should be used as project settings file.\n\n\npomPath\n Path to the pom file that should be used.\n\n\nflags\n Flags to provide when running mvn.\n\n\ngoals\n Maven goals that should be executed.\n\n\nm2Path\n Path to the location of the local repository that should be used.\n\n\ndefines\n Additional properties.\n\n\n\n\nGlobal Configuration\n\u00b6\n\n\nThe following parameters can also be specified using the global configuration file:\n\n \ndockerImage\n\n\n \nglobalSettingsFile\n\n\n \nprojectSettingsFile\n\n\n \npomPath\n\n* \nm2Path\n\n\nExceptions\n\u00b6\n\n\nNone\n\n\nExample\n\u00b6\n\n\nmavenExecute\n \nscript:\n \nthis\n,\n \ngoals:\n \n'clean install'",
+            "title": "mavenExecute"
+        },
         {
-            "location": "/scripts/fileUtils/#fileutils", 
-            "text": "", 
-            "title": "FileUtils"
-        }, 
+            "location": "/steps/mavenExecute/#mavenexecute",
+            "text": "",
+            "title": "mavenExecute"
+        },
         {
-            "location": "/scripts/fileUtils/#description", 
-            "text": "Provides file system related utility functions.", 
+            "location": "/steps/mavenExecute/#description",
+            "text": "Executes a maven command inside a Docker container.",
             "title": "Description"
-        }, 
+        },
         {
-            "location": "/scripts/fileUtils/#constructor", 
-            "text": "Since there are only static utility methods there is no need for instantiating objects.", 
+            "location": "/steps/mavenExecute/#parameters",
+            "text": "parameter  mandatory  default  example values      dockerImage  no  'maven:3.5-jdk-7'     globalSettingsFile  no   'local_folder/settings.xml'    projectSettingsFile  no      pomPath  no   'local_folder/m2'    flags  no   '-o'    goals  no   'clean install'    m2Path  no   'local_folder/m2'    defines  no   '-Dmaven.tests.skip=true'      dockerImage  Name of the docker image that should be used.  globalSettingsFile  Path or url to the mvn settings file that should be used as global settings file.   projectSettingsFile  Path or url to the mvn settings file that should be used as project settings file.  pomPath  Path to the pom file that should be used.  flags  Flags to provide when running mvn.  goals  Maven goals that should be executed.  m2Path  Path to the location of the local repository that should be used.  defines  Additional properties.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/steps/mavenExecute/#global-configuration",
+            "text": "The following parameters can also be specified using the global configuration file:   dockerImage    globalSettingsFile    projectSettingsFile    pomPath \n*  m2Path",
+            "title": "Global Configuration"
+        },
+        {
+            "location": "/steps/mavenExecute/#exceptions",
+            "text": "None",
+            "title": "Exceptions"
+        },
+        {
+            "location": "/steps/mavenExecute/#example",
+            "text": "mavenExecute   script:   this ,   goals:   'clean install'",
+            "title": "Example"
+        },
+        {
+            "location": "/steps/dockerExecute/",
+            "text": "dockerExecute\n\u00b6\n\n\nDescription\n\u00b6\n\n\nExecutes a closure inside a docker container with the specified docker image. \nThe workspace is mounted into the docker image.\nProxy environment variables defined on the Jenkins machine are also available in the Docker container.\n\n\nParameters\n\u00b6\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\ndockerImage\n\n\nno\n\n\n''\n\n\n\n\n\n\n\n\ndockerEnvVars\n\n\nno\n\n\n[:]\n\n\n\n\n\n\n\n\ndockerOptions\n\n\nno\n\n\n''\n\n\n\n\n\n\n\n\ndockerVolumeBind\n\n\nno\n\n\n[:]\n\n\n\n\n\n\n\n\n\n\n\n\ndockerImage\n Name of the docker image that should be used. If empty, Docker is not used.\n\n\ndockerEnvVars\n Environment variables to set in the container, e.g. [http_proxy:'proxy:8080']\n\n\ndockerOptions\n Docker options to be set when starting the container.\n\n\ndockerVolumeBind\n Volumes that should be mounted into the container.\n\n\n\n\nExceptions\n\u00b6\n\n\nNone\n\n\nExample\n\u00b6\n\n\ndockerExecute\n(\ndockerImage:\n \n'maven:3.5-jdk-7'\n){\n\n    \nsh\n \n\"mvn clean install\"\n\n\n}",
+            "title": "dockerExecute"
+        },
+        {
+            "location": "/steps/dockerExecute/#dockerexecute",
+            "text": "",
+            "title": "dockerExecute"
+        },
+        {
+            "location": "/steps/dockerExecute/#description",
+            "text": "Executes a closure inside a docker container with the specified docker image. \nThe workspace is mounted into the docker image.\nProxy environment variables defined on the Jenkins machine are also available in the Docker container.",
+            "title": "Description"
+        },
+        {
+            "location": "/steps/dockerExecute/#parameters",
+            "text": "parameter  mandatory  default  possible values      dockerImage  no  ''     dockerEnvVars  no  [:]     dockerOptions  no  ''     dockerVolumeBind  no  [:]       dockerImage  Name of the docker image that should be used. If empty, Docker is not used.  dockerEnvVars  Environment variables to set in the container, e.g. [http_proxy:'proxy:8080']  dockerOptions  Docker options to be set when starting the container.  dockerVolumeBind  Volumes that should be mounted into the container.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/steps/dockerExecute/#exceptions",
+            "text": "None",
+            "title": "Exceptions"
+        },
+        {
+            "location": "/steps/dockerExecute/#example",
+            "text": "dockerExecute ( dockerImage:   'maven:3.5-jdk-7' ){ \n     sh   \"mvn clean install\"  }",
+            "title": "Example"
+        },
+        {
+            "location": "/steps/prepareDefaultValues/",
+            "text": "prepareDefaultValues\n\u00b6\n\n\nDescription\n\u00b6\n\n\nLoads the pipeline library default values from the file \nresources/default_pipeline_environment.yml\n.\nAfterwards the values can be loaded by the method: \nConfigurationLoader.defaultStepConfiguration\n \n\n\nParameters\n\u00b6\n\n\nNone\n\n\nExceptions\n\u00b6\n\n\nNone\n\n\nExample\n\u00b6\n\n\nprepareDefaultValues\n()",
+            "title": "prepareDefaultValues"
+        },
+        {
+            "location": "/steps/prepareDefaultValues/#preparedefaultvalues",
+            "text": "",
+            "title": "prepareDefaultValues"
+        },
+        {
+            "location": "/steps/prepareDefaultValues/#description",
+            "text": "Loads the pipeline library default values from the file  resources/default_pipeline_environment.yml .\nAfterwards the values can be loaded by the method:  ConfigurationLoader.defaultStepConfiguration",
+            "title": "Description"
+        },
+        {
+            "location": "/steps/prepareDefaultValues/#parameters",
+            "text": "None",
+            "title": "Parameters"
+        },
+        {
+            "location": "/steps/prepareDefaultValues/#exceptions",
+            "text": "None",
+            "title": "Exceptions"
+        },
+        {
+            "location": "/steps/prepareDefaultValues/#example",
+            "text": "prepareDefaultValues ()",
+            "title": "Example"
+        },
+        {
+            "location": "/scripts/fileUtils/",
+            "text": "FileUtils\n\u00b6\n\n\nDescription\n\u00b6\n\n\nProvides file system related utility functions.\n\n\nConstructor\n\u00b6\n\n\nSince there are only static utility methods there is no need for instantiating objects. \n\n\nMethod Details\n\u00b6\n\n\nvalidateDirectory(dir)\n\u00b6\n\n\nDescription\n\u00b6\n\n\nChecks whether a file exists and is a directory.\n\n\nParameters\n\u00b6\n\n\n\n\ndir\n - The directory to be checked. In case it is relative path it is checked against the\ncurrent working directory. In case of doubt use the absolute path (prefix the directory with \npwd\n).\n\n\n\n\nReturn value\n\u00b6\n\n\nnone\n\n\nSide effects\n\u00b6\n\n\nnone\n\n\nExceptions\n\u00b6\n\n\n\n\nIllegalArgumentException\n:\n\n\nIf the parameter \ndir\n is null or empty.\n\n\n\n\n\n\nAbortException\n:\n\n\nIf the directory does not exist or is not a directory.\n\n\n\n\n\n\n\n\nExample\n\u00b6\n\n\nFileUtils\n.\nvalidateDirectory\n(\n'/path/to/dir'\n)\n\n\n\n\n\nvalidateDirectoryIsNotEmpty(dir)\n\u00b6\n\n\nDescription\n\u00b6\n\n\nCheck whether a directory is not empty. Before the directory is checked, \nvalidateDirectory(dir)\n is executed.\n\n\nParameters\n\u00b6\n\n\n\n\ndir\n - The directory to be checked. In case it is relative path it is checked against the\ncurrent working directory. In case of doubt use the absolute path (prefix the directory with \npwd\n).\n\n\n\n\nReturn value\n\u00b6\n\n\nnone\n\n\nSide effects\n\u00b6\n\n\nnone\n\n\nExceptions\n\u00b6\n\n\n\n\nIllegalArgumentException\n:\n\n\nIf the parameter \ndir\n is null or empty.\n\n\n\n\n\n\nAbortException\n:\n\n\nIf the directory does not exist or is not a directory or the directory is empty.\n\n\n\n\n\n\n\n\nExample\n\u00b6\n\n\nFileUtils\n.\nvalidateDirectoryIsNotEmpty\n(\n'/path/to/dir'\n)",
+            "title": "FileUtils"
+        },
+        {
+            "location": "/scripts/fileUtils/#fileutils",
+            "text": "",
+            "title": "FileUtils"
+        },
+        {
+            "location": "/scripts/fileUtils/#description",
+            "text": "Provides file system related utility functions.",
+            "title": "Description"
+        },
+        {
+            "location": "/scripts/fileUtils/#constructor",
+            "text": "Since there are only static utility methods there is no need for instantiating objects.",
             "title": "Constructor"
-        }, 
+        },
         {
-            "location": "/scripts/fileUtils/#method-details", 
-            "text": "", 
+            "location": "/scripts/fileUtils/#method-details",
+            "text": "",
             "title": "Method Details"
-        }, 
+        },
         {
-            "location": "/scripts/fileUtils/#validatedirectorydir", 
-            "text": "", 
+            "location": "/scripts/fileUtils/#validatedirectorydir",
+            "text": "",
             "title": "validateDirectory(dir)"
-        }, 
+        },
         {
-            "location": "/scripts/fileUtils/#description_1", 
-            "text": "Checks whether a file exists and is a directory.", 
+            "location": "/scripts/fileUtils/#description_1",
+            "text": "Checks whether a file exists and is a directory.",
             "title": "Description"
-        }, 
+        },
         {
-            "location": "/scripts/fileUtils/#parameters", 
-            "text": "dir  - directory to be checked. In case it is relative path it is checked against the\ncurrent working directory. In case of doubt use the absolute path (prefix the directory with  pwd ).", 
+            "location": "/scripts/fileUtils/#parameters",
+            "text": "dir  - The directory to be checked. In case it is relative path it is checked against the\ncurrent working directory. In case of doubt use the absolute path (prefix the directory with  pwd ).",
             "title": "Parameters"
-        }, 
+        },
         {
-            "location": "/scripts/fileUtils/#return-value", 
-            "text": "none", 
+            "location": "/scripts/fileUtils/#return-value",
+            "text": "none",
             "title": "Return value"
-        }, 
+        },
         {
-            "location": "/scripts/fileUtils/#side-effects", 
-            "text": "none", 
+            "location": "/scripts/fileUtils/#side-effects",
+            "text": "none",
             "title": "Side effects"
-        }, 
+        },
         {
-            "location": "/scripts/fileUtils/#exceptions", 
-            "text": "IllegalArgumentException : If the parameter  dir  is null or empty.  AbortException : If the directory does not exist or is not a directory.", 
+            "location": "/scripts/fileUtils/#exceptions",
+            "text": "IllegalArgumentException :  If the parameter  dir  is null or empty.    AbortException :  If the directory does not exist or is not a directory.",
             "title": "Exceptions"
-        }, 
+        },
         {
-            "location": "/scripts/fileUtils/#example", 
-            "text": "FileUtils . validateDirectory ( /path/to/dir )", 
+            "location": "/scripts/fileUtils/#example",
+            "text": "FileUtils . validateDirectory ( '/path/to/dir' )",
             "title": "Example"
-        }, 
+        },
         {
-            "location": "/scripts/fileUtils/#validatedirectoryisnotemptydir", 
-            "text": "", 
+            "location": "/scripts/fileUtils/#validatedirectoryisnotemptydir",
+            "text": "",
             "title": "validateDirectoryIsNotEmpty(dir)"
-        }, 
+        },
         {
-            "location": "/scripts/fileUtils/#description_2", 
-            "text": "Check whether a directory is not empty. Before the directory is checked,  validateDirectory(dir)  is executed.", 
+            "location": "/scripts/fileUtils/#description_2",
+            "text": "Check whether a directory is not empty. Before the directory is checked,  validateDirectory(dir)  is executed.",
             "title": "Description"
-        }, 
+        },
         {
-            "location": "/scripts/fileUtils/#parameters_1", 
-            "text": "dir  - directory to be checked. In case it is relative path it is checked against the\ncurrent working directory. In case of doubt use the absolute path (prefix the directory with  pwd ).", 
+            "location": "/scripts/fileUtils/#parameters_1",
+            "text": "dir  - The directory to be checked. In case it is relative path it is checked against the\ncurrent working directory. In case of doubt use the absolute path (prefix the directory with  pwd ).",
             "title": "Parameters"
-        }, 
+        },
         {
-            "location": "/scripts/fileUtils/#return-value_1", 
-            "text": "none", 
+            "location": "/scripts/fileUtils/#return-value_1",
+            "text": "none",
             "title": "Return value"
-        }, 
+        },
         {
-            "location": "/scripts/fileUtils/#side-effects_1", 
-            "text": "none", 
+            "location": "/scripts/fileUtils/#side-effects_1",
+            "text": "none",
             "title": "Side effects"
-        }, 
+        },
         {
-            "location": "/scripts/fileUtils/#exceptions_1", 
-            "text": "IllegalArgumentException : If the parameter  dir  is null or empty.  AbortException : If the directory does not exist or is not a directory or the directory is empty.", 
+            "location": "/scripts/fileUtils/#exceptions_1",
+            "text": "IllegalArgumentException :  If the parameter  dir  is null or empty.    AbortException :  If the directory does not exist or is not a directory or the directory is empty.",
             "title": "Exceptions"
-        }, 
+        },
         {
-            "location": "/scripts/fileUtils/#example_1", 
-            "text": "FileUtils . validateDirectoryIsNotEmpty ( /path/to/dir )", 
+            "location": "/scripts/fileUtils/#example_1",
+            "text": "FileUtils . validateDirectoryIsNotEmpty ( '/path/to/dir' )",
             "title": "Example"
-        }, 
+        },
         {
-            "location": "/scripts/utils/", 
-            "text": "Utils\n\n\nDescription\n\n\nProvides utility functions.\n\n\nConstructors\n\n\nUtils()\n\n\nDefault no-argument constructor. Instances of the Utils class does not hold any instance specific state.\n\n\nExample\n\n\nnew\n \nUtils\n()\n\n\n\n\n\nMethod Details\n\n\ngetMandatoryParameter(Map map, paramName, defaultValue)\n\n\nDescription\n\n\nRetrieves the parameter value for parameter \nparamName\n from parameter map \nmap\n. In case there is no parameter with the given key contained in parameter map \nmap\n \ndefaultValue\n is returned. In case there no such parameter contained in \nmap\n and \ndefaultValue\n is \nnull\n an exception is thrown.\n\n\nParameters\n\n\n\n\nmap\n - A map containing configuration parameters.\n\n\nparamName\n - The key of the parameter which should be looked up.\n\n\ndefaultValue\n - The value which is returned in case there is no parameter with key \nparamName\n contained in \nmap\n.\n\n\n\n\nReturn value\n\n\nThe value to the parameter to be retrieved, or the default value if the former is \nnull\n, either since there is no such key or the key is associated with value \nnull\n. In case the parameter is not defined or the value for that parameter is \nnull\nand there is no default value an exception is thrown.\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\n\n\nException\n: If the value to be retrieved and the default value are both \nnull\n.\n\n\n\n\nExample\n\n\ndef\n \nutils\n \n=\n  \nnew\n \nUtils\n()\n\n\ndef\n \nparameters\n \n=\n \n[\nDEPLOY_ACCOUNT:\n \ndeploy-account\n]\n\n\nassert\n \nutils\n.\ngetMandatoryParameter\n(\nparameters\n,\n \nDEPLOY_ACCOUNT\n,\n \nnull\n)\n \n==\n \ndeploy-account\n\n\nassert\n \nutils\n.\ngetMandatoryParameter\n(\nparameters\n,\n \nDEPLOY_USER\n,\n \njohn_doe\n)\n \n==\n \njohn_doe\n\n\n\n\n\nretrieveGitCoordinates(script)\n\n\nDescription\n\n\nRetrieves the git-remote-url and git-branch. The parameters 'GIT_URL' and 'GIT_BRANCH' are retrieved from Jenkins job configuration. If these are not set, the git-url and git-branch are retrieved from the same repository where the Jenkinsfile resides.\n\n\nParameters\n\n\n\n\nscript\n The script calling the method. Basically the \nJenkinsfile\n. It is assumed that the script provides access to the parameters defined when launching the build, especially \nGIT_URL\nand \nGIT_BRANCH\n.\n\n\n\n\nReturn value\n\n\nA map containing git-url and git-branch: \n[url: gitUrl, branch: gitBranch]\n\n\nExceptions\n\n\n\n\nAbortException\n: if only one of \nGIT_URL\n,  \nGIT_BRANCH\n is set in the Jenkins job configuration.\n\n\n\n\nExample\n\n\ndef\n \ngitCoordinates\n \n=\n \nnew\n \nUtils\n().\nretrieveGitCoordinates\n(\nthis\n)\n\n\ndef\n \ngitUrl\n \n=\n \ngitCoordinates\n.\nurl\n\n\ndef\n \ngitBranch\n \n=\n \ngitCoordinates\n.\nbranch", 
+            "location": "/scripts/utils/",
+            "text": "Utils\n\u00b6\n\n\nDescription\n\u00b6\n\n\nProvides utility functions.\n\n\nConstructors\n\u00b6\n\n\nUtils()\n\u00b6\n\n\nDefault no-argument constructor. Instances of the Utils class does not hold any instance specific state.\n\n\nExample\n\u00b6\n\n\nnew\n \nUtils\n()\n\n\n\n\n\nMethod Details\n\u00b6\n\n\ngetMandatoryParameter(map, paramName, defaultValue)\n\u00b6\n\n\nDescription\n\u00b6\n\n\nRetrieves the parameter value for parameter \nparamName\n from parameter map \nmap\n. In case there is no parameter with the given key contained in parameter map \nmap\n \ndefaultValue\n is returned. In case there no such parameter contained in \nmap\n and \ndefaultValue\n is \nnull\n an exception is thrown.\n\n\nParameters\n\u00b6\n\n\n\n\nmap\n - A map containing configuration parameters.\n\n\nparamName\n - The key of the parameter which should be looked up.\n\n\ndefaultValue\n - The value which is returned in case there is no parameter with key \nparamName\n contained in \nmap\n.\n\n\n\n\nReturn value\n\u00b6\n\n\nThe value to the parameter to be retrieved, or the default value if the former is \nnull\n, either since there is no such key or the key is associated with value \nnull\n. In case the parameter is not defined or the value for that parameter is \nnull\nand there is no default value an exception is thrown.\n\n\nSide effects\n\u00b6\n\n\nnone\n\n\nExceptions\n\u00b6\n\n\n\n\nException\n:\n\n\nIf the value to be retrieved and the default value are both \nnull\n.\n\n\n\n\n\n\n\n\nExample\n\u00b6\n\n\ndef\n \nutils\n \n=\n  \nnew\n \nUtils\n()\n\n\ndef\n \nparameters\n \n=\n \n[\nDEPLOY_ACCOUNT:\n \n'deploy-account'\n]\n\n\nassert\n \nutils\n.\ngetMandatoryParameter\n(\nparameters\n,\n \n'DEPLOY_ACCOUNT'\n,\n \nnull\n)\n \n==\n \n'deploy-account'\n\n\nassert\n \nutils\n.\ngetMandatoryParameter\n(\nparameters\n,\n \n'DEPLOY_USER'\n,\n \n'john_doe'\n)\n \n==\n \n'john_doe'\n\n\n\n\n\nretrieveGitCoordinates(script)\n\u00b6\n\n\nDescription\n\u00b6\n\n\nRetrieves the git-remote-url and git-branch. The parameters 'GIT_URL' and 'GIT_BRANCH' are retrieved from Jenkins job configuration. If these are not set, the git-url and git-branch are retrieved from the same repository where the Jenkinsfile resides.\n\n\nParameters\n\u00b6\n\n\n\n\nscript\n - The script calling the method. Basically the \nJenkinsfile\n. It is assumed that the script provides access to the parameters defined when launching the build, especially \nGIT_URL\n and \nGIT_BRANCH\n.\n\n\n\n\nReturn value\n\u00b6\n\n\nA map containing git-url and git-branch: \n[url: gitUrl, branch: gitBranch]\n\n\nExceptions\n\u00b6\n\n\n\n\nAbortException\n:\n\n\nIf only one of \nGIT_URL\n,  \nGIT_BRANCH\n is set in the Jenkins job configuration.\n\n\n\n\n\n\n\n\nExample\n\u00b6\n\n\ndef\n \ngitCoordinates\n \n=\n \nnew\n \nUtils\n().\nretrieveGitCoordinates\n(\nthis\n)\n\n\ndef\n \ngitUrl\n \n=\n \ngitCoordinates\n.\nurl\n\n\ndef\n \ngitBranch\n \n=\n \ngitCoordinates\n.\nbranch",
             "title": "Utils"
-        }, 
+        },
         {
-            "location": "/scripts/utils/#utils", 
-            "text": "", 
+            "location": "/scripts/utils/#utils",
+            "text": "",
             "title": "Utils"
-        }, 
+        },
         {
-            "location": "/scripts/utils/#description", 
-            "text": "Provides utility functions.", 
+            "location": "/scripts/utils/#description",
+            "text": "Provides utility functions.",
             "title": "Description"
-        }, 
+        },
         {
-            "location": "/scripts/utils/#constructors", 
-            "text": "", 
+            "location": "/scripts/utils/#constructors",
+            "text": "",
             "title": "Constructors"
-        }, 
+        },
         {
-            "location": "/scripts/utils/#utils_1", 
-            "text": "Default no-argument constructor. Instances of the Utils class does not hold any instance specific state.", 
+            "location": "/scripts/utils/#utils_1",
+            "text": "Default no-argument constructor. Instances of the Utils class does not hold any instance specific state.",
             "title": "Utils()"
-        }, 
+        },
         {
-            "location": "/scripts/utils/#example", 
-            "text": "new   Utils ()", 
+            "location": "/scripts/utils/#example",
+            "text": "new   Utils ()",
             "title": "Example"
-        }, 
+        },
         {
-            "location": "/scripts/utils/#method-details", 
-            "text": "", 
+            "location": "/scripts/utils/#method-details",
+            "text": "",
             "title": "Method Details"
-        }, 
+        },
         {
-            "location": "/scripts/utils/#getmandatoryparametermap-map-paramname-defaultvalue", 
-            "text": "", 
-            "title": "getMandatoryParameter(Map map, paramName, defaultValue)"
-        }, 
+            "location": "/scripts/utils/#getmandatoryparametermap-paramname-defaultvalue",
+            "text": "",
+            "title": "getMandatoryParameter(map, paramName, defaultValue)"
+        },
         {
-            "location": "/scripts/utils/#description_1", 
-            "text": "Retrieves the parameter value for parameter  paramName  from parameter map  map . In case there is no parameter with the given key contained in parameter map  map   defaultValue  is returned. In case there no such parameter contained in  map  and  defaultValue  is  null  an exception is thrown.", 
+            "location": "/scripts/utils/#description_1",
+            "text": "Retrieves the parameter value for parameter  paramName  from parameter map  map . In case there is no parameter with the given key contained in parameter map  map   defaultValue  is returned. In case there no such parameter contained in  map  and  defaultValue  is  null  an exception is thrown.",
             "title": "Description"
-        }, 
+        },
         {
-            "location": "/scripts/utils/#parameters", 
-            "text": "map  - A map containing configuration parameters.  paramName  - The key of the parameter which should be looked up.  defaultValue  - The value which is returned in case there is no parameter with key  paramName  contained in  map .", 
+            "location": "/scripts/utils/#parameters",
+            "text": "map  - A map containing configuration parameters.  paramName  - The key of the parameter which should be looked up.  defaultValue  - The value which is returned in case there is no parameter with key  paramName  contained in  map .",
             "title": "Parameters"
-        }, 
+        },
         {
-            "location": "/scripts/utils/#return-value", 
-            "text": "The value to the parameter to be retrieved, or the default value if the former is  null , either since there is no such key or the key is associated with value  null . In case the parameter is not defined or the value for that parameter is  null and there is no default value an exception is thrown.", 
+            "location": "/scripts/utils/#return-value",
+            "text": "The value to the parameter to be retrieved, or the default value if the former is  null , either since there is no such key or the key is associated with value  null . In case the parameter is not defined or the value for that parameter is  null and there is no default value an exception is thrown.",
             "title": "Return value"
-        }, 
+        },
         {
-            "location": "/scripts/utils/#side-effects", 
-            "text": "none", 
+            "location": "/scripts/utils/#side-effects",
+            "text": "none",
             "title": "Side effects"
-        }, 
+        },
         {
-            "location": "/scripts/utils/#exceptions", 
-            "text": "Exception : If the value to be retrieved and the default value are both  null .", 
+            "location": "/scripts/utils/#exceptions",
+            "text": "Exception :  If the value to be retrieved and the default value are both  null .",
             "title": "Exceptions"
-        }, 
+        },
         {
-            "location": "/scripts/utils/#example_1", 
-            "text": "def   utils   =    new   Utils ()  def   parameters   =   [ DEPLOY_ACCOUNT:   deploy-account ]  assert   utils . getMandatoryParameter ( parameters ,   DEPLOY_ACCOUNT ,   null )   ==   deploy-account  assert   utils . getMandatoryParameter ( parameters ,   DEPLOY_USER ,   john_doe )   ==   john_doe", 
+            "location": "/scripts/utils/#example_1",
+            "text": "def   utils   =    new   Utils ()  def   parameters   =   [ DEPLOY_ACCOUNT:   'deploy-account' ]  assert   utils . getMandatoryParameter ( parameters ,   'DEPLOY_ACCOUNT' ,   null )   ==   'deploy-account'  assert   utils . getMandatoryParameter ( parameters ,   'DEPLOY_USER' ,   'john_doe' )   ==   'john_doe'",
             "title": "Example"
-        }, 
+        },
         {
-            "location": "/scripts/utils/#retrievegitcoordinatesscript", 
-            "text": "", 
+            "location": "/scripts/utils/#retrievegitcoordinatesscript",
+            "text": "",
             "title": "retrieveGitCoordinates(script)"
-        }, 
+        },
         {
-            "location": "/scripts/utils/#description_2", 
-            "text": "Retrieves the git-remote-url and git-branch. The parameters 'GIT_URL' and 'GIT_BRANCH' are retrieved from Jenkins job configuration. If these are not set, the git-url and git-branch are retrieved from the same repository where the Jenkinsfile resides.", 
+            "location": "/scripts/utils/#description_2",
+            "text": "Retrieves the git-remote-url and git-branch. The parameters 'GIT_URL' and 'GIT_BRANCH' are retrieved from Jenkins job configuration. If these are not set, the git-url and git-branch are retrieved from the same repository where the Jenkinsfile resides.",
             "title": "Description"
-        }, 
+        },
         {
-            "location": "/scripts/utils/#parameters_1", 
-            "text": "script  The script calling the method. Basically the  Jenkinsfile . It is assumed that the script provides access to the parameters defined when launching the build, especially  GIT_URL and  GIT_BRANCH .", 
+            "location": "/scripts/utils/#parameters_1",
+            "text": "script  - The script calling the method. Basically the  Jenkinsfile . It is assumed that the script provides access to the parameters defined when launching the build, especially  GIT_URL  and  GIT_BRANCH .",
             "title": "Parameters"
-        }, 
+        },
         {
-            "location": "/scripts/utils/#return-value_1", 
-            "text": "A map containing git-url and git-branch:  [url: gitUrl, branch: gitBranch]", 
+            "location": "/scripts/utils/#return-value_1",
+            "text": "A map containing git-url and git-branch:  [url: gitUrl, branch: gitBranch]",
             "title": "Return value"
-        }, 
+        },
         {
-            "location": "/scripts/utils/#exceptions_1", 
-            "text": "AbortException : if only one of  GIT_URL ,   GIT_BRANCH  is set in the Jenkins job configuration.", 
+            "location": "/scripts/utils/#exceptions_1",
+            "text": "AbortException :  If only one of  GIT_URL ,   GIT_BRANCH  is set in the Jenkins job configuration.",
             "title": "Exceptions"
-        }, 
+        },
         {
-            "location": "/scripts/utils/#example_2", 
-            "text": "def   gitCoordinates   =   new   Utils (). retrieveGitCoordinates ( this )  def   gitUrl   =   gitCoordinates . url  def   gitBranch   =   gitCoordinates . branch", 
+            "location": "/scripts/utils/#example_2",
+            "text": "def   gitCoordinates   =   new   Utils (). retrieveGitCoordinates ( this )  def   gitUrl   =   gitCoordinates . url  def   gitBranch   =   gitCoordinates . branch",
             "title": "Example"
-        }, 
+        },
         {
-            "location": "/scripts/version/", 
-            "text": "Version\n\n\nDescription\n\n\nHandles version numbers.\n\n\nConstructors\n\n\nVersion(major, minor, patch)\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nmajor\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nminor\n\n\nyes\n\n\n\n\n\n\n\n\n\n\npatch\n\n\nno\n\n\n-1\n\n\n\n\n\n\n\n\n\n\n\n\nmajor\n - the major version number.\n\n\nminor\n - the minor version number.\n\n\npatch\n - the patch version number.\n\n\n\n\nExceptions\n\n\n\n\nIllegalArgumentException\n: If the \nmajor\n or \nminor\n version number is less than \n0\n.\n\n\n\n\nExample\n\n\ndef\n \ntoolVersion\n \n=\n \nnew\n \nVersion\n(\n1\n,\n \n2\n,\n \n3\n)\n\n\n\n\n\nVersion(text)\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\ntext\n\n\nyes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntext\n - as an alternative to calling the constructor with \nmajor\n, \nminor\n, and \npatch\n version numbers, you can pass this as a String of format 'major.minor.patch'.\n\n\n\n\nExceptions\n\n\n\n\nIllegalArgumentException\n: If the \ntext\n parameter is \nnull\n or empty.\n\n\nAbortException\n: If the version \ntext\n has an unexpected format.\n\n\n\n\nExample\n\n\ndef\n \ntoolVersion\n \n=\n \nnew\n \nVersion\n(\n1.2.3\n)\n\n\n\n\n\nMethod Details\n\n\nequals\n\n\nDescription\n\n\nIndicates whether some other version instance is equal to this one. The two versions are considered equal when they have the same \nmajor\n, \nminor\n and \npatch\n version number.\n\n\nParameters\n\n\n\n\nversion\n - the Version instance to compare to this Version instance.\n\n\n\n\nReturn value\n\n\ntrue\n if \nmajor\n, \nminor\n and \npatch\n version numbers are equal to each other. Otherwise \nfalse\n.\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\n\n\nAbortException\n:  If the parameter \nversion\n is \nnull\n.\n\n\n\n\nExample\n\n\nassert\n \nnew\n \nVersion\n(\n1.2.3\n).\nequals\n(\nnew\n \nVersion\n(\n1.2.3\n))\n\n\n\n\n\nisCompatibleVersion\n\n\nDescription\n\n\nChecks whether a version is compatible. Two versions are compatible if the major version number is the same, while the minor and patch version number are the same or higher.\n\n\nParameters\n\n\n\n\nversion\n - the Version instance to compare to this Version instance.\n\n\n\n\nReturn value\n\n\ntrue\n if this Version instance is compatible to the other Version instance. Otherwise \nfalse\n.\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\n\n\nAbortException\n: If the parameter \nversion\n is \nnull\n.\n\n\n\n\nExample\n\n\nassert\n \nnew\n \nVersion\n(\n1.2.3\n).\nisCompatibleVersion\n(\nnew\n \nVersion\n(\n1.3.1\n))\n\n\n\n\n\nisHigher\n\n\nDescription\n\n\nChecks whether this Version instance is higher than the other Version instance.\n\n\nParameters\n\n\n\n\nversion\n - the Version instance to compare to this Version instance.\n\n\n\n\nReturn value\n\n\ntrue\n if this Version instance is higher than the other Version instance. Otherwise \nfalse\n.\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\n\n\nAbortException\n: If the parameter \nversion\n is \nnull\n.\n\n\n\n\nExample\n\n\nassert\n \nnew\n \nVersion\n(\n1.2.3\n).\nisHigher\n(\nnew\n \nVersion\n(\n1.1.6\n))\n\n\n\n\n\ntoString\n\n\nDescription\n\n\nPrint the version number in format '\n.\n.\n'. If no patch version number exists the format is '\n.\n'.\n\n\nParameters\n\n\nnone\n\n\nReturn value\n\n\nA String consisting of \nmajor\n, \nminor\n and if available \npatch\n, separated by dots.\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\nnone\n\n\nExample\n\n\nassert\n \n${new Version(\n1.2.3\n)}\n \n==\n \n1.2.3", 
+            "location": "/scripts/version/",
+            "text": "Version\n\u00b6\n\n\nDescription\n\u00b6\n\n\nHandles version numbers.\n\n\nConstructors\n\u00b6\n\n\nVersion(major, minor, patch)\n\u00b6\n\n\nParameters\n\u00b6\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nmajor\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nminor\n\n\nyes\n\n\n\n\n\n\n\n\n\n\npatch\n\n\nno\n\n\n-1\n\n\n\n\n\n\n\n\n\n\n\n\nmajor\n - The major version number.\n\n\nminor\n - The minor version number.\n\n\npatch\n - The patch version number.\n\n\n\n\nExceptions\n\u00b6\n\n\n\n\nIllegalArgumentException\n:\n\n\nIf the \nmajor\n or \nminor\n version number is less than \n0\n.\n\n\n\n\n\n\n\n\nExample\n\u00b6\n\n\ndef\n \ntoolVersion\n \n=\n \nnew\n \nVersion\n(\n1\n,\n \n2\n,\n \n3\n)\n\n\n\n\n\nVersion(text)\n\u00b6\n\n\nParameters\n\u00b6\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\ntext\n\n\nyes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntext\n - As an alternative to calling the constructor with \nmajor\n, \nminor\n, and \npatch\n version numbers, you can pass this as a String of format 'major.minor.patch'.\n\n\n\n\nExceptions\n\u00b6\n\n\n\n\nIllegalArgumentException\n:\n\n\nIf the \ntext\n parameter is \nnull\n or empty.\n\n\n\n\n\n\nAbortException\n:\n\n\nIf the version \ntext\n has an unexpected format.\n\n\n\n\n\n\n\n\nExample\n\u00b6\n\n\ndef\n \ntoolVersion\n \n=\n \nnew\n \nVersion\n(\n'1.2.3'\n)\n\n\n\n\n\nMethod Details\n\u00b6\n\n\nequals(version)\n\u00b6\n\n\nDescription\n\u00b6\n\n\nIndicates whether some other version instance is equal to this one. The two versions are considered equal when they have the same \nmajor\n, \nminor\n and \npatch\n version number.\n\n\nParameters\n\u00b6\n\n\n\n\nversion\n - The Version instance to compare to this Version instance.\n\n\n\n\nReturn value\n\u00b6\n\n\ntrue\n if \nmajor\n, \nminor\n and \npatch\n version numbers are equal to each other. Otherwise \nfalse\n.\n\n\nSide effects\n\u00b6\n\n\nnone\n\n\nExceptions\n\u00b6\n\n\n\n\nAbortException\n:\n\n\nIf the parameter \nversion\n is \nnull\n.\n\n\n\n\n\n\n\n\nExample\n\u00b6\n\n\nassert\n \nnew\n \nVersion\n(\n'1.2.3'\n).\nequals\n(\nnew\n \nVersion\n(\n'1.2.3'\n))\n\n\n\n\n\nisCompatibleVersion(version)\n\u00b6\n\n\nDescription\n\u00b6\n\n\nChecks whether a version is compatible. Two versions are compatible if the major version number is the same, while the minor and patch version number are the same or higher.\n\n\nParameters\n\u00b6\n\n\n\n\nversion\n - The Version instance to compare to this Version instance.\n\n\n\n\nReturn value\n\u00b6\n\n\ntrue\n if this Version instance is compatible to the other Version instance. Otherwise \nfalse\n.\n\n\nSide effects\n\u00b6\n\n\nnone\n\n\nExceptions\n\u00b6\n\n\n\n\nAbortException\n:\n\n\nIf the parameter \nversion\n is \nnull\n.\n\n\n\n\n\n\n\n\nExample\n\u00b6\n\n\nassert\n \nnew\n \nVersion\n(\n'1.2.3'\n).\nisCompatibleVersion\n(\nnew\n \nVersion\n(\n'1.3.1'\n))\n\n\n\n\n\nisHigher(version)\n\u00b6\n\n\nDescription\n\u00b6\n\n\nChecks whether this Version instance is higher than the other Version instance.\n\n\nParameters\n\u00b6\n\n\n\n\nversion\n - The Version instance to compare to this Version instance.\n\n\n\n\nReturn value\n\u00b6\n\n\ntrue\n if this Version instance is higher than the other Version instance. Otherwise \nfalse\n.\n\n\nSide effects\n\u00b6\n\n\nnone\n\n\nExceptions\n\u00b6\n\n\n\n\nAbortException\n:\n\n\nIf the parameter \nversion\n is \nnull\n.\n\n\n\n\n\n\n\n\nExample\n\u00b6\n\n\nassert\n \nnew\n \nVersion\n(\n'1.2.3'\n).\nisHigher\n(\nnew\n \nVersion\n(\n'1.1.6'\n))\n\n\n\n\n\ntoString()\n\u00b6\n\n\nDescription\n\u00b6\n\n\nPrint the version number in format '\n.\n.\n'. If no patch version number exists the format is '\n.\n'.\n\n\nParameters\n\u00b6\n\n\nnone\n\n\nReturn value\n\u00b6\n\n\nA String consisting of \nmajor\n, \nminor\n and if available \npatch\n, separated by dots.\n\n\nSide effects\n\u00b6\n\n\nnone\n\n\nExceptions\n\u00b6\n\n\nnone\n\n\nExample\n\u00b6\n\n\nassert\n \n\"${new Version('1.2.3')}\"\n \n==\n \n\"1.2.3\"",
             "title": "Version"
-        }, 
+        },
         {
-            "location": "/scripts/version/#version", 
-            "text": "", 
+            "location": "/scripts/version/#version",
+            "text": "",
             "title": "Version"
-        }, 
+        },
         {
-            "location": "/scripts/version/#description", 
-            "text": "Handles version numbers.", 
+            "location": "/scripts/version/#description",
+            "text": "Handles version numbers.",
             "title": "Description"
-        }, 
+        },
         {
-            "location": "/scripts/version/#constructors", 
-            "text": "", 
+            "location": "/scripts/version/#constructors",
+            "text": "",
             "title": "Constructors"
-        }, 
+        },
         {
-            "location": "/scripts/version/#versionmajor-minor-patch", 
-            "text": "", 
+            "location": "/scripts/version/#versionmajor-minor-patch",
+            "text": "",
             "title": "Version(major, minor, patch)"
-        }, 
+        },
         {
-            "location": "/scripts/version/#parameters", 
-            "text": "parameter  mandatory  default  possible values      major  yes      minor  yes      patch  no  -1       major  - the major version number.  minor  - the minor version number.  patch  - the patch version number.", 
+            "location": "/scripts/version/#parameters",
+            "text": "parameter  mandatory  default  possible values      major  yes      minor  yes      patch  no  -1       major  - The major version number.  minor  - The minor version number.  patch  - The patch version number.",
             "title": "Parameters"
-        }, 
+        },
         {
-            "location": "/scripts/version/#exceptions", 
-            "text": "IllegalArgumentException : If the  major  or  minor  version number is less than  0 .", 
+            "location": "/scripts/version/#exceptions",
+            "text": "IllegalArgumentException :  If the  major  or  minor  version number is less than  0 .",
             "title": "Exceptions"
-        }, 
+        },
         {
-            "location": "/scripts/version/#example", 
-            "text": "def   toolVersion   =   new   Version ( 1 ,   2 ,   3 )", 
+            "location": "/scripts/version/#example",
+            "text": "def   toolVersion   =   new   Version ( 1 ,   2 ,   3 )",
             "title": "Example"
-        }, 
+        },
         {
-            "location": "/scripts/version/#versiontext", 
-            "text": "", 
+            "location": "/scripts/version/#versiontext",
+            "text": "",
             "title": "Version(text)"
-        }, 
+        },
         {
-            "location": "/scripts/version/#parameters_1", 
-            "text": "parameter  mandatory  default  possible values      text  yes        text  - as an alternative to calling the constructor with  major ,  minor , and  patch  version numbers, you can pass this as a String of format 'major.minor.patch'.", 
+            "location": "/scripts/version/#parameters_1",
+            "text": "parameter  mandatory  default  possible values      text  yes        text  - As an alternative to calling the constructor with  major ,  minor , and  patch  version numbers, you can pass this as a String of format 'major.minor.patch'.",
             "title": "Parameters"
-        }, 
+        },
         {
-            "location": "/scripts/version/#exceptions_1", 
-            "text": "IllegalArgumentException : If the  text  parameter is  null  or empty.  AbortException : If the version  text  has an unexpected format.", 
+            "location": "/scripts/version/#exceptions_1",
+            "text": "IllegalArgumentException :  If the  text  parameter is  null  or empty.    AbortException :  If the version  text  has an unexpected format.",
             "title": "Exceptions"
-        }, 
+        },
         {
-            "location": "/scripts/version/#example_1", 
-            "text": "def   toolVersion   =   new   Version ( 1.2.3 )", 
+            "location": "/scripts/version/#example_1",
+            "text": "def   toolVersion   =   new   Version ( '1.2.3' )",
             "title": "Example"
-        }, 
+        },
         {
-            "location": "/scripts/version/#method-details", 
-            "text": "", 
+            "location": "/scripts/version/#method-details",
+            "text": "",
             "title": "Method Details"
-        }, 
+        },
         {
-            "location": "/scripts/version/#equals", 
-            "text": "", 
-            "title": "equals"
-        }, 
+            "location": "/scripts/version/#equalsversion",
+            "text": "",
+            "title": "equals(version)"
+        },
         {
-            "location": "/scripts/version/#description_1", 
-            "text": "Indicates whether some other version instance is equal to this one. The two versions are considered equal when they have the same  major ,  minor  and  patch  version number.", 
+            "location": "/scripts/version/#description_1",
+            "text": "Indicates whether some other version instance is equal to this one. The two versions are considered equal when they have the same  major ,  minor  and  patch  version number.",
             "title": "Description"
-        }, 
+        },
         {
-            "location": "/scripts/version/#parameters_2", 
-            "text": "version  - the Version instance to compare to this Version instance.", 
+            "location": "/scripts/version/#parameters_2",
+            "text": "version  - The Version instance to compare to this Version instance.",
             "title": "Parameters"
-        }, 
+        },
         {
-            "location": "/scripts/version/#return-value", 
-            "text": "true  if  major ,  minor  and  patch  version numbers are equal to each other. Otherwise  false .", 
+            "location": "/scripts/version/#return-value",
+            "text": "true  if  major ,  minor  and  patch  version numbers are equal to each other. Otherwise  false .",
             "title": "Return value"
-        }, 
+        },
         {
-            "location": "/scripts/version/#side-effects", 
-            "text": "none", 
+            "location": "/scripts/version/#side-effects",
+            "text": "none",
             "title": "Side effects"
-        }, 
+        },
         {
-            "location": "/scripts/version/#exceptions_2", 
-            "text": "AbortException :  If the parameter  version  is  null .", 
+            "location": "/scripts/version/#exceptions_2",
+            "text": "AbortException :  If the parameter  version  is  null .",
             "title": "Exceptions"
-        }, 
+        },
         {
-            "location": "/scripts/version/#example_2", 
-            "text": "assert   new   Version ( 1.2.3 ). equals ( new   Version ( 1.2.3 ))", 
+            "location": "/scripts/version/#example_2",
+            "text": "assert   new   Version ( '1.2.3' ). equals ( new   Version ( '1.2.3' ))",
             "title": "Example"
-        }, 
+        },
         {
-            "location": "/scripts/version/#iscompatibleversion", 
-            "text": "", 
-            "title": "isCompatibleVersion"
-        }, 
+            "location": "/scripts/version/#iscompatibleversionversion",
+            "text": "",
+            "title": "isCompatibleVersion(version)"
+        },
         {
-            "location": "/scripts/version/#description_2", 
-            "text": "Checks whether a version is compatible. Two versions are compatible if the major version number is the same, while the minor and patch version number are the same or higher.", 
+            "location": "/scripts/version/#description_2",
+            "text": "Checks whether a version is compatible. Two versions are compatible if the major version number is the same, while the minor and patch version number are the same or higher.",
             "title": "Description"
-        }, 
+        },
         {
-            "location": "/scripts/version/#parameters_3", 
-            "text": "version  - the Version instance to compare to this Version instance.", 
+            "location": "/scripts/version/#parameters_3",
+            "text": "version  - The Version instance to compare to this Version instance.",
             "title": "Parameters"
-        }, 
+        },
         {
-            "location": "/scripts/version/#return-value_1", 
-            "text": "true  if this Version instance is compatible to the other Version instance. Otherwise  false .", 
+            "location": "/scripts/version/#return-value_1",
+            "text": "true  if this Version instance is compatible to the other Version instance. Otherwise  false .",
             "title": "Return value"
-        }, 
+        },
         {
-            "location": "/scripts/version/#side-effects_1", 
-            "text": "none", 
+            "location": "/scripts/version/#side-effects_1",
+            "text": "none",
             "title": "Side effects"
-        }, 
+        },
         {
-            "location": "/scripts/version/#exceptions_3", 
-            "text": "AbortException : If the parameter  version  is  null .", 
+            "location": "/scripts/version/#exceptions_3",
+            "text": "AbortException :  If the parameter  version  is  null .",
             "title": "Exceptions"
-        }, 
+        },
         {
-            "location": "/scripts/version/#example_3", 
-            "text": "assert   new   Version ( 1.2.3 ). isCompatibleVersion ( new   Version ( 1.3.1 ))", 
+            "location": "/scripts/version/#example_3",
+            "text": "assert   new   Version ( '1.2.3' ). isCompatibleVersion ( new   Version ( '1.3.1' ))",
             "title": "Example"
-        }, 
+        },
         {
-            "location": "/scripts/version/#ishigher", 
-            "text": "", 
-            "title": "isHigher"
-        }, 
+            "location": "/scripts/version/#ishigherversion",
+            "text": "",
+            "title": "isHigher(version)"
+        },
         {
-            "location": "/scripts/version/#description_3", 
-            "text": "Checks whether this Version instance is higher than the other Version instance.", 
+            "location": "/scripts/version/#description_3",
+            "text": "Checks whether this Version instance is higher than the other Version instance.",
             "title": "Description"
-        }, 
+        },
         {
-            "location": "/scripts/version/#parameters_4", 
-            "text": "version  - the Version instance to compare to this Version instance.", 
+            "location": "/scripts/version/#parameters_4",
+            "text": "version  - The Version instance to compare to this Version instance.",
             "title": "Parameters"
-        }, 
+        },
         {
-            "location": "/scripts/version/#return-value_2", 
-            "text": "true  if this Version instance is higher than the other Version instance. Otherwise  false .", 
+            "location": "/scripts/version/#return-value_2",
+            "text": "true  if this Version instance is higher than the other Version instance. Otherwise  false .",
             "title": "Return value"
-        }, 
+        },
         {
-            "location": "/scripts/version/#side-effects_2", 
-            "text": "none", 
+            "location": "/scripts/version/#side-effects_2",
+            "text": "none",
             "title": "Side effects"
-        }, 
+        },
         {
-            "location": "/scripts/version/#exceptions_4", 
-            "text": "AbortException : If the parameter  version  is  null .", 
+            "location": "/scripts/version/#exceptions_4",
+            "text": "AbortException :  If the parameter  version  is  null .",
             "title": "Exceptions"
-        }, 
+        },
         {
-            "location": "/scripts/version/#example_4", 
-            "text": "assert   new   Version ( 1.2.3 ). isHigher ( new   Version ( 1.1.6 ))", 
+            "location": "/scripts/version/#example_4",
+            "text": "assert   new   Version ( '1.2.3' ). isHigher ( new   Version ( '1.1.6' ))",
             "title": "Example"
-        }, 
+        },
         {
-            "location": "/scripts/version/#tostring", 
-            "text": "", 
-            "title": "toString"
-        }, 
+            "location": "/scripts/version/#tostring",
+            "text": "",
+            "title": "toString()"
+        },
         {
-            "location": "/scripts/version/#description_4", 
-            "text": "Print the version number in format ' . . '. If no patch version number exists the format is ' . '.", 
+            "location": "/scripts/version/#description_4",
+            "text": "Print the version number in format ' . . '. If no patch version number exists the format is ' . '.",
             "title": "Description"
-        }, 
+        },
         {
-            "location": "/scripts/version/#parameters_5", 
-            "text": "none", 
+            "location": "/scripts/version/#parameters_5",
+            "text": "none",
             "title": "Parameters"
-        }, 
+        },
         {
-            "location": "/scripts/version/#return-value_3", 
-            "text": "A String consisting of  major ,  minor  and if available  patch , separated by dots.", 
+            "location": "/scripts/version/#return-value_3",
+            "text": "A String consisting of  major ,  minor  and if available  patch , separated by dots.",
             "title": "Return value"
-        }, 
+        },
         {
-            "location": "/scripts/version/#side-effects_3", 
-            "text": "none", 
+            "location": "/scripts/version/#side-effects_3",
+            "text": "none",
             "title": "Side effects"
-        }, 
+        },
         {
-            "location": "/scripts/version/#exceptions_5", 
-            "text": "none", 
+            "location": "/scripts/version/#exceptions_5",
+            "text": "none",
             "title": "Exceptions"
-        }, 
+        },
         {
-            "location": "/scripts/version/#example_5", 
-            "text": "assert   ${new Version( 1.2.3 )}   ==   1.2.3", 
+            "location": "/scripts/version/#example_5",
+            "text": "assert   \"${new Version('1.2.3')}\"   ==   \"1.2.3\"",
             "title": "Example"
-        }, 
+        },
         {
-            "location": "/jenkins/requiredPlugins/", 
-            "text": "Required Plugins\n\n\nThe following Jenkins plugins are needed in order to use the Piper Library.\nThe list below contains the plugin Id and version of the plugin.\n\n\nPlugins\n\n\n\n\nace-editor 1.1\n\n\nauthentication-tokens 1.3\n\n\nbouncycastle-api 2.16.2\n\n\nbranch-api 2.0.14\n\n\ncloudbees-folder 6.2.1\n\n\ncredentials 2.1.16\n\n\ncredentials-binding 1.13\n\n\ndisplay-url-api 2.1.0\n\n\ndocker-commons 1.9\n\n\ndocker-workflow 1.10\n\n\ndurable-task 1.15\n\n\ngit 3.6.2\n\n\ngit-client 2.5.0\n\n\ngit-server 1.7\n\n\nhandlebars 1.1.1\n\n\nicon-shim 2.0.3\n\n\njquery-detached 1.2.1\n\n\njunit 1.21\n\n\nmailer 1.20\n\n\nmatrix-project 1.12\n\n\nmomentjs 1.1.1\n\n\npipeline-build-step 2.5.1\n\n\npipeline-graph-analysis 1.3\n\n\npipeline-input-step 2.8\n\n\npipeline-milestone-step 1.3.1\n\n\npipeline-model-api 1.2.2\n\n\npipeline-model-definition 1.1.1\n\n\npipeline-model-extensions 1.1.1\n\n\npipeline-rest-api 2.6\n\n\npipeline-stage-step 2.2\n\n\npipeline-stage-tags-metadata 1.2.2\n\n\npipeline-stage-view 2.6\n\n\npipeline-utility-steps 1.3.0\n\n\nplain-credentials 1.4\n\n\nscm-api 2.2.3\n\n\nscript-security 1.34\n\n\nssh-credentials 1.13\n\n\nstructs 1.10\n\n\nworkflow-aggregator 2.5\n\n\nworkflow-api 2.23.1\n\n\nworkflow-basic-steps 2.6\n\n\nworkflow-cps 2.41\n\n\nworkflow-cps-global-lib 2.7\n\n\nworkflow-durable-task-step 2.17\n\n\nworkflow-job 2.12.2\n\n\nworkflow-multibranch 2.14\n\n\nworkflow-scm-step 2.6\n\n\nworkflow-step-api 2.13\n\n\nworkflow-support 2.16", 
+            "location": "/scripts/configurationLoader/",
+            "text": "ConfigurationLoader\n\u00b6\n\n\nDescription\n\u00b6\n\n\nLoads configuration values from the global configuration. \nThe global configuration is stored in the commonPipelineEnvironment and should be loaded before by calling setupCommonPipelineEnvironment.\n\n\nStatic Method Details\n\u00b6\n\n\nstepConfiguration\n\u00b6\n\n\nDescription\n\u00b6\n\n\nReturns the configuration for a specific step as map.\n\n\nParameters\n\u00b6\n\n\n\n\nscript\n - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the \nthis\n parameter, as in \nscript: this\n. This allows the function to access the \ncommonPipelineEnvironment\n for retrieving, for example, configuration parameters.\n\n\nstepName\n - The name of the step\n\n\n\n\nSide effects\n\u00b6\n\n\nnone\n\n\nExample\n\u00b6\n\n\nIn your \nconfig.yml\n you define the following:\n\n\n#Steps Specific Configuration\nsteps:\n  mavenExecute:\n    dockerImage: 'maven:3.5-jdk-7'\n\n\n\n\nTo get the map containing the key \ndockerImage\n and the value \nmaven:3.5-jdk-7\n you have to execute the following:\n\n\nMap\n \nconfiguration\n \n=\n \nConfigurationLoader\n.\nstepConfiguration\n(\nscript\n,\n \n'mavenExecute'\n)\n\n\n\n\n\ndefaultStepConfiguration\n\u00b6\n\n\nDescription\n\u00b6\n\n\nReturns the default configuration for a specific step as map.\n\n\nParameters\n\u00b6\n\n\n\n\nscript\n - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the \nthis\n parameter, as in \nscript: this\n. This allows the function to access the \ncommonPipelineEnvironment\n for retrieving, for example, configuration parameters.\n\n\nstepName\n - The name of the step\n\n\n\n\nSide effects\n\u00b6\n\n\nnone\n\n\nExample\n\u00b6\n\n\nTo get the map of the default values defined in the file \nresources/default_pipeline_environment.yml\n you have to execute the following:\n\n\nMap\n \nconfiguration\n \n=\n \nConfigurationLoader\n.\ndefaultStepConfiguration\n(\nscript\n,\n \n'mavenExecute'\n)\n\n\n\n\n\ngeneralConfiguration\n\u00b6\n\n\nDescription\n\u00b6\n\n\nReturns the configuration in the section general of the configuration file.\n\n\nParameters\n\u00b6\n\n\n\n\nscript\n - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the \nthis\n parameter, as in \nscript: this\n. This allows the function to access the \ncommonPipelineEnvironment\n for retrieving, for example, configuration parameters.\n\n\n\n\nSide effects\n\u00b6\n\n\nnone\n\n\nExample\n\u00b6\n\n\nIn your \nconfig.yml\n you define the following:\n\n\n#Project Setup\ngeneral:\n  productiveBranch: 'master'\n\n\n\n\nTo get the map containing the key \nproductiveBranch\n and the value \nmaster\n you have to execute the following:\n\n\nMap\n \nconfiguration\n \n=\n \nConfigurationLoader\n.\ngeneralConfiguration\n(\nscript\n)\n\n\n\n\n\ndefaultGeneralConfiguration\n\u00b6\n\n\nDescription\n\u00b6\n\n\nReturns the default configuration in the section general of the default configuration file.\n\n\nParameters\n\u00b6\n\n\n\n\nscript\n - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the \nthis\n parameter, as in \nscript: this\n. This allows the function to access the \ncommonPipelineEnvironment\n for retrieving, for example, configuration parameters.\n\n\n\n\nSide effects\n\u00b6\n\n\nnone\n\n\nExample\n\u00b6\n\n\nTo get the map of the default values defined in the file \nresources/default_pipeline_environment.yml\n you have to execute the following:\n\n\nMap\n \nconfiguration\n \n=\n \nConfigurationLoader\n.\ndefaultGeneralConfiguration\n(\nscript\n)\n\n\n\n\n\nstageConfiguration\n\u00b6\n\n\nDescription\n\u00b6\n\n\nReturns the configuration for a specific stage as map.\nThis is useful if you decide to have a central pipeline and want to give all your projects the possibility to configure the stages in the central pipeline.\nThus, the central pipeline can define how to deploy and read the configuration.\nIn the their configuration files, all the projects can configure the location where to deploy. \n\n\nParameters\n\u00b6\n\n\n\n\nscript\n - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the \nthis\n parameter, as in \nscript: this\n. This allows the function to access the \ncommonPipelineEnvironment\n for retrieving, for example, configuration parameters.\n\n\nscript\n - Name of the stage as defined in the configuration file.\n\n\n\n\nSide effects\n\u00b6\n\n\nnone\n\n\nExample\n\u00b6\n\n\nIn your \nconfig.yml\n you define the following:\n\n\n#Project Setup\n#Stage Specific Configurations\nstages:\n  productionDeployment:\n    targets:\n      - apiEndpoint: 'https://api.cf.sap.hana.ondemand.com'\n        org: 'myOrg'\n        manifest: 'manifest.yml'\n        appName: 'my-app'\n\n\n\n\nTo get the map containing the key \ntargets\n and the list of the deployment locations.\n\n\nMap\n \nconfiguration\n \n=\n \nConfigurationLoader\n.\nstageConfiguration\n(\nscript\n,\n \n'productionDeployment'\n)",
+            "title": "ConfigurationLoader"
+        },
+        {
+            "location": "/scripts/configurationLoader/#configurationloader",
+            "text": "",
+            "title": "ConfigurationLoader"
+        },
+        {
+            "location": "/scripts/configurationLoader/#description",
+            "text": "Loads configuration values from the global configuration. \nThe global configuration is stored in the commonPipelineEnvironment and should be loaded before by calling setupCommonPipelineEnvironment.",
+            "title": "Description"
+        },
+        {
+            "location": "/scripts/configurationLoader/#static-method-details",
+            "text": "",
+            "title": "Static Method Details"
+        },
+        {
+            "location": "/scripts/configurationLoader/#stepconfiguration",
+            "text": "",
+            "title": "stepConfiguration"
+        },
+        {
+            "location": "/scripts/configurationLoader/#description_1",
+            "text": "Returns the configuration for a specific step as map.",
+            "title": "Description"
+        },
+        {
+            "location": "/scripts/configurationLoader/#parameters",
+            "text": "script  - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the  this  parameter, as in  script: this . This allows the function to access the  commonPipelineEnvironment  for retrieving, for example, configuration parameters.  stepName  - The name of the step",
+            "title": "Parameters"
+        },
+        {
+            "location": "/scripts/configurationLoader/#side-effects",
+            "text": "none",
+            "title": "Side effects"
+        },
+        {
+            "location": "/scripts/configurationLoader/#example",
+            "text": "In your  config.yml  you define the following:  #Steps Specific Configuration\nsteps:\n  mavenExecute:\n    dockerImage: 'maven:3.5-jdk-7'  To get the map containing the key  dockerImage  and the value  maven:3.5-jdk-7  you have to execute the following:  Map   configuration   =   ConfigurationLoader . stepConfiguration ( script ,   'mavenExecute' )",
+            "title": "Example"
+        },
+        {
+            "location": "/scripts/configurationLoader/#defaultstepconfiguration",
+            "text": "",
+            "title": "defaultStepConfiguration"
+        },
+        {
+            "location": "/scripts/configurationLoader/#description_2",
+            "text": "Returns the default configuration for a specific step as map.",
+            "title": "Description"
+        },
+        {
+            "location": "/scripts/configurationLoader/#parameters_1",
+            "text": "script  - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the  this  parameter, as in  script: this . This allows the function to access the  commonPipelineEnvironment  for retrieving, for example, configuration parameters.  stepName  - The name of the step",
+            "title": "Parameters"
+        },
+        {
+            "location": "/scripts/configurationLoader/#side-effects_1",
+            "text": "none",
+            "title": "Side effects"
+        },
+        {
+            "location": "/scripts/configurationLoader/#example_1",
+            "text": "To get the map of the default values defined in the file  resources/default_pipeline_environment.yml  you have to execute the following:  Map   configuration   =   ConfigurationLoader . defaultStepConfiguration ( script ,   'mavenExecute' )",
+            "title": "Example"
+        },
+        {
+            "location": "/scripts/configurationLoader/#generalconfiguration",
+            "text": "",
+            "title": "generalConfiguration"
+        },
+        {
+            "location": "/scripts/configurationLoader/#description_3",
+            "text": "Returns the configuration in the section general of the configuration file.",
+            "title": "Description"
+        },
+        {
+            "location": "/scripts/configurationLoader/#parameters_2",
+            "text": "script  - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the  this  parameter, as in  script: this . This allows the function to access the  commonPipelineEnvironment  for retrieving, for example, configuration parameters.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/scripts/configurationLoader/#side-effects_2",
+            "text": "none",
+            "title": "Side effects"
+        },
+        {
+            "location": "/scripts/configurationLoader/#example_2",
+            "text": "In your  config.yml  you define the following:  #Project Setup\ngeneral:\n  productiveBranch: 'master'  To get the map containing the key  productiveBranch  and the value  master  you have to execute the following:  Map   configuration   =   ConfigurationLoader . generalConfiguration ( script )",
+            "title": "Example"
+        },
+        {
+            "location": "/scripts/configurationLoader/#defaultgeneralconfiguration",
+            "text": "",
+            "title": "defaultGeneralConfiguration"
+        },
+        {
+            "location": "/scripts/configurationLoader/#description_4",
+            "text": "Returns the default configuration in the section general of the default configuration file.",
+            "title": "Description"
+        },
+        {
+            "location": "/scripts/configurationLoader/#parameters_3",
+            "text": "script  - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the  this  parameter, as in  script: this . This allows the function to access the  commonPipelineEnvironment  for retrieving, for example, configuration parameters.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/scripts/configurationLoader/#side-effects_3",
+            "text": "none",
+            "title": "Side effects"
+        },
+        {
+            "location": "/scripts/configurationLoader/#example_3",
+            "text": "To get the map of the default values defined in the file  resources/default_pipeline_environment.yml  you have to execute the following:  Map   configuration   =   ConfigurationLoader . defaultGeneralConfiguration ( script )",
+            "title": "Example"
+        },
+        {
+            "location": "/scripts/configurationLoader/#stageconfiguration",
+            "text": "",
+            "title": "stageConfiguration"
+        },
+        {
+            "location": "/scripts/configurationLoader/#description_5",
+            "text": "Returns the configuration for a specific stage as map.\nThis is useful if you decide to have a central pipeline and want to give all your projects the possibility to configure the stages in the central pipeline.\nThus, the central pipeline can define how to deploy and read the configuration.\nIn the their configuration files, all the projects can configure the location where to deploy.",
+            "title": "Description"
+        },
+        {
+            "location": "/scripts/configurationLoader/#parameters_4",
+            "text": "script  - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the  this  parameter, as in  script: this . This allows the function to access the  commonPipelineEnvironment  for retrieving, for example, configuration parameters.  script  - Name of the stage as defined in the configuration file.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/scripts/configurationLoader/#side-effects_4",
+            "text": "none",
+            "title": "Side effects"
+        },
+        {
+            "location": "/scripts/configurationLoader/#example_4",
+            "text": "In your  config.yml  you define the following:  #Project Setup\n#Stage Specific Configurations\nstages:\n  productionDeployment:\n    targets:\n      - apiEndpoint: 'https://api.cf.sap.hana.ondemand.com'\n        org: 'myOrg'\n        manifest: 'manifest.yml'\n        appName: 'my-app'  To get the map containing the key  targets  and the list of the deployment locations.  Map   configuration   =   ConfigurationLoader . stageConfiguration ( script ,   'productionDeployment' )",
+            "title": "Example"
+        },
+        {
+            "location": "/scripts/configurationMerger/",
+            "text": "ConfigurationMerger\n\u00b6\n\n\nDescription\n\u00b6\n\n\nA helper script that can merge the configurations from multiple sources. \n\n\nStatic Method Details\n\u00b6\n\n\nmerge\n\u00b6\n\n\nDescription\n\u00b6\n\n\nA step is usually configured by default values, configuration values from the configuration file and the parameters.\nThe methods can merge these sources. \nDefault values are overwritten by configuration file values. \nThese are overwritten by parameters.\n\n\nParameters\n\u00b6\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\nClass\n\n\n\n\n\n\n\n\n\n\nparameters\n\n\nyes\n\n\nMap\n\n\n\n\n\n\nparameterKeys\n\n\nyes\n\n\nList\n\n\n\n\n\n\nconfigurationMap\n\n\nyes\n\n\nMap\n\n\n\n\n\n\nconfigurationKeys\n\n\nyes\n\n\nList\n\n\n\n\n\n\ndefaults\n\n\nyes\n\n\nMap\n\n\n\n\n\n\n\n\n\n\nparameters\n Parameters map given to the step\n\n\nparameterKeys\n List of parameter names (keys) that should be considered while merging. \n\n\nconfigurationMap\n Configuration map loaded from the configuration file.\n\n\nconfigurationKeys\n List of configuration keys that should be considered while merging. \n\n\ndefaults\n Map of default values, e.g. loaded from the default value configuration file.\n\n\n\n\nSide effects\n\u00b6\n\n\nnone\n\n\nExample\n\u00b6\n\n\nprepareDefaultValues\n \nscript:\n \nscript\n\n\nfinal\n \nMap\n \nstepDefaults\n \n=\n \nConfigurationLoader\n.\ndefaultStepConfiguration\n(\nscript\n,\n \n'mavenExecute'\n)\n\n\n\nfinal\n \nMap\n \nstepConfiguration\n \n=\n \nConfigurationLoader\n.\nstepConfiguration\n(\nscript\n,\n \n'mavenExecute'\n)\n\n\n\nList\n \nparameterKeys\n \n=\n \n[\n\n    \n'dockerImage'\n,\n\n    \n'globalSettingsFile'\n,\n\n    \n'projectSettingsFile'\n,\n\n    \n'pomPath'\n,\n\n    \n'flags'\n,\n\n    \n'goals'\n,\n\n    \n'm2Path'\n,\n\n    \n'defines'\n\n\n]\n\n\nList\n \nstepConfigurationKeys\n \n=\n \n[\n\n    \n'dockerImage'\n,\n\n    \n'globalSettingsFile'\n,\n\n    \n'projectSettingsFile'\n,\n\n    \n'pomPath'\n,\n\n    \n'm2Path'\n\n\n]\n\n\n\nMap\n \nconfiguration\n \n=\n \nConfigurationMerger\n.\nmerge\n(\nparameters\n,\n \nparameterKeys\n,\n \nstepConfiguration\n,\n \nstepConfigurationKeys\n,\n \nstepDefaults\n)",
+            "title": "ConfigurationMerger"
+        },
+        {
+            "location": "/scripts/configurationMerger/#configurationmerger",
+            "text": "",
+            "title": "ConfigurationMerger"
+        },
+        {
+            "location": "/scripts/configurationMerger/#description",
+            "text": "A helper script that can merge the configurations from multiple sources.",
+            "title": "Description"
+        },
+        {
+            "location": "/scripts/configurationMerger/#static-method-details",
+            "text": "",
+            "title": "Static Method Details"
+        },
+        {
+            "location": "/scripts/configurationMerger/#merge",
+            "text": "",
+            "title": "merge"
+        },
+        {
+            "location": "/scripts/configurationMerger/#description_1",
+            "text": "A step is usually configured by default values, configuration values from the configuration file and the parameters.\nThe methods can merge these sources. \nDefault values are overwritten by configuration file values. \nThese are overwritten by parameters.",
+            "title": "Description"
+        },
+        {
+            "location": "/scripts/configurationMerger/#parameters",
+            "text": "parameter  mandatory  Class      parameters  yes  Map    parameterKeys  yes  List    configurationMap  yes  Map    configurationKeys  yes  List    defaults  yes  Map      parameters  Parameters map given to the step  parameterKeys  List of parameter names (keys) that should be considered while merging.   configurationMap  Configuration map loaded from the configuration file.  configurationKeys  List of configuration keys that should be considered while merging.   defaults  Map of default values, e.g. loaded from the default value configuration file.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/scripts/configurationMerger/#side-effects",
+            "text": "none",
+            "title": "Side effects"
+        },
+        {
+            "location": "/scripts/configurationMerger/#example",
+            "text": "prepareDefaultValues   script:   script  final   Map   stepDefaults   =   ConfigurationLoader . defaultStepConfiguration ( script ,   'mavenExecute' )  final   Map   stepConfiguration   =   ConfigurationLoader . stepConfiguration ( script ,   'mavenExecute' )  List   parameterKeys   =   [ \n     'dockerImage' , \n     'globalSettingsFile' , \n     'projectSettingsFile' , \n     'pomPath' , \n     'flags' , \n     'goals' , \n     'm2Path' , \n     'defines'  ]  List   stepConfigurationKeys   =   [ \n     'dockerImage' , \n     'globalSettingsFile' , \n     'projectSettingsFile' , \n     'pomPath' , \n     'm2Path'  ]  Map   configuration   =   ConfigurationMerger . merge ( parameters ,   parameterKeys ,   stepConfiguration ,   stepConfigurationKeys ,   stepDefaults )",
+            "title": "Example"
+        },
+        {
+            "location": "/jenkins/requiredPlugins/",
+            "text": "Required Plugins\n\u00b6\n\n\nThe following Jenkins plugins are needed in order to use the Piper Library.\nThe list below contains the plugin Id and version of the plugin.\n\n\nPlugins\n\n\n\n\nace-editor 1.1\n\n\nauthentication-tokens 1.3\n\n\nbouncycastle-api 2.16.2\n\n\nbranch-api 2.0.14\n\n\ncloudbees-folder 6.2.1\n\n\ncredentials 2.1.16\n\n\ncredentials-binding 1.13\n\n\ndisplay-url-api 2.1.0\n\n\ndocker-commons 1.9\n\n\ndocker-workflow 1.10\n\n\ndurable-task 1.15\n\n\ngit 3.6.2\n\n\ngit-client 2.5.0\n\n\ngit-server 1.7\n\n\nhandlebars 1.1.1\n\n\nicon-shim 2.0.3\n\n\njquery-detached 1.2.1\n\n\njunit 1.21\n\n\nmailer 1.20\n\n\nmatrix-project 1.12\n\n\nmomentjs 1.1.1\n\n\npipeline-build-step 2.5.1\n\n\npipeline-graph-analysis 1.3\n\n\npipeline-input-step 2.8\n\n\npipeline-milestone-step 1.3.1\n\n\npipeline-model-api 1.2.2\n\n\npipeline-model-definition 1.1.1\n\n\npipeline-model-extensions 1.1.1\n\n\npipeline-rest-api 2.6\n\n\npipeline-stage-step 2.2\n\n\npipeline-stage-tags-metadata 1.2.2\n\n\npipeline-stage-view 2.6\n\n\npipeline-utility-steps 1.3.0\n\n\nplain-credentials 1.4\n\n\nscm-api 2.2.3\n\n\nscript-security 1.34\n\n\nssh-credentials 1.13\n\n\nstructs 1.10\n\n\nworkflow-aggregator 2.5\n\n\nworkflow-api 2.23.1\n\n\nworkflow-basic-steps 2.6\n\n\nworkflow-cps 2.41\n\n\nworkflow-cps-global-lib 2.7\n\n\nworkflow-durable-task-step 2.17\n\n\nworkflow-job 2.12.2\n\n\nworkflow-multibranch 2.14\n\n\nworkflow-scm-step 2.6\n\n\nworkflow-step-api 2.13\n\n\nworkflow-support 2.16",
             "title": "Required Plugins"
-        }, 
+        },
         {
-            "location": "/jenkins/requiredPlugins/#required-plugins", 
-            "text": "The following Jenkins plugins are needed in order to use the Piper Library.\nThe list below contains the plugin Id and version of the plugin.  Plugins   ace-editor 1.1  authentication-tokens 1.3  bouncycastle-api 2.16.2  branch-api 2.0.14  cloudbees-folder 6.2.1  credentials 2.1.16  credentials-binding 1.13  display-url-api 2.1.0  docker-commons 1.9  docker-workflow 1.10  durable-task 1.15  git 3.6.2  git-client 2.5.0  git-server 1.7  handlebars 1.1.1  icon-shim 2.0.3  jquery-detached 1.2.1  junit 1.21  mailer 1.20  matrix-project 1.12  momentjs 1.1.1  pipeline-build-step 2.5.1  pipeline-graph-analysis 1.3  pipeline-input-step 2.8  pipeline-milestone-step 1.3.1  pipeline-model-api 1.2.2  pipeline-model-definition 1.1.1  pipeline-model-extensions 1.1.1  pipeline-rest-api 2.6  pipeline-stage-step 2.2  pipeline-stage-tags-metadata 1.2.2  pipeline-stage-view 2.6  pipeline-utility-steps 1.3.0  plain-credentials 1.4  scm-api 2.2.3  script-security 1.34  ssh-credentials 1.13  structs 1.10  workflow-aggregator 2.5  workflow-api 2.23.1  workflow-basic-steps 2.6  workflow-cps 2.41  workflow-cps-global-lib 2.7  workflow-durable-task-step 2.17  workflow-job 2.12.2  workflow-multibranch 2.14  workflow-scm-step 2.6  workflow-step-api 2.13  workflow-support 2.16", 
+            "location": "/jenkins/requiredPlugins/#required-plugins",
+            "text": "The following Jenkins plugins are needed in order to use the Piper Library.\nThe list below contains the plugin Id and version of the plugin.  Plugins   ace-editor 1.1  authentication-tokens 1.3  bouncycastle-api 2.16.2  branch-api 2.0.14  cloudbees-folder 6.2.1  credentials 2.1.16  credentials-binding 1.13  display-url-api 2.1.0  docker-commons 1.9  docker-workflow 1.10  durable-task 1.15  git 3.6.2  git-client 2.5.0  git-server 1.7  handlebars 1.1.1  icon-shim 2.0.3  jquery-detached 1.2.1  junit 1.21  mailer 1.20  matrix-project 1.12  momentjs 1.1.1  pipeline-build-step 2.5.1  pipeline-graph-analysis 1.3  pipeline-input-step 2.8  pipeline-milestone-step 1.3.1  pipeline-model-api 1.2.2  pipeline-model-definition 1.1.1  pipeline-model-extensions 1.1.1  pipeline-rest-api 2.6  pipeline-stage-step 2.2  pipeline-stage-tags-metadata 1.2.2  pipeline-stage-view 2.6  pipeline-utility-steps 1.3.0  plain-credentials 1.4  scm-api 2.2.3  script-security 1.34  ssh-credentials 1.13  structs 1.10  workflow-aggregator 2.5  workflow-api 2.23.1  workflow-basic-steps 2.6  workflow-cps 2.41  workflow-cps-global-lib 2.7  workflow-durable-task-step 2.17  workflow-job 2.12.2  workflow-multibranch 2.14  workflow-scm-step 2.6  workflow-step-api 2.13  workflow-support 2.16",
             "title": "Required Plugins"
         }
     ]

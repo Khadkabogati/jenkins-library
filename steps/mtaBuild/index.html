@@ -28,7 +28,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.1.0">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.0.4">
     
     
       
@@ -36,9 +36,9 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application-3368aa6b74.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application-709eec9410.css">
       
-        <link rel="stylesheet" href="../../assets/stylesheets/application-95ad5566f9.palette.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/application-23f75ab9c7.palette.css">
       
     
     
@@ -89,18 +89,18 @@
         <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+        <span class="md-flex__ellipsis md-header-nav__title">
           
             
-              <span class="md-header-nav__topic">
-                Jenkins 2.0 Pipelines
-              </span>
-              <span class="md-header-nav__topic">
-                mtaBuild
-              </span>
+              
+                <span class="md-header-nav__parent">
+                  Library steps
+                </span>
+              
             
+            mtaBuild
           
-        </div>
+        </span>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         
@@ -397,6 +397,42 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mavenExecute/" title="mavenExecute" class="md-nav__link">
+      mavenExecute
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dockerExecute/" title="dockerExecute" class="md-nav__link">
+      dockerExecute
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../prepareDefaultValues/" title="prepareDefaultValues" class="md-nav__link">
+      prepareDefaultValues
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -453,6 +489,30 @@
   <li class="md-nav__item">
     <a href="../../scripts/version/" title="Version" class="md-nav__link">
       Version
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../scripts/configurationLoader/" title="ConfigurationLoader" class="md-nav__link">
+      ConfigurationLoader
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../scripts/configurationMerger/" title="ConfigurationMerger" class="md-nav__link">
+      ConfigurationMerger
     </a>
   </li>
 
@@ -601,20 +661,19 @@
 </tbody>
 </table>
 <ul>
-<li><code>script</code>  The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the <code>this</code> parameter, as in <code>script: this</code>. This allows the function to access the <a href="../commonPipelineEnvironment/"><code>commonPipelineEnvironment</code></a> for retrieving, for example, configuration parameters.</li>
-<li><code>buildTarget</code> The target platform to which the mtar can be deployed.</li>
-<li><code>mtaJarLocation</code> The path of the <code>mta.jar</code> file. If no parameter is provided, the path is retrieved from the Jenkins environment variables using <code>env.MTA_JAR_LOCATION</code>. If the Jenkins environment variable is not set it is assumed that <code>mta.jar</code> is located in the current working directory.</li>
+<li><code>script</code> - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the <code>this</code> parameter, as in <code>script: this</code>. This allows the function to access the <a href="../commonPipelineEnvironment/"><code>commonPipelineEnvironment</code></a> for retrieving, for example, configuration parameters.</li>
+<li><code>buildTarget</code> - The target platform to which the mtar can be deployed.</li>
+<li><code>mtaJarLocation</code> - The path of the <code>mta.jar</code> file. If no parameter is provided, the path is retrieved from the Jenkins environment variables using <code>env.MTA_JAR_LOCATION</code>. If the Jenkins environment variable is not set it is assumed that <code>mta.jar</code> is located in the current working directory.</li>
 </ul>
 <h2 id="return-value">Return value<a class="headerlink" href="#return-value" title="Permanent link">&para;</a></h2>
 <p>The file name of the resulting archive is returned with this step. The file name is extracted from the key <code>ID</code> defined in <code>mta.yaml</code>.</p>
 <h2 id="side-effects">Side effects<a class="headerlink" href="#side-effects" title="Permanent link">&para;</a></h2>
 <ol>
 <li>The file name of the resulting archive is written to the <code>commonPipelineEnvironment</code> with variable name <code>mtarFileName</code>.</li>
-<li>As version number the timestamp is written into the <code>mta.yaml</code> file, that is packaged into the built archive.</li>
 </ol>
 <h2 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>AbortException</code><ul>
+<li><code>AbortException</code>:<ul>
 <li>If there is an invalid <code>buildTarget</code>.</li>
 <li>If there is no key <code>ID</code> inside the <code>mta.yaml</code> file.</li>
 </ul>
@@ -681,9 +740,9 @@
       <div class="md-footer-copyright">
         
         powered by
-        <a href="http://www.mkdocs.org">MkDocs</a>
+        <a href="http://www.mkdocs.org" title="MkDocs">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
+        <a href="http://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs">
           Material for MkDocs</a>
       </div>
       
@@ -695,7 +754,7 @@
       
     </div>
     
-      <script src="../../assets/javascripts/application-a5397a53ce.js"></script>
+      <script src="../../assets/javascripts/application-8e4952e681.js"></script>
       
       <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
       
