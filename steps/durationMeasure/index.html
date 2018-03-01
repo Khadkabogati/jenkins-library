@@ -36,7 +36,7 @@
     
     
       
-        <title>handlePipelineStepErrors - Jenkins 2.0 Pipelines</title>
+        <title>durationMeasure - Jenkins 2.0 Pipelines</title>
       
     
     
@@ -95,7 +95,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
-      <a href="#handlepipelinesteperrors" tabindex="1" class="md-skip">
+      <a href="#durationmeasure" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -121,7 +121,7 @@
                 Jenkins 2.0 Pipelines
               </span>
               <span class="md-header-nav__topic">
-                handlePipelineStepErrors
+                durationMeasure
               </span>
             
           
@@ -305,18 +305,6 @@
           
           
 
-
-  <li class="md-nav__item">
-    <a href="../durationMeasure/" title="durationMeasure" class="md-nav__link">
-      durationMeasure
-    </a>
-  </li>
-
-        
-          
-          
-          
-
   
 
 
@@ -328,11 +316,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="toc">
-        handlePipelineStepErrors
+        durationMeasure
       </label>
     
-    <a href="./" title="handlePipelineStepErrors" class="md-nav__link md-nav__link--active">
-      handlePipelineStepErrors
+    <a href="./" title="durationMeasure" class="md-nav__link md-nav__link--active">
+      durationMeasure
     </a>
     
       
@@ -360,36 +348,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#parameters" title="Parameters" class="md-nav__link">
-    Parameters
+  <a href="#pipeline-configuration" title="Pipeline configuration" class="md-nav__link">
+    Pipeline configuration
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#return-value" title="Return value" class="md-nav__link">
-    Return value
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#side-effects" title="Side effects" class="md-nav__link">
-    Side effects
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exceptions" title="Exceptions" class="md-nav__link">
-    Exceptions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example" title="Example" class="md-nav__link">
-    Example
+  <a href="#explanation-of-pipeline-step" title="Explanation of pipeline step" class="md-nav__link">
+    Explanation of pipeline step
   </a>
   
 </li>
@@ -402,6 +369,18 @@
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../handlePipelineStepErrors/" title="handlePipelineStepErrors" class="md-nav__link">
+      handlePipelineStepErrors
+    </a>
   </li>
 
         
@@ -649,36 +628,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#parameters" title="Parameters" class="md-nav__link">
-    Parameters
+  <a href="#pipeline-configuration" title="Pipeline configuration" class="md-nav__link">
+    Pipeline configuration
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#return-value" title="Return value" class="md-nav__link">
-    Return value
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#side-effects" title="Side effects" class="md-nav__link">
-    Side effects
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exceptions" title="Exceptions" class="md-nav__link">
-    Exceptions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example" title="Example" class="md-nav__link">
-    Example
+  <a href="#explanation-of-pipeline-step" title="Explanation of pipeline step" class="md-nav__link">
+    Explanation of pipeline step
   </a>
   
 </li>
@@ -699,15 +657,30 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/SAP/jenkins-library/edit/master/documentation/docs/steps/handlePipelineStepErrors.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/SAP/jenkins-library/edit/master/documentation/docs/steps/durationMeasure.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="handlepipelinesteperrors">handlePipelineStepErrors<a class="headerlink" href="#handlepipelinesteperrors" title="Permanent link">&para;</a></h1>
+                <h1 id="durationmeasure">durationMeasure<a class="headerlink" href="#durationmeasure" title="Permanent link">&para;</a></h1>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
-<p>Used by other steps to make error analysis easier. Lists parameters and other data available to the step in which the error occurs.</p>
+<p>This step is used to measure the duration of a set of steps, e.g. a certain stage.
+The duration is stored in a Map. The measurement data can then be written to an Influx database using step <a href="../influxWriteData/">influxWriteData</a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Measuring for example the duration of pipeline stages helps to identify potential bottlenecks within the deployment pipeline.
+This then helps to counter identified issues with respective optimization measures, e.g parallelization of tests.</p>
+</div>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <p>none</p>
-<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
+<h2 id="pipeline-configuration">Pipeline configuration<a class="headerlink" href="#pipeline-configuration" title="Permanent link">&para;</a></h2>
+<p>none</p>
+<h2 id="explanation-of-pipeline-step">Explanation of pipeline step<a class="headerlink" href="#explanation-of-pipeline-step" title="Permanent link">&para;</a></h2>
+<p>Usage of pipeline step:</p>
+<div class="codehilite"><pre><span></span><span class="n">durationMeasure</span> <span class="o">(</span><span class="nl">script:</span> <span class="k">this</span><span class="o">,</span> <span class="nl">measurementName:</span> <span class="s1">&#39;build_duration&#39;</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">//execute your build</span>
+<span class="o">}</span>
+</pre></div>
+
+<p>Available parameters:</p>
 <table>
 <thead>
 <tr>
@@ -719,66 +692,24 @@
 </thead>
 <tbody>
 <tr>
-<td><code>stepParameters</code></td>
-<td>yes</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>stepName</code></td>
-<td>yes</td>
-<td></td>
+<td>script</td>
+<td>no</td>
+<td>empty <code>globalPipelineEnvironment</code></td>
 <td></td>
 </tr>
 <tr>
-<td><code>echoDetails</code></td>
-<td>yes</td>
-<td>true</td>
-<td>true, false</td>
+<td>measurementName</td>
+<td>no</td>
+<td>test_duration</td>
+<td></td>
 </tr>
 </tbody>
 </table>
+<p>Details:</p>
 <ul>
-<li><code>stepParameters</code> - The parameters from the step to be executed. The list of parameters is then shown in the console output.</li>
-<li><code>stepName</code> - The name of the step executed to be shown in the console output.</li>
-<li><code>echoDetails</code> - If set to true the following will be output to the console:<ol>
-<li>Step beginning: <code>--- BEGIN LIBRARY STEP: ${stepName}.groovy ---</code></li>
-<li>Step end: <code>--- END LIBRARY STEP: ${stepName}.groovy ---</code></li>
-<li>Step errors: 
-<div class="codehilite"><pre><span></span>----------------------------------------------------------
---- ERROR OCCURED IN LIBRARY STEP: ${stepName}
-----------------------------------------------------------
-FOLLOWING PARAMETERS WERE AVAILABLE TO THIS STEP:
-***
-${stepParameters}
-***
-ERROR WAS:
-***
-${err}
-***
-FURTHER INFORMATION:
-* Documentation of step ${stepName}: .../${stepName}/
-* Pipeline documentation: https://...
-* GitHub repository for pipeline steps: https://...
-----------------------------------------------------------
-</pre></div></li>
-</ol>
-</li>
+<li><code>script</code> defines the global script environment of the Jenkinsfile run. Typically <code>this</code> is passed to this parameter. This allows the function to access the <a href="../commonPipelineEnvironment/"><code>commonPipelineEnvironment</code></a> for storing the measured duration.</li>
+<li><code>measurementName</code> defines the name of the measurement which is written to the Influx database.</li>
 </ul>
-<h2 id="return-value">Return value<a class="headerlink" href="#return-value" title="Permanent link">&para;</a></h2>
-<p>none</p>
-<h2 id="side-effects">Side effects<a class="headerlink" href="#side-effects" title="Permanent link">&para;</a></h2>
-<p>none</p>
-<h2 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h2>
-<p>none</p>
-<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="n">handlePipelineStepErrors</span> <span class="o">(</span><span class="nl">stepName:</span> <span class="s1">&#39;executeHealthCheck&#39;</span><span class="o">,</span> <span class="nl">stepParameters:</span> <span class="n">parameters</span><span class="o">)</span> <span class="o">{</span>
-  <span class="kt">def</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Utils</span><span class="o">().</span><span class="na">getMandatoryParameter</span><span class="o">(</span><span class="n">parameters</span><span class="o">,</span> <span class="s1">&#39;url&#39;</span><span class="o">,</span> <span class="kc">null</span><span class="o">)</span>
-  <span class="kt">def</span> <span class="n">statusCode</span> <span class="o">=</span> <span class="n">curl</span><span class="o">(</span><span class="n">url</span><span class="o">)</span>
-  <span class="k">if</span> <span class="o">(</span><span class="n">statusCode</span> <span class="o">!=</span> <span class="s1">&#39;200&#39;</span><span class="o">)</span>
-    <span class="n">error</span> <span class="s2">&quot;Health Check failed: ${statusCode}&quot;</span>
-<span class="o">}</span>
-</pre></div>
                 
                   
                 
@@ -797,7 +728,7 @@ FURTHER INFORMATION:
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../durationMeasure/" title="durationMeasure" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../dockerExecute/" title="dockerExecute" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -806,19 +737,19 @@ FURTHER INFORMATION:
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                durationMeasure
+                dockerExecute
               </span>
             </div>
           </a>
         
         
-          <a href="../influxWriteData/" title="influxWriteData" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../handlePipelineStepErrors/" title="handlePipelineStepErrors" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                influxWriteData
+                handlePipelineStepErrors
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
