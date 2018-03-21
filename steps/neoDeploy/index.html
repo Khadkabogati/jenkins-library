@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.6.6">
+      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.7.0">
     
     
       
@@ -202,7 +202,7 @@
   <label class="md-nav__title md-nav__title--site" for="drawer">
     <span class="md-nav__button md-logo">
       
-        <img src="../../images/piper_head_white.png" width="24" height="24">
+        <img src="../../images/piper_head_white.png" width="48" height="48">
       
     </span>
     Jenkins 2.0 Pipelines
@@ -415,8 +415,22 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#parameters-when-using-war-file-deployment-method-with-properties-file-war_propertiesfile" title="Parameters when using WAR file deployment method with .properties file (WAR_PROPERTIESFILE)" class="md-nav__link">
+    Parameters when using WAR file deployment method with .properties file (WAR_PROPERTIESFILE)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#parameters-when-using-war-file-deployment-method-witout-properties-file-with-parameters-war_params" title="Parameters when using WAR file deployment method witout .properties file - with parameters (WAR_PARAMS)" class="md-nav__link">
     Parameters when using WAR file deployment method witout .properties file - with parameters (WAR_PARAMS)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-configuration" title="Step configuration" class="md-nav__link">
+    Step configuration
   </a>
   
 </li>
@@ -518,102 +532,6 @@
       
 
 
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
-    
-    <label class="md-nav__link" for="nav-3">
-      Library scripts
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
-        Library scripts
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../scripts/fileUtils/" title="FileUtils" class="md-nav__link">
-      FileUtils
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../scripts/jsonUtils/" title="JsonUtils" class="md-nav__link">
-      JsonUtils
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../scripts/utils/" title="Utils" class="md-nav__link">
-      Utils
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../scripts/version/" title="Version" class="md-nav__link">
-      Version
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../scripts/configurationLoader/" title="ConfigurationLoader" class="md-nav__link">
-      ConfigurationLoader
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../scripts/configurationMerger/" title="ConfigurationMerger" class="md-nav__link">
-      ConfigurationMerger
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
   <li class="md-nav__item">
     <a href="../../jenkins/requiredPlugins/" title="Required Plugins" class="md-nav__link">
       Required Plugins
@@ -663,8 +581,22 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#parameters-when-using-war-file-deployment-method-with-properties-file-war_propertiesfile" title="Parameters when using WAR file deployment method with .properties file (WAR_PROPERTIESFILE)" class="md-nav__link">
+    Parameters when using WAR file deployment method with .properties file (WAR_PROPERTIESFILE)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#parameters-when-using-war-file-deployment-method-witout-properties-file-with-parameters-war_params" title="Parameters when using WAR file deployment method witout .properties file - with parameters (WAR_PARAMS)" class="md-nav__link">
     Parameters when using WAR file deployment method witout .properties file - with parameters (WAR_PARAMS)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-configuration" title="Step configuration" class="md-nav__link">
+    Step configuration
   </a>
   
 </li>
@@ -748,14 +680,8 @@ needs to be extracted into the folder provided by <code>neoHome</code>. In case 
 </thead>
 <tbody>
 <tr>
-<td><code>deployMode</code></td>
-<td>yes</td>
-<td><code>'MTA'</code></td>
-<td><code>'MTA'</code>, <code>'WAR_PARAMS'</code>, <code>'WAR_PROPERTIESFILE'</code></td>
-</tr>
-<tr>
-<td><code>script</code></td>
-<td>yes</td>
+<td><code>account</code></td>
+<td>no</td>
 <td></td>
 <td></td>
 </tr>
@@ -766,68 +692,26 @@ needs to be extracted into the folder provided by <code>neoHome</code>. In case 
 <td></td>
 </tr>
 <tr>
-<td><code>deployHost</code></td>
+<td><code>deployAccount</code> deprecated, use <code>account</code></td>
 <td>no</td>
-<td><code>'account'</code> from step configuration <code>'neoDeploy'</code>, or propertey <code>'DEPLOY_HOST'</code> from <code>commonPipelineEnvironment</code> (deprecated)</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
-<td><code>deployAccount</code></td>
+<td><code>deployHost</code> deprecated, use <code>host</code></td>
 <td>no</td>
-<td><code>'host'</code> from step configuration <code>'neoDeploy'</code>, or property <code>'CI_DEPLOY_ACCOUNT'</code> from <code>commonPipelineEnvironment</code> (deprecated)</td>
-<td></td>
-</tr>
-<tr>
-<td><code>neoCredentialsId</code></td>
-<td>no</td>
-<td><code>'neoCredentialsId'</code> from step configuration <code>'neoDeploy'</code> or hard coded value <code>'CI_CREDENTIALS_ID'</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>neoHome</code></td>
-<td>no</td>
-<td>Environment is checked for <code>NEO_HOME</code>, <br>otherwise the neo toolset is expected in the path</td>
-<td></td>
-</tr>
-<tr>
-<td>## Parameters when using WAR file deployment method with .properties file (WAR_PROPERTIESFILE)</td>
 <td></td>
 <td></td>
-<td></td>
-</tr>
-<tr>
-<td>parameter</td>
-<td>mandatory</td>
-<td>default</td>
-<td>possible values</td>
-</tr>
-<tr>
-<td>-------------------</td>
-<td>-----------</td>
-<td>----------------------------------------------------------------------------------------------</td>
-<td>-------------------------------------------------</td>
 </tr>
 <tr>
 <td><code>deployMode</code></td>
 <td>yes</td>
-<td><code>'MTA'</code></td>
-<td><code>'MTA'</code>, <code>'WAR_PARAMS'</code>, <code>'WAR_PROPERTIESFILE'</code></td>
+<td><code>'mta'</code></td>
+<td><code>'mta'</code>, <code>'warParams'</code>, <code>'warPropertiesFile'</code></td>
 </tr>
 <tr>
-<td><code>warAction</code></td>
-<td>yes</td>
-<td><code>'deploy'</code></td>
-<td><code>'deploy'</code>, <code>'rolling-update'</code></td>
-</tr>
-<tr>
-<td><code>script</code></td>
-<td>yes</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>archivePath</code></td>
-<td>yes</td>
+<td><code>host</code></td>
+<td>no</td>
 <td></td>
 <td></td>
 </tr>
@@ -840,7 +724,50 @@ needs to be extracted into the folder provided by <code>neoHome</code>. In case 
 <tr>
 <td><code>neoHome</code></td>
 <td>no</td>
-<td>Environment is checked for <code>NEO_HOME</code>, <br>otherwise the neo toolset is expected in the path</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>script</code></td>
+<td>yes</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="parameters-when-using-war-file-deployment-method-with-properties-file-war_propertiesfile">Parameters when using WAR file deployment method with .properties file (WAR_PROPERTIESFILE)<a class="headerlink" href="#parameters-when-using-war-file-deployment-method-with-properties-file-war_propertiesfile" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>parameter</th>
+<th>mandatory</th>
+<th>default</th>
+<th>possible values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>archivePath</code></td>
+<td>yes</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>deployMode</code></td>
+<td>yes</td>
+<td><code>'mta'</code></td>
+<td><code>'mta'</code>, <code>'warParams'</code>, <code>'warPropertiesFile'</code></td>
+</tr>
+<tr>
+<td><code>neoCredentialsId</code></td>
+<td>no</td>
+<td><code>'CI_CREDENTIALS_ID'</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>neoHome</code></td>
+<td>no</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -848,6 +775,18 @@ needs to be extracted into the folder provided by <code>neoHome</code>. In case 
 <td>yes</td>
 <td></td>
 <td></td>
+</tr>
+<tr>
+<td><code>script</code></td>
+<td>yes</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>warAction</code></td>
+<td>yes</td>
+<td><code>'deploy'</code></td>
+<td><code>'deploy'</code>, <code>'rolling-update'</code></td>
 </tr>
 </tbody>
 </table>
@@ -863,19 +802,13 @@ needs to be extracted into the folder provided by <code>neoHome</code>. In case 
 </thead>
 <tbody>
 <tr>
-<td><code>deployMode</code></td>
-<td>yes</td>
-<td><code>'MTA'</code></td>
-<td><code>'MTA'</code>, <code>'WAR_PARAMS'</code>, <code>'WAR_PROPERTIESFILE'</code></td>
+<td><code>account</code></td>
+<td>no</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td><code>warAction</code></td>
-<td>yes</td>
-<td><code>'deploy'</code></td>
-<td><code>'deploy'</code>, <code>'rolling-update'</code></td>
-</tr>
-<tr>
-<td><code>script</code></td>
+<td><code>applicationName</code></td>
 <td>yes</td>
 <td></td>
 <td></td>
@@ -887,15 +820,27 @@ needs to be extracted into the folder provided by <code>neoHome</code>. In case 
 <td></td>
 </tr>
 <tr>
-<td><code>deployHost</code></td>
+<td><code>deployAccount</code> deprecated, use <code>account</code></td>
 <td>no</td>
-<td><code>'DEPLOY_HOST'</code> from <code>commonPipelineEnvironment</code></td>
+<td></td>
 <td></td>
 </tr>
 <tr>
-<td><code>deployAccount</code></td>
+<td><code>deployHost</code> deprecated, use <code>host</code></td>
 <td>no</td>
-<td><code>'CI_DEPLOY_ACCOUNT'</code> from <code>commonPipelineEnvironment</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>deployMode</code></td>
+<td>yes</td>
+<td><code>'mta'</code></td>
+<td><code>'mta'</code>, <code>'warParams'</code>, <code>'warPropertiesFile'</code></td>
+</tr>
+<tr>
+<td><code>host</code></td>
+<td>no</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -907,12 +852,6 @@ needs to be extracted into the folder provided by <code>neoHome</code>. In case 
 <tr>
 <td><code>neoHome</code></td>
 <td>no</td>
-<td>Environment is checked for <code>NEO_HOME</code>, <br>otherwise the neo toolset is expected in the path</td>
-<td></td>
-</tr>
-<tr>
-<td><code>applicationName</code></td>
-<td>yes</td>
 <td></td>
 <td></td>
 </tr>
@@ -929,27 +868,53 @@ needs to be extracted into the folder provided by <code>neoHome</code>. In case 
 <td></td>
 </tr>
 <tr>
-<td><code>size</code></td>
+<td><code>script</code></td>
+<td>yes</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>vmSize</code></td>
 <td>no</td>
 <td><code>'lite'</code></td>
 <td><code>'lite'</code>, <code>'pro'</code>, <code>'prem'</code>, <code>'prem-plus'</code></td>
 </tr>
+<tr>
+<td><code>warAction</code></td>
+<td>yes</td>
+<td><code>'deploy'</code></td>
+<td><code>'deploy'</code>, <code>'rolling-update'</code></td>
+</tr>
 </tbody>
 </table>
 <ul>
-<li><code>deployMode</code> - The deployment mode which should be used. Available options are <code>'MTA'</code> (default), <code>'WAR_PARAMS'</code> (deploying WAR file and passing all the deployment parameters via the function call) and <code>'WAR_PROPERTIESFILE'</code> (deploying WAR file and putting all the deployment parameters in a .properties file)</li>
-<li><code>script</code> - The common script environment of the Jenkinsfile run. Typically <code>this</code> is passed to this parameter. This allows the function to access the <a href="../commonPipelineEnvironment/"><code>commonPipelineEnvironment</code></a> for retrieving e.g. configuration parameters.</li>
+<li><code>account</code> - The SAP Cloud Platform account to deploy to.</li>
+<li><code>applicationName</code> - Name of the application you want to manage, configure, or deploy</li>
 <li><code>archivePath</code>- The path to the archive for deployment to SAP CP.</li>
-<li><code>deployHost</code> - The SAP Cloud Platform host to deploy to.</li>
-<li><code>deployAccount</code> - The SAP Cloud Platform account to deploy to.</li>
-<li><code>credentialsId</code> - The Jenkins credentials containing user and password used for SAP CP deployment.</li>
+<li><code>deployAccount</code> - deprecated, use <code>account</code>. The SAP Cloud Platform account to deploy to.</li>
+<li><code>deployHost</code> - deprecated, use <code>host</code>. The SAP Cloud Platform host to deploy to.</li>
+<li><code>deployMode</code> - The deployment mode which should be used. Available options are <code>'mta'</code> (default), <code>'warParams'</code> (deploying WAR file and passing all the deployment parameters via the function call) and <code>'warPropertiesFile'</code> (deploying WAR file and putting all the deployment parameters in a .properties file)</li>
+<li><code>host</code> - The SAP Cloud Platform host to deploy to.</li>
+<li><code>neoCredentialsId</code> - The Jenkins credentials containing user and password used for SAP CP deployment.</li>
 <li><code>neoHome</code> - The path to the <code>neo-java-web-sdk</code> tool used for SAP CP deployment. If no parameter is provided, the path is retrieved from the Jenkins environment variables using <code>env.NEO_HOME</code>. If this Jenkins environment variable is not set it is assumed that the tool is available in the <code>PATH</code>.</li>
 <li><code>propertiesFile</code> - The path to the .properties file in which all necessary deployment properties for the application are defined.</li>
-<li><code>warAction</code> - Action mode when using WAR file mode. Available options are <code>deploy</code> (default) and <code>rolling-update</code> which performs update of an application without downtime in one go.</li>
-<li><code>applicationName</code> - Name of the application you want to manage, configure, or deploy</li>
 <li><code>runtime</code> - Name of SAP Cloud Platform application runtime</li>
 <li><code>runtime-version</code> - Version of SAP Cloud Platform application runtime</li>
-<li><code>size</code> - Compute unit (VM) size. Acceptable values: lite, pro, prem, prem-plus.</li>
+<li><code>script</code> - The common script environment of the Jenkinsfile run. Typically <code>this</code> is passed to this parameter. This allows the function to access the <a href="../commonPipelineEnvironment/"><code>commonPipelineEnvironment</code></a> for retrieving e.g. configuration parameters.</li>
+<li><code>vmSize</code> - Compute unit (VM) size. Acceptable values: lite, pro, prem, prem-plus.</li>
+<li><code>warAction</code> - Action mode when using WAR file mode. Available options are <code>deploy</code> (default) and <code>rolling-update</code> which performs update of an application without downtime in one go.</li>
+</ul>
+<p>The step is prepared for being executed in docker. The corresponding parameters can be applied. See step <code>dockerExecute</code> for details.</p>
+<h2 id="step-configuration">Step configuration<a class="headerlink" href="#step-configuration" title="Permanent link">&para;</a></h2>
+<p>The following parameters can also be specified as step parameters using the global configuration file:</p>
+<ul>
+<li><code>account</code></li>
+<li><code>dockerEnvVars</code></li>
+<li><code>dockerImage</code></li>
+<li><code>dockerOptions</code></li>
+<li><code>host</code></li>
+<li><code>neoCredentialsId</code></li>
+<li><code>neoHome</code></li>
 </ul>
 <h2 id="return-value">Return value<a class="headerlink" href="#return-value" title="Permanent link">&para;</a></h2>
 <p>none</p>
@@ -1057,9 +1022,9 @@ needs to be extracted into the folder provided by <code>neoHome</code>. In case 
       
     </div>
     
-      <script src="../../assets/javascripts/application.02434462.js"></script>
+      <script src="../../assets/javascripts/application.8eb9be28.js"></script>
       
-      <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"0.17.3",url:{base:"../.."}})</script>
       
     
     

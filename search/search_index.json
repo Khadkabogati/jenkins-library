@@ -12,7 +12,7 @@
         }, 
         {
             "location": "/steps/artifactSetVersion/", 
-            "text": "artifactSetVersion\n\n\nDescription\n\n\nThe continuous delivery process requires that each build is done with a unique version number.\n\n\nThe version generated using this step will contain:\n\n\n\n\nVersion (major.minor.patch) from descriptor file in master repository is preserved. Developers should be able to autonomously decide on increasing either part of this version number.\n\n\nTimestamp\n\n\nCommitId (by default the long version of the hash)\n\n\n\n\nAfter conducting automatic versioning the new version is pushed as a new tag into the source code repository (e.g. GitHub)\n\n\nPrerequsites\n\n\nnone\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nscript\n\n\nno\n\n\nempty \ncommonPipelineEnvironment\n\n\n\n\n\n\n\n\nbuildTool\n\n\nno\n\n\nmaven\n\n\nmaven, docker\n\n\n\n\n\n\ndockerVersionSource\n\n\nno\n\n\n''\n\n\nFROM, (ENV name),appVersion\n\n\n\n\n\n\nfilePath\n\n\nno\n\n\nbuildTool=\nmaven\n: pom.xml \ndocker: Dockerfile\n\n\n\n\n\n\n\n\ngitCommitId\n\n\nno\n\n\nGitUtils.getGitCommitId()\n\n\n\n\n\n\n\n\ngitCredentialsId\n\n\nyes\n\n\nas defined in custom configuration\n\n\n\n\n\n\n\n\ngitUserEMail\n\n\nno\n\n\n\n\n\n\n\n\n\n\ngitUserName\n\n\nno\n\n\n\n\n\n\n\n\n\n\ngitSshUrl\n\n\nyes\n\n\n\n\n\n\n\n\n\n\ntagPrefix\n\n\nno\n\n\n'build_'\n\n\n\n\n\n\n\n\ntimestamp\n\n\nno\n\n\ncurrent time in format according to \ntimestampTemplate\n\n\n\n\n\n\n\n\ntimestampTemplate\n\n\nno\n\n\n%Y%m%d%H%M%S\n\n\n\n\n\n\n\n\nversioningTemplate\n\n\nno\n\n\ndepending on \nbuildTool\nmaven: \n${version}-${timestamp}${commitId?\"_\"+commitId:\"\"}\n\n\n\n\n\n\n\n\n\n\n\n\nscript\n defines the global script environment of the Jenkinsfile run. Typically \nthis\n is passed to this parameter. This allows the function to access the \ncommonPipelineEnvironment\n for retrieving e.g. configuration parameters.\n\n\nbuildTool\n defines the tool which is used for building the artifact.\n\n\n\n\ndockerVersionSource\n specifies the source to be used for the main version which is used for generating the automatic version.\n\n\n\n\nThis can either be the version of the base image - as retrieved from the \nFROM\n statement within the Dockerfile, e.g. \nFROM jenkins:2.46.2\n\n\nAlternatively the name of an environment variable defined in the Docker image can be used which contains the version number, e.g. \nENV MY_VERSION 1.2.3\n\n\nThe third option \nappVersion\n applies only to the artifactType \nappContainer\n. Here the version of the app which is packaged into the container will be used as version for the container itself.\n\n\n\n\n\n\n\n\nUsing \nfilePath\n you could define a custom path to the descriptor file.\n\n\n\n\ngitCommitId\n defines the version prefix of the automatically generated version. By default it will take the long commitId hash. You could pass any other string (e.g. the short commitId hash) to be used. In case you don't want to have the gitCommitId added to the automatic versioning string you could set the value to an empty string: \n''\n.\n\n\ngitCredentialsId\ndefines the ssh git credentials to be used for writing the tag.\n\n\nThe parameters \ngitUserName\n and \ngitUserEMail\n allow to overwrite the global git settings available on your Jenkins server\n\n\ngitSshUrl\n defines the git ssh url to the source code repository.\n\n\ntagPrefix\n defines the prefix wich is used for the git tag which is written during the versioning run.\n\n\ntimestamp\n defines the timestamp to be used in the automatic version string. You could overwrite the default behavior by explicitly setting this string.\n\n\n\n\nStep configuration\n\n\nFollowing parameters can also be specified as step parameters using the global configuration file:\n\n\n\n\nartifactType\n\n\nbuildTool\n\n\ndockerVersionSource\n\n\nfilePath\n\n\ngitCredentialsId\n\n\ngitUserEMail\n\n\ngitUserName\n\n\ngitSshUrl\n\n\ntagPrefix\n\n\ntimestamp\n\n\ntimestampTemplate\n\n\nversioningTemplate\n\n\n\n\nExplanation of pipeline step\n\n\nPipeline step:\n\n\nartifactSetVersion\n \nscript:\n \nthis\n,\n \nbuildTool:\n \nmaven", 
+            "text": "artifactSetVersion\n\n\nDescription\n\n\nThe continuous delivery process requires that each build is done with a unique version number.\n\n\nThe version generated using this step will contain:\n\n\n\n\nVersion (major.minor.patch) from descriptor file in master repository is preserved. Developers should be able to autonomously decide on increasing either part of this version number.\n\n\nTimestamp\n\n\nCommitId (by default the long version of the hash)\n\n\n\n\nOptionally, but enabled by default, the new version is pushed as a new tag into the source code repository (e.g. GitHub).\nIf this option is chosen, git credentials and the repository URL needs to be provided.\nSince you might not want to configure the git credentials in Jenkins, committing and pushing can be disabled using the \ncommitVersion\n parameter as described below.\nIf you require strict reproducibility of your builds, this should be used.\n\n\nPrerequsites\n\n\nnone\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nscript\n\n\nno\n\n\nempty \ncommonPipelineEnvironment\n\n\n\n\n\n\n\n\nartifactType\n\n\nno\n\n\n\n\n'appContainer'\n\n\n\n\n\n\nbuildTool\n\n\nno\n\n\nmaven\n\n\nmaven, docker\n\n\n\n\n\n\ncommitVersion\n\n\nno\n\n\ntrue\n\n\ntrue\n, \nfalse\n\n\n\n\n\n\ndockerVersionSource\n\n\nno\n\n\n''\n\n\nFROM, (ENV name),appVersion\n\n\n\n\n\n\nfilePath\n\n\nno\n\n\nbuildTool=\nmaven\n: pom.xml \ndocker: Dockerfile\n\n\n\n\n\n\n\n\ngitCommitId\n\n\nno\n\n\nGitUtils.getGitCommitId()\n\n\n\n\n\n\n\n\ngitCredentialsId\n\n\nIf \ncommitVersion\n is \ntrue\n\n\nas defined in custom configuration\n\n\n\n\n\n\n\n\ngitUserEMail\n\n\nno\n\n\n\n\n\n\n\n\n\n\ngitUserName\n\n\nno\n\n\n\n\n\n\n\n\n\n\ngitSshUrl\n\n\nIf \ncommitVersion\n is \ntrue\n\n\n\n\n\n\n\n\n\n\ntagPrefix\n\n\nno\n\n\n'build_'\n\n\n\n\n\n\n\n\ntimestamp\n\n\nno\n\n\ncurrent time in format according to \ntimestampTemplate\n\n\n\n\n\n\n\n\ntimestampTemplate\n\n\nno\n\n\n%Y%m%d%H%M%S\n\n\n\n\n\n\n\n\nversioningTemplate\n\n\nno\n\n\ndepending on \nbuildTool\nmaven: \n${version}-${timestamp}${commitId?\"_\"+commitId:\"\"}\n\n\n\n\n\n\n\n\n\n\n\n\nscript\n defines the global script environment of the Jenkinsfile run. Typically \nthis\n is passed to this parameter. This allows the function to access the \ncommonPipelineEnvironment\n for retrieving e.g. configuration parameters.\n\n\nartifactType\n defines the type of the artifact.\n\n\nbuildTool\n defines the tool which is used for building the artifact.\n\n\ncommitVersion\n controls if the changed version is committed and pushed to the git repository. If this is enabled (which is the default), you need to provide \ngitCredentialsId\n and \ngitSshUrl\n.\n\n\n\n\ndockerVersionSource\n specifies the source to be used for the main version which is used for generating the automatic version.\n\n\n\n\nThis can either be the version of the base image - as retrieved from the \nFROM\n statement within the Dockerfile, e.g. \nFROM jenkins:2.46.2\n\n\nAlternatively the name of an environment variable defined in the Docker image can be used which contains the version number, e.g. \nENV MY_VERSION 1.2.3\n\n\nThe third option \nappVersion\n applies only to the artifactType \nappContainer\n. Here the version of the app which is packaged into the container will be used as version for the container itself.\n\n\n\n\n\n\n\n\nUsing \nfilePath\n you could define a custom path to the descriptor file.\n\n\n\n\ngitCommitId\n defines the version prefix of the automatically generated version. By default it will take the long commitId hash. You could pass any other string (e.g. the short commitId hash) to be used. In case you don't want to have the gitCommitId added to the automatic versioning string you could set the value to an empty string: \n''\n.\n\n\ngitCredentialsId\ndefines the ssh git credentials to be used for writing the tag.\n\n\nThe parameters \ngitUserName\n and \ngitUserEMail\n allow to overwrite the global git settings available on your Jenkins server\n\n\ngitSshUrl\n defines the git ssh url to the source code repository.\n\n\ntagPrefix\n defines the prefix wich is used for the git tag which is written during the versioning run.\n\n\ntimestamp\n defines the timestamp to be used in the automatic version string. You could overwrite the default behavior by explicitly setting this string.\n\n\n\n\nStep configuration\n\n\nThe following parameters can also be specified as step parameters using the global configuration file:\n\n\n\n\nartifactType\n\n\nbuildTool\n\n\ncommitVersion\n\n\ndockerVersionSource\n\n\nfilePath\n\n\ngitCredentialsId\n\n\ngitUserEMail\n\n\ngitUserName\n\n\ngitSshUrl\n\n\ntagPrefix\n\n\ntimestamp\n\n\ntimestampTemplate\n\n\nversioningTemplate\n\n\n\n\nExample\n\n\nartifactSetVersion\n \nscript:\n \nthis\n,\n \nbuildTool:\n \nmaven", 
             "title": "artifactSetVersion"
         }, 
         {
@@ -22,7 +22,7 @@
         }, 
         {
             "location": "/steps/artifactSetVersion/#description", 
-            "text": "The continuous delivery process requires that each build is done with a unique version number.  The version generated using this step will contain:   Version (major.minor.patch) from descriptor file in master repository is preserved. Developers should be able to autonomously decide on increasing either part of this version number.  Timestamp  CommitId (by default the long version of the hash)   After conducting automatic versioning the new version is pushed as a new tag into the source code repository (e.g. GitHub)", 
+            "text": "The continuous delivery process requires that each build is done with a unique version number.  The version generated using this step will contain:   Version (major.minor.patch) from descriptor file in master repository is preserved. Developers should be able to autonomously decide on increasing either part of this version number.  Timestamp  CommitId (by default the long version of the hash)   Optionally, but enabled by default, the new version is pushed as a new tag into the source code repository (e.g. GitHub).\nIf this option is chosen, git credentials and the repository URL needs to be provided.\nSince you might not want to configure the git credentials in Jenkins, committing and pushing can be disabled using the  commitVersion  parameter as described below.\nIf you require strict reproducibility of your builds, this should be used.", 
             "title": "Description"
         }, 
         {
@@ -32,18 +32,18 @@
         }, 
         {
             "location": "/steps/artifactSetVersion/#parameters", 
-            "text": "parameter  mandatory  default  possible values      script  no  empty  commonPipelineEnvironment     buildTool  no  maven  maven, docker    dockerVersionSource  no  ''  FROM, (ENV name),appVersion    filePath  no  buildTool= maven : pom.xml  docker: Dockerfile     gitCommitId  no  GitUtils.getGitCommitId()     gitCredentialsId  yes  as defined in custom configuration     gitUserEMail  no      gitUserName  no      gitSshUrl  yes      tagPrefix  no  'build_'     timestamp  no  current time in format according to  timestampTemplate     timestampTemplate  no  %Y%m%d%H%M%S     versioningTemplate  no  depending on  buildTool maven:  ${version}-${timestamp}${commitId?\"_\"+commitId:\"\"}       script  defines the global script environment of the Jenkinsfile run. Typically  this  is passed to this parameter. This allows the function to access the  commonPipelineEnvironment  for retrieving e.g. configuration parameters.  buildTool  defines the tool which is used for building the artifact.   dockerVersionSource  specifies the source to be used for the main version which is used for generating the automatic version.   This can either be the version of the base image - as retrieved from the  FROM  statement within the Dockerfile, e.g.  FROM jenkins:2.46.2  Alternatively the name of an environment variable defined in the Docker image can be used which contains the version number, e.g.  ENV MY_VERSION 1.2.3  The third option  appVersion  applies only to the artifactType  appContainer . Here the version of the app which is packaged into the container will be used as version for the container itself.     Using  filePath  you could define a custom path to the descriptor file.   gitCommitId  defines the version prefix of the automatically generated version. By default it will take the long commitId hash. You could pass any other string (e.g. the short commitId hash) to be used. In case you don't want to have the gitCommitId added to the automatic versioning string you could set the value to an empty string:  '' .  gitCredentialsId defines the ssh git credentials to be used for writing the tag.  The parameters  gitUserName  and  gitUserEMail  allow to overwrite the global git settings available on your Jenkins server  gitSshUrl  defines the git ssh url to the source code repository.  tagPrefix  defines the prefix wich is used for the git tag which is written during the versioning run.  timestamp  defines the timestamp to be used in the automatic version string. You could overwrite the default behavior by explicitly setting this string.", 
+            "text": "parameter  mandatory  default  possible values      script  no  empty  commonPipelineEnvironment     artifactType  no   'appContainer'    buildTool  no  maven  maven, docker    commitVersion  no  true  true ,  false    dockerVersionSource  no  ''  FROM, (ENV name),appVersion    filePath  no  buildTool= maven : pom.xml  docker: Dockerfile     gitCommitId  no  GitUtils.getGitCommitId()     gitCredentialsId  If  commitVersion  is  true  as defined in custom configuration     gitUserEMail  no      gitUserName  no      gitSshUrl  If  commitVersion  is  true      tagPrefix  no  'build_'     timestamp  no  current time in format according to  timestampTemplate     timestampTemplate  no  %Y%m%d%H%M%S     versioningTemplate  no  depending on  buildTool maven:  ${version}-${timestamp}${commitId?\"_\"+commitId:\"\"}       script  defines the global script environment of the Jenkinsfile run. Typically  this  is passed to this parameter. This allows the function to access the  commonPipelineEnvironment  for retrieving e.g. configuration parameters.  artifactType  defines the type of the artifact.  buildTool  defines the tool which is used for building the artifact.  commitVersion  controls if the changed version is committed and pushed to the git repository. If this is enabled (which is the default), you need to provide  gitCredentialsId  and  gitSshUrl .   dockerVersionSource  specifies the source to be used for the main version which is used for generating the automatic version.   This can either be the version of the base image - as retrieved from the  FROM  statement within the Dockerfile, e.g.  FROM jenkins:2.46.2  Alternatively the name of an environment variable defined in the Docker image can be used which contains the version number, e.g.  ENV MY_VERSION 1.2.3  The third option  appVersion  applies only to the artifactType  appContainer . Here the version of the app which is packaged into the container will be used as version for the container itself.     Using  filePath  you could define a custom path to the descriptor file.   gitCommitId  defines the version prefix of the automatically generated version. By default it will take the long commitId hash. You could pass any other string (e.g. the short commitId hash) to be used. In case you don't want to have the gitCommitId added to the automatic versioning string you could set the value to an empty string:  '' .  gitCredentialsId defines the ssh git credentials to be used for writing the tag.  The parameters  gitUserName  and  gitUserEMail  allow to overwrite the global git settings available on your Jenkins server  gitSshUrl  defines the git ssh url to the source code repository.  tagPrefix  defines the prefix wich is used for the git tag which is written during the versioning run.  timestamp  defines the timestamp to be used in the automatic version string. You could overwrite the default behavior by explicitly setting this string.", 
             "title": "Parameters"
         }, 
         {
             "location": "/steps/artifactSetVersion/#step-configuration", 
-            "text": "Following parameters can also be specified as step parameters using the global configuration file:   artifactType  buildTool  dockerVersionSource  filePath  gitCredentialsId  gitUserEMail  gitUserName  gitSshUrl  tagPrefix  timestamp  timestampTemplate  versioningTemplate", 
+            "text": "The following parameters can also be specified as step parameters using the global configuration file:   artifactType  buildTool  commitVersion  dockerVersionSource  filePath  gitCredentialsId  gitUserEMail  gitUserName  gitSshUrl  tagPrefix  timestamp  timestampTemplate  versioningTemplate", 
             "title": "Step configuration"
         }, 
         {
-            "location": "/steps/artifactSetVersion/#explanation-of-pipeline-step", 
-            "text": "Pipeline step:  artifactSetVersion   script:   this ,   buildTool:   maven", 
-            "title": "Explanation of pipeline step"
+            "location": "/steps/artifactSetVersion/#example", 
+            "text": "artifactSetVersion   script:   this ,   buildTool:   maven", 
+            "title": "Example"
         }, 
         {
             "location": "/steps/commonPipelineEnvironment/", 
@@ -487,7 +487,7 @@
         }, 
         {
             "location": "/steps/dockerExecute/", 
-            "text": "dockerExecute\n\n\nDescription\n\n\nExecutes a closure inside a docker container with the specified docker image. \nThe workspace is mounted into the docker image.\nProxy environment variables defined on the Jenkins machine are also available in the Docker container.\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\ndockerImage\n\n\nno\n\n\n''\n\n\n\n\n\n\n\n\ndockerEnvVars\n\n\nno\n\n\n[:]\n\n\n\n\n\n\n\n\ndockerOptions\n\n\nno\n\n\n''\n\n\n\n\n\n\n\n\ndockerVolumeBind\n\n\nno\n\n\n[:]\n\n\n\n\n\n\n\n\n\n\n\n\ndockerImage\n Name of the docker image that should be used. If empty, Docker is not used.\n\n\ndockerEnvVars\n Environment variables to set in the container, e.g. [http_proxy:'proxy:8080']\n\n\ndockerOptions\n Docker options to be set when starting the container.\n\n\ndockerVolumeBind\n Volumes that should be mounted into the container.\n\n\n\n\nExceptions\n\n\nNone\n\n\nExample\n\n\ndockerExecute\n(\ndockerImage:\n \nmaven:3.5-jdk-7\n){\n\n    \nsh\n \nmvn clean install\n\n\n}", 
+            "text": "dockerExecute\n\n\nDescription\n\n\nExecutes a closure inside a docker container with the specified docker image. \nThe workspace is mounted into the docker image.\nProxy environment variables defined on the Jenkins machine are also available in the Docker container.\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\ndockerImage\n\n\nno\n\n\n''\n\n\n\n\n\n\n\n\ndockerEnvVars\n\n\nno\n\n\n[:]\n\n\n\n\n\n\n\n\ndockerOptions\n\n\nno\n\n\n''\n\n\n\n\n\n\n\n\ndockerVolumeBind\n\n\nno\n\n\n[:]\n\n\n\n\n\n\n\n\n\n\n\n\ndockerImage\n Name of the docker image that should be used. If empty, Docker is not used.\n\n\ndockerEnvVars\n Environment variables to set in the container, e.g. [http_proxy:'proxy:8080']\n\n\ndockerOptions\n Docker options to be set when starting the container.\n\n\ndockerVolumeBind\n Volumes that should be mounted into the container.\n\n\n\n\nStep configuration\n\n\nNone\n\n\nExceptions\n\n\nNone\n\n\nExample\n\n\ndockerExecute\n(\ndockerImage:\n \nmaven:3.5-jdk-7\n){\n\n    \nsh\n \nmvn clean install\n\n\n}", 
             "title": "dockerExecute"
         }, 
         {
@@ -506,6 +506,11 @@
             "title": "Parameters"
         }, 
         {
+            "location": "/steps/dockerExecute/#step-configuration", 
+            "text": "None", 
+            "title": "Step configuration"
+        }, 
+        {
             "location": "/steps/dockerExecute/#exceptions", 
             "text": "None", 
             "title": "Exceptions"
@@ -517,7 +522,7 @@
         }, 
         {
             "location": "/steps/durationMeasure/", 
-            "text": "durationMeasure\n\n\nDescription\n\n\nThis step is used to measure the duration of a set of steps, e.g. a certain stage.\nThe duration is stored in a Map. The measurement data can then be written to an Influx database using step \ninfluxWriteData\n.\n\n\n\n\nTip\n\n\nMeasuring for example the duration of pipeline stages helps to identify potential bottlenecks within the deployment pipeline.\nThis then helps to counter identified issues with respective optimization measures, e.g parallelization of tests.\n\n\n\n\nPrerequisites\n\n\nnone\n\n\nPipeline configuration\n\n\nnone\n\n\nExplanation of pipeline step\n\n\nUsage of pipeline step:\n\n\ndurationMeasure\n \n(\nscript:\n \nthis\n,\n \nmeasurementName:\n \nbuild_duration\n)\n \n{\n\n    \n//execute your build\n\n\n}\n\n\n\n\n\nAvailable parameters:\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nscript\n\n\nno\n\n\nempty \nglobalPipelineEnvironment\n\n\n\n\n\n\n\n\nmeasurementName\n\n\nno\n\n\ntest_duration\n\n\n\n\n\n\n\n\n\n\nDetails:\n\n\n\n\nscript\n defines the global script environment of the Jenkinsfile run. Typically \nthis\n is passed to this parameter. This allows the function to access the \ncommonPipelineEnvironment\n for storing the measured duration.\n\n\nmeasurementName\n defines the name of the measurement which is written to the Influx database.", 
+            "text": "durationMeasure\n\n\nDescription\n\n\nThis step is used to measure the duration of a set of steps, e.g. a certain stage.\nThe duration is stored in a Map. The measurement data can then be written to an Influx database using step \ninfluxWriteData\n.\n\n\n\n\nTip\n\n\nMeasuring for example the duration of pipeline stages helps to identify potential bottlenecks within the deployment pipeline.\nThis then helps to counter identified issues with respective optimization measures, e.g parallelization of tests.\n\n\n\n\nPrerequisites\n\n\nnone\n\n\nPipeline configuration\n\n\nnone\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nscript\n\n\nno\n\n\nempty \nglobalPipelineEnvironment\n\n\n\n\n\n\n\n\nmeasurementName\n\n\nno\n\n\ntest_duration\n\n\n\n\n\n\n\n\n\n\nDetails:\n\n\n\n\nscript\n defines the global script environment of the Jenkinsfile run. Typically \nthis\n is passed to this parameter. This allows the function to access the \ncommonPipelineEnvironment\n for storing the measured duration.\n\n\nmeasurementName\n defines the name of the measurement which is written to the Influx database.\n\n\n\n\nStep configuration\n\n\nnone\n\n\nExample\n\n\ndurationMeasure\n \n(\nscript:\n \nthis\n,\n \nmeasurementName:\n \nbuild_duration\n)\n \n{\n\n    \n//execute your build\n\n\n}", 
             "title": "durationMeasure"
         }, 
         {
@@ -541,13 +546,23 @@
             "title": "Pipeline configuration"
         }, 
         {
-            "location": "/steps/durationMeasure/#explanation-of-pipeline-step", 
-            "text": "Usage of pipeline step:  durationMeasure   ( script:   this ,   measurementName:   build_duration )   { \n     //execute your build  }   Available parameters:     parameter  mandatory  default  possible values      script  no  empty  globalPipelineEnvironment     measurementName  no  test_duration      Details:   script  defines the global script environment of the Jenkinsfile run. Typically  this  is passed to this parameter. This allows the function to access the  commonPipelineEnvironment  for storing the measured duration.  measurementName  defines the name of the measurement which is written to the Influx database.", 
-            "title": "Explanation of pipeline step"
+            "location": "/steps/durationMeasure/#parameters", 
+            "text": "parameter  mandatory  default  possible values      script  no  empty  globalPipelineEnvironment     measurementName  no  test_duration      Details:   script  defines the global script environment of the Jenkinsfile run. Typically  this  is passed to this parameter. This allows the function to access the  commonPipelineEnvironment  for storing the measured duration.  measurementName  defines the name of the measurement which is written to the Influx database.", 
+            "title": "Parameters"
+        }, 
+        {
+            "location": "/steps/durationMeasure/#step-configuration", 
+            "text": "none", 
+            "title": "Step configuration"
+        }, 
+        {
+            "location": "/steps/durationMeasure/#example", 
+            "text": "durationMeasure   ( script:   this ,   measurementName:   build_duration )   { \n     //execute your build  }", 
+            "title": "Example"
         }, 
         {
             "location": "/steps/handlePipelineStepErrors/", 
-            "text": "handlePipelineStepErrors\n\n\nDescription\n\n\nUsed by other steps to make error analysis easier. Lists parameters and other data available to the step in which the error occurs.\n\n\nPrerequisites\n\n\nnone\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nstepParameters\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nstepName\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nechoDetails\n\n\nyes\n\n\ntrue\n\n\ntrue, false\n\n\n\n\n\n\n\n\n\n\nstepParameters\n - The parameters from the step to be executed. The list of parameters is then shown in the console output.\n\n\nstepName\n - The name of the step executed to be shown in the console output.\n\n\nechoDetails\n - If set to true the following will be output to the console:\n\n\nStep beginning: \n--- BEGIN LIBRARY STEP: ${stepName}.groovy ---\n\n\nStep end: \n--- END LIBRARY STEP: ${stepName}.groovy ---\n\n\nStep errors: \n\n----------------------------------------------------------\n--- ERROR OCCURED IN LIBRARY STEP: ${stepName}\n----------------------------------------------------------\nFOLLOWING PARAMETERS WERE AVAILABLE TO THIS STEP:\n***\n${stepParameters}\n***\nERROR WAS:\n***\n${err}\n***\nFURTHER INFORMATION:\n* Documentation of step ${stepName}: .../${stepName}/\n* Pipeline documentation: https://...\n* GitHub repository for pipeline steps: https://...\n----------------------------------------------------------\n\n\n\n\n\n\n\n\n\nReturn value\n\n\nnone\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\nnone\n\n\nExample\n\n\nhandlePipelineStepErrors\n \n(\nstepName:\n \nexecuteHealthCheck\n,\n \nstepParameters:\n \nparameters\n)\n \n{\n\n  \ndef\n \nurl\n \n=\n \nnew\n \nUtils\n().\ngetMandatoryParameter\n(\nparameters\n,\n \nurl\n,\n \nnull\n)\n\n  \ndef\n \nstatusCode\n \n=\n \ncurl\n(\nurl\n)\n\n  \nif\n \n(\nstatusCode\n \n!=\n \n200\n)\n\n    \nerror\n \nHealth Check failed: ${statusCode}\n\n\n}", 
+            "text": "handlePipelineStepErrors\n\n\nDescription\n\n\nUsed by other steps to make error analysis easier. Lists parameters and other data available to the step in which the error occurs.\n\n\nPrerequisites\n\n\nnone\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nstepParameters\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nstepName\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nechoDetails\n\n\nyes\n\n\ntrue\n\n\ntrue, false\n\n\n\n\n\n\n\n\n\n\nstepParameters\n - The parameters from the step to be executed. The list of parameters is then shown in the console output.\n\n\nstepName\n - The name of the step executed to be shown in the console output.\n\n\nechoDetails\n - If set to true the following will be output to the console:\n\n\nStep beginning: \n--- BEGIN LIBRARY STEP: ${stepName}.groovy ---\n\n\nStep end: \n--- END LIBRARY STEP: ${stepName}.groovy ---\n\n\nStep errors: \n\n----------------------------------------------------------\n--- ERROR OCCURED IN LIBRARY STEP: ${stepName}\n----------------------------------------------------------\nFOLLOWING PARAMETERS WERE AVAILABLE TO THIS STEP:\n***\n${stepParameters}\n***\nERROR WAS:\n***\n${err}\n***\nFURTHER INFORMATION:\n* Documentation of step ${stepName}: .../${stepName}/\n* Pipeline documentation: https://...\n* GitHub repository for pipeline steps: https://...\n----------------------------------------------------------\n\n\n\n\n\n\n\n\n\nStep configuration\n\n\nnone\n\n\nReturn value\n\n\nnone\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\nnone\n\n\nExample\n\n\nhandlePipelineStepErrors\n \n(\nstepName:\n \nexecuteHealthCheck\n,\n \nstepParameters:\n \nparameters\n)\n \n{\n\n  \ndef\n \nurl\n \n=\n \nnew\n \nUtils\n().\ngetMandatoryParameter\n(\nparameters\n,\n \nurl\n,\n \nnull\n)\n\n  \ndef\n \nstatusCode\n \n=\n \ncurl\n(\nurl\n)\n\n  \nif\n \n(\nstatusCode\n \n!=\n \n200\n)\n\n    \nerror\n \nHealth Check failed: ${statusCode}\n\n\n}", 
             "title": "handlePipelineStepErrors"
         }, 
         {
@@ -571,6 +586,11 @@
             "title": "Parameters"
         }, 
         {
+            "location": "/steps/handlePipelineStepErrors/#step-configuration", 
+            "text": "none", 
+            "title": "Step configuration"
+        }, 
+        {
             "location": "/steps/handlePipelineStepErrors/#return-value", 
             "text": "none", 
             "title": "Return value"
@@ -592,7 +612,7 @@
         }, 
         {
             "location": "/steps/influxWriteData/", 
-            "text": "influxWriteData\n\n\nDescription\n\n\nSince your Continuous Delivery Pipeline in Jenkins provides your productive development and delivery infrastructure you should monitor the pipeline to ensure it runs as expected. How to setup this monitoring is described in the following.\n\n\nYou basically need three components:\n\n\n\n\nThe \nInfluxDB Jenkins plugin\n which allows you to send build metrics to InfluxDB servers\n\n\nThe \nInfluxDB\n to store this data (Docker available)\n\n\nA \nGrafana\n dashboard to visualize the data stored in InfluxDB (Docker available)\n\n\n\n\n\n\nno InfluxDB available?\n\n\nIf you don't have an InfluxDB available yet this step will still provide you some benefit.\n\n\nIt will create following files for you and archive them into your build:\n\n\n\n\njenkins_data.json\n: This file gives you build-specific information, like e.g. build result, stage where the build failed\n\n\npipeline_data.json\n: This file gives you detailed information about your pipeline, e.g. stage durations, steps executed, ...\n\n\n\n\n\n\nPrerequisites\n\n\nSetting up InfluxDB with Grafana\n\n\nThe easiest way to start with is using the available official docker images.\nYou can either run these docker containers on the same host on which you run your Jenkins or each docker on individual VMs (hosts).\nVery basic setup can be done like that (with user \"admin\" and password \"adminPwd\" for both InfluxDB and Grafana):\n\n\ndocker run -d -p 8083:8083 -p 8086:8086 --restart=always --name influxdb -v /var/influx_data:/var/lib/influxdb influxdb\ndocker run -d -p 3000:3000 --name grafana --restart=always --link influxdb:influxdb -e \nGF_SECURITY_ADMIN_PASSWORD=adminPwd\n grafana/grafana\n\n\n\n\n\nFor more advanced setup please reach out to the respective documentation:\n\n\n\n\nhttps://hub.docker.com/_/influxdb/ (and https://github.com/docker-library/docs/tree/master/influxdb)\n\n\nhttps://hub.docker.com/r/grafana/grafana/ (and https://github.com/grafana/grafana-docker)\n\n\n\n\nAfter you have started your InfluxDB docker you need to create a database:\n\n\n\n\nin a Webbrowser open the InfluxDB Web-UI using the following URL: \nhost of your docker\n:8083 (port 8083 is used for access via Web-UI, for Jenkins you use port 8086 to access the DB)\n\n\ncreate new DB (the name of this DB you need to provide later to Jenkins)\n\n\ncreate Admin user (this user you need to provide later to Jenkins)\n\n\n\n\n\n\nWith InfluxDB version 1.1 the InfluxDB Web-UI is deprecated\n\n\n\n\nYou can perform the above steps via commandline:\n\n\n\n\n\n\nThe following command will create a database with name \ndatabasename\n\n\n`curl -i -XPOST http://localhost:8086/query --data-urlencode \nq=CREATE DATABASE \\\ndatabasename\\\n`\n\n\n\n\n\n\n\n\n\nThe admin user with the name \nadminusername\n and the password \nadminuserpwd\n can be created with\n\n\n`curl -i -XPOST http://localhost:8086/query --data-urlencode \nq=CREATE USER \\\nadminusername\\\n WITH PASSWORD \n\\\nadminuserpwd\\\n WITH ALL PRIVILEGES\n`\n\n\n\n\n\n\n\n\n\nOnce you have started both docker containers and Influx and Grafana are running you need to configure the Jenkins Plugin according to your settings.\n\n\nPipeline configuration\n\n\nTo setup your Jenkins you need to do two configuration steps:\n\n\n\n\nConfigure Jenkins (via Manage Jenkins)\n\n\nAdapt pipeline configuration\n\n\n\n\nConfigure Jenkins\n\n\nOnce the plugin is available in your Jenkins:\n\n\n\n\ngo to \"Manage Jenkins\" \n \"Configure System\" \n scroll down to section \"influxdb target\"\n\n\nmaintain Influx data\n\n\n\n\n\n\nJenkins as a Service\n\n\nFor Jenkins as a Service instances this is already preset to the local InfluxDB with the name \njenkins\n. In this case there is not need to do any additional configuration.\n\n\n\n\nAdapt pipeline configuration\n\n\nYou need to define the influxDB server in your pipeline as it is defined in the InfluxDb plugin configuration (see above).\n\n\ninfluxDBServer\n=\njenkins\n\n\n\n\n\nExplanation of pipeline step\n\n\nExample usage of pipeline step:\n\n\ninfluxWriteData\n \nscript:\n \nthis\n\n\n\n\n\nAvailable parameters:\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nscript\n\n\nno\n\n\nempty \ncommonPipelineEnvironment\n\n\n\n\n\n\n\n\nartifactVersion\n\n\nyes\n\n\ncommonPipelineEnvironment.getArtifactVersion()\n\n\n\n\n\n\n\n\ninfluxServer\n\n\nno\n\n\njenkins\n\n\n\n\n\n\n\n\ninfluxPrefix\n\n\nno\n\n\nnull\n\n\n\n\n\n\n\n\n\n\nWork with InfluxDB and Grafana\n\n\nYou can access your \nGrafana\n via Web-UI: \nhost of your grafana(-docker)\n:\nport3000\n\n(or another port in case you have defined another one when starting your docker)\n\n\nAs a first step you need to add your InfluxDB as Data source to your Grafana:\n- Login as user admin (PW as defined when starting your docker)\n- in the navigation go to data sources -\n add data source:\n  - name\n  - type: InfluxDB\n  - Url: \\http://\nhost of your InfluxDB server\n:\nport\n\n  - Access: direct (not via proxy)\n  - database: \nname of the DB as specified above\n\n  - User: \nname of the admin user as specified in step above\n\n  - Password: \npassword of the admin user as specified in step above\n\n\n\n\nJenkins as a Service\n\n\nFor Jenkins as a Service the data source configuration is already available.\n\n\nTherefore no need to go through the data source configuration step unless you want to add addtional data sources.\n\n\n\n\nData collected in InfluxDB\n\n\nThe Influx plugin collects following data in the Piper context:\n\n\n\n\nAll data as per default \nInfluxDB plugin capabilities\n\n\nAdditional data collected via \ncommonPipelineEnvironment.setInfluxCustomDataProperty()\n and via \ncommonPipelineEnvironment.setPipelineMeasurement()\n\n\n\n\n\n\nAdd custom information to your InfluxDB\n\n\nYou can simply add custom data collected during your pipeline runs via available data objects.\nExample:\n\n\n//add data to measurement jenkins_custom_data - value can be a String or a Number\n\n\ncommonPipelineEnvironment\n.\nsetInfluxCustomDataProperty\n(\nmyProperty\n,\n \n2018\n)\n\n\n\n\n\n\n\nCollected InfluxDB measurements\n\n\nMeasurements are potentially pre-fixed - see parameter \ninfluxPrefix\n above.\n\n\n\n\n\n\n\n\nMeasurement name\n\n\ndata column\n\n\ndescription\n\n\n\n\n\n\n\n\n\n\nAll measurements\n\n\nbuild_number\nproject_name\n\n\nAll below measurements will have these columns. \nDetails see \nInfluxDB plugin documentation\n\n\n\n\n\n\njenkins_data\n\n\nbuild_result\nbuild_time\nlast_successful_build\ntests_failed\ntests_skipped\ntests_total\n...\n\n\nDetails see \nInfluxDB plugin documentation\n\n\n\n\n\n\ncobertura_data\n\n\ncobertura_branch_coverage_rate\ncobertura_class_coverage_rate\ncobertura_line_coverage_rate\ncobertura_package_coverage_rate\n...\n\n\nDetails see \nInfluxDB plugin documentation\n\n\n\n\n\n\njacoco_data\n\n\njacoco_branch_coverage_rate\njacoco_class_coverage_rate\njacoco_instruction_coverage_rate\njacoco_line_coverage_rate\njacoco_method_coverage_rate\n\n\nDetails see \nInfluxDB plugin documentation\n\n\n\n\n\n\nperformance_data\n\n\n90Percentile\naverage\nmax\nmedian\nmin\nerror_count\nerror_percent\n...\n\n\nDetails see \nInfluxDB plugin documentation\n\n\n\n\n\n\nsonarqube_data\n\n\nblocker_issues\ncritical_issues\ninfo_issues\nmajor_issues\nminor_issues\nlines_of_code\n...\n\n\nDetails see \nInfluxDB plugin documentation\n\n\n\n\n\n\njenkins_custom_data\n\n\nPiper fills following colums by default: \nbuild_result\nbuild_result_key\nbuild_step (-\nstep in case of error)\nbuild_error (-\nerror message in case of error)\n\n\nfilled by \ncommonPipelineEnvironment.setInfluxCustomDataProperty()\n\n\n\n\n\n\npipeline_data\n\n\nExamples from the Piper templates:\nbuild_duration\nopa_duration\ndeploy_test_duration\ndeploy_test_duration\nfortify_duration\nrelease_duration\n...\n\n\nfilled by step \nmeasureDuration\n using parameter \nmeasurementName\n\n\n\n\n\n\nstep_data\n\n\nConsidered, e.g.:\nbuild_quality (Milestone/Release)\nbuild_url\nbats\ncheckmarx\nfortify\ngauge\nnsp\nopa\nopensourcedependency\nppms\njmeter\nsupa\nsnyk\nsonar\nsourceclear\nuiveri5\nvulas\nwhitesource\ntraceability\n...\nxmakestage\nxmakepromote\n\n\nfilled by \ncommonPipelineEnvironment.setInfluxStepData()\n\n\n\n\n\n\n\n\nExamples for InfluxDB queries which can be used in Grafana\n\n\n\n\nProject Names containing dashes (-)\n\n\nThe InfluxDB plugin replaces dashes (-) with underscores (_).\n\n\nPlease keep this in mind when specifying your project_name for a InfluxDB query.\n\n\n\n\nExample 1: Select last 10 successful builds\n\n\nselect top(build_number,10), build_result from jenkins_data WHERE build_result = \nSUCCESS\n\n\n\n\n\nExample 2: Select last 10 step names of failed builds\n\n\nselect top(build_number,10), build_result, build_step from jenkins_custom_data WHERE build_result = \nFAILURE\n\n\n\n\n\nExample 3: Select build duration of step for a specific project\n\n\nselect build_duration / 1000 from \npipeline_data\n WHERE project_name=\nPiperTestOrg_piper_test_master\n\n\n\n\n\nExample 4: Get transparency about successful/failed steps for a specific project\n\n\nselect top(build_number,10) AS \nBuild\n, build_url, build_quality, fortify, gauge, vulas, opa from step_data WHERE project_name=\nPiperTestOrg_piper_test_master\n\n\n\n\n\n\n\nNote\n\n\nWith this query you can create transparency about which steps ran successfully / not successfully in your pipeline and which ones were not executed at all.\n\n\nBy specifying all the steps you consider relevant in your select statement it is very easy to create this transparency.", 
+            "text": "influxWriteData\n\n\nDescription\n\n\nSince your Continuous Delivery Pipeline in Jenkins provides your productive development and delivery infrastructure you should monitor the pipeline to ensure it runs as expected. How to setup this monitoring is described in the following.\n\n\nYou basically need three components:\n\n\n\n\nThe \nInfluxDB Jenkins plugin\n which allows you to send build metrics to InfluxDB servers\n\n\nThe \nInfluxDB\n to store this data (Docker available)\n\n\nA \nGrafana\n dashboard to visualize the data stored in InfluxDB (Docker available)\n\n\n\n\n\n\nno InfluxDB available?\n\n\nIf you don't have an InfluxDB available yet this step will still provide you some benefit.\n\n\nIt will create following files for you and archive them into your build:\n\n\n\n\njenkins_data.json\n: This file gives you build-specific information, like e.g. build result, stage where the build failed\n\n\npipeline_data.json\n: This file gives you detailed information about your pipeline, e.g. stage durations, steps executed, ...\n\n\n\n\n\n\nPrerequisites\n\n\nSetting up InfluxDB with Grafana\n\n\nThe easiest way to start with is using the available official docker images.\nYou can either run these docker containers on the same host on which you run your Jenkins or each docker on individual VMs (hosts).\nVery basic setup can be done like that (with user \"admin\" and password \"adminPwd\" for both InfluxDB and Grafana):\n\n\ndocker run -d -p 8083:8083 -p 8086:8086 --restart=always --name influxdb -v /var/influx_data:/var/lib/influxdb influxdb\ndocker run -d -p 3000:3000 --name grafana --restart=always --link influxdb:influxdb -e \nGF_SECURITY_ADMIN_PASSWORD=adminPwd\n grafana/grafana\n\n\n\n\n\nFor more advanced setup please reach out to the respective documentation:\n\n\n\n\nhttps://hub.docker.com/_/influxdb/ (and https://github.com/docker-library/docs/tree/master/influxdb)\n\n\nhttps://hub.docker.com/r/grafana/grafana/ (and https://github.com/grafana/grafana-docker)\n\n\n\n\nAfter you have started your InfluxDB docker you need to create a database:\n\n\n\n\nin a Webbrowser open the InfluxDB Web-UI using the following URL: \nhost of your docker\n:8083 (port 8083 is used for access via Web-UI, for Jenkins you use port 8086 to access the DB)\n\n\ncreate new DB (the name of this DB you need to provide later to Jenkins)\n\n\ncreate Admin user (this user you need to provide later to Jenkins)\n\n\n\n\n\n\nWith InfluxDB version 1.1 the InfluxDB Web-UI is deprecated\n\n\n\n\nYou can perform the above steps via commandline:\n\n\n\n\n\n\nThe following command will create a database with name \ndatabasename\n\n\n`curl -i -XPOST http://localhost:8086/query --data-urlencode \nq=CREATE DATABASE \\\ndatabasename\\\n`\n\n\n\n\n\n\n\n\n\nThe admin user with the name \nadminusername\n and the password \nadminuserpwd\n can be created with\n\n\n`curl -i -XPOST http://localhost:8086/query --data-urlencode \nq=CREATE USER \\\nadminusername\\\n WITH PASSWORD \n\\\nadminuserpwd\\\n WITH ALL PRIVILEGES\n`\n\n\n\n\n\n\n\n\n\nOnce you have started both docker containers and Influx and Grafana are running you need to configure the Jenkins Plugin according to your settings.\n\n\nPipeline configuration\n\n\nTo setup your Jenkins you need to do two configuration steps:\n\n\n\n\nConfigure Jenkins (via Manage Jenkins)\n\n\nAdapt pipeline configuration\n\n\n\n\nConfigure Jenkins\n\n\nOnce the plugin is available in your Jenkins:\n\n\n\n\ngo to \"Manage Jenkins\" \n \"Configure System\" \n scroll down to section \"influxdb target\"\n\n\nmaintain Influx data\n\n\n\n\n\n\nJenkins as a Service\n\n\nFor Jenkins as a Service instances this is already preset to the local InfluxDB with the name \njenkins\n. In this case there is not need to do any additional configuration.\n\n\n\n\nAdapt pipeline configuration\n\n\nYou need to define the influxDB server in your pipeline as it is defined in the InfluxDb plugin configuration (see above).\n\n\ninfluxDBServer\n=\njenkins\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nscript\n\n\nno\n\n\nempty \ncommonPipelineEnvironment\n\n\n\n\n\n\n\n\nartifactVersion\n\n\nyes\n\n\ncommonPipelineEnvironment.getArtifactVersion()\n\n\n\n\n\n\n\n\ninfluxServer\n\n\nno\n\n\njenkins\n\n\n\n\n\n\n\n\ninfluxPrefix\n\n\nno\n\n\nnull\n\n\n\n\n\n\n\n\n\n\nStep configuration\n\n\nThe following parameters can also be specified as step parameters using the global configuration file:\n\n\n\n\ninfluxServer\n\n\ninfluxPrefix\n\n\n\n\nExample\n\n\ninfluxWriteData\n \nscript:\n \nthis\n\n\n\n\n\nWork with InfluxDB and Grafana\n\n\nYou can access your \nGrafana\n via Web-UI: \nhost of your grafana(-docker)\n:\nport3000\n\n(or another port in case you have defined another one when starting your docker)\n\n\nAs a first step you need to add your InfluxDB as Data source to your Grafana:\n- Login as user admin (PW as defined when starting your docker)\n- in the navigation go to data sources -\n add data source:\n  - name\n  - type: InfluxDB\n  - Url: \\http://\nhost of your InfluxDB server\n:\nport\n\n  - Access: direct (not via proxy)\n  - database: \nname of the DB as specified above\n\n  - User: \nname of the admin user as specified in step above\n\n  - Password: \npassword of the admin user as specified in step above\n\n\n\n\nJenkins as a Service\n\n\nFor Jenkins as a Service the data source configuration is already available.\n\n\nTherefore no need to go through the data source configuration step unless you want to add addtional data sources.\n\n\n\n\nData collected in InfluxDB\n\n\nThe Influx plugin collects following data in the Piper context:\n\n\n\n\nAll data as per default \nInfluxDB plugin capabilities\n\n\nAdditional data collected via \ncommonPipelineEnvironment.setInfluxCustomDataProperty()\n and via \ncommonPipelineEnvironment.setPipelineMeasurement()\n\n\n\n\n\n\nAdd custom information to your InfluxDB\n\n\nYou can simply add custom data collected during your pipeline runs via available data objects.\nExample:\n\n\n//add data to measurement jenkins_custom_data - value can be a String or a Number\n\n\ncommonPipelineEnvironment\n.\nsetInfluxCustomDataProperty\n(\nmyProperty\n,\n \n2018\n)\n\n\n\n\n\n\n\nCollected InfluxDB measurements\n\n\nMeasurements are potentially pre-fixed - see parameter \ninfluxPrefix\n above.\n\n\n\n\n\n\n\n\nMeasurement name\n\n\ndata column\n\n\ndescription\n\n\n\n\n\n\n\n\n\n\nAll measurements\n\n\nbuild_number\nproject_name\n\n\nAll below measurements will have these columns. \nDetails see \nInfluxDB plugin documentation\n\n\n\n\n\n\njenkins_data\n\n\nbuild_result\nbuild_time\nlast_successful_build\ntests_failed\ntests_skipped\ntests_total\n...\n\n\nDetails see \nInfluxDB plugin documentation\n\n\n\n\n\n\ncobertura_data\n\n\ncobertura_branch_coverage_rate\ncobertura_class_coverage_rate\ncobertura_line_coverage_rate\ncobertura_package_coverage_rate\n...\n\n\nDetails see \nInfluxDB plugin documentation\n\n\n\n\n\n\njacoco_data\n\n\njacoco_branch_coverage_rate\njacoco_class_coverage_rate\njacoco_instruction_coverage_rate\njacoco_line_coverage_rate\njacoco_method_coverage_rate\n\n\nDetails see \nInfluxDB plugin documentation\n\n\n\n\n\n\nperformance_data\n\n\n90Percentile\naverage\nmax\nmedian\nmin\nerror_count\nerror_percent\n...\n\n\nDetails see \nInfluxDB plugin documentation\n\n\n\n\n\n\nsonarqube_data\n\n\nblocker_issues\ncritical_issues\ninfo_issues\nmajor_issues\nminor_issues\nlines_of_code\n...\n\n\nDetails see \nInfluxDB plugin documentation\n\n\n\n\n\n\njenkins_custom_data\n\n\nPiper fills following colums by default: \nbuild_result\nbuild_result_key\nbuild_step (-\nstep in case of error)\nbuild_error (-\nerror message in case of error)\n\n\nfilled by \ncommonPipelineEnvironment.setInfluxCustomDataProperty()\n\n\n\n\n\n\npipeline_data\n\n\nExamples from the Piper templates:\nbuild_duration\nopa_duration\ndeploy_test_duration\ndeploy_test_duration\nfortify_duration\nrelease_duration\n...\n\n\nfilled by step \nmeasureDuration\n using parameter \nmeasurementName\n\n\n\n\n\n\nstep_data\n\n\nConsidered, e.g.:\nbuild_quality (Milestone/Release)\nbuild_url\nbats\ncheckmarx\nfortify\ngauge\nnsp\nopa\nopensourcedependency\nppms\njmeter\nsupa\nsnyk\nsonar\nsourceclear\nuiveri5\nvulas\nwhitesource\ntraceability\n...\nxmakestage\nxmakepromote\n\n\nfilled by \ncommonPipelineEnvironment.setInfluxStepData()\n\n\n\n\n\n\n\n\nExamples for InfluxDB queries which can be used in Grafana\n\n\n\n\nProject Names containing dashes (-)\n\n\nThe InfluxDB plugin replaces dashes (-) with underscores (_).\n\n\nPlease keep this in mind when specifying your project_name for a InfluxDB query.\n\n\n\n\nExample 1: Select last 10 successful builds\n\n\nselect top(build_number,10), build_result from jenkins_data WHERE build_result = \nSUCCESS\n\n\n\n\n\nExample 2: Select last 10 step names of failed builds\n\n\nselect top(build_number,10), build_result, build_step from jenkins_custom_data WHERE build_result = \nFAILURE\n\n\n\n\n\nExample 3: Select build duration of step for a specific project\n\n\nselect build_duration / 1000 from \npipeline_data\n WHERE project_name=\nPiperTestOrg_piper_test_master\n\n\n\n\n\nExample 4: Get transparency about successful/failed steps for a specific project\n\n\nselect top(build_number,10) AS \nBuild\n, build_url, build_quality, fortify, gauge, vulas, opa from step_data WHERE project_name=\nPiperTestOrg_piper_test_master\n\n\n\n\n\n\n\nNote\n\n\nWith this query you can create transparency about which steps ran successfully / not successfully in your pipeline and which ones were not executed at all.\n\n\nBy specifying all the steps you consider relevant in your select statement it is very easy to create this transparency.", 
             "title": "influxWriteData"
         }, 
         {
@@ -631,9 +651,19 @@
             "title": "Adapt pipeline configuration"
         }, 
         {
-            "location": "/steps/influxWriteData/#explanation-of-pipeline-step", 
-            "text": "Example usage of pipeline step:  influxWriteData   script:   this   Available parameters:     parameter  mandatory  default  possible values      script  no  empty  commonPipelineEnvironment     artifactVersion  yes  commonPipelineEnvironment.getArtifactVersion()     influxServer  no  jenkins     influxPrefix  no  null", 
-            "title": "Explanation of pipeline step"
+            "location": "/steps/influxWriteData/#parameters", 
+            "text": "parameter  mandatory  default  possible values      script  no  empty  commonPipelineEnvironment     artifactVersion  yes  commonPipelineEnvironment.getArtifactVersion()     influxServer  no  jenkins     influxPrefix  no  null", 
+            "title": "Parameters"
+        }, 
+        {
+            "location": "/steps/influxWriteData/#step-configuration", 
+            "text": "The following parameters can also be specified as step parameters using the global configuration file:   influxServer  influxPrefix", 
+            "title": "Step configuration"
+        }, 
+        {
+            "location": "/steps/influxWriteData/#example", 
+            "text": "influxWriteData   script:   this", 
+            "title": "Example"
         }, 
         {
             "location": "/steps/influxWriteData/#work-with-influxdb-and-grafana", 
@@ -677,7 +707,7 @@
         }, 
         {
             "location": "/steps/mavenExecute/", 
-            "text": "mavenExecute\n\n\nDescription\n\n\nExecutes a maven command inside a Docker container.\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\nexample values\n\n\n\n\n\n\n\n\n\n\ndockerImage\n\n\nno\n\n\n'maven:3.5-jdk-7'\n\n\n\n\n\n\n\n\nglobalSettingsFile\n\n\nno\n\n\n\n\n'local_folder/settings.xml'\n\n\n\n\n\n\nprojectSettingsFile\n\n\nno\n\n\n\n\n\n\n\n\n\n\npomPath\n\n\nno\n\n\n\n\n'local_folder/m2'\n\n\n\n\n\n\nflags\n\n\nno\n\n\n\n\n'-o'\n\n\n\n\n\n\ngoals\n\n\nno\n\n\n\n\n'clean install'\n\n\n\n\n\n\nm2Path\n\n\nno\n\n\n\n\n'local_folder/m2'\n\n\n\n\n\n\ndefines\n\n\nno\n\n\n\n\n'-Dmaven.tests.skip=true'\n\n\n\n\n\n\n\n\n\n\ndockerImage\n Name of the docker image that should be used.\n\n\nglobalSettingsFile\n Path or url to the mvn settings file that should be used as global settings file. \n\n\nprojectSettingsFile\n Path or url to the mvn settings file that should be used as project settings file.\n\n\npomPath\n Path to the pom file that should be used.\n\n\nflags\n Flags to provide when running mvn.\n\n\ngoals\n Maven goals that should be executed.\n\n\nm2Path\n Path to the location of the local repository that should be used.\n\n\ndefines\n Additional properties.\n\n\n\n\nGlobal Configuration\n\n\nThe following parameters can also be specified using the global configuration file:\n\n \ndockerImage\n\n\n \nglobalSettingsFile\n\n\n \nprojectSettingsFile\n\n\n \npomPath\n\n* \nm2Path\n\n\nExceptions\n\n\nNone\n\n\nExample\n\n\nmavenExecute\n \nscript:\n \nthis\n,\n \ngoals:\n \nclean install", 
+            "text": "mavenExecute\n\n\nDescription\n\n\nExecutes a maven command inside a Docker container.\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\nexample values\n\n\n\n\n\n\n\n\n\n\ndockerImage\n\n\nno\n\n\n'maven:3.5-jdk-7'\n\n\n\n\n\n\n\n\nglobalSettingsFile\n\n\nno\n\n\n\n\n'local_folder/settings.xml'\n\n\n\n\n\n\nprojectSettingsFile\n\n\nno\n\n\n\n\n\n\n\n\n\n\npomPath\n\n\nno\n\n\n\n\n'local_folder/m2'\n\n\n\n\n\n\nflags\n\n\nno\n\n\n\n\n'-o'\n\n\n\n\n\n\ngoals\n\n\nno\n\n\n\n\n'clean install'\n\n\n\n\n\n\nm2Path\n\n\nno\n\n\n\n\n'local_folder/m2'\n\n\n\n\n\n\ndefines\n\n\nno\n\n\n\n\n'-Dmaven.tests.skip=true'\n\n\n\n\n\n\n\n\n\n\ndockerImage\n Name of the docker image that should be used.\n\n\nglobalSettingsFile\n Path or url to the mvn settings file that should be used as global settings file. \n\n\nprojectSettingsFile\n Path or url to the mvn settings file that should be used as project settings file.\n\n\npomPath\n Path to the pom file that should be used.\n\n\nflags\n Flags to provide when running mvn.\n\n\ngoals\n Maven goals that should be executed.\n\n\nm2Path\n Path to the location of the local repository that should be used.\n\n\ndefines\n Additional properties.\n\n\n\n\nStep configuration\n\n\nThe following parameters can also be specified as step parameters using the global configuration file:\n\n\n\n\ndockerImage\n\n\nglobalSettingsFile\n\n\nprojectSettingsFile\n\n\npomPath\n\n\nm2Path\n\n\n\n\nExceptions\n\n\nNone\n\n\nExample\n\n\nmavenExecute\n \nscript:\n \nthis\n,\n \ngoals:\n \nclean install", 
             "title": "mavenExecute"
         }, 
         {
@@ -696,9 +726,9 @@
             "title": "Parameters"
         }, 
         {
-            "location": "/steps/mavenExecute/#global-configuration", 
-            "text": "The following parameters can also be specified using the global configuration file:   dockerImage    globalSettingsFile    projectSettingsFile    pomPath \n*  m2Path", 
-            "title": "Global Configuration"
+            "location": "/steps/mavenExecute/#step-configuration", 
+            "text": "The following parameters can also be specified as step parameters using the global configuration file:   dockerImage  globalSettingsFile  projectSettingsFile  pomPath  m2Path", 
+            "title": "Step configuration"
         }, 
         {
             "location": "/steps/mavenExecute/#exceptions", 
@@ -712,7 +742,7 @@
         }, 
         {
             "location": "/steps/mtaBuild/", 
-            "text": "mtaBuild\n\n\nDescription\n\n\nExecutes the SAP MTA Archive Builder to create an mtar archive of the application.\n\n\nPrerequisites\n\n\n\n\nSAP MTA Archive Builder\n - available for download on the SAP Marketplace.\n\n\nJava 8 or higher\n - necessary to run the \nmta.jar\n file.\n\n\nNodeJS installed\n - the MTA Builder uses \nnpm\n to download node module dependencies such as \ngrunt\n.\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nscript\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nbuildTarget\n\n\nyes\n\n\n\n\n'CF', 'NEO', 'XSA'\n\n\n\n\n\n\nmtaJarLocation\n\n\nno\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nscript\n - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the \nthis\n parameter, as in \nscript: this\n. This allows the function to access the \ncommonPipelineEnvironment\n for retrieving, for example, configuration parameters.\n\n\nbuildTarget\n - The target platform to which the mtar can be deployed.\n\n\nmtaJarLocation\n - The path of the \nmta.jar\n file. If no parameter is provided, the path is retrieved from the Jenkins environment variables using \nenv.MTA_JAR_LOCATION\n. If the Jenkins environment variable is not set it is assumed that \nmta.jar\n is located in the current working directory.\n\n\n\n\nReturn value\n\n\nThe file name of the resulting archive is returned with this step. The file name is extracted from the key \nID\n defined in \nmta.yaml\n.\n\n\nSide effects\n\n\n\n\nThe file name of the resulting archive is written to the \ncommonPipelineEnvironment\n with variable name \nmtarFileName\n.\n\n\n\n\nExceptions\n\n\n\n\nAbortException\n:\n\n\nIf there is an invalid \nbuildTarget\n.\n\n\nIf there is no key \nID\n inside the \nmta.yaml\n file.\n\n\n\n\n\n\n\n\nExample\n\n\ndef\n \nmtarFileName\n\n\ndir\n(\n/path/to/FioriApp\n){\n\n  \nmtarFileName\n \n=\n \nmtaBuild\n \nscript:\nthis\n,\n \nbuildTarget:\n \nNEO\n\n\n}", 
+            "text": "mtaBuild\n\n\nDescription\n\n\nExecutes the SAP MTA Archive Builder to create an mtar archive of the application.\n\n\nPrerequisites\n\n\n\n\nSAP MTA Archive Builder\n - available for download on the SAP Marketplace.\n\n\nJava 8 or higher\n - necessary to run the \nmta.jar\n file.\n\n\nNodeJS installed\n - the MTA Builder uses \nnpm\n to download node module dependencies such as \ngrunt\n.\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nscript\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nbuildTarget\n\n\nyes\n\n\n'NEO'\n\n\n'CF', 'NEO', 'XSA'\n\n\n\n\n\n\nmtaJarLocation\n\n\nno\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nscript\n - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the \nthis\n parameter, as in \nscript: this\n. This allows the function to access the \ncommonPipelineEnvironment\n for retrieving, for example, configuration parameters.\n\n\nbuildTarget\n - The target platform to which the mtar can be deployed.\n\n\nmtaJarLocation\n - The path of the \nmta.jar\n file. If no parameter is provided, neither at the level of the method call nor via step configuration, the path is retrieved from the Jenkins environment variables using \nenv.MTA_JAR_LOCATION\n. If the Jenkins environment variable is not set it is assumed that \nmta.jar\n is located in the current working directory.\n\n\n\n\nStep configuration\n\n\nThe following parameters can also be specified as step parameters using the global configuration file:\n\n\n\n\nbuildTarget\n\n\nmtaJarLocation\n\n\n\n\nReturn value\n\n\nThe file name of the resulting archive is returned with this step. The file name is extracted from the key \nID\n defined in \nmta.yaml\n.\n\n\nSide effects\n\n\n\n\nThe file name of the resulting archive is written to the \ncommonPipelineEnvironment\n with variable name \nmtarFileName\n.\n\n\n\n\nExceptions\n\n\n\n\nAbortException\n:\n\n\nIf there is an invalid \nbuildTarget\n.\n\n\nIf there is no key \nID\n inside the \nmta.yaml\n file.\n\n\n\n\n\n\n\n\nExample\n\n\ndef\n \nmtarFileName\n\n\ndir\n(\n/path/to/FioriApp\n){\n\n  \nmtarFileName\n \n=\n \nmtaBuild\n \nscript:\nthis\n,\n \nbuildTarget:\n \nNEO\n\n\n}", 
             "title": "mtaBuild"
         }, 
         {
@@ -732,8 +762,13 @@
         }, 
         {
             "location": "/steps/mtaBuild/#parameters", 
-            "text": "parameter  mandatory  default  possible values      script  yes      buildTarget  yes   'CF', 'NEO', 'XSA'    mtaJarLocation  no        script  - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the  this  parameter, as in  script: this . This allows the function to access the  commonPipelineEnvironment  for retrieving, for example, configuration parameters.  buildTarget  - The target platform to which the mtar can be deployed.  mtaJarLocation  - The path of the  mta.jar  file. If no parameter is provided, the path is retrieved from the Jenkins environment variables using  env.MTA_JAR_LOCATION . If the Jenkins environment variable is not set it is assumed that  mta.jar  is located in the current working directory.", 
+            "text": "parameter  mandatory  default  possible values      script  yes      buildTarget  yes  'NEO'  'CF', 'NEO', 'XSA'    mtaJarLocation  no        script  - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the  this  parameter, as in  script: this . This allows the function to access the  commonPipelineEnvironment  for retrieving, for example, configuration parameters.  buildTarget  - The target platform to which the mtar can be deployed.  mtaJarLocation  - The path of the  mta.jar  file. If no parameter is provided, neither at the level of the method call nor via step configuration, the path is retrieved from the Jenkins environment variables using  env.MTA_JAR_LOCATION . If the Jenkins environment variable is not set it is assumed that  mta.jar  is located in the current working directory.", 
             "title": "Parameters"
+        }, 
+        {
+            "location": "/steps/mtaBuild/#step-configuration", 
+            "text": "The following parameters can also be specified as step parameters using the global configuration file:   buildTarget  mtaJarLocation", 
+            "title": "Step configuration"
         }, 
         {
             "location": "/steps/mtaBuild/#return-value", 
@@ -757,7 +792,7 @@
         }, 
         {
             "location": "/steps/neoDeploy/", 
-            "text": "neoDeploy\n\n\nDescription\n\n\nDeploys an Application to SAP Cloud Platform (SAP CP) using the SAP Cloud Platform Console Client (Neo Java Web SDK).\n\n\nPrerequisites\n\n\n\n\nSAP CP account\n - the account to where the application is deployed.\n\n\nSAP CP user for deployment\n - a user with deployment permissions in the given account.\n\n\nJenkins credentials for deployment\n - must be configured in Jenkins credentials with a dedicated Id.\n\n\n\n\n\n\n\n\n\n\nNeo Java Web SDK\n - can be downloaded from \nMaven Central\n. The Neo Java Web SDK\nneeds to be extracted into the folder provided by \nneoHome\n. In case this parameters is not provided and there is no NEO_HOME parameter in the environment\n\nneoRoot\n/tools\n needs to be in the \nPATH\n. This step is also capable of triggering the neo deploy tool provided inside a docker image.\n\n\n\n\n\n\nJava 8 or higher\n - needed by the \nNeo-Java-Web-SDK\n\n\n\n\n\n\nParameters when using MTA deployment method (default - MTA)\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\ndeployMode\n\n\nyes\n\n\n'MTA'\n\n\n'MTA'\n, \n'WAR_PARAMS'\n, \n'WAR_PROPERTIESFILE'\n\n\n\n\n\n\nscript\n\n\nyes\n\n\n\n\n\n\n\n\n\n\narchivePath\n\n\nyes\n\n\n\n\n\n\n\n\n\n\ndeployHost\n\n\nno\n\n\n'account'\n from step configuration \n'neoDeploy'\n, or propertey \n'DEPLOY_HOST'\n from \ncommonPipelineEnvironment\n (deprecated)\n\n\n\n\n\n\n\n\ndeployAccount\n\n\nno\n\n\n'host'\n from step configuration \n'neoDeploy'\n, or property \n'CI_DEPLOY_ACCOUNT'\n from \ncommonPipelineEnvironment\n (deprecated)\n\n\n\n\n\n\n\n\nneoCredentialsId\n\n\nno\n\n\n'neoCredentialsId'\n from step configuration \n'neoDeploy'\n or hard coded value \n'CI_CREDENTIALS_ID'\n\n\n\n\n\n\n\n\nneoHome\n\n\nno\n\n\nEnvironment is checked for \nNEO_HOME\n, \notherwise the neo toolset is expected in the path\n\n\n\n\n\n\n\n\n## Parameters when using WAR file deployment method with .properties file (WAR_PROPERTIESFILE)\n\n\n\n\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n-------------------\n\n\n-----------\n\n\n----------------------------------------------------------------------------------------------\n\n\n-------------------------------------------------\n\n\n\n\n\n\ndeployMode\n\n\nyes\n\n\n'MTA'\n\n\n'MTA'\n, \n'WAR_PARAMS'\n, \n'WAR_PROPERTIESFILE'\n\n\n\n\n\n\nwarAction\n\n\nyes\n\n\n'deploy'\n\n\n'deploy'\n, \n'rolling-update'\n\n\n\n\n\n\nscript\n\n\nyes\n\n\n\n\n\n\n\n\n\n\narchivePath\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nneoCredentialsId\n\n\nno\n\n\n'CI_CREDENTIALS_ID'\n\n\n\n\n\n\n\n\nneoHome\n\n\nno\n\n\nEnvironment is checked for \nNEO_HOME\n, \notherwise the neo toolset is expected in the path\n\n\n\n\n\n\n\n\npropertiesFile\n\n\nyes\n\n\n\n\n\n\n\n\n\n\n\n\nParameters when using WAR file deployment method witout .properties file - with parameters (WAR_PARAMS)\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\ndeployMode\n\n\nyes\n\n\n'MTA'\n\n\n'MTA'\n, \n'WAR_PARAMS'\n, \n'WAR_PROPERTIESFILE'\n\n\n\n\n\n\nwarAction\n\n\nyes\n\n\n'deploy'\n\n\n'deploy'\n, \n'rolling-update'\n\n\n\n\n\n\nscript\n\n\nyes\n\n\n\n\n\n\n\n\n\n\narchivePath\n\n\nyes\n\n\n\n\n\n\n\n\n\n\ndeployHost\n\n\nno\n\n\n'DEPLOY_HOST'\n from \ncommonPipelineEnvironment\n\n\n\n\n\n\n\n\ndeployAccount\n\n\nno\n\n\n'CI_DEPLOY_ACCOUNT'\n from \ncommonPipelineEnvironment\n\n\n\n\n\n\n\n\nneoCredentialsId\n\n\nno\n\n\n'CI_CREDENTIALS_ID'\n\n\n\n\n\n\n\n\nneoHome\n\n\nno\n\n\nEnvironment is checked for \nNEO_HOME\n, \notherwise the neo toolset is expected in the path\n\n\n\n\n\n\n\n\napplicationName\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nruntime\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nruntime-version\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nsize\n\n\nno\n\n\n'lite'\n\n\n'lite'\n, \n'pro'\n, \n'prem'\n, \n'prem-plus'\n\n\n\n\n\n\n\n\n\n\ndeployMode\n - The deployment mode which should be used. Available options are \n'MTA'\n (default), \n'WAR_PARAMS'\n (deploying WAR file and passing all the deployment parameters via the function call) and \n'WAR_PROPERTIESFILE'\n (deploying WAR file and putting all the deployment parameters in a .properties file)\n\n\nscript\n - The common script environment of the Jenkinsfile run. Typically \nthis\n is passed to this parameter. This allows the function to access the \ncommonPipelineEnvironment\n for retrieving e.g. configuration parameters.\n\n\narchivePath\n- The path to the archive for deployment to SAP CP.\n\n\ndeployHost\n - The SAP Cloud Platform host to deploy to.\n\n\ndeployAccount\n - The SAP Cloud Platform account to deploy to.\n\n\ncredentialsId\n - The Jenkins credentials containing user and password used for SAP CP deployment.\n\n\nneoHome\n - The path to the \nneo-java-web-sdk\n tool used for SAP CP deployment. If no parameter is provided, the path is retrieved from the Jenkins environment variables using \nenv.NEO_HOME\n. If this Jenkins environment variable is not set it is assumed that the tool is available in the \nPATH\n.\n\n\npropertiesFile\n - The path to the .properties file in which all necessary deployment properties for the application are defined.\n\n\nwarAction\n - Action mode when using WAR file mode. Available options are \ndeploy\n (default) and \nrolling-update\n which performs update of an application without downtime in one go.\n\n\napplicationName\n - Name of the application you want to manage, configure, or deploy\n\n\nruntime\n - Name of SAP Cloud Platform application runtime\n\n\nruntime-version\n - Version of SAP Cloud Platform application runtime\n\n\nsize\n - Compute unit (VM) size. Acceptable values: lite, pro, prem, prem-plus.\n\n\n\n\nReturn value\n\n\nnone\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\n\n\nException\n:\n\n\nIf \narchivePath\n is not provided.\n\n\nIf \npropertiesFile\n is not provided (when using \n'WAR_PROPERTIESFILE'\n deployment mode).\n\n\nIf \napplicationName\n is not provided (when using \n'WAR_PARAMS'\n deployment mode).\n\n\nIf \nruntime\n is not provided (when using \n'WAR_PARAMS'\n deployment mode).\n\n\nIf \nruntime-version\n is not provided (when using \n'WAR_PARAMS'\n deployment mode).\n\n\n\n\n\n\nAbortException\n:\n\n\nIf neo-java-web-sdk is not installed, or \nneoHome\nis wrong.\n\n\nIf \ndeployHost\n is wrong.\n\n\nIf \ndeployAccount\n is wrong.\n\n\n\n\n\n\nCredentialNotFoundException\n:\n\n\nIf the credentials cannot be resolved.\n\n\n\n\n\n\n\n\nExample\n\n\nneoDeploy\n \nscript:\n \nthis\n,\n \narchivePath:\n \npath/to/archiveFile.mtar\n,\n \ncredentialsId:\n \nmy-credentials-id\n\n\n\n\n\nExample configuration:\n\n\nsteps:\n  \n...\n\n  neoDeploy:\n\n        account: \nmyDeployAccount\n\n        host: hana.example.org", 
+            "text": "neoDeploy\n\n\nDescription\n\n\nDeploys an Application to SAP Cloud Platform (SAP CP) using the SAP Cloud Platform Console Client (Neo Java Web SDK).\n\n\nPrerequisites\n\n\n\n\nSAP CP account\n - the account to where the application is deployed.\n\n\nSAP CP user for deployment\n - a user with deployment permissions in the given account.\n\n\nJenkins credentials for deployment\n - must be configured in Jenkins credentials with a dedicated Id.\n\n\n\n\n\n\n\n\n\n\nNeo Java Web SDK\n - can be downloaded from \nMaven Central\n. The Neo Java Web SDK\nneeds to be extracted into the folder provided by \nneoHome\n. In case this parameters is not provided and there is no NEO_HOME parameter in the environment\n\nneoRoot\n/tools\n needs to be in the \nPATH\n. This step is also capable of triggering the neo deploy tool provided inside a docker image.\n\n\n\n\n\n\nJava 8 or higher\n - needed by the \nNeo-Java-Web-SDK\n\n\n\n\n\n\nParameters when using MTA deployment method (default - MTA)\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\naccount\n\n\nno\n\n\n\n\n\n\n\n\n\n\narchivePath\n\n\nyes\n\n\n\n\n\n\n\n\n\n\ndeployAccount\n deprecated, use \naccount\n\n\nno\n\n\n\n\n\n\n\n\n\n\ndeployHost\n deprecated, use \nhost\n\n\nno\n\n\n\n\n\n\n\n\n\n\ndeployMode\n\n\nyes\n\n\n'mta'\n\n\n'mta'\n, \n'warParams'\n, \n'warPropertiesFile'\n\n\n\n\n\n\nhost\n\n\nno\n\n\n\n\n\n\n\n\n\n\nneoCredentialsId\n\n\nno\n\n\n'CI_CREDENTIALS_ID'\n\n\n\n\n\n\n\n\nneoHome\n\n\nno\n\n\n\n\n\n\n\n\n\n\nscript\n\n\nyes\n\n\n\n\n\n\n\n\n\n\n\n\nParameters when using WAR file deployment method with .properties file (WAR_PROPERTIESFILE)\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\narchivePath\n\n\nyes\n\n\n\n\n\n\n\n\n\n\ndeployMode\n\n\nyes\n\n\n'mta'\n\n\n'mta'\n, \n'warParams'\n, \n'warPropertiesFile'\n\n\n\n\n\n\nneoCredentialsId\n\n\nno\n\n\n'CI_CREDENTIALS_ID'\n\n\n\n\n\n\n\n\nneoHome\n\n\nno\n\n\n\n\n\n\n\n\n\n\npropertiesFile\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nscript\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nwarAction\n\n\nyes\n\n\n'deploy'\n\n\n'deploy'\n, \n'rolling-update'\n\n\n\n\n\n\n\n\nParameters when using WAR file deployment method witout .properties file - with parameters (WAR_PARAMS)\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\naccount\n\n\nno\n\n\n\n\n\n\n\n\n\n\napplicationName\n\n\nyes\n\n\n\n\n\n\n\n\n\n\narchivePath\n\n\nyes\n\n\n\n\n\n\n\n\n\n\ndeployAccount\n deprecated, use \naccount\n\n\nno\n\n\n\n\n\n\n\n\n\n\ndeployHost\n deprecated, use \nhost\n\n\nno\n\n\n\n\n\n\n\n\n\n\ndeployMode\n\n\nyes\n\n\n'mta'\n\n\n'mta'\n, \n'warParams'\n, \n'warPropertiesFile'\n\n\n\n\n\n\nhost\n\n\nno\n\n\n\n\n\n\n\n\n\n\nneoCredentialsId\n\n\nno\n\n\n'CI_CREDENTIALS_ID'\n\n\n\n\n\n\n\n\nneoHome\n\n\nno\n\n\n\n\n\n\n\n\n\n\nruntime\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nruntime-version\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nscript\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nvmSize\n\n\nno\n\n\n'lite'\n\n\n'lite'\n, \n'pro'\n, \n'prem'\n, \n'prem-plus'\n\n\n\n\n\n\nwarAction\n\n\nyes\n\n\n'deploy'\n\n\n'deploy'\n, \n'rolling-update'\n\n\n\n\n\n\n\n\n\n\naccount\n - The SAP Cloud Platform account to deploy to.\n\n\napplicationName\n - Name of the application you want to manage, configure, or deploy\n\n\narchivePath\n- The path to the archive for deployment to SAP CP.\n\n\ndeployAccount\n - deprecated, use \naccount\n. The SAP Cloud Platform account to deploy to.\n\n\ndeployHost\n - deprecated, use \nhost\n. The SAP Cloud Platform host to deploy to.\n\n\ndeployMode\n - The deployment mode which should be used. Available options are \n'mta'\n (default), \n'warParams'\n (deploying WAR file and passing all the deployment parameters via the function call) and \n'warPropertiesFile'\n (deploying WAR file and putting all the deployment parameters in a .properties file)\n\n\nhost\n - The SAP Cloud Platform host to deploy to.\n\n\nneoCredentialsId\n - The Jenkins credentials containing user and password used for SAP CP deployment.\n\n\nneoHome\n - The path to the \nneo-java-web-sdk\n tool used for SAP CP deployment. If no parameter is provided, the path is retrieved from the Jenkins environment variables using \nenv.NEO_HOME\n. If this Jenkins environment variable is not set it is assumed that the tool is available in the \nPATH\n.\n\n\npropertiesFile\n - The path to the .properties file in which all necessary deployment properties for the application are defined.\n\n\nruntime\n - Name of SAP Cloud Platform application runtime\n\n\nruntime-version\n - Version of SAP Cloud Platform application runtime\n\n\nscript\n - The common script environment of the Jenkinsfile run. Typically \nthis\n is passed to this parameter. This allows the function to access the \ncommonPipelineEnvironment\n for retrieving e.g. configuration parameters.\n\n\nvmSize\n - Compute unit (VM) size. Acceptable values: lite, pro, prem, prem-plus.\n\n\nwarAction\n - Action mode when using WAR file mode. Available options are \ndeploy\n (default) and \nrolling-update\n which performs update of an application without downtime in one go.\n\n\n\n\nThe step is prepared for being executed in docker. The corresponding parameters can be applied. See step \ndockerExecute\n for details.\n\n\nStep configuration\n\n\nThe following parameters can also be specified as step parameters using the global configuration file:\n\n\n\n\naccount\n\n\ndockerEnvVars\n\n\ndockerImage\n\n\ndockerOptions\n\n\nhost\n\n\nneoCredentialsId\n\n\nneoHome\n\n\n\n\nReturn value\n\n\nnone\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\n\n\nException\n:\n\n\nIf \narchivePath\n is not provided.\n\n\nIf \npropertiesFile\n is not provided (when using \n'WAR_PROPERTIESFILE'\n deployment mode).\n\n\nIf \napplicationName\n is not provided (when using \n'WAR_PARAMS'\n deployment mode).\n\n\nIf \nruntime\n is not provided (when using \n'WAR_PARAMS'\n deployment mode).\n\n\nIf \nruntime-version\n is not provided (when using \n'WAR_PARAMS'\n deployment mode).\n\n\n\n\n\n\nAbortException\n:\n\n\nIf neo-java-web-sdk is not installed, or \nneoHome\nis wrong.\n\n\nIf \ndeployHost\n is wrong.\n\n\nIf \ndeployAccount\n is wrong.\n\n\n\n\n\n\nCredentialNotFoundException\n:\n\n\nIf the credentials cannot be resolved.\n\n\n\n\n\n\n\n\nExample\n\n\nneoDeploy\n \nscript:\n \nthis\n,\n \narchivePath:\n \npath/to/archiveFile.mtar\n,\n \ncredentialsId:\n \nmy-credentials-id\n\n\n\n\n\nExample configuration:\n\n\nsteps:\n  \n...\n\n  neoDeploy:\n\n        account: \nmyDeployAccount\n\n        host: hana.example.org", 
             "title": "neoDeploy"
         }, 
         {
@@ -777,13 +812,23 @@
         }, 
         {
             "location": "/steps/neoDeploy/#parameters-when-using-mta-deployment-method-default-mta", 
-            "text": "parameter  mandatory  default  possible values      deployMode  yes  'MTA'  'MTA' ,  'WAR_PARAMS' ,  'WAR_PROPERTIESFILE'    script  yes      archivePath  yes      deployHost  no  'account'  from step configuration  'neoDeploy' , or propertey  'DEPLOY_HOST'  from  commonPipelineEnvironment  (deprecated)     deployAccount  no  'host'  from step configuration  'neoDeploy' , or property  'CI_DEPLOY_ACCOUNT'  from  commonPipelineEnvironment  (deprecated)     neoCredentialsId  no  'neoCredentialsId'  from step configuration  'neoDeploy'  or hard coded value  'CI_CREDENTIALS_ID'     neoHome  no  Environment is checked for  NEO_HOME ,  otherwise the neo toolset is expected in the path     ## Parameters when using WAR file deployment method with .properties file (WAR_PROPERTIESFILE)       parameter  mandatory  default  possible values    -------------------  -----------  ----------------------------------------------------------------------------------------------  -------------------------------------------------    deployMode  yes  'MTA'  'MTA' ,  'WAR_PARAMS' ,  'WAR_PROPERTIESFILE'    warAction  yes  'deploy'  'deploy' ,  'rolling-update'    script  yes      archivePath  yes      neoCredentialsId  no  'CI_CREDENTIALS_ID'     neoHome  no  Environment is checked for  NEO_HOME ,  otherwise the neo toolset is expected in the path     propertiesFile  yes", 
+            "text": "parameter  mandatory  default  possible values      account  no      archivePath  yes      deployAccount  deprecated, use  account  no      deployHost  deprecated, use  host  no      deployMode  yes  'mta'  'mta' ,  'warParams' ,  'warPropertiesFile'    host  no      neoCredentialsId  no  'CI_CREDENTIALS_ID'     neoHome  no      script  yes", 
             "title": "Parameters when using MTA deployment method (default - MTA)"
         }, 
         {
+            "location": "/steps/neoDeploy/#parameters-when-using-war-file-deployment-method-with-properties-file-war_propertiesfile", 
+            "text": "parameter  mandatory  default  possible values      archivePath  yes      deployMode  yes  'mta'  'mta' ,  'warParams' ,  'warPropertiesFile'    neoCredentialsId  no  'CI_CREDENTIALS_ID'     neoHome  no      propertiesFile  yes      script  yes      warAction  yes  'deploy'  'deploy' ,  'rolling-update'", 
+            "title": "Parameters when using WAR file deployment method with .properties file (WAR_PROPERTIESFILE)"
+        }, 
+        {
             "location": "/steps/neoDeploy/#parameters-when-using-war-file-deployment-method-witout-properties-file-with-parameters-war_params", 
-            "text": "parameter  mandatory  default  possible values      deployMode  yes  'MTA'  'MTA' ,  'WAR_PARAMS' ,  'WAR_PROPERTIESFILE'    warAction  yes  'deploy'  'deploy' ,  'rolling-update'    script  yes      archivePath  yes      deployHost  no  'DEPLOY_HOST'  from  commonPipelineEnvironment     deployAccount  no  'CI_DEPLOY_ACCOUNT'  from  commonPipelineEnvironment     neoCredentialsId  no  'CI_CREDENTIALS_ID'     neoHome  no  Environment is checked for  NEO_HOME ,  otherwise the neo toolset is expected in the path     applicationName  yes      runtime  yes      runtime-version  yes      size  no  'lite'  'lite' ,  'pro' ,  'prem' ,  'prem-plus'      deployMode  - The deployment mode which should be used. Available options are  'MTA'  (default),  'WAR_PARAMS'  (deploying WAR file and passing all the deployment parameters via the function call) and  'WAR_PROPERTIESFILE'  (deploying WAR file and putting all the deployment parameters in a .properties file)  script  - The common script environment of the Jenkinsfile run. Typically  this  is passed to this parameter. This allows the function to access the  commonPipelineEnvironment  for retrieving e.g. configuration parameters.  archivePath - The path to the archive for deployment to SAP CP.  deployHost  - The SAP Cloud Platform host to deploy to.  deployAccount  - The SAP Cloud Platform account to deploy to.  credentialsId  - The Jenkins credentials containing user and password used for SAP CP deployment.  neoHome  - The path to the  neo-java-web-sdk  tool used for SAP CP deployment. If no parameter is provided, the path is retrieved from the Jenkins environment variables using  env.NEO_HOME . If this Jenkins environment variable is not set it is assumed that the tool is available in the  PATH .  propertiesFile  - The path to the .properties file in which all necessary deployment properties for the application are defined.  warAction  - Action mode when using WAR file mode. Available options are  deploy  (default) and  rolling-update  which performs update of an application without downtime in one go.  applicationName  - Name of the application you want to manage, configure, or deploy  runtime  - Name of SAP Cloud Platform application runtime  runtime-version  - Version of SAP Cloud Platform application runtime  size  - Compute unit (VM) size. Acceptable values: lite, pro, prem, prem-plus.", 
+            "text": "parameter  mandatory  default  possible values      account  no      applicationName  yes      archivePath  yes      deployAccount  deprecated, use  account  no      deployHost  deprecated, use  host  no      deployMode  yes  'mta'  'mta' ,  'warParams' ,  'warPropertiesFile'    host  no      neoCredentialsId  no  'CI_CREDENTIALS_ID'     neoHome  no      runtime  yes      runtime-version  yes      script  yes      vmSize  no  'lite'  'lite' ,  'pro' ,  'prem' ,  'prem-plus'    warAction  yes  'deploy'  'deploy' ,  'rolling-update'      account  - The SAP Cloud Platform account to deploy to.  applicationName  - Name of the application you want to manage, configure, or deploy  archivePath - The path to the archive for deployment to SAP CP.  deployAccount  - deprecated, use  account . The SAP Cloud Platform account to deploy to.  deployHost  - deprecated, use  host . The SAP Cloud Platform host to deploy to.  deployMode  - The deployment mode which should be used. Available options are  'mta'  (default),  'warParams'  (deploying WAR file and passing all the deployment parameters via the function call) and  'warPropertiesFile'  (deploying WAR file and putting all the deployment parameters in a .properties file)  host  - The SAP Cloud Platform host to deploy to.  neoCredentialsId  - The Jenkins credentials containing user and password used for SAP CP deployment.  neoHome  - The path to the  neo-java-web-sdk  tool used for SAP CP deployment. If no parameter is provided, the path is retrieved from the Jenkins environment variables using  env.NEO_HOME . If this Jenkins environment variable is not set it is assumed that the tool is available in the  PATH .  propertiesFile  - The path to the .properties file in which all necessary deployment properties for the application are defined.  runtime  - Name of SAP Cloud Platform application runtime  runtime-version  - Version of SAP Cloud Platform application runtime  script  - The common script environment of the Jenkinsfile run. Typically  this  is passed to this parameter. This allows the function to access the  commonPipelineEnvironment  for retrieving e.g. configuration parameters.  vmSize  - Compute unit (VM) size. Acceptable values: lite, pro, prem, prem-plus.  warAction  - Action mode when using WAR file mode. Available options are  deploy  (default) and  rolling-update  which performs update of an application without downtime in one go.   The step is prepared for being executed in docker. The corresponding parameters can be applied. See step  dockerExecute  for details.", 
             "title": "Parameters when using WAR file deployment method witout .properties file - with parameters (WAR_PARAMS)"
+        }, 
+        {
+            "location": "/steps/neoDeploy/#step-configuration", 
+            "text": "The following parameters can also be specified as step parameters using the global configuration file:   account  dockerEnvVars  dockerImage  dockerOptions  host  neoCredentialsId  neoHome", 
+            "title": "Step configuration"
         }, 
         {
             "location": "/steps/neoDeploy/#return-value", 
@@ -807,7 +852,7 @@
         }, 
         {
             "location": "/steps/pipelineExecute/", 
-            "text": "pipelineExecute\n\n\nDescription\n\n\nLoads a pipeline from a git repository. The idea is to set up a pipeline job in Jenkins that loads a minimal pipeline, which in turn loads the shared library and then uses this step to load the actual pipeline.\n\n\nA centrally maintained pipeline script (Jenkinsfile) can be re-used by\nseveral projects using \npipelineExecute\n as outlined in the example\nbelow.\n\n\nPrerequisites\n\n\nnone\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nrepoUrl\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nbranch\n\n\nno\n\n\n'master'\n\n\n\n\n\n\n\n\npath\n\n\nno\n\n\n'Jenkinsfile'\n\n\n\n\n\n\n\n\ncredentialsId\n\n\nno\n\n\nAn empty String\n\n\n\n\n\n\n\n\n\n\n\n\nrepoUrl\n The url to the git repository of the pipeline to be loaded.\n\n\nbranch\n The branch of the git repository from which the pipeline should be checked out.\n\n\npath\n The path to the Jenkinsfile, inside the repository, to be loaded.\n\n\ncredentialsId\n The Jenkins credentials containing user and password needed to access a private git repository.\n\n\n\n\nReturn value\n\n\nnone\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\n\n\nException\n\n\nIf \nrepoUrl\n is not provided.\n\n\n\n\n\n\n\n\nExample\n\n\npipelineExecute\n \nrepoUrl:\n \nhttps://github.com/MyOrg/MyPipelineRepo.git\n,\n \nbranch:\n \nfeature1\n,\n \npath:\n \npath/to/Jenkinsfile\n,\n \ncredentialsId:\n \nMY_REPO_CREDENTIALS", 
+            "text": "pipelineExecute\n\n\nDescription\n\n\nLoads a pipeline from a git repository. The idea is to set up a pipeline job in Jenkins that loads a minimal pipeline, which in turn loads the shared library and then uses this step to load the actual pipeline.\n\n\nA centrally maintained pipeline script (Jenkinsfile) can be re-used by\nseveral projects using \npipelineExecute\n as outlined in the example\nbelow.\n\n\nPrerequisites\n\n\nnone\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nrepoUrl\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nbranch\n\n\nno\n\n\n'master'\n\n\n\n\n\n\n\n\npath\n\n\nno\n\n\n'Jenkinsfile'\n\n\n\n\n\n\n\n\ncredentialsId\n\n\nno\n\n\nAn empty String\n\n\n\n\n\n\n\n\n\n\n\n\nrepoUrl\n The url to the git repository of the pipeline to be loaded.\n\n\nbranch\n The branch of the git repository from which the pipeline should be checked out.\n\n\npath\n The path to the Jenkinsfile, inside the repository, to be loaded.\n\n\ncredentialsId\n The Jenkins credentials containing user and password needed to access a private git repository.\n\n\n\n\nStep configuration\n\n\nnone\n\n\nReturn value\n\n\nnone\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\n\n\nException\n\n\nIf \nrepoUrl\n is not provided.\n\n\n\n\n\n\n\n\nExample\n\n\npipelineExecute\n \nrepoUrl:\n \nhttps://github.com/MyOrg/MyPipelineRepo.git\n,\n \nbranch:\n \nfeature1\n,\n \npath:\n \npath/to/Jenkinsfile\n,\n \ncredentialsId:\n \nMY_REPO_CREDENTIALS", 
             "title": "pipelineExecute"
         }, 
         {
@@ -831,6 +876,11 @@
             "title": "Parameters"
         }, 
         {
+            "location": "/steps/pipelineExecute/#step-configuration", 
+            "text": "none", 
+            "title": "Step configuration"
+        }, 
+        {
             "location": "/steps/pipelineExecute/#return-value", 
             "text": "none", 
             "title": "Return value"
@@ -852,7 +902,7 @@
         }, 
         {
             "location": "/steps/prepareDefaultValues/", 
-            "text": "prepareDefaultValues\n\n\nDescription\n\n\nLoads the pipeline library default values from the file \nresources/default_pipeline_environment.yml\n.\nAfterwards the values can be loaded by the method: \nConfigurationLoader.defaultStepConfiguration\n \n\n\nParameters\n\n\nNone\n\n\nExceptions\n\n\nNone\n\n\nExample\n\n\nprepareDefaultValues\n()", 
+            "text": "prepareDefaultValues\n\n\nDescription\n\n\nLoads the pipeline library default values from the file \nresources/default_pipeline_environment.yml\n.\nAfterwards the values can be loaded by the method: \nConfigurationLoader.defaultStepConfiguration\n \n\n\nParameters\n\n\nNone\n\n\nStep configuration\n\n\nNone\n\n\nExceptions\n\n\nNone\n\n\nExample\n\n\nprepareDefaultValues\n()", 
             "title": "prepareDefaultValues"
         }, 
         {
@@ -871,6 +921,11 @@
             "title": "Parameters"
         }, 
         {
+            "location": "/steps/prepareDefaultValues/#step-configuration", 
+            "text": "None", 
+            "title": "Step configuration"
+        }, 
+        {
             "location": "/steps/prepareDefaultValues/#exceptions", 
             "text": "None", 
             "title": "Exceptions"
@@ -882,7 +937,7 @@
         }, 
         {
             "location": "/steps/setupCommonPipelineEnvironment/", 
-            "text": "setupCommonPipelineEnvironment\n\n\nDescription\n\n\nInitializes the \ncommonPipelineEnvironment\n, which is used throughout the complete pipeline.\n\n\n\n\nTip\n\n\nThis step needs to run at the beginning of a pipeline right after the SCM checkout.\nThen subsequent pipeline steps consume the information from \ncommonPipelineEnvironment\n; it does not need to be passed to pipeline steps explicitly.\n\n\n\n\nPrerequisites\n\n\n\n\nA \nconfiguration file\n with properties (default location: \n.pipeline/config.properties\n). The property values are used as default values in many pipeline steps.\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nscript\n\n\nyes\n\n\n-\n\n\n\n\n\n\n\n\nconfigFile\n\n\nno\n\n\n.pipeline/config.properties\n\n\n\n\n\n\n\n\n\n\n\n\nscript\n - The reference to the pipeline script (Jenkinsfile). Normally \nthis\n needs to be provided.\n\n\nconfigFile\n - Property file defining project specific settings.\n\n\n\n\nReturn value\n\n\nnone\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\nnone \n\n\nExample\n\n\nsetupCommonPipelineEnvironment\n \nscript:\n \nthis", 
+            "text": "setupCommonPipelineEnvironment\n\n\nDescription\n\n\nInitializes the \ncommonPipelineEnvironment\n, which is used throughout the complete pipeline.\n\n\n\n\nTip\n\n\nThis step needs to run at the beginning of a pipeline right after the SCM checkout.\nThen subsequent pipeline steps consume the information from \ncommonPipelineEnvironment\n; it does not need to be passed to pipeline steps explicitly.\n\n\n\n\nPrerequisites\n\n\n\n\nA \nconfiguration file\n with properties (default location: \n.pipeline/config.properties\n). The property values are used as default values in many pipeline steps.\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nscript\n\n\nyes\n\n\n-\n\n\n\n\n\n\n\n\nconfigFile\n\n\nno\n\n\n.pipeline/config.properties\n\n\n\n\n\n\n\n\n\n\n\n\nscript\n - The reference to the pipeline script (Jenkinsfile). Normally \nthis\n needs to be provided.\n\n\nconfigFile\n - Property file defining project specific settings.\n\n\n\n\nStep configuration\n\n\nnone\n\n\nReturn value\n\n\nnone\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\nnone \n\n\nExample\n\n\nsetupCommonPipelineEnvironment\n \nscript:\n \nthis", 
             "title": "setupCommonPipelineEnvironment"
         }, 
         {
@@ -906,6 +961,11 @@
             "title": "Parameters"
         }, 
         {
+            "location": "/steps/setupCommonPipelineEnvironment/#step-configuration", 
+            "text": "none", 
+            "title": "Step configuration"
+        }, 
+        {
             "location": "/steps/setupCommonPipelineEnvironment/#return-value", 
             "text": "none", 
             "title": "Return value"
@@ -927,7 +987,7 @@
         }, 
         {
             "location": "/steps/toolValidate/", 
-            "text": "toolValidate\n\n\nDescription\n\n\nChecks the existence and compatibility of a tool, necessary for a successful pipeline execution.\nIn case a violation is found, an exception is raised.\n\n\nPrerequisites\n\n\nnone\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\ntool\n\n\nyes\n\n\n\n\n'java', 'mta', 'neo'\n\n\n\n\n\n\nhome\n\n\nyes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntool\n The tool that is checked for existence and compatible version.\n\n\nhome\n The location in the file system where Jenkins can access the tool.\n\n\n\n\nReturn value\n\n\nnone\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\n\n\nIllegalArgumentException\n:\n\n\nIf at least one of the parameters  \ntool\n, \nhome\n is not provided.\n\n\n\n\n\n\nAbortException\n:\n\n\nIf \ntool\n is not supported.\n\n\n\n\n\n\n\n\nExample\n\n\ntoolValidate\n \ntool:\n \nneo\n,\n \nhome:\n/path/to/neo-java-web-sdk", 
+            "text": "toolValidate\n\n\nDescription\n\n\nChecks the existence and compatibility of a tool, necessary for a successful pipeline execution.\nIn case a violation is found, an exception is raised.\n\n\nPrerequisites\n\n\nnone\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\ntool\n\n\nyes\n\n\n\n\n'java', 'mta', 'neo'\n\n\n\n\n\n\nhome\n\n\nyes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntool\n The tool that is checked for existence and compatible version.\n\n\nhome\n The location in the file system where Jenkins can access the tool.\n\n\n\n\nStep configuration\n\n\nnone\n\n\nReturn value\n\n\nnone\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\n\n\nIllegalArgumentException\n:\n\n\nIf at least one of the parameters  \ntool\n, \nhome\n is not provided.\n\n\n\n\n\n\nAbortException\n:\n\n\nIf \ntool\n is not supported.\n\n\n\n\n\n\n\n\nExample\n\n\ntoolValidate\n \ntool:\n \nneo\n,\n \nhome:\n/path/to/neo-java-web-sdk", 
             "title": "toolValidate"
         }, 
         {
@@ -951,6 +1011,11 @@
             "title": "Parameters"
         }, 
         {
+            "location": "/steps/toolValidate/#step-configuration", 
+            "text": "none", 
+            "title": "Step configuration"
+        }, 
+        {
             "location": "/steps/toolValidate/#return-value", 
             "text": "none", 
             "title": "Return value"
@@ -968,681 +1033,6 @@
         {
             "location": "/steps/toolValidate/#example", 
             "text": "toolValidate   tool:   neo ,   home: /path/to/neo-java-web-sdk", 
-            "title": "Example"
-        }, 
-        {
-            "location": "/scripts/fileUtils/", 
-            "text": "FileUtils\n\n\nDescription\n\n\nProvides file system related utility functions.\n\n\nConstructor\n\n\nSince there are only static utility methods there is no need for instantiating objects. \n\n\nMethod Details\n\n\nvalidateDirectory(dir)\n\n\nDescription\n\n\nChecks whether a file exists and is a directory.\n\n\nParameters\n\n\n\n\ndir\n - The directory to be checked. In case it is relative path it is checked against the\ncurrent working directory. In case of doubt use the absolute path (prefix the directory with \npwd\n).\n\n\n\n\nReturn value\n\n\nnone\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\n\n\nIllegalArgumentException\n:\n\n\nIf the parameter \ndir\n is null or empty.\n\n\n\n\n\n\nAbortException\n:\n\n\nIf the directory does not exist or is not a directory.\n\n\n\n\n\n\n\n\nExample\n\n\nFileUtils\n.\nvalidateDirectory\n(\n/path/to/dir\n)\n\n\n\n\n\nvalidateDirectoryIsNotEmpty(dir)\n\n\nDescription\n\n\nCheck whether a directory is not empty. Before the directory is checked, \nvalidateDirectory(dir)\n is executed.\n\n\nParameters\n\n\n\n\ndir\n - The directory to be checked. In case it is relative path it is checked against the\ncurrent working directory. In case of doubt use the absolute path (prefix the directory with \npwd\n).\n\n\n\n\nReturn value\n\n\nnone\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\n\n\nIllegalArgumentException\n:\n\n\nIf the parameter \ndir\n is null or empty.\n\n\n\n\n\n\nAbortException\n:\n\n\nIf the directory does not exist or is not a directory or the directory is empty.\n\n\n\n\n\n\n\n\nExample\n\n\nFileUtils\n.\nvalidateDirectoryIsNotEmpty\n(\n/path/to/dir\n)", 
-            "title": "FileUtils"
-        }, 
-        {
-            "location": "/scripts/fileUtils/#fileutils", 
-            "text": "", 
-            "title": "FileUtils"
-        }, 
-        {
-            "location": "/scripts/fileUtils/#description", 
-            "text": "Provides file system related utility functions.", 
-            "title": "Description"
-        }, 
-        {
-            "location": "/scripts/fileUtils/#constructor", 
-            "text": "Since there are only static utility methods there is no need for instantiating objects.", 
-            "title": "Constructor"
-        }, 
-        {
-            "location": "/scripts/fileUtils/#method-details", 
-            "text": "", 
-            "title": "Method Details"
-        }, 
-        {
-            "location": "/scripts/fileUtils/#validatedirectorydir", 
-            "text": "", 
-            "title": "validateDirectory(dir)"
-        }, 
-        {
-            "location": "/scripts/fileUtils/#description_1", 
-            "text": "Checks whether a file exists and is a directory.", 
-            "title": "Description"
-        }, 
-        {
-            "location": "/scripts/fileUtils/#parameters", 
-            "text": "dir  - The directory to be checked. In case it is relative path it is checked against the\ncurrent working directory. In case of doubt use the absolute path (prefix the directory with  pwd ).", 
-            "title": "Parameters"
-        }, 
-        {
-            "location": "/scripts/fileUtils/#return-value", 
-            "text": "none", 
-            "title": "Return value"
-        }, 
-        {
-            "location": "/scripts/fileUtils/#side-effects", 
-            "text": "none", 
-            "title": "Side effects"
-        }, 
-        {
-            "location": "/scripts/fileUtils/#exceptions", 
-            "text": "IllegalArgumentException :  If the parameter  dir  is null or empty.    AbortException :  If the directory does not exist or is not a directory.", 
-            "title": "Exceptions"
-        }, 
-        {
-            "location": "/scripts/fileUtils/#example", 
-            "text": "FileUtils . validateDirectory ( /path/to/dir )", 
-            "title": "Example"
-        }, 
-        {
-            "location": "/scripts/fileUtils/#validatedirectoryisnotemptydir", 
-            "text": "", 
-            "title": "validateDirectoryIsNotEmpty(dir)"
-        }, 
-        {
-            "location": "/scripts/fileUtils/#description_2", 
-            "text": "Check whether a directory is not empty. Before the directory is checked,  validateDirectory(dir)  is executed.", 
-            "title": "Description"
-        }, 
-        {
-            "location": "/scripts/fileUtils/#parameters_1", 
-            "text": "dir  - The directory to be checked. In case it is relative path it is checked against the\ncurrent working directory. In case of doubt use the absolute path (prefix the directory with  pwd ).", 
-            "title": "Parameters"
-        }, 
-        {
-            "location": "/scripts/fileUtils/#return-value_1", 
-            "text": "none", 
-            "title": "Return value"
-        }, 
-        {
-            "location": "/scripts/fileUtils/#side-effects_1", 
-            "text": "none", 
-            "title": "Side effects"
-        }, 
-        {
-            "location": "/scripts/fileUtils/#exceptions_1", 
-            "text": "IllegalArgumentException :  If the parameter  dir  is null or empty.    AbortException :  If the directory does not exist or is not a directory or the directory is empty.", 
-            "title": "Exceptions"
-        }, 
-        {
-            "location": "/scripts/fileUtils/#example_1", 
-            "text": "FileUtils . validateDirectoryIsNotEmpty ( /path/to/dir )", 
-            "title": "Example"
-        }, 
-        {
-            "location": "/scripts/jsonUtils/", 
-            "text": "JsonUtils\n\n\nDescription\n\n\nProvides json related utility functions.\n\n\nConstructors\n\n\nJsonUtils()\n\n\nDefault no-argument constructor. Instances of the Utils class does not hold any instance specific state.\n\n\nExample\n\n\nnew\n \nJsonUtils\n()\n\n\n\n\n\nMethod Details\n\n\ngetPrettyJsonString(object)\n\n\nDescription\n\n\nCreates a pretty-printed json string.\n\n\nParameters\n\n\n\n\nobject\n - A object (e.g. Map or List).\n\n\n\n\nReturn value\n\n\nA pretty printed \nString\n.\n\n\nSide effects\n\n\nnone", 
-            "title": "JsonUtils"
-        }, 
-        {
-            "location": "/scripts/jsonUtils/#jsonutils", 
-            "text": "", 
-            "title": "JsonUtils"
-        }, 
-        {
-            "location": "/scripts/jsonUtils/#description", 
-            "text": "Provides json related utility functions.", 
-            "title": "Description"
-        }, 
-        {
-            "location": "/scripts/jsonUtils/#constructors", 
-            "text": "", 
-            "title": "Constructors"
-        }, 
-        {
-            "location": "/scripts/jsonUtils/#jsonutils_1", 
-            "text": "Default no-argument constructor. Instances of the Utils class does not hold any instance specific state.", 
-            "title": "JsonUtils()"
-        }, 
-        {
-            "location": "/scripts/jsonUtils/#example", 
-            "text": "new   JsonUtils ()", 
-            "title": "Example"
-        }, 
-        {
-            "location": "/scripts/jsonUtils/#method-details", 
-            "text": "", 
-            "title": "Method Details"
-        }, 
-        {
-            "location": "/scripts/jsonUtils/#getprettyjsonstringobject", 
-            "text": "", 
-            "title": "getPrettyJsonString(object)"
-        }, 
-        {
-            "location": "/scripts/jsonUtils/#description_1", 
-            "text": "Creates a pretty-printed json string.", 
-            "title": "Description"
-        }, 
-        {
-            "location": "/scripts/jsonUtils/#parameters", 
-            "text": "object  - A object (e.g. Map or List).", 
-            "title": "Parameters"
-        }, 
-        {
-            "location": "/scripts/jsonUtils/#return-value", 
-            "text": "A pretty printed  String .", 
-            "title": "Return value"
-        }, 
-        {
-            "location": "/scripts/jsonUtils/#side-effects", 
-            "text": "none", 
-            "title": "Side effects"
-        }, 
-        {
-            "location": "/scripts/utils/", 
-            "text": "Utils\n\n\nDescription\n\n\nProvides utility functions.\n\n\nConstructors\n\n\nUtils()\n\n\nDefault no-argument constructor. Instances of the Utils class does not hold any instance specific state.\n\n\nExample\n\n\nnew\n \nUtils\n()\n\n\n\n\n\nMethod Details\n\n\ngetMandatoryParameter(map, paramName, defaultValue)\n\n\nDescription\n\n\nRetrieves the parameter value for parameter \nparamName\n from parameter map \nmap\n. In case there is no parameter with the given key contained in parameter map \nmap\n \ndefaultValue\n is returned. In case there no such parameter contained in \nmap\n and \ndefaultValue\n is \nnull\n an exception is thrown.\n\n\nParameters\n\n\n\n\nmap\n - A map containing configuration parameters.\n\n\nparamName\n - The key of the parameter which should be looked up.\n\n\noptional: \ndefaultValue\n - The value which is returned in case there is no parameter with key \nparamName\n contained in \nmap\n. If it is not provided the default is \nnull\n.\n\n\n\n\nReturn value\n\n\nThe value to the parameter to be retrieved, or the default value if the former is \nnull\n, either since there is no such key or the key is associated with value \nnull\n. In case the parameter is not defined or the value for that parameter is \nnull\nand there is no default value an exception is thrown.\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\n\n\nException\n:\n\n\nIf the value to be retrieved and the default value are both \nnull\n.\n\n\n\n\n\n\n\n\nExample\n\n\ndef\n \nutils\n \n=\n  \nnew\n \nUtils\n()\n\n\ndef\n \nparameters\n \n=\n \n[\nDEPLOY_ACCOUNT:\n \ndeploy-account\n]\n\n\nassert\n \nutils\n.\ngetMandatoryParameter\n(\nparameters\n,\n \nDEPLOY_ACCOUNT\n,\n \nnull\n)\n \n==\n \ndeploy-account\n\n\nassert\n \nutils\n.\ngetMandatoryParameter\n(\nparameters\n,\n \nDEPLOY_USER\n,\n \njohn_doe\n)\n \n==\n \njohn_doe\n\n\n\n\n\nretrieveGitCoordinates(script)\n\n\nDescription\n\n\nRetrieves the git-remote-url and git-branch. The parameters 'GIT_URL' and 'GIT_BRANCH' are retrieved from Jenkins job configuration. If these are not set, the git-url and git-branch are retrieved from the same repository where the Jenkinsfile resides.\n\n\nParameters\n\n\n\n\nscript\n - The script calling the method. Basically the \nJenkinsfile\n. It is assumed that the script provides access to the parameters defined when launching the build, especially \nGIT_URL\n and \nGIT_BRANCH\n.\n\n\n\n\nReturn value\n\n\nA map containing git-url and git-branch: \n[url: gitUrl, branch: gitBranch]\n\n\nExceptions\n\n\n\n\nAbortException\n:\n\n\nIf only one of \nGIT_URL\n,  \nGIT_BRANCH\n is set in the Jenkins job configuration.\n\n\n\n\n\n\n\n\nExample\n\n\ndef\n \ngitCoordinates\n \n=\n \nnew\n \nUtils\n().\nretrieveGitCoordinates\n(\nthis\n)\n\n\ndef\n \ngitUrl\n \n=\n \ngitCoordinates\n.\nurl\n\n\ndef\n \ngitBranch\n \n=\n \ngitCoordinates\n.\nbranch", 
-            "title": "Utils"
-        }, 
-        {
-            "location": "/scripts/utils/#utils", 
-            "text": "", 
-            "title": "Utils"
-        }, 
-        {
-            "location": "/scripts/utils/#description", 
-            "text": "Provides utility functions.", 
-            "title": "Description"
-        }, 
-        {
-            "location": "/scripts/utils/#constructors", 
-            "text": "", 
-            "title": "Constructors"
-        }, 
-        {
-            "location": "/scripts/utils/#utils_1", 
-            "text": "Default no-argument constructor. Instances of the Utils class does not hold any instance specific state.", 
-            "title": "Utils()"
-        }, 
-        {
-            "location": "/scripts/utils/#example", 
-            "text": "new   Utils ()", 
-            "title": "Example"
-        }, 
-        {
-            "location": "/scripts/utils/#method-details", 
-            "text": "", 
-            "title": "Method Details"
-        }, 
-        {
-            "location": "/scripts/utils/#getmandatoryparametermap-paramname-defaultvalue", 
-            "text": "", 
-            "title": "getMandatoryParameter(map, paramName, defaultValue)"
-        }, 
-        {
-            "location": "/scripts/utils/#description_1", 
-            "text": "Retrieves the parameter value for parameter  paramName  from parameter map  map . In case there is no parameter with the given key contained in parameter map  map   defaultValue  is returned. In case there no such parameter contained in  map  and  defaultValue  is  null  an exception is thrown.", 
-            "title": "Description"
-        }, 
-        {
-            "location": "/scripts/utils/#parameters", 
-            "text": "map  - A map containing configuration parameters.  paramName  - The key of the parameter which should be looked up.  optional:  defaultValue  - The value which is returned in case there is no parameter with key  paramName  contained in  map . If it is not provided the default is  null .", 
-            "title": "Parameters"
-        }, 
-        {
-            "location": "/scripts/utils/#return-value", 
-            "text": "The value to the parameter to be retrieved, or the default value if the former is  null , either since there is no such key or the key is associated with value  null . In case the parameter is not defined or the value for that parameter is  null and there is no default value an exception is thrown.", 
-            "title": "Return value"
-        }, 
-        {
-            "location": "/scripts/utils/#side-effects", 
-            "text": "none", 
-            "title": "Side effects"
-        }, 
-        {
-            "location": "/scripts/utils/#exceptions", 
-            "text": "Exception :  If the value to be retrieved and the default value are both  null .", 
-            "title": "Exceptions"
-        }, 
-        {
-            "location": "/scripts/utils/#example_1", 
-            "text": "def   utils   =    new   Utils ()  def   parameters   =   [ DEPLOY_ACCOUNT:   deploy-account ]  assert   utils . getMandatoryParameter ( parameters ,   DEPLOY_ACCOUNT ,   null )   ==   deploy-account  assert   utils . getMandatoryParameter ( parameters ,   DEPLOY_USER ,   john_doe )   ==   john_doe", 
-            "title": "Example"
-        }, 
-        {
-            "location": "/scripts/utils/#retrievegitcoordinatesscript", 
-            "text": "", 
-            "title": "retrieveGitCoordinates(script)"
-        }, 
-        {
-            "location": "/scripts/utils/#description_2", 
-            "text": "Retrieves the git-remote-url and git-branch. The parameters 'GIT_URL' and 'GIT_BRANCH' are retrieved from Jenkins job configuration. If these are not set, the git-url and git-branch are retrieved from the same repository where the Jenkinsfile resides.", 
-            "title": "Description"
-        }, 
-        {
-            "location": "/scripts/utils/#parameters_1", 
-            "text": "script  - The script calling the method. Basically the  Jenkinsfile . It is assumed that the script provides access to the parameters defined when launching the build, especially  GIT_URL  and  GIT_BRANCH .", 
-            "title": "Parameters"
-        }, 
-        {
-            "location": "/scripts/utils/#return-value_1", 
-            "text": "A map containing git-url and git-branch:  [url: gitUrl, branch: gitBranch]", 
-            "title": "Return value"
-        }, 
-        {
-            "location": "/scripts/utils/#exceptions_1", 
-            "text": "AbortException :  If only one of  GIT_URL ,   GIT_BRANCH  is set in the Jenkins job configuration.", 
-            "title": "Exceptions"
-        }, 
-        {
-            "location": "/scripts/utils/#example_2", 
-            "text": "def   gitCoordinates   =   new   Utils (). retrieveGitCoordinates ( this )  def   gitUrl   =   gitCoordinates . url  def   gitBranch   =   gitCoordinates . branch", 
-            "title": "Example"
-        }, 
-        {
-            "location": "/scripts/version/", 
-            "text": "Version\n\n\nDescription\n\n\nHandles version numbers.\n\n\nConstructors\n\n\nVersion(major, minor, patch)\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nmajor\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nminor\n\n\nyes\n\n\n\n\n\n\n\n\n\n\npatch\n\n\nno\n\n\n-1\n\n\n\n\n\n\n\n\n\n\n\n\nmajor\n - The major version number.\n\n\nminor\n - The minor version number.\n\n\npatch\n - The patch version number.\n\n\n\n\nExceptions\n\n\n\n\nIllegalArgumentException\n:\n\n\nIf the \nmajor\n or \nminor\n version number is less than \n0\n.\n\n\n\n\n\n\n\n\nExample\n\n\ndef\n \ntoolVersion\n \n=\n \nnew\n \nVersion\n(\n1\n,\n \n2\n,\n \n3\n)\n\n\n\n\n\nVersion(text)\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\ntext\n\n\nyes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntext\n - As an alternative to calling the constructor with \nmajor\n, \nminor\n, and \npatch\n version numbers, you can pass this as a String of format 'major.minor.patch'.\n\n\n\n\nExceptions\n\n\n\n\nIllegalArgumentException\n:\n\n\nIf the \ntext\n parameter is \nnull\n or empty.\n\n\n\n\n\n\nAbortException\n:\n\n\nIf the version \ntext\n has an unexpected format.\n\n\n\n\n\n\n\n\nExample\n\n\ndef\n \ntoolVersion\n \n=\n \nnew\n \nVersion\n(\n1.2.3\n)\n\n\n\n\n\nMethod Details\n\n\nequals(version)\n\n\nDescription\n\n\nIndicates whether some other version instance is equal to this one. The two versions are considered equal when they have the same \nmajor\n, \nminor\n and \npatch\n version number.\n\n\nParameters\n\n\n\n\nversion\n - The Version instance to compare to this Version instance.\n\n\n\n\nReturn value\n\n\ntrue\n if \nmajor\n, \nminor\n and \npatch\n version numbers are equal to each other. Otherwise \nfalse\n.\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\n\n\nAbortException\n:\n\n\nIf the parameter \nversion\n is \nnull\n.\n\n\n\n\n\n\n\n\nExample\n\n\nassert\n \nnew\n \nVersion\n(\n1.2.3\n).\nequals\n(\nnew\n \nVersion\n(\n1.2.3\n))\n\n\n\n\n\nisCompatibleVersion(version)\n\n\nDescription\n\n\nChecks whether a version is compatible. Two versions are compatible if the major version number is the same, while the minor and patch version number are the same or higher.\n\n\nParameters\n\n\n\n\nversion\n - The Version instance to compare to this Version instance.\n\n\n\n\nReturn value\n\n\ntrue\n if this Version instance is compatible to the other Version instance. Otherwise \nfalse\n.\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\n\n\nAbortException\n:\n\n\nIf the parameter \nversion\n is \nnull\n.\n\n\n\n\n\n\n\n\nExample\n\n\nassert\n \nnew\n \nVersion\n(\n1.2.3\n).\nisCompatibleVersion\n(\nnew\n \nVersion\n(\n1.3.1\n))\n\n\n\n\n\nisHigher(version)\n\n\nDescription\n\n\nChecks whether this Version instance is higher than the other Version instance.\n\n\nParameters\n\n\n\n\nversion\n - The Version instance to compare to this Version instance.\n\n\n\n\nReturn value\n\n\ntrue\n if this Version instance is higher than the other Version instance. Otherwise \nfalse\n.\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\n\n\nAbortException\n:\n\n\nIf the parameter \nversion\n is \nnull\n.\n\n\n\n\n\n\n\n\nExample\n\n\nassert\n \nnew\n \nVersion\n(\n1.2.3\n).\nisHigher\n(\nnew\n \nVersion\n(\n1.1.6\n))\n\n\n\n\n\ntoString()\n\n\nDescription\n\n\nPrint the version number in format '\n.\n.\n'. If no patch version number exists the format is '\n.\n'.\n\n\nParameters\n\n\nnone\n\n\nReturn value\n\n\nA String consisting of \nmajor\n, \nminor\n and if available \npatch\n, separated by dots.\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\nnone\n\n\nExample\n\n\nassert\n \n${new Version(\n1.2.3\n)}\n \n==\n \n1.2.3", 
-            "title": "Version"
-        }, 
-        {
-            "location": "/scripts/version/#version", 
-            "text": "", 
-            "title": "Version"
-        }, 
-        {
-            "location": "/scripts/version/#description", 
-            "text": "Handles version numbers.", 
-            "title": "Description"
-        }, 
-        {
-            "location": "/scripts/version/#constructors", 
-            "text": "", 
-            "title": "Constructors"
-        }, 
-        {
-            "location": "/scripts/version/#versionmajor-minor-patch", 
-            "text": "", 
-            "title": "Version(major, minor, patch)"
-        }, 
-        {
-            "location": "/scripts/version/#parameters", 
-            "text": "parameter  mandatory  default  possible values      major  yes      minor  yes      patch  no  -1       major  - The major version number.  minor  - The minor version number.  patch  - The patch version number.", 
-            "title": "Parameters"
-        }, 
-        {
-            "location": "/scripts/version/#exceptions", 
-            "text": "IllegalArgumentException :  If the  major  or  minor  version number is less than  0 .", 
-            "title": "Exceptions"
-        }, 
-        {
-            "location": "/scripts/version/#example", 
-            "text": "def   toolVersion   =   new   Version ( 1 ,   2 ,   3 )", 
-            "title": "Example"
-        }, 
-        {
-            "location": "/scripts/version/#versiontext", 
-            "text": "", 
-            "title": "Version(text)"
-        }, 
-        {
-            "location": "/scripts/version/#parameters_1", 
-            "text": "parameter  mandatory  default  possible values      text  yes        text  - As an alternative to calling the constructor with  major ,  minor , and  patch  version numbers, you can pass this as a String of format 'major.minor.patch'.", 
-            "title": "Parameters"
-        }, 
-        {
-            "location": "/scripts/version/#exceptions_1", 
-            "text": "IllegalArgumentException :  If the  text  parameter is  null  or empty.    AbortException :  If the version  text  has an unexpected format.", 
-            "title": "Exceptions"
-        }, 
-        {
-            "location": "/scripts/version/#example_1", 
-            "text": "def   toolVersion   =   new   Version ( 1.2.3 )", 
-            "title": "Example"
-        }, 
-        {
-            "location": "/scripts/version/#method-details", 
-            "text": "", 
-            "title": "Method Details"
-        }, 
-        {
-            "location": "/scripts/version/#equalsversion", 
-            "text": "", 
-            "title": "equals(version)"
-        }, 
-        {
-            "location": "/scripts/version/#description_1", 
-            "text": "Indicates whether some other version instance is equal to this one. The two versions are considered equal when they have the same  major ,  minor  and  patch  version number.", 
-            "title": "Description"
-        }, 
-        {
-            "location": "/scripts/version/#parameters_2", 
-            "text": "version  - The Version instance to compare to this Version instance.", 
-            "title": "Parameters"
-        }, 
-        {
-            "location": "/scripts/version/#return-value", 
-            "text": "true  if  major ,  minor  and  patch  version numbers are equal to each other. Otherwise  false .", 
-            "title": "Return value"
-        }, 
-        {
-            "location": "/scripts/version/#side-effects", 
-            "text": "none", 
-            "title": "Side effects"
-        }, 
-        {
-            "location": "/scripts/version/#exceptions_2", 
-            "text": "AbortException :  If the parameter  version  is  null .", 
-            "title": "Exceptions"
-        }, 
-        {
-            "location": "/scripts/version/#example_2", 
-            "text": "assert   new   Version ( 1.2.3 ). equals ( new   Version ( 1.2.3 ))", 
-            "title": "Example"
-        }, 
-        {
-            "location": "/scripts/version/#iscompatibleversionversion", 
-            "text": "", 
-            "title": "isCompatibleVersion(version)"
-        }, 
-        {
-            "location": "/scripts/version/#description_2", 
-            "text": "Checks whether a version is compatible. Two versions are compatible if the major version number is the same, while the minor and patch version number are the same or higher.", 
-            "title": "Description"
-        }, 
-        {
-            "location": "/scripts/version/#parameters_3", 
-            "text": "version  - The Version instance to compare to this Version instance.", 
-            "title": "Parameters"
-        }, 
-        {
-            "location": "/scripts/version/#return-value_1", 
-            "text": "true  if this Version instance is compatible to the other Version instance. Otherwise  false .", 
-            "title": "Return value"
-        }, 
-        {
-            "location": "/scripts/version/#side-effects_1", 
-            "text": "none", 
-            "title": "Side effects"
-        }, 
-        {
-            "location": "/scripts/version/#exceptions_3", 
-            "text": "AbortException :  If the parameter  version  is  null .", 
-            "title": "Exceptions"
-        }, 
-        {
-            "location": "/scripts/version/#example_3", 
-            "text": "assert   new   Version ( 1.2.3 ). isCompatibleVersion ( new   Version ( 1.3.1 ))", 
-            "title": "Example"
-        }, 
-        {
-            "location": "/scripts/version/#ishigherversion", 
-            "text": "", 
-            "title": "isHigher(version)"
-        }, 
-        {
-            "location": "/scripts/version/#description_3", 
-            "text": "Checks whether this Version instance is higher than the other Version instance.", 
-            "title": "Description"
-        }, 
-        {
-            "location": "/scripts/version/#parameters_4", 
-            "text": "version  - The Version instance to compare to this Version instance.", 
-            "title": "Parameters"
-        }, 
-        {
-            "location": "/scripts/version/#return-value_2", 
-            "text": "true  if this Version instance is higher than the other Version instance. Otherwise  false .", 
-            "title": "Return value"
-        }, 
-        {
-            "location": "/scripts/version/#side-effects_2", 
-            "text": "none", 
-            "title": "Side effects"
-        }, 
-        {
-            "location": "/scripts/version/#exceptions_4", 
-            "text": "AbortException :  If the parameter  version  is  null .", 
-            "title": "Exceptions"
-        }, 
-        {
-            "location": "/scripts/version/#example_4", 
-            "text": "assert   new   Version ( 1.2.3 ). isHigher ( new   Version ( 1.1.6 ))", 
-            "title": "Example"
-        }, 
-        {
-            "location": "/scripts/version/#tostring", 
-            "text": "", 
-            "title": "toString()"
-        }, 
-        {
-            "location": "/scripts/version/#description_4", 
-            "text": "Print the version number in format ' . . '. If no patch version number exists the format is ' . '.", 
-            "title": "Description"
-        }, 
-        {
-            "location": "/scripts/version/#parameters_5", 
-            "text": "none", 
-            "title": "Parameters"
-        }, 
-        {
-            "location": "/scripts/version/#return-value_3", 
-            "text": "A String consisting of  major ,  minor  and if available  patch , separated by dots.", 
-            "title": "Return value"
-        }, 
-        {
-            "location": "/scripts/version/#side-effects_3", 
-            "text": "none", 
-            "title": "Side effects"
-        }, 
-        {
-            "location": "/scripts/version/#exceptions_5", 
-            "text": "none", 
-            "title": "Exceptions"
-        }, 
-        {
-            "location": "/scripts/version/#example_5", 
-            "text": "assert   ${new Version( 1.2.3 )}   ==   1.2.3", 
-            "title": "Example"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/", 
-            "text": "ConfigurationLoader\n\n\nDescription\n\n\nLoads configuration values from the global configuration. \nThe global configuration is stored in the commonPipelineEnvironment and should be loaded before by calling setupCommonPipelineEnvironment.\n\n\nStatic Method Details\n\n\nstepConfiguration\n\n\nDescription\n\n\nReturns the configuration for a specific step as map.\n\n\nParameters\n\n\n\n\nscript\n - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the \nthis\n parameter, as in \nscript: this\n. This allows the function to access the \ncommonPipelineEnvironment\n for retrieving, for example, configuration parameters.\n\n\nstepName\n - The name of the step\n\n\n\n\nSide effects\n\n\nnone\n\n\nExample\n\n\nIn your \nconfig.yml\n you define the following:\n\n\n#Steps Specific Configuration\nsteps:\n  mavenExecute:\n    dockerImage: \nmaven:3.5-jdk-7\n\n\n\n\n\nTo get the map containing the key \ndockerImage\n and the value \nmaven:3.5-jdk-7\n you have to execute the following:\n\n\nMap\n \nconfiguration\n \n=\n \nConfigurationLoader\n.\nstepConfiguration\n(\nscript\n,\n \nmavenExecute\n)\n\n\n\n\n\ndefaultStepConfiguration\n\n\nDescription\n\n\nReturns the default configuration for a specific step as map.\n\n\nParameters\n\n\n\n\nscript\n - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the \nthis\n parameter, as in \nscript: this\n. This allows the function to access the \ncommonPipelineEnvironment\n for retrieving, for example, configuration parameters.\n\n\nstepName\n - The name of the step\n\n\n\n\nSide effects\n\n\nnone\n\n\nExample\n\n\nTo get the map of the default values defined in the file \nresources/default_pipeline_environment.yml\n you have to execute the following:\n\n\nMap\n \nconfiguration\n \n=\n \nConfigurationLoader\n.\ndefaultStepConfiguration\n(\nscript\n,\n \nmavenExecute\n)\n\n\n\n\n\ngeneralConfiguration\n\n\nDescription\n\n\nReturns the configuration in the section general of the configuration file.\n\n\nParameters\n\n\n\n\nscript\n - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the \nthis\n parameter, as in \nscript: this\n. This allows the function to access the \ncommonPipelineEnvironment\n for retrieving, for example, configuration parameters.\n\n\n\n\nSide effects\n\n\nnone\n\n\nExample\n\n\nIn your \nconfig.yml\n you define the following:\n\n\n#Project Setup\ngeneral:\n  productiveBranch: \nmaster\n\n\n\n\n\nTo get the map containing the key \nproductiveBranch\n and the value \nmaster\n you have to execute the following:\n\n\nMap\n \nconfiguration\n \n=\n \nConfigurationLoader\n.\ngeneralConfiguration\n(\nscript\n)\n\n\n\n\n\ndefaultGeneralConfiguration\n\n\nDescription\n\n\nReturns the default configuration in the section general of the default configuration file.\n\n\nParameters\n\n\n\n\nscript\n - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the \nthis\n parameter, as in \nscript: this\n. This allows the function to access the \ncommonPipelineEnvironment\n for retrieving, for example, configuration parameters.\n\n\n\n\nSide effects\n\n\nnone\n\n\nExample\n\n\nTo get the map of the default values defined in the file \nresources/default_pipeline_environment.yml\n you have to execute the following:\n\n\nMap\n \nconfiguration\n \n=\n \nConfigurationLoader\n.\ndefaultGeneralConfiguration\n(\nscript\n)\n\n\n\n\n\nstageConfiguration\n\n\nDescription\n\n\nReturns the configuration for a specific stage as map.\nThis is useful if you decide to have a central pipeline and want to give all your projects the possibility to configure the stages in the central pipeline.\nThus, the central pipeline can define how to deploy and read the configuration.\nIn the their configuration files, all the projects can configure the location where to deploy. \n\n\nParameters\n\n\n\n\nscript\n - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the \nthis\n parameter, as in \nscript: this\n. This allows the function to access the \ncommonPipelineEnvironment\n for retrieving, for example, configuration parameters.\n\n\nscript\n - Name of the stage as defined in the configuration file.\n\n\n\n\nSide effects\n\n\nnone\n\n\nExample\n\n\nIn your \nconfig.yml\n you define the following:\n\n\n#Project Setup\n#Stage Specific Configurations\nstages:\n  productionDeployment:\n    targets:\n      - apiEndpoint: \nhttps://api.cf.sap.hana.ondemand.com\n\n        org: \nmyOrg\n\n        manifest: \nmanifest.yml\n\n        appName: \nmy-app\n\n\n\n\n\nTo get the map containing the key \ntargets\n and the list of the deployment locations.\n\n\nMap\n \nconfiguration\n \n=\n \nConfigurationLoader\n.\nstageConfiguration\n(\nscript\n,\n \nproductionDeployment\n)", 
-            "title": "ConfigurationLoader"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#configurationloader", 
-            "text": "", 
-            "title": "ConfigurationLoader"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#description", 
-            "text": "Loads configuration values from the global configuration. \nThe global configuration is stored in the commonPipelineEnvironment and should be loaded before by calling setupCommonPipelineEnvironment.", 
-            "title": "Description"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#static-method-details", 
-            "text": "", 
-            "title": "Static Method Details"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#stepconfiguration", 
-            "text": "", 
-            "title": "stepConfiguration"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#description_1", 
-            "text": "Returns the configuration for a specific step as map.", 
-            "title": "Description"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#parameters", 
-            "text": "script  - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the  this  parameter, as in  script: this . This allows the function to access the  commonPipelineEnvironment  for retrieving, for example, configuration parameters.  stepName  - The name of the step", 
-            "title": "Parameters"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#side-effects", 
-            "text": "none", 
-            "title": "Side effects"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#example", 
-            "text": "In your  config.yml  you define the following:  #Steps Specific Configuration\nsteps:\n  mavenExecute:\n    dockerImage:  maven:3.5-jdk-7   To get the map containing the key  dockerImage  and the value  maven:3.5-jdk-7  you have to execute the following:  Map   configuration   =   ConfigurationLoader . stepConfiguration ( script ,   mavenExecute )", 
-            "title": "Example"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#defaultstepconfiguration", 
-            "text": "", 
-            "title": "defaultStepConfiguration"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#description_2", 
-            "text": "Returns the default configuration for a specific step as map.", 
-            "title": "Description"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#parameters_1", 
-            "text": "script  - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the  this  parameter, as in  script: this . This allows the function to access the  commonPipelineEnvironment  for retrieving, for example, configuration parameters.  stepName  - The name of the step", 
-            "title": "Parameters"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#side-effects_1", 
-            "text": "none", 
-            "title": "Side effects"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#example_1", 
-            "text": "To get the map of the default values defined in the file  resources/default_pipeline_environment.yml  you have to execute the following:  Map   configuration   =   ConfigurationLoader . defaultStepConfiguration ( script ,   mavenExecute )", 
-            "title": "Example"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#generalconfiguration", 
-            "text": "", 
-            "title": "generalConfiguration"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#description_3", 
-            "text": "Returns the configuration in the section general of the configuration file.", 
-            "title": "Description"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#parameters_2", 
-            "text": "script  - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the  this  parameter, as in  script: this . This allows the function to access the  commonPipelineEnvironment  for retrieving, for example, configuration parameters.", 
-            "title": "Parameters"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#side-effects_2", 
-            "text": "none", 
-            "title": "Side effects"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#example_2", 
-            "text": "In your  config.yml  you define the following:  #Project Setup\ngeneral:\n  productiveBranch:  master   To get the map containing the key  productiveBranch  and the value  master  you have to execute the following:  Map   configuration   =   ConfigurationLoader . generalConfiguration ( script )", 
-            "title": "Example"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#defaultgeneralconfiguration", 
-            "text": "", 
-            "title": "defaultGeneralConfiguration"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#description_4", 
-            "text": "Returns the default configuration in the section general of the default configuration file.", 
-            "title": "Description"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#parameters_3", 
-            "text": "script  - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the  this  parameter, as in  script: this . This allows the function to access the  commonPipelineEnvironment  for retrieving, for example, configuration parameters.", 
-            "title": "Parameters"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#side-effects_3", 
-            "text": "none", 
-            "title": "Side effects"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#example_3", 
-            "text": "To get the map of the default values defined in the file  resources/default_pipeline_environment.yml  you have to execute the following:  Map   configuration   =   ConfigurationLoader . defaultGeneralConfiguration ( script )", 
-            "title": "Example"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#stageconfiguration", 
-            "text": "", 
-            "title": "stageConfiguration"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#description_5", 
-            "text": "Returns the configuration for a specific stage as map.\nThis is useful if you decide to have a central pipeline and want to give all your projects the possibility to configure the stages in the central pipeline.\nThus, the central pipeline can define how to deploy and read the configuration.\nIn the their configuration files, all the projects can configure the location where to deploy.", 
-            "title": "Description"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#parameters_4", 
-            "text": "script  - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the  this  parameter, as in  script: this . This allows the function to access the  commonPipelineEnvironment  for retrieving, for example, configuration parameters.  script  - Name of the stage as defined in the configuration file.", 
-            "title": "Parameters"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#side-effects_4", 
-            "text": "none", 
-            "title": "Side effects"
-        }, 
-        {
-            "location": "/scripts/configurationLoader/#example_4", 
-            "text": "In your  config.yml  you define the following:  #Project Setup\n#Stage Specific Configurations\nstages:\n  productionDeployment:\n    targets:\n      - apiEndpoint:  https://api.cf.sap.hana.ondemand.com \n        org:  myOrg \n        manifest:  manifest.yml \n        appName:  my-app   To get the map containing the key  targets  and the list of the deployment locations.  Map   configuration   =   ConfigurationLoader . stageConfiguration ( script ,   productionDeployment )", 
-            "title": "Example"
-        }, 
-        {
-            "location": "/scripts/configurationMerger/", 
-            "text": "ConfigurationMerger\n\n\nDescription\n\n\nA helper script that can merge the configurations from multiple sources.\n\n\nStatic Method Details\n\n\nmerge\n\n\nDescription\n\n\nA step is usually configured by default values, configuration values from the configuration file and the parameters.\nThe method can merge these sources.\nDefault values are overwritten by configuration file values.\nThese are overwritten by parameters.\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\nClass\n\n\n\n\n\n\n\n\n\n\nparameters\n\n\nyes\n\n\nMap\n\n\n\n\n\n\nparameterKeys\n\n\nyes\n\n\nList\n\n\n\n\n\n\nconfigurationMap\n\n\nyes\n\n\nMap\n\n\n\n\n\n\nconfigurationKeys\n\n\nyes\n\n\nList\n\n\n\n\n\n\ndefaults\n\n\nyes\n\n\nMap\n\n\n\n\n\n\n\n\n\n\nparameters\n Parameters map given to the step\n\n\nparameterKeys\n List of parameter names (keys) that should be considered while merging.\n\n\nconfigurationMap\n Configuration map loaded from the configuration file.\n\n\nconfigurationKeys\n List of configuration keys that should be considered while merging.\n\n\ndefaults\n Map of default values, e.g. loaded from the default value configuration file.\n\n\n\n\nSide effects\n\n\nnone\n\n\nExample\n\n\nprepareDefaultValues\n \nscript:\n \nscript\n\n\nfinal\n \nMap\n \nstepDefaults\n \n=\n \nConfigurationLoader\n.\ndefaultStepConfiguration\n(\nscript\n,\n \nmavenExecute\n)\n\n\n\nfinal\n \nMap\n \nstepConfiguration\n \n=\n \nConfigurationLoader\n.\nstepConfiguration\n(\nscript\n,\n \nmavenExecute\n)\n\n\n\nList\n \nparameterKeys\n \n=\n \n[\n\n    \ndockerImage\n,\n\n    \nglobalSettingsFile\n,\n\n    \nprojectSettingsFile\n,\n\n    \npomPath\n,\n\n    \nflags\n,\n\n    \ngoals\n,\n\n    \nm2Path\n,\n\n    \ndefines\n\n\n]\n\n\nList\n \nstepConfigurationKeys\n \n=\n \n[\n\n    \ndockerImage\n,\n\n    \nglobalSettingsFile\n,\n\n    \nprojectSettingsFile\n,\n\n    \npomPath\n,\n\n    \nm2Path\n\n\n]\n\n\n\nMap\n \nconfiguration\n \n=\n \nConfigurationMerger\n.\nmerge\n(\nparameters\n,\n \nparameterKeys\n,\n \nstepConfiguration\n,\n \nstepConfigurationKeys\n,\n \nstepDefaults\n)\n\n\n\n\n\nmergeWithPipelineData\n\n\nDescription\n\n\nA step is usually configured by default values, configuration values from the configuration file and the parameters.\nIn certain cases also information previously generated in the pipeline should be mixed in, like for example an artifactVersion created earlier.\nThe method can merge these sources.\nDefault values are overwritten by configuration file values.\nThose are overwritten by information previously generated in the pipeline (e.g. stored in \ncommonPipelineEnvironment\n).\nThese are overwritten by parameters passed directly to the step.\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\nClass\n\n\n\n\n\n\n\n\n\n\nparameters\n\n\nyes\n\n\nMap\n\n\n\n\n\n\nparameterKeys\n\n\nyes\n\n\nList\n\n\n\n\n\n\npipelineDataMap\n\n\nyes\n\n\nMap\n\n\n\n\n\n\nconfigurationMap\n\n\nyes\n\n\nMap\n\n\n\n\n\n\nconfigurationKeys\n\n\nyes\n\n\nList\n\n\n\n\n\n\ndefaults\n\n\nyes\n\n\nMap\n\n\n\n\n\n\n\n\n\n\nparameters\n Parameters map given to the step\n\n\nparameterKeys\n List of parameter names (keys) that should be considered while merging.\n\n\nconfigurationMap\n Configuration map loaded from the configuration file.\n\n\npipelineDataMap\n Values available to the step during pipeline run.\n\n\nconfigurationKeys\n List of configuration keys that should be considered while merging.\n\n\ndefaults\n Map of default values, e.g. loaded from the default value configuration file.\n\n\n\n\nSide effects\n\n\nnone\n\n\nExample\n\n\ndef\n \nstepName\n \n=\n \ninfluxWriteData\n\n\nprepareDefaultValues\n \nscript:\n \nscript\n\n\n\nfinal\n \nMap\n \nstepDefaults\n \n=\n \nConfigurationLoader\n.\ndefaultStepConfiguration\n(\nscript\n,\n \nstepName\n)\n\n\nfinal\n \nMap\n \nstepConfiguration\n \n=\n \nConfigurationLoader\n.\nstepConfiguration\n(\nscript\n,\n \nstepName\n)\n\n\nfinal\n \nMap\n \ngeneralConfiguration\n \n=\n \nConfigurationLoader\n.\ngeneralConfiguration\n(\nscript\n)\n\n\n\nList\n \nparameterKeys\n \n=\n \n[\n\n    \nartifactVersion\n,\n\n    \ninfluxServer\n,\n\n    \ninfluxPrefix\n\n\n]\n\n\nMap\n \npipelineDataMap\n \n=\n \n[\n\n    \nartifactVersion:\n \ncommonPipelineEnvironment\n.\ngetArtifactVersion\n()\n\n\n]\n\n\nList\n \nstepConfigurationKeys\n \n=\n \n[\n\n    \ninfluxServer\n,\n\n    \ninfluxPrefix\n\n\n]\n\n\n\nMap\n \nconfiguration\n \n=\n \nConfigurationMerger\n.\nmergeWithPipelineData\n(\nparameters\n,\n \nparameterKeys\n,\n \npipelineDataMap\n,\n \nstepConfiguration\n,\n \nstepConfigurationKeys\n,\n \nstepDefaults\n)", 
-            "title": "ConfigurationMerger"
-        }, 
-        {
-            "location": "/scripts/configurationMerger/#configurationmerger", 
-            "text": "", 
-            "title": "ConfigurationMerger"
-        }, 
-        {
-            "location": "/scripts/configurationMerger/#description", 
-            "text": "A helper script that can merge the configurations from multiple sources.", 
-            "title": "Description"
-        }, 
-        {
-            "location": "/scripts/configurationMerger/#static-method-details", 
-            "text": "", 
-            "title": "Static Method Details"
-        }, 
-        {
-            "location": "/scripts/configurationMerger/#merge", 
-            "text": "", 
-            "title": "merge"
-        }, 
-        {
-            "location": "/scripts/configurationMerger/#description_1", 
-            "text": "A step is usually configured by default values, configuration values from the configuration file and the parameters.\nThe method can merge these sources.\nDefault values are overwritten by configuration file values.\nThese are overwritten by parameters.", 
-            "title": "Description"
-        }, 
-        {
-            "location": "/scripts/configurationMerger/#parameters", 
-            "text": "parameter  mandatory  Class      parameters  yes  Map    parameterKeys  yes  List    configurationMap  yes  Map    configurationKeys  yes  List    defaults  yes  Map      parameters  Parameters map given to the step  parameterKeys  List of parameter names (keys) that should be considered while merging.  configurationMap  Configuration map loaded from the configuration file.  configurationKeys  List of configuration keys that should be considered while merging.  defaults  Map of default values, e.g. loaded from the default value configuration file.", 
-            "title": "Parameters"
-        }, 
-        {
-            "location": "/scripts/configurationMerger/#side-effects", 
-            "text": "none", 
-            "title": "Side effects"
-        }, 
-        {
-            "location": "/scripts/configurationMerger/#example", 
-            "text": "prepareDefaultValues   script:   script  final   Map   stepDefaults   =   ConfigurationLoader . defaultStepConfiguration ( script ,   mavenExecute )  final   Map   stepConfiguration   =   ConfigurationLoader . stepConfiguration ( script ,   mavenExecute )  List   parameterKeys   =   [ \n     dockerImage , \n     globalSettingsFile , \n     projectSettingsFile , \n     pomPath , \n     flags , \n     goals , \n     m2Path , \n     defines  ]  List   stepConfigurationKeys   =   [ \n     dockerImage , \n     globalSettingsFile , \n     projectSettingsFile , \n     pomPath , \n     m2Path  ]  Map   configuration   =   ConfigurationMerger . merge ( parameters ,   parameterKeys ,   stepConfiguration ,   stepConfigurationKeys ,   stepDefaults )", 
-            "title": "Example"
-        }, 
-        {
-            "location": "/scripts/configurationMerger/#mergewithpipelinedata", 
-            "text": "", 
-            "title": "mergeWithPipelineData"
-        }, 
-        {
-            "location": "/scripts/configurationMerger/#description_2", 
-            "text": "A step is usually configured by default values, configuration values from the configuration file and the parameters.\nIn certain cases also information previously generated in the pipeline should be mixed in, like for example an artifactVersion created earlier.\nThe method can merge these sources.\nDefault values are overwritten by configuration file values.\nThose are overwritten by information previously generated in the pipeline (e.g. stored in  commonPipelineEnvironment ).\nThese are overwritten by parameters passed directly to the step.", 
-            "title": "Description"
-        }, 
-        {
-            "location": "/scripts/configurationMerger/#parameters_1", 
-            "text": "parameter  mandatory  Class      parameters  yes  Map    parameterKeys  yes  List    pipelineDataMap  yes  Map    configurationMap  yes  Map    configurationKeys  yes  List    defaults  yes  Map      parameters  Parameters map given to the step  parameterKeys  List of parameter names (keys) that should be considered while merging.  configurationMap  Configuration map loaded from the configuration file.  pipelineDataMap  Values available to the step during pipeline run.  configurationKeys  List of configuration keys that should be considered while merging.  defaults  Map of default values, e.g. loaded from the default value configuration file.", 
-            "title": "Parameters"
-        }, 
-        {
-            "location": "/scripts/configurationMerger/#side-effects_1", 
-            "text": "none", 
-            "title": "Side effects"
-        }, 
-        {
-            "location": "/scripts/configurationMerger/#example_1", 
-            "text": "def   stepName   =   influxWriteData  prepareDefaultValues   script:   script  final   Map   stepDefaults   =   ConfigurationLoader . defaultStepConfiguration ( script ,   stepName )  final   Map   stepConfiguration   =   ConfigurationLoader . stepConfiguration ( script ,   stepName )  final   Map   generalConfiguration   =   ConfigurationLoader . generalConfiguration ( script )  List   parameterKeys   =   [ \n     artifactVersion , \n     influxServer , \n     influxPrefix  ]  Map   pipelineDataMap   =   [ \n     artifactVersion:   commonPipelineEnvironment . getArtifactVersion ()  ]  List   stepConfigurationKeys   =   [ \n     influxServer , \n     influxPrefix  ]  Map   configuration   =   ConfigurationMerger . mergeWithPipelineData ( parameters ,   parameterKeys ,   pipelineDataMap ,   stepConfiguration ,   stepConfigurationKeys ,   stepDefaults )", 
             "title": "Example"
         }, 
         {

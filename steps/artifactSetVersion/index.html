@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.6.6">
+      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.7.0">
     
     
       
@@ -202,7 +202,7 @@
   <label class="md-nav__title md-nav__title--site" for="drawer">
     <span class="md-nav__button md-logo">
       
-        <img src="../../images/piper_head_white.png" width="24" height="24">
+        <img src="../../images/piper_head_white.png" width="48" height="48">
       
     </span>
     Jenkins 2.0 Pipelines
@@ -326,8 +326,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#explanation-of-pipeline-step" title="Explanation of pipeline step" class="md-nav__link">
-    Explanation of pipeline step
+  <a href="#example" title="Example" class="md-nav__link">
+    Example
   </a>
   
 </li>
@@ -497,102 +497,6 @@
       
 
 
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
-    
-    <label class="md-nav__link" for="nav-3">
-      Library scripts
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
-        Library scripts
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../scripts/fileUtils/" title="FileUtils" class="md-nav__link">
-      FileUtils
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../scripts/jsonUtils/" title="JsonUtils" class="md-nav__link">
-      JsonUtils
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../scripts/utils/" title="Utils" class="md-nav__link">
-      Utils
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../scripts/version/" title="Version" class="md-nav__link">
-      Version
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../scripts/configurationLoader/" title="ConfigurationLoader" class="md-nav__link">
-      ConfigurationLoader
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../scripts/configurationMerger/" title="ConfigurationMerger" class="md-nav__link">
-      ConfigurationMerger
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
   <li class="md-nav__item">
     <a href="../../jenkins/requiredPlugins/" title="Required Plugins" class="md-nav__link">
       Required Plugins
@@ -649,8 +553,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#explanation-of-pipeline-step" title="Explanation of pipeline step" class="md-nav__link">
-    Explanation of pipeline step
+  <a href="#example" title="Example" class="md-nav__link">
+    Example
   </a>
   
 </li>
@@ -683,7 +587,10 @@
 <li>Timestamp</li>
 <li>CommitId (by default the long version of the hash)</li>
 </ul>
-<p>After conducting automatic versioning the new version is pushed as a new tag into the source code repository (e.g. GitHub)</p>
+<p>Optionally, but enabled by default, the new version is pushed as a new tag into the source code repository (e.g. GitHub).
+If this option is chosen, git credentials and the repository URL needs to be provided.
+Since you might not want to configure the git credentials in Jenkins, committing and pushing can be disabled using the <code>commitVersion</code> parameter as described below.
+If you require strict reproducibility of your builds, this should be used.</p>
 <h2 id="prerequsites">Prerequsites<a class="headerlink" href="#prerequsites" title="Permanent link">&para;</a></h2>
 <p>none</p>
 <h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
@@ -704,10 +611,22 @@
 <td></td>
 </tr>
 <tr>
+<td>artifactType</td>
+<td>no</td>
+<td></td>
+<td>'appContainer'</td>
+</tr>
+<tr>
 <td>buildTool</td>
 <td>no</td>
 <td>maven</td>
 <td>maven, docker</td>
+</tr>
+<tr>
+<td>commitVersion</td>
+<td>no</td>
+<td><code>true</code></td>
+<td><code>true</code>, <code>false</code></td>
 </tr>
 <tr>
 <td>dockerVersionSource</td>
@@ -729,7 +648,7 @@
 </tr>
 <tr>
 <td>gitCredentialsId</td>
-<td>yes</td>
+<td>If <code>commitVersion</code> is <code>true</code></td>
 <td>as defined in custom configuration</td>
 <td></td>
 </tr>
@@ -747,7 +666,7 @@
 </tr>
 <tr>
 <td>gitSshUrl</td>
-<td>yes</td>
+<td>If <code>commitVersion</code> is <code>true</code></td>
 <td></td>
 <td></td>
 </tr>
@@ -779,7 +698,9 @@
 </table>
 <ul>
 <li><code>script</code> defines the global script environment of the Jenkinsfile run. Typically <code>this</code> is passed to this parameter. This allows the function to access the <a href="../commonPipelineEnvironment/"><code>commonPipelineEnvironment</code></a> for retrieving e.g. configuration parameters.</li>
+<li><code>artifactType</code> defines the type of the artifact.</li>
 <li><code>buildTool</code> defines the tool which is used for building the artifact.</li>
+<li><code>commitVersion</code> controls if the changed version is committed and pushed to the git repository. If this is enabled (which is the default), you need to provide <code>gitCredentialsId</code> and <code>gitSshUrl</code>.</li>
 <li>
 <p><code>dockerVersionSource</code> specifies the source to be used for the main version which is used for generating the automatic version.</p>
 <ul>
@@ -799,10 +720,11 @@
 <li><code>timestamp</code> defines the timestamp to be used in the automatic version string. You could overwrite the default behavior by explicitly setting this string.</li>
 </ul>
 <h2 id="step-configuration">Step configuration<a class="headerlink" href="#step-configuration" title="Permanent link">&para;</a></h2>
-<p>Following parameters can also be specified as step parameters using the global configuration file:</p>
+<p>The following parameters can also be specified as step parameters using the global configuration file:</p>
 <ul>
 <li><code>artifactType</code></li>
 <li><code>buildTool</code></li>
+<li><code>commitVersion</code></li>
 <li><code>dockerVersionSource</code></li>
 <li><code>filePath</code></li>
 <li><code>gitCredentialsId</code></li>
@@ -814,8 +736,7 @@
 <li><code>timestampTemplate</code></li>
 <li><code>versioningTemplate</code></li>
 </ul>
-<h2 id="explanation-of-pipeline-step">Explanation of pipeline step<a class="headerlink" href="#explanation-of-pipeline-step" title="Permanent link">&para;</a></h2>
-<p>Pipeline step:</p>
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span></span><span class="n">artifactSetVersion</span> <span class="nl">script:</span> <span class="k">this</span><span class="o">,</span> <span class="nl">buildTool:</span> <span class="s1">&#39;maven&#39;</span>
 </pre></div>
                 
@@ -887,9 +808,9 @@
       
     </div>
     
-      <script src="../../assets/javascripts/application.02434462.js"></script>
+      <script src="../../assets/javascripts/application.8eb9be28.js"></script>
       
-      <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"0.17.3",url:{base:"../.."}})</script>
       
     
     
