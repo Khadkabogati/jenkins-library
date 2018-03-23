@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.7.0">
+      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.7.1">
     
     
       
@@ -91,8 +91,8 @@
         
       </defs>
     </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
       <a href="#mtabuild" tabindex="1" class="md-skip">
@@ -658,18 +658,26 @@
 <td></td>
 <td></td>
 </tr>
+<tr>
+<td><code>applicationName</code></td>
+<td>no</td>
+<td></td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <ul>
 <li><code>script</code> - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the <code>this</code> parameter, as in <code>script: this</code>. This allows the function to access the <a href="../commonPipelineEnvironment/"><code>commonPipelineEnvironment</code></a> for retrieving, for example, configuration parameters.</li>
 <li><code>buildTarget</code> - The target platform to which the mtar can be deployed.</li>
 <li><code>mtaJarLocation</code> - The path of the <code>mta.jar</code> file. If no parameter is provided, neither at the level of the method call nor via step configuration, the path is retrieved from the Jenkins environment variables using <code>env.MTA_JAR_LOCATION</code>. If the Jenkins environment variable is not set it is assumed that <code>mta.jar</code> is located in the current working directory.</li>
+<li><code>applicationName</code> - The name of the application which is being built. If the parameter has been provided and no <code>mta.yaml</code> exists, the <code>mta.yaml</code> will be automatically generated using this parameter and the information (<code>name</code> and <code>version</code>) from <code>package.json</code> before the actual build starts.</li>
 </ul>
 <h2 id="step-configuration">Step configuration<a class="headerlink" href="#step-configuration" title="Permanent link">&para;</a></h2>
 <p>The following parameters can also be specified as step parameters using the global configuration file:</p>
 <ul>
 <li><code>buildTarget</code></li>
 <li><code>mtaJarLocation</code></li>
+<li><code>applicationName</code></li>
 </ul>
 <h2 id="return-value">Return value<a class="headerlink" href="#return-value" title="Permanent link">&para;</a></h2>
 <p>The file name of the resulting archive is returned with this step. The file name is extracted from the key <code>ID</code> defined in <code>mta.yaml</code>.</p>
@@ -697,6 +705,8 @@
               
               
                 
+
+
               
             </article>
           </div>
