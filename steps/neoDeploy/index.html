@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.7.1">
+      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.7.2">
     
     
       
@@ -40,7 +40,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.78aab2dc.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.8d40d89b.css">
       
         <link rel="stylesheet" href="../../assets/stylesheets/application-palette.6079476c.css">
       
@@ -651,6 +651,8 @@
                 <h1 id="neodeploy">neoDeploy<a class="headerlink" href="#neodeploy" title="Permanent link">&para;</a></h1>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
 <p>Deploys an Application to SAP Cloud Platform (SAP CP) using the SAP Cloud Platform Console Client (Neo Java Web SDK).</p>
+<p>Before doing this, validates that SAP Cloud Platform Console Client is installed and the version is compatible.</p>
+<p>Note that a version is formed by <code>major.minor.patch</code>, and a version is compatible to another version if the minor and patch versions are higher, but the major version is not, e.g. if 3.39.10 is the expected version, 3.39.11 and 3.40.1 would be compatible versions, but 4.0.1 would not be a compatible version.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>SAP CP account</strong> - the account to where the application is deployed.</li>
@@ -660,12 +662,12 @@
 <p><img alt="Jenkins credentials configuration" src="../../images/neo_credentials.png" /></p>
 <ul>
 <li>
-<p><strong>Neo Java Web SDK</strong> - can be downloaded from <a href="http://central.maven.org/maven2/com/sap/cloud/neo-java-web-sdk/">Maven Central</a>. The Neo Java Web SDK
+<p><strong>Neo Java Web SDK 3.39.10 or compatible version</strong> - can be downloaded from <a href="http://central.maven.org/maven2/com/sap/cloud/neo-java-web-sdk/">Maven Central</a>. The Neo Java Web SDK
 needs to be extracted into the folder provided by <code>neoHome</code>. In case this parameters is not provided and there is no NEO_HOME parameter in the environment
 <code>&lt;neoRoot&gt;/tools</code> needs to be in the <code>PATH</code>. This step is also capable of triggering the neo deploy tool provided inside a docker image.</p>
 </li>
 <li>
-<p><strong>Java 8 or higher</strong> - needed by the <em>Neo-Java-Web-SDK</em></p>
+<p><strong>Java 8 or compatible version</strong> - needed by the <em>Neo-Java-Web-SDK</em></p>
 </li>
 </ul>
 <h2 id="parameters-when-using-mta-deployment-method-default-mta">Parameters when using MTA deployment method (default - MTA)<a class="headerlink" href="#parameters-when-using-mta-deployment-method-default-mta" title="Permanent link">&para;</a></h2>
@@ -896,7 +898,7 @@ needs to be extracted into the folder provided by <code>neoHome</code>. In case 
 <li><code>deployMode</code> - The deployment mode which should be used. Available options are <code>'mta'</code> (default), <code>'warParams'</code> (deploying WAR file and passing all the deployment parameters via the function call) and <code>'warPropertiesFile'</code> (deploying WAR file and putting all the deployment parameters in a .properties file)</li>
 <li><code>host</code> - The SAP Cloud Platform host to deploy to.</li>
 <li><code>neoCredentialsId</code> - The Jenkins credentials containing user and password used for SAP CP deployment.</li>
-<li><code>neoHome</code> - The path to the <code>neo-java-web-sdk</code> tool used for SAP CP deployment. If no parameter is provided, the path is retrieved from the Jenkins environment variables using <code>env.NEO_HOME</code>. If this Jenkins environment variable is not set it is assumed that the tool is available in the <code>PATH</code>.</li>
+<li><code>neoHome</code> - The path to the <code>neo-java-web-sdk</code> tool used for SAP CP deployment. If no parameter is provided, the path is retrieved from the environment variables using the environment variable <code>NEO_HOME</code>. If no parameter and no environment variable is provided, the path is retrieved from the step configuration using the step configuration key <code>neoHome</code>. If the previous configurations are not provided, the tool is expected on the <code>PATH</code>, and if it is not available on the <code>PATH</code> an AbortException is thrown.</li>
 <li><code>propertiesFile</code> - The path to the .properties file in which all necessary deployment properties for the application are defined.</li>
 <li><code>runtime</code> - Name of SAP Cloud Platform application runtime</li>
 <li><code>runtime-version</code> - Version of SAP Cloud Platform application runtime</li>
@@ -1024,7 +1026,7 @@ needs to be extracted into the folder provided by <code>neoHome</code>. In case 
       
     </div>
     
-      <script src="../../assets/javascripts/application.8eb9be28.js"></script>
+      <script src="../../assets/javascripts/application.b438e6c5.js"></script>
       
       <script>app.initialize({version:"0.17.3",url:{base:"../.."}})</script>
       
