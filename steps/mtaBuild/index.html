@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.7.2">
+      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.7.3">
     
     
       
@@ -663,7 +663,7 @@
 <tr>
 <td><code>mtaJarLocation</code></td>
 <td>no</td>
-<td></td>
+<td><code>'mta.jar'</code></td>
 <td></td>
 </tr>
 <tr>
@@ -678,7 +678,8 @@
 <li><code>script</code> - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the <code>this</code> parameter, as in <code>script: this</code>. This allows the function to access the <a href="../commonPipelineEnvironment/"><code>commonPipelineEnvironment</code></a> for retrieving, for example, configuration parameters.</li>
 <li><code>buildTarget</code> - The target platform to which the mtar can be deployed.</li>
 <li><code>extension</code> - The path to the extension descriptor file.</li>
-<li><code>mtaJarLocation</code> - The path of the <code>mta.jar</code> file. If no parameter is provided, the path is retrieved from the environment variables using the environment variable<code>MTA_JAR_LOCATION</code>. If no parameter and no environment variable is provided, the path is retrieved from the step configuration using the step configuration key <code>mtaJarLocation</code>. If the previous configurations are not provided, <code>mta.jar</code> is expected on the current working directory, and if it is not located on the current working directory an AbortException is thrown.</li>
+<li><code>mtaJarLocation</code> - The location of the SAP Multitarget Application Archive Builder jar file, including file name and extension. First, the location is retrieved from the environment variables using the environment variable<code>MTA_JAR_LOCATION</code>. If no environment variable is provided, the location is retrieved from the parameters, or the step configuration using the key <code>mtaJarLocation</code>. If SAP Multitarget Application Archive Builder is not found on one of the previous locations an AbortException is thrown.
+Note that the environment variable <code>MTA_JAR_LOCATION</code> has priority. In case that the script runs on multiple nodes, SAP Multitarget Application Archive Builder must be located on all the nodes, therefore the environment variable must be also configured on all the nodes.</li>
 <li><code>applicationName</code> - The name of the application which is being built. If the parameter has been provided and no <code>mta.yaml</code> exists, the <code>mta.yaml</code> will be automatically generated using this parameter and the information (<code>name</code> and <code>version</code>) from <code>package.json</code> before the actual build starts.</li>
 </ul>
 <h2 id="step-configuration">Step configuration<a class="headerlink" href="#step-configuration" title="Permanent link">&para;</a></h2>
@@ -698,6 +699,7 @@
 <h2 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>AbortException</code>:<ul>
+<li>If SAP Multitarget Application Archive Builder is not found.</li>
 <li>If there is an invalid <code>buildTarget</code>.</li>
 <li>If there is no key <code>ID</code> inside the <code>mta.yaml</code> file.</li>
 </ul>
