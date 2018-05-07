@@ -4,7 +4,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2018-05-03</lastmod>
+     <lastmod>2018-05-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,79 +13,79 @@
         
     <url>
      <loc>/steps/artifactSetVersion/</loc>
-     <lastmod>2018-05-03</lastmod>
+     <lastmod>2018-05-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/steps/commonPipelineEnvironment/</loc>
-     <lastmod>2018-05-03</lastmod>
+     <lastmod>2018-05-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/steps/dockerExecute/</loc>
-     <lastmod>2018-05-03</lastmod>
+     <lastmod>2018-05-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/steps/durationMeasure/</loc>
-     <lastmod>2018-05-03</lastmod>
+     <lastmod>2018-05-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/steps/handlePipelineStepErrors/</loc>
-     <lastmod>2018-05-03</lastmod>
+     <lastmod>2018-05-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/steps/influxWriteData/</loc>
-     <lastmod>2018-05-03</lastmod>
+     <lastmod>2018-05-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/steps/mavenExecute/</loc>
-     <lastmod>2018-05-03</lastmod>
+     <lastmod>2018-05-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/steps/mtaBuild/</loc>
-     <lastmod>2018-05-03</lastmod>
+     <lastmod>2018-05-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/steps/neoDeploy/</loc>
-     <lastmod>2018-05-03</lastmod>
+     <lastmod>2018-05-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/steps/pipelineExecute/</loc>
-     <lastmod>2018-05-03</lastmod>
+     <lastmod>2018-05-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/steps/prepareDefaultValues/</loc>
-     <lastmod>2018-05-03</lastmod>
+     <lastmod>2018-05-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/steps/setupCommonPipelineEnvironment/</loc>
-     <lastmod>2018-05-03</lastmod>
+     <lastmod>2018-05-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/steps/toolValidate/</loc>
-     <lastmod>2018-05-03</lastmod>
+     <lastmod>2018-05-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -94,7 +94,7 @@
     
     <url>
      <loc>/jenkins/requiredPlugins/</loc>
-     <lastmod>2018-05-03</lastmod>
+     <lastmod>2018-05-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
