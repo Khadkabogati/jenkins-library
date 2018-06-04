@@ -901,6 +901,41 @@
             "title": "Example"
         }, 
         {
+            "location": "/steps/pipelineStashFiles/", 
+            "text": "pipelineStashFiles\n\n\nDescription\n\n\nThis step stashes files that are needed in other build steps (on other nodes).\n\n\nPrerequsites\n\n\nnone\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nscript\n\n\nno\n\n\nempty \ncommonPipelineEnvironment\n\n\n\n\n\n\n\n\nrunCheckmarx\n\n\nno\n\n\nfalse\n\n\n\n\n\n\n\n\nrunOpaTests\n\n\nno\n\n\nfalse\n\n\n\n\n\n\n\n\nstashIncludes\n\n\nno\n\n\nnot set\n\n\n\n\n\n\n\n\nstashExcludes\n\n\nno\n\n\nnot set\n\n\n\n\n\n\n\n\n\n\nDetails:\n\n\nThe step is stashing files before and after the build. This is due to the fact, that some of the code that needs to be stashed, is generated during the build (TypeScript for NPM).\n\n\n\n\n\n\n\n\nstash name\n\n\nmandatory\n\n\nprerequisite\n\n\npattern\n\n\n\n\n\n\n\n\n\n\nbuildDescriptor\n\n\nno\n\n\n\n\nincludes: \n**/pom.xml, **/.mvn/**, **/assembly.xml, **/.swagger-codegen-ignore, **/package.json, **/requirements.txt, **/setup.py, **/whitesource_config.py, **/mta*.y*ml, **/.npmrc, **/whitesource.*.json, **/whitesource-fs-agent.config, .xmake.cfg, Dockerfile, **/VERSION, **/version.txt, **/build.sbt, **/sbtDescriptor.json, **/project/*\n excludes: \n**/node_modules/**/package.json\n\n\n\n\n\n\ncheckmarx\n\n\nno\n\n\nCheckmarx is enabled\n\n\nincludes: \n**/*.js, **/*.scala, **/*.go\n excludes: \n**/*.mockserver.js, node_modules/**/*.js\n\n\n\n\n\n\nclassFiles\n\n\nno\n\n\n\n\nincludes: \n**/target/classes/**/*.class, **/target/test-classes/**/*.class\n \nexcludes: \n''\n\n\n\n\n\n\ndeployDescriptor\n\n\nno\n\n\n\n\nincludes: \n**/manifest*.y*ml, **/*.mtaext.y*ml, **/*.mtaext, **/xs-app.json, helm/**, *.y*ml\nexclude: \n''\n\n\n\n\n\n\ngit\n\n\nno\n\n\n\n\nincludes: \n**/gitmetadata/**\nexludes: \n''\n\n\n\n\n\n\nopa5\n\n\nno\n\n\nOPA5 is enabled\n\n\nincludes: \n**/*.*\nexcludes: \n''\n\n\n\n\n\n\nopensourceConfiguration\n\n\nno\n\n\n\n\nincludes: \n**/srcclr.yml, **/vulas-custom.properties, **/.nsprc, **/.retireignore, **/.retireignore.json, **/.snyk\nexcludes: \n''\n\n\n\n\n\n\npipelineConfigAndTests\n\n\nno\n\n\n\n\nincludes: \n.pipeline/*.*\nexcludes: \n''\n\n\n\n\n\n\nsecurityDescriptor\n\n\nno\n\n\n\n\nincludes: \n**/xs-security.json\nexludes: \n''\n\n\n\n\n\n\nsonar\n\n\nno\n\n\n\n\nincludes: \n**/jacoco*.exec, **/sonar-project.properties\nexludes: \n''\n\n\n\n\n\n\ntests\n\n\nno\n\n\n\n\nincludes: \n**/pom.xml, **/*.json, **/*.xml, **/src/**, **/node_modules/**, **/specs/**, **/env/**, **/*.js\nexcludes: \n''\n\n\n\n\n\n\n\n\n\n\nOverwriting default stashing behavior\n\n\nIt is possible to overwrite the default behavior of the stashes using the parameters \nstashIncludes\n and \nstashExcludes\n , e.g.\n\n\n\n\nstashIncludes: [buildDescriptor: '**/mybuild.yml]\n\n\nstashExcludes: [tests: '**/NOTRELEVANT.*]\n\n\n\n\n\n\nStep configuration\n\n\nThe following parameters can also be specified as step parameters using the global configuration file:\n\n\n\n\nrunOpaTests\n\n\nrunCheckmarx\n\n\nstashExcludes\n\n\nstashIncludes\n\n\n\n\nExplanation of pipeline step\n\n\nUsage of pipeline step:\n\n\npipelineStashFiles\n \nscript:\n \nthis\n \n{\n\n  \nmavenExecute\n \nscript:\n \nthis\n,\n \n...\n\n\n}\n\n\n\n\n\nAvailable parameters:", 
+            "title": "pipelineStashFiles"
+        }, 
+        {
+            "location": "/steps/pipelineStashFiles/#pipelinestashfiles", 
+            "text": "", 
+            "title": "pipelineStashFiles"
+        }, 
+        {
+            "location": "/steps/pipelineStashFiles/#description", 
+            "text": "This step stashes files that are needed in other build steps (on other nodes).", 
+            "title": "Description"
+        }, 
+        {
+            "location": "/steps/pipelineStashFiles/#prerequsites", 
+            "text": "none", 
+            "title": "Prerequsites"
+        }, 
+        {
+            "location": "/steps/pipelineStashFiles/#parameters", 
+            "text": "parameter  mandatory  default  possible values      script  no  empty  commonPipelineEnvironment     runCheckmarx  no  false     runOpaTests  no  false     stashIncludes  no  not set     stashExcludes  no  not set      Details:  The step is stashing files before and after the build. This is due to the fact, that some of the code that needs to be stashed, is generated during the build (TypeScript for NPM).     stash name  mandatory  prerequisite  pattern      buildDescriptor  no   includes:  **/pom.xml, **/.mvn/**, **/assembly.xml, **/.swagger-codegen-ignore, **/package.json, **/requirements.txt, **/setup.py, **/whitesource_config.py, **/mta*.y*ml, **/.npmrc, **/whitesource.*.json, **/whitesource-fs-agent.config, .xmake.cfg, Dockerfile, **/VERSION, **/version.txt, **/build.sbt, **/sbtDescriptor.json, **/project/*  excludes:  **/node_modules/**/package.json    checkmarx  no  Checkmarx is enabled  includes:  **/*.js, **/*.scala, **/*.go  excludes:  **/*.mockserver.js, node_modules/**/*.js    classFiles  no   includes:  **/target/classes/**/*.class, **/target/test-classes/**/*.class   excludes:  ''    deployDescriptor  no   includes:  **/manifest*.y*ml, **/*.mtaext.y*ml, **/*.mtaext, **/xs-app.json, helm/**, *.y*ml exclude:  ''    git  no   includes:  **/gitmetadata/** exludes:  ''    opa5  no  OPA5 is enabled  includes:  **/*.* excludes:  ''    opensourceConfiguration  no   includes:  **/srcclr.yml, **/vulas-custom.properties, **/.nsprc, **/.retireignore, **/.retireignore.json, **/.snyk excludes:  ''    pipelineConfigAndTests  no   includes:  .pipeline/*.* excludes:  ''    securityDescriptor  no   includes:  **/xs-security.json exludes:  ''    sonar  no   includes:  **/jacoco*.exec, **/sonar-project.properties exludes:  ''    tests  no   includes:  **/pom.xml, **/*.json, **/*.xml, **/src/**, **/node_modules/**, **/specs/**, **/env/**, **/*.js excludes:  ''      Overwriting default stashing behavior  It is possible to overwrite the default behavior of the stashes using the parameters  stashIncludes  and  stashExcludes  , e.g.   stashIncludes: [buildDescriptor: '**/mybuild.yml]  stashExcludes: [tests: '**/NOTRELEVANT.*]", 
+            "title": "Parameters"
+        }, 
+        {
+            "location": "/steps/pipelineStashFiles/#step-configuration", 
+            "text": "The following parameters can also be specified as step parameters using the global configuration file:   runOpaTests  runCheckmarx  stashExcludes  stashIncludes", 
+            "title": "Step configuration"
+        }, 
+        {
+            "location": "/steps/pipelineStashFiles/#explanation-of-pipeline-step", 
+            "text": "Usage of pipeline step:  pipelineStashFiles   script:   this   { \n   mavenExecute   script:   this ,   ...  }   Available parameters:", 
+            "title": "Explanation of pipeline step"
+        }, 
+        {
             "location": "/steps/prepareDefaultValues/", 
             "text": "prepareDefaultValues\n\n\nDescription\n\n\nLoads the pipeline library default values from the file \nresources/default_pipeline_environment.yml\n.\nAfterwards the values can be loaded by the method: \nConfigurationLoader.defaultStepConfiguration\n \n\n\nParameters\n\n\nNone\n\n\nStep configuration\n\n\nNone\n\n\nExceptions\n\n\nNone\n\n\nExample\n\n\nprepareDefaultValues\n()", 
             "title": "prepareDefaultValues"
