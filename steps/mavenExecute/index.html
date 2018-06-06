@@ -652,6 +652,12 @@
 <td></td>
 <td>'-Dmaven.tests.skip=true'</td>
 </tr>
+<tr>
+<td><code>logSuccessfulMavenTransfers</code></td>
+<td>no</td>
+<td><code>false</code></td>
+<td>'true'</td>
+</tr>
 </tbody>
 </table>
 <ul>
@@ -663,6 +669,7 @@
 <li><code>goals</code> Maven goals that should be executed.</li>
 <li><code>m2Path</code> Path to the location of the local repository that should be used.</li>
 <li><code>defines</code> Additional properties.</li>
+<li><code>logSuccessfulMavenTransfers</code> configures maven to log successful downloads. This is set to <code>false</code> by default to reduce the noise in build logs.</li>
 </ul>
 <h2 id="step-configuration">Step configuration<a class="headerlink" href="#step-configuration" title="Permanent link">&para;</a></h2>
 <p>The following parameters can also be specified as step parameters using the global configuration file:</p>
