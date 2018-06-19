@@ -1,14 +1,16 @@
 import com.cloudbees.groovy.cps.NonCPS
 import com.sap.piper.SysEnv
 import org.codehaus.groovy.GroovyException
-
+import com.sap.piper.ConfigurationMerger
 import java.util.UUID
+import com.sap.piper.Utils
 
 def call(Map parameters = [:], body) {
     def STEP_NAME = 'executeDockerOnKubernetes'
     def PLUGIN_ID_KUBERNETES = 'kubernetes'
 
     handlePipelineStepErrors(stepName: 'executeDockerOnKubernetes', stepParameters: parameters) {
+        def utils= new Utils()
         if (!isPluginActive(PLUGIN_ID_KUBERNETES)) {
             error("[ERROR][${STEP_NAME}] not supported. Plugin '${PLUGIN_ID_KUBERNETES}' is not installed or not active.")
         }
@@ -31,7 +33,7 @@ def call(Map parameters = [:], body) {
         if (!config.dockerImage) throw new GroovyException('Docker image not specified.')
 
         def options = [name      : env.jaas_owner + '-jaas',
-                       label     : uniqueId,
+                       label     : config.uniqueId,
                        containers: getContainerList(config)]
 
         stashWorkspace(config)
@@ -94,7 +96,7 @@ private getContainerList(config) {
 
     result = []
     result.push(containerTemplate(name: 'jnlp',
-        image: 's4sdk/jnlp-k8s:latest',
+        image: 's4sdk/jenkins-agent-k8s:latest',
         args: '${computer.jnlpmac} ${computer.name}'))
     result.push(containerTemplate(name: 'container-exec',
         image: config.dockerImage,
