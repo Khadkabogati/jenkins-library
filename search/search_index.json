@@ -1071,6 +1071,141 @@
             "title": "Example"
         }, 
         {
+            "location": "/steps/transportRequestCreate/", 
+            "text": "transportRequestCreate\n\n\nDescription\n\n\nCreates a Transport Request for a Change Document on the Solution Manager.\n\n\nPrerequisites\n\n\n\n\nChange Management Client 2.0.0 or compatible version\n - available for download on Maven Central.\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nscript\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nchangeId\n\n\nyes\n\n\n\n\n\n\n\n\n\n\ncmCredentialsId\n\n\nyes\n\n\n\n\n\n\n\n\n\n\ncmEndpoint\n\n\nyes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nscript\n - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the \nthis\n parameter, as in \nscript: this\n. This allows the function to access the \ncommonPipelineEnvironment\n for retrieving, for example, configuration parameters.\n\n\nchangeId\n - The id of the change document to transport.\n\n\ncmCredentialsId\n - The credentials to connect to the Solution Manager.\n\n\ncmEndpoint\n - The address of the Solution Manager.\n\n\n\n\nStep configuration\n\n\nThe following parameters can also be specified as step parameters using the global configuration file:\n\n\n\n\ncmCredentialsId\n\n\ncmEndpoint\n\n\n\n\nReturn value\n\n\nThe id of the Transport Request that has been created.\n\n\nExceptions\n\n\n\n\nAbortException\n:\n\n\nIf the change id is not provided.\n\n\nIf the creation of the transport request fails.\n\n\n\n\n\n\n\n\nExample\n\n\ndef\n \ntransportRequestId\n \n=\n \ntransportRequestCreate\n \nscript:\nthis\n,\n \nchangeId:\n \n001", 
+            "title": "transportRequestCreate"
+        }, 
+        {
+            "location": "/steps/transportRequestCreate/#transportrequestcreate", 
+            "text": "", 
+            "title": "transportRequestCreate"
+        }, 
+        {
+            "location": "/steps/transportRequestCreate/#description", 
+            "text": "Creates a Transport Request for a Change Document on the Solution Manager.", 
+            "title": "Description"
+        }, 
+        {
+            "location": "/steps/transportRequestCreate/#prerequisites", 
+            "text": "Change Management Client 2.0.0 or compatible version  - available for download on Maven Central.", 
+            "title": "Prerequisites"
+        }, 
+        {
+            "location": "/steps/transportRequestCreate/#parameters", 
+            "text": "parameter  mandatory  default  possible values      script  yes      changeId  yes      cmCredentialsId  yes      cmEndpoint  yes        script  - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the  this  parameter, as in  script: this . This allows the function to access the  commonPipelineEnvironment  for retrieving, for example, configuration parameters.  changeId  - The id of the change document to transport.  cmCredentialsId  - The credentials to connect to the Solution Manager.  cmEndpoint  - The address of the Solution Manager.", 
+            "title": "Parameters"
+        }, 
+        {
+            "location": "/steps/transportRequestCreate/#step-configuration", 
+            "text": "The following parameters can also be specified as step parameters using the global configuration file:   cmCredentialsId  cmEndpoint", 
+            "title": "Step configuration"
+        }, 
+        {
+            "location": "/steps/transportRequestCreate/#return-value", 
+            "text": "The id of the Transport Request that has been created.", 
+            "title": "Return value"
+        }, 
+        {
+            "location": "/steps/transportRequestCreate/#exceptions", 
+            "text": "AbortException :  If the change id is not provided.  If the creation of the transport request fails.", 
+            "title": "Exceptions"
+        }, 
+        {
+            "location": "/steps/transportRequestCreate/#example", 
+            "text": "def   transportRequestId   =   transportRequestCreate   script: this ,   changeId:   001", 
+            "title": "Example"
+        }, 
+        {
+            "location": "/steps/transportRequestRelease/", 
+            "text": "transportRequestRelease\n\n\nDescription\n\n\nReleases a Transport Request for a Change Document on the Solution Manager.\n\n\nPrerequisites\n\n\n\n\nChange Management Client 2.0.0 or compatible version\n - available for download on Maven Central.\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nscript\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nchangeId\n\n\nyes\n\n\n\n\n\n\n\n\n\n\ntransportRequestId\n\n\nyes\n\n\n\n\n\n\n\n\n\n\ncmCredentialsId\n\n\nyes\n\n\n\n\n\n\n\n\n\n\ncmEndpoint\n\n\nyes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nscript\n - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the \nthis\n parameter, as in \nscript: this\n. This allows the function to access the \ncommonPipelineEnvironment\n for retrieving, for example, configuration parameters.\n\n\nchangeId\n - The id of the change document related to the transport request to release.\n\n\ntransportRequestId\n - The id of the transport request to release.\n\n\ncmCredentialsId\n - The credentials to connect to the Solution Manager.\n\n\ncmEndpoint\n - The address of the Solution Manager.\n\n\n\n\nStep configuration\n\n\nThe following parameters can also be specified as step parameters using the global configuration file:\n\n\n\n\ncmCredentialsId\n\n\ncmEndpoint\n\n\n\n\nReturn value\n\n\nNone.\n\n\nExceptions\n\n\n\n\nAbortException\n:\n\n\nIf the change id is not provided.\n\n\nIf the transport request id is not provided.\n\n\nIf the release of the transport request fails.\n\n\n\n\n\n\n\n\nExample\n\n\ntransportRequestRelease\n \nscript:\nthis\n,\n \nchangeId:\n \n001\n,\n \ntransportRequestId:\n \n001", 
+            "title": "transportRequestRelease"
+        }, 
+        {
+            "location": "/steps/transportRequestRelease/#transportrequestrelease", 
+            "text": "", 
+            "title": "transportRequestRelease"
+        }, 
+        {
+            "location": "/steps/transportRequestRelease/#description", 
+            "text": "Releases a Transport Request for a Change Document on the Solution Manager.", 
+            "title": "Description"
+        }, 
+        {
+            "location": "/steps/transportRequestRelease/#prerequisites", 
+            "text": "Change Management Client 2.0.0 or compatible version  - available for download on Maven Central.", 
+            "title": "Prerequisites"
+        }, 
+        {
+            "location": "/steps/transportRequestRelease/#parameters", 
+            "text": "parameter  mandatory  default  possible values      script  yes      changeId  yes      transportRequestId  yes      cmCredentialsId  yes      cmEndpoint  yes        script  - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the  this  parameter, as in  script: this . This allows the function to access the  commonPipelineEnvironment  for retrieving, for example, configuration parameters.  changeId  - The id of the change document related to the transport request to release.  transportRequestId  - The id of the transport request to release.  cmCredentialsId  - The credentials to connect to the Solution Manager.  cmEndpoint  - The address of the Solution Manager.", 
+            "title": "Parameters"
+        }, 
+        {
+            "location": "/steps/transportRequestRelease/#step-configuration", 
+            "text": "The following parameters can also be specified as step parameters using the global configuration file:   cmCredentialsId  cmEndpoint", 
+            "title": "Step configuration"
+        }, 
+        {
+            "location": "/steps/transportRequestRelease/#return-value", 
+            "text": "None.", 
+            "title": "Return value"
+        }, 
+        {
+            "location": "/steps/transportRequestRelease/#exceptions", 
+            "text": "AbortException :  If the change id is not provided.  If the transport request id is not provided.  If the release of the transport request fails.", 
+            "title": "Exceptions"
+        }, 
+        {
+            "location": "/steps/transportRequestRelease/#example", 
+            "text": "transportRequestRelease   script: this ,   changeId:   001 ,   transportRequestId:   001", 
+            "title": "Example"
+        }, 
+        {
+            "location": "/steps/transportRequestUploadFile/", 
+            "text": "transportRequestUploadFile\n\n\nDescription\n\n\nUploads a file to a Transport Request for a Change Document on the Solution Manager.\n\n\nPrerequisites\n\n\n\n\nChange Management Client 2.0.0 or compatible version\n - available for download on Maven Central.\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nscript\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nchangeId\n\n\nyes\n\n\n\n\n\n\n\n\n\n\ntransportRequestId\n\n\nyes\n\n\n\n\n\n\n\n\n\n\napplicationId\n\n\nyes\n\n\n\n\n\n\n\n\n\n\nfilePath\n\n\nyes\n\n\n\n\n\n\n\n\n\n\ncmCredentialsId\n\n\nyes\n\n\n\n\n\n\n\n\n\n\ncmEndpoint\n\n\nyes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nscript\n - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the \nthis\n parameter, as in \nscript: this\n. This allows the function to access the \ncommonPipelineEnvironment\n for retrieving, for example, configuration parameters.\n\n\nchangeId\n - The id of the change document related to the transport request to release.\n\n\ntransportRequestId\n - The id of the transport request to release.\n\n\napplicationId\n - The id of the application.\n\n\nfilePath\n - The path of the file to upload.\n\n\ncmCredentialsId\n - The credentials to connect to the Solution Manager.\n\n\ncmEndpoint\n - The address of the Solution Manager.\n\n\n\n\nStep configuration\n\n\nThe following parameters can also be specified as step parameters using the global configuration file:\n\n\n\n\ncmCredentialsId\n\n\ncmEndpoint\n\n\n\n\nReturn value\n\n\nNone.\n\n\nExceptions\n\n\n\n\nAbortException\n:\n\n\nIf the change id is not provided.\n\n\nIf the transport request id is not provided.\n\n\nIf the application id is not provided.\n\n\nIf the file path is not provided.\n\n\nIf the upload fails.\n\n\n\n\n\n\n\n\nExample\n\n\ntransportRequestUploadFile\n \nscript:\nthis\n,\n \nchangeId:\n \n001\n,\n \ntransportRequestId:\n \n001\n,\n \napplicationId:\n \n001\n,\n \nfilePath:\n \n/path", 
+            "title": "transportRequestUploadFile"
+        }, 
+        {
+            "location": "/steps/transportRequestUploadFile/#transportrequestuploadfile", 
+            "text": "", 
+            "title": "transportRequestUploadFile"
+        }, 
+        {
+            "location": "/steps/transportRequestUploadFile/#description", 
+            "text": "Uploads a file to a Transport Request for a Change Document on the Solution Manager.", 
+            "title": "Description"
+        }, 
+        {
+            "location": "/steps/transportRequestUploadFile/#prerequisites", 
+            "text": "Change Management Client 2.0.0 or compatible version  - available for download on Maven Central.", 
+            "title": "Prerequisites"
+        }, 
+        {
+            "location": "/steps/transportRequestUploadFile/#parameters", 
+            "text": "parameter  mandatory  default  possible values      script  yes      changeId  yes      transportRequestId  yes      applicationId  yes      filePath  yes      cmCredentialsId  yes      cmEndpoint  yes        script  - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the  this  parameter, as in  script: this . This allows the function to access the  commonPipelineEnvironment  for retrieving, for example, configuration parameters.  changeId  - The id of the change document related to the transport request to release.  transportRequestId  - The id of the transport request to release.  applicationId  - The id of the application.  filePath  - The path of the file to upload.  cmCredentialsId  - The credentials to connect to the Solution Manager.  cmEndpoint  - The address of the Solution Manager.", 
+            "title": "Parameters"
+        }, 
+        {
+            "location": "/steps/transportRequestUploadFile/#step-configuration", 
+            "text": "The following parameters can also be specified as step parameters using the global configuration file:   cmCredentialsId  cmEndpoint", 
+            "title": "Step configuration"
+        }, 
+        {
+            "location": "/steps/transportRequestUploadFile/#return-value", 
+            "text": "None.", 
+            "title": "Return value"
+        }, 
+        {
+            "location": "/steps/transportRequestUploadFile/#exceptions", 
+            "text": "AbortException :  If the change id is not provided.  If the transport request id is not provided.  If the application id is not provided.  If the file path is not provided.  If the upload fails.", 
+            "title": "Exceptions"
+        }, 
+        {
+            "location": "/steps/transportRequestUploadFile/#example", 
+            "text": "transportRequestUploadFile   script: this ,   changeId:   001 ,   transportRequestId:   001 ,   applicationId:   001 ,   filePath:   /path", 
+            "title": "Example"
+        }, 
+        {
             "location": "/jenkins/requiredPlugins/", 
             "text": "Required Plugins\n\n\nThe following Jenkins plugins are needed in order to use the Piper Library.\nThe list below contains the plugin Id and version of the plugin.\n\n\nPlugins\n\n\n\n\nace-editor 1.1\n\n\nauthentication-tokens 1.3\n\n\nbouncycastle-api 2.16.2\n\n\nbranch-api 2.0.14\n\n\ncloudbees-folder 6.2.1\n\n\ncredentials 2.1.16\n\n\ncredentials-binding 1.13\n\n\ndisplay-url-api 2.1.0\n\n\ndocker-commons 1.9\n\n\ndocker-workflow 1.10\n\n\ndurable-task 1.15\n\n\ngit 3.6.2\n\n\ngit-client 2.5.0\n\n\ngit-server 1.7\n\n\nhandlebars 1.1.1\n\n\nicon-shim 2.0.3\n\n\njquery-detached 1.2.1\n\n\njunit 1.21\n\n\nmailer 1.20\n\n\nmatrix-project 1.12\n\n\nmomentjs 1.1.1\n\n\npipeline-build-step 2.5.1\n\n\npipeline-graph-analysis 1.3\n\n\npipeline-input-step 2.8\n\n\npipeline-milestone-step 1.3.1\n\n\npipeline-model-api 1.2.2\n\n\npipeline-model-definition 1.1.1\n\n\npipeline-model-extensions 1.1.1\n\n\npipeline-rest-api 2.6\n\n\npipeline-stage-step 2.2\n\n\npipeline-stage-tags-metadata 1.2.2\n\n\npipeline-stage-view 2.6\n\n\npipeline-utility-steps 1.3.0\n\n\nplain-credentials 1.4\n\n\nscm-api 2.2.3\n\n\nscript-security 1.34\n\n\nssh-credentials 1.13\n\n\nstructs 1.10\n\n\nworkflow-aggregator 2.5\n\n\nworkflow-api 2.23.1\n\n\nworkflow-basic-steps 2.6\n\n\nworkflow-cps 2.41\n\n\nworkflow-cps-global-lib 2.7\n\n\nworkflow-durable-task-step 2.17\n\n\nworkflow-job 2.12.2\n\n\nworkflow-multibranch 2.14\n\n\nworkflow-scm-step 2.6\n\n\nworkflow-step-api 2.13\n\n\nworkflow-support 2.16", 
             "title": "Required Plugins"

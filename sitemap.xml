@@ -76,6 +76,21 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>/steps/transportRequestCreate/</loc>
+     <lastmod>2018-06-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>/steps/transportRequestRelease/</loc>
+     <lastmod>2018-06-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>/steps/transportRequestUploadFile/</loc>
+     <lastmod>2018-06-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>/jenkins/requiredPlugins/</loc>
      <lastmod>2018-06-27</lastmod>
      <changefreq>daily</changefreq>
