@@ -684,7 +684,7 @@
 <td></td>
 </tr>
 <tr>
-<td><code>changeId</code></td>
+<td><code>changeDocumentId</code></td>
 <td>yes</td>
 <td></td>
 <td></td>
@@ -711,7 +711,7 @@
 </table>
 <ul>
 <li><code>script</code> - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the <code>this</code> parameter, as in <code>script: this</code>. This allows the function to access the <a href="../commonPipelineEnvironment/"><code>commonPipelineEnvironment</code></a> for retrieving, for example, configuration parameters.</li>
-<li><code>changeId</code> - The id of the change document related to the transport request to release.</li>
+<li><code>changeDocumentId</code> - The id of the change document related to the transport request to release.</li>
 <li><code>transportRequestId</code> - The id of the transport request to release.</li>
 <li><code>cmCredentialsId</code> - The credentials to connect to the Solution Manager.</li>
 <li><code>cmEndpoint</code> - The address of the Solution Manager.</li>
@@ -734,7 +734,7 @@
 </li>
 </ul>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="n">transportRequestRelease</span> <span class="nl">script:</span><span class="k">this</span><span class="o">,</span> <span class="nl">changeId:</span> <span class="s1">&#39;001&#39;</span><span class="o">,</span> <span class="nl">transportRequestId:</span> <span class="s1">&#39;001&#39;</span>
+<div class="codehilite"><pre><span></span><span class="n">transportRequestRelease</span> <span class="nl">script:</span><span class="k">this</span><span class="o">,</span> <span class="nl">changeDocumentId:</span> <span class="s1">&#39;001&#39;</span><span class="o">,</span> <span class="nl">transportRequestId:</span> <span class="s1">&#39;001&#39;</span>
 </pre></div>
                 
                   
