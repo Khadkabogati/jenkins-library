@@ -11,6 +11,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>/steps/checkChangeInDevelopment/</loc>
+     <lastmod>2018-06-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>/steps/commonPipelineEnvironment/</loc>
      <lastmod>2018-06-29</lastmod>
      <changefreq>daily</changefreq>
