@@ -717,19 +717,19 @@ range and the pattern can be configured. For details see 'parameters' table. </p
 <td></td>
 </tr>
 <tr>
-<td><code>git_from</code></td>
+<td><code>gitFrom</code></td>
 <td>no</td>
 <td><code>origin/master</code></td>
 <td></td>
 </tr>
 <tr>
-<td><code>git_to</code></td>
+<td><code>gitTo</code></td>
 <td>no</td>
 <td><code>HEAD</code></td>
 <td></td>
 </tr>
 <tr>
-<td><code>git_label</code></td>
+<td><code>gitChangeDocumentLabel</code></td>
 <td>no</td>
 <td><code>ChangeDocument\s?:</code></td>
 <td>regex pattern</td>
@@ -741,9 +741,9 @@ range and the pattern can be configured. For details see 'parameters' table. </p
 <li><code>changeDocumentId</code> - The id of the change document to transport. If not provided, it is retrieved from the git commit history.</li>
 <li><code>credentialsId</code> - The credentials to connect to the Solution Manager.</li>
 <li><code>endpoint</code> - The address of the Solution Manager.</li>
-<li><code>git_from</code> - The starting point for retrieving the change document id</li>
-<li><code>git_to</code> - The end point for retrieving the change document id</li>
-<li><code>git_label</code> - A pattern used for identifying lines holding the change document id.</li>
+<li><code>gitFrom</code> - The starting point for retrieving the change document id</li>
+<li><code>gitTo</code> - The end point for retrieving the change document id</li>
+<li><code>gitChangeDocumentLabel</code> - A pattern used for identifying lines holding the change document id.</li>
 </ul>
 <h2 id="step-configuration">Step configuration<a class="headerlink" href="#step-configuration" title="Permanent link">&para;</a></h2>
 <p>The following parameters can also be specified as step parameters using the global configuration file:</p>
