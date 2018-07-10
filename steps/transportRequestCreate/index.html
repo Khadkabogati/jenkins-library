@@ -713,6 +713,12 @@
 <td></td>
 <td></td>
 </tr>
+<tr>
+<td><code>clientOpts</code></td>
+<td>no</td>
+<td></td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <ul>
@@ -720,12 +726,14 @@
 <li><code>changeDocumentId</code> - The id of the change document to transport.</li>
 <li><code>credentialsId</code> - The credentials to connect to the Solution Manager.</li>
 <li><code>endpoint</code> - The address of the Solution Manager.</li>
+<li><code>clientOpts</code>- Options forwarded to JVM used by the CM client, like <code>JAVA_OPTS</code></li>
 </ul>
 <h2 id="step-configuration">Step configuration<a class="headerlink" href="#step-configuration" title="Permanent link">&para;</a></h2>
 <p>The following parameters can also be specified as step parameters using the global configuration file:</p>
 <ul>
 <li><code>credentialsId</code></li>
 <li><code>endpoint</code></li>
+<li><code>clientOpts</code></li>
 </ul>
 <h2 id="return-value">Return value<a class="headerlink" href="#return-value" title="Permanent link">&para;</a></h2>
 <p>The id of the Transport Request that has been created.</p>
