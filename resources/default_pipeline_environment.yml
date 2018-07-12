@@ -8,12 +8,15 @@ steps:
     timestampTemplate: '%Y%m%d%H%M%S'
     tagPrefix: 'build_'
     commitVersion: true
-    maven:
-      filePath: 'pom.xml'
-      versioningTemplate: '${version}-${timestamp}${commitId?"_"+commitId:""}'
     docker:
       filePath: 'Dockerfile'
       versioningTemplate: '${version}-${timestamp}${commitId?"_"+commitId:""}'
+    maven:
+      filePath: 'pom.xml'
+      versioningTemplate: '${version}-${timestamp}${commitId?"_"+commitId:""}'
+    mta:
+      filePath: 'mta.yaml'
+      versioningTemplate: '${version}-${timestamp}${commitId?"+"+commitId:""}'
   checksPublishResults:
     aggregation:
       active: true
@@ -86,6 +89,13 @@ steps:
     warAction: 'deploy'
     vmSize: 'lite'
     neoCredentialsId: 'CI_CREDENTIALS_ID'
+  newmanExecute:
+    dockerImage: 'node:8-stretch'
+    failOnError: true
+    newmanCollection: '**/*.postman_collection.json'
+    newmanEnvironment: ''
+    newmanGlobals: ''
+    newmanRunCommand: "run ${config.newmanCollection} --environment '${config.newmanEnvironment}' --globals '${config.newmanGlobals}' --reporters junit,html --reporter-junit-export target/newman/TEST-${config.newmanCollection.toString().replace(File.separatorChar,(char)'_').tokenize('.').first()}.xml --reporter-html-export target/newman/TEST-${config.newmanCollection.toString().replace(File.separatorChar,(char)'_').tokenize('.').first()}.html"
   pipelineStashFilesAfterBuild:
     runOpaTests: false
     stashIncludes:
@@ -99,7 +109,7 @@ steps:
   pipelineStashFilesBeforeBuild:
     runCheckmarx: false
     stashIncludes:
-      buildDescriptor: '**/pom.xml, **/.mvn/**, **/assembly.xml, **/.swagger-codegen-ignore, **/package.json, **/requirements.txt, **/setup.py, **/whitesource_config.py, **/mta*.y*ml, **/.npmrc, **/whitesource.*.json, **/whitesource-fs-agent.config, .xmake.cfg, Dockerfile, **/VERSION, **/version.txt, **/build.sbt, **/sbtDescriptor.json, **/project/*'
+      buildDescriptor: '**/pom.xml, **/.mvn/**, **/assembly.xml, **/.swagger-codegen-ignore, **/package.json, **/requirements.txt, **/setup.py, **/whitesource_config.py, **/mta*.y*ml, **/.npmrc, **/whitesource.*.json, **/whitesource-fs-agent.config, Dockerfile, **/VERSION, **/version.txt, **/build.sbt, **/sbtDescriptor.json, **/project/*'
       deployDescriptor: '**/manifest*.y*ml, **/*.mtaext.y*ml, **/*.mtaext, **/xs-app.json, helm/**, *.y*ml'
       git: '**/gitmetadata/**'
       opa5: '**/*.*'
@@ -115,8 +125,18 @@ steps:
       opensourceConfiguration: ''
       pipelineConfigAndTests: ''
       securityDescriptor: ''
-      'snyk configuration': ''
       tests: ''
+  snykExecute:
+    buildDescriptorFile: './package.json'
+    dockerImage: 'node:8-stretch'
+    exclude: []
+    monitor: true
+    scanType: 'npm'
+    stashContent:
+      - 'buildDescriptor'
+      - 'opensourceConfiguration'
+    toJson: false
+    toHtml: false
   testsPublishResults:
     junit:
       pattern: '**/target/surefire-reports/*.xml'
@@ -153,3 +173,28 @@ steps:
       allowEmptyResults: true
       archive: false
       active: false
+  checkChangeInDevelopment:
+      credentialsId: 'CM'
+      failIfStatusIsNotInDevelopment: true
+      gitFrom: 'origin/master'
+      gitTo: 'HEAD'
+      gitChangeDocumentLabel: 'ChangeDocument\s?:'
+      gitFormat: '%b'
+  transportRequestCreate:
+      credentialsId: 'CM'
+      gitFrom: 'origin/master'
+      gitTo: 'HEAD'
+      gitChangeDocumentLabel: 'ChangeDocument\s?:'
+      gitFormat: '%b'
+  transportRequestUploadFile:
+      credentialsId: 'CM'
+      gitFrom: 'origin/master'
+      gitTo: 'HEAD'
+      gitChangeDocumentLabel: 'ChangeDocument\s?:'
+      gitFormat: '%b'
+  transportRequestRelease:
+      credentialsId: 'CM'
+      gitFrom: 'origin/master'
+      gitTo: 'HEAD'
+      gitChangeDocumentLabel: 'ChangeDocument\s?:'
+      gitFormat: '%b'
