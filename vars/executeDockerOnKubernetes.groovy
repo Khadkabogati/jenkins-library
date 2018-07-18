@@ -32,7 +32,7 @@ def call(Map parameters = [:], body) {
 
         if (!config.dockerImage) throw new GroovyException('Docker image not specified.')
 
-        def options = [name      : env.jaas_owner + '-jaas',
+        def options = [name      : env.jaas_owner + '-agent',
                        label     : config.uniqueId,
                        containers: getContainerList(config)]
 
