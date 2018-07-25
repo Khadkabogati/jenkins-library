@@ -357,8 +357,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example" title="Example" class="md-nav__link">
-    Example
+  <a href="#examples" title="Examples" class="md-nav__link">
+    Examples
   </a>
   
 </li>
@@ -646,8 +646,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example" title="Example" class="md-nav__link">
-    Example
+  <a href="#examples" title="Examples" class="md-nav__link">
+    Examples
   </a>
   
 </li>
@@ -673,10 +673,10 @@
                 
                 <h1 id="checkchangeindevelopment">checkChangeInDevelopment<a class="headerlink" href="#checkchangeindevelopment" title="Permanent link">&para;</a></h1>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
-<p>Checks if a Change Document is in status 'in development'. The change document id is retrieved from the git commit history. The change document id
+<p>Checks if a Change Document in SAP Solution Manager is in status 'in development'. The change document id is retrieved from the git commit history. The change document id
 can also be provided via parameter <code>changeDocumentId</code>. Any value provided as parameter has a higher precedence than a value from the commit history.</p>
 <p>By default the git commit messages between <code>origin/master</code> and <code>HEAD</code> are scanned for a line like <code>ChangeDocument : &lt;changeDocumentId&gt;</code>. The commit
-range and the pattern can be configured. For details see 'parameters' table. </p>
+range and the pattern can be configured. For details see 'parameters' table.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong><a href="http://central.maven.org/maven2/com/sap/devops/cmclient/dist.cli/">Change Management Client 2.0.0 or compatible version</a></strong> - available for download on Maven Central.</li>
@@ -705,59 +705,101 @@ range and the pattern can be configured. For details see 'parameters' table. </p
 <td></td>
 </tr>
 <tr>
-<td><code>credentialsId</code></td>
-<td>yes</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>endpoint</code></td>
-<td>yes</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>gitFrom</code></td>
-<td>no</td>
-<td><code>origin/master</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>gitTo</code></td>
-<td>no</td>
-<td><code>HEAD</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>gitChangeDocumentLabel</code></td>
+<td><code>changeManagement/changeDocumentLabel</code></td>
 <td>no</td>
 <td><code>ChangeDocument\s?:</code></td>
 <td>regex pattern</td>
 </tr>
 <tr>
-<td><code>gitFormat</code></td>
+<td><code>changeManagement/credentialsId</code></td>
+<td>yes</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>changeManagement/endpoint</code></td>
+<td>yes</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>changeManagement/git/from</code></td>
+<td>no</td>
+<td><code>origin/master</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>changeManagement/git/to</code></td>
+<td>no</td>
+<td><code>HEAD</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>changeManagement/git/format</code></td>
 <td>no</td>
 <td><code>%b</code></td>
 <td>see <code>git log --help</code></td>
+</tr>
+<tr>
+<td><code>failIfStatusIsNotInDevelopment</code></td>
+<td>no</td>
+<td><code>true</code></td>
+<td><code>true</code>, <code>false</code></td>
 </tr>
 </tbody>
 </table>
 <ul>
 <li><code>script</code> - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the <code>this</code> parameter, as in <code>script: this</code>. This allows the function to access the <a href="../commonPipelineEnvironment/"><code>commonPipelineEnvironment</code></a> for retrieving, for example, configuration parameters.</li>
 <li><code>changeDocumentId</code> - The id of the change document to transport. If not provided, it is retrieved from the git commit history.</li>
-<li><code>credentialsId</code> - The credentials to connect to the Solution Manager.</li>
-<li><code>endpoint</code> - The address of the Solution Manager.</li>
-<li><code>gitFrom</code> - The starting point for retrieving the change document id</li>
-<li><code>gitTo</code> - The end point for retrieving the change document id</li>
-<li><code>gitChangeDocumentLabel</code> - A pattern used for identifying lines holding the change document id.</li>
-<li><code>gitFormat</code> - Specifies what part of the commit is scanned. By default the body of the commit message is scanned.</li>
+<li><code>changeManagement/changeDocumentLabel</code> - A pattern used for identifying lines holding the change document id.</li>
+<li><code>changeManagement/credentialsId</code> - The id of the credentials to connect to the Solution Manager. The credentials needs to be maintained on Jenkins.</li>
+<li><code>changeManagement/endpoint</code> - The address of the Solution Manager.</li>
+<li><code>changeManagement/git/from</code> - The starting point for retrieving the change document id</li>
+<li><code>changeManagement/git/to</code> - The end point for retrieving the change document id</li>
+<li><code>changeManagement/git/format</code> - Specifies what part of the commit is scanned. By default the body of the commit message is scanned.</li>
+<li><code>failIfStatusIsNotInDevelopment</code> - when set to <code>false</code> the step will not fail in case the step is not in status 'in development'.</li>
 </ul>
 <h2 id="step-configuration">Step configuration<a class="headerlink" href="#step-configuration" title="Permanent link">&para;</a></h2>
-<p>The following parameters can also be specified as step parameters using the global configuration file:</p>
-<ul>
-<li><code>credentialsId</code></li>
-<li><code>endpoint</code></li>
-</ul>
+<p>The step is configured using a customer configuration file provided as
+resource in an custom shared library.</p>
+<div class="codehilite"><pre><span></span>@Library(&#39;piper-library-os@master&#39;) _
+
+// the shared lib containing the additional configuration
+// needs to be configured in Jenkins
+@Library(foo@master&#39;) __
+
+// inside the shared lib denoted by &#39;foo&#39; the additional configuration file
+// needs to be located under &#39;resources&#39; (&#39;resoures/myConfig.yml&#39;)
+prepareDefaultValues script: this,
+                             customDefaults: &#39;myConfig.yml&#39;
+</pre></div>
+
+<p>Example content of <code>'resources/myConfig.yml'</code> in branch <code>'master'</code> of the repository denoted by
+<code>'foo'</code>:</p>
+<div class="codehilite"><pre><span></span>general:
+  changeManagement:
+    changeDocumentLabel: &#39;ChangeDocument\s?:&#39;
+    cmClientOpts: &#39;-Djavax.net.ssl.trustStore=&lt;path to truststore&gt;&#39;
+    credentialsId: &#39;CM&#39;
+    endpoint: &#39;https://example.org/cm&#39;
+    git:
+      from: &#39;HEAD~1&#39;
+      to: &#39;HEAD&#39;
+      format: &#39;%b&#39;
+</pre></div>
+
+<p>The properties configured in section <code>'general/changeManagement'</code> are shared between all change managment related steps.</p>
+<p>The properties can also be configured on a per-step basis:</p>
+<div class="codehilite"><pre><span></span>  [...]
+  steps:
+    checkChangeInDevelopment:
+      changeManagement:
+        endpoint: &#39;https://example.org/cm&#39;
+        [...]
+      failIfStatusIsNotInDevelopment: true
+</pre></div>
+
+<p>The parameters can also be provided when the step is invoked. For examples see below.</p>
 <h2 id="return-value">Return value<a class="headerlink" href="#return-value" title="Permanent link">&para;</a></h2>
 <p><code>true</code> in case the change document is in status 'in development'. Otherwise an hudson.AbortException is thrown. In case <code>failIfStatusIsNotInDevelopment</code>
 is set to <code>false</code>, <code>false</code> is returned in case the change document is not in status 'in development'</p>
@@ -768,9 +810,28 @@ is set to <code>false</code>, <code>false</code> is returned in case the change 
 <li>If the change is not in status <code>in development</code>. In this case no exception will be thrown when <code>failIfStatusIsNotInDevelopment</code> is set to <code>false</code>.</li>
 </ul>
 </li>
+<li><code>IllegalArgumentException</code>:<ul>
+<li>If a mandatory property is not provided.</li>
 </ul>
-<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>    <span class="n">checkChangeInDevelopment</span> <span class="nl">script:</span><span class="k">this</span>
+</li>
+</ul>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span>    <span class="c1">// simple case. All mandatory parameters provided via</span>
+    <span class="c1">// configuration, changeDocumentId provided via commit</span>
+    <span class="c1">// history</span>
+    <span class="n">checkChangeInDevelopment</span> <span class="nl">script:</span><span class="k">this</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>    <span class="c1">// explict endpoint provided, we search for changeDocumentId</span>
+    <span class="c1">// starting at the previous commit (HEAD~1) rather than on</span>
+    <span class="c1">// &#39;origin/master&#39; (the default).</span>
+    <span class="n">checkChangeInDevelopment</span> <span class="nl">script:</span><span class="k">this</span>
+                             <span class="nl">changeManagement:</span> <span class="o">[</span>
+                               <span class="nl">endpoint:</span> <span class="s1">&#39;https:example.org/cm&#39;</span>
+                               <span class="nl">git:</span> <span class="o">[</span>
+                                 <span class="nl">from:</span> <span class="s1">&#39;HEAD~1&#39;</span>
+                               <span class="o">]</span>
+                             <span class="o">]</span>
 </pre></div>
                 
                   
