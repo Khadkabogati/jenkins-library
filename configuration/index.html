@@ -31,18 +31,18 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      <link rel="shortcut icon" href="../../images/favicon.ico">
+      <link rel="shortcut icon" href="../images/favicon.ico">
       <meta name="generator" content="mkdocs-0.17.5, mkdocs-material-2.9.4">
     
     
       
-        <title>setupCommonPipelineEnvironment - Jenkins 2.0 Pipelines</title>
+        <title>Configuration - Jenkins 2.0 Pipelines</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
+      <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
       
-        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.22915126.css">
       
       
         
@@ -51,7 +51,7 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
     
     
       <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -60,9 +60,9 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
     
-      <link rel="stylesheet" href="../../css/extra.css">
+      <link rel="stylesheet" href="../css/extra.css">
     
     
   </head>
@@ -100,7 +100,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#setupcommonpipelineenvironment" tabindex="1" class="md-skip">
+      <a href="#configuration" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -109,9 +109,9 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../.." title="Jenkins 2.0 Pipelines" class="md-header-nav__button md-logo">
+        <a href=".." title="Jenkins 2.0 Pipelines" class="md-header-nav__button md-logo">
           
-            <img src="../../images/piper_head_white.png" width="24" height="24">
+            <img src="../images/piper_head_white.png" width="24" height="24">
           
         </a>
       </div>
@@ -126,7 +126,7 @@
                 Jenkins 2.0 Pipelines
               </span>
               <span class="md-header-nav__topic">
-                setupCommonPipelineEnvironment
+                Configuration
               </span>
             
           
@@ -205,9 +205,9 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../.." title="Jenkins 2.0 Pipelines" class="md-nav__button md-logo">
+    <a href=".." title="Jenkins 2.0 Pipelines" class="md-nav__button md-logo">
       
-        <img src="../../images/piper_head_white.png" width="48" height="48">
+        <img src="../images/piper_head_white.png" width="48" height="48">
       
     </a>
     Jenkins 2.0 Pipelines
@@ -243,20 +243,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." title="Home" class="md-nav__link">
+    <a href=".." title="Home" class="md-nav__link">
       Home
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../../configuration/" title="Configuration" class="md-nav__link">
-      Configuration
     </a>
   </li>
 
@@ -268,9 +256,71 @@
   
 
 
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--active">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Configuration
+      </label>
+    
+    <a href="./" title="Configuration" class="md-nav__link md-nav__link--active">
+      Configuration
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#collecting-telemetry-data" title="Collecting telemetry data" class="md-nav__link">
+    Collecting telemetry data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-configuration" title="Example configuration" class="md-nav__link">
+    Example configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-to-configuration-in-custom-library-steps" title="Access to configuration in custom library steps" class="md-nav__link">
+    Access to configuration in custom library steps
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
     <label class="md-nav__link" for="nav-3">
       Library steps
@@ -288,7 +338,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../artifactSetVersion/" title="artifactSetVersion" class="md-nav__link">
+    <a href="../steps/artifactSetVersion/" title="artifactSetVersion" class="md-nav__link">
       artifactSetVersion
     </a>
   </li>
@@ -300,7 +350,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../checkChangeInDevelopment/" title="checkChangeInDevelopment" class="md-nav__link">
+    <a href="../steps/checkChangeInDevelopment/" title="checkChangeInDevelopment" class="md-nav__link">
       checkChangeInDevelopment
     </a>
   </li>
@@ -312,7 +362,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../commonPipelineEnvironment/" title="commonPipelineEnvironment" class="md-nav__link">
+    <a href="../steps/commonPipelineEnvironment/" title="commonPipelineEnvironment" class="md-nav__link">
       commonPipelineEnvironment
     </a>
   </li>
@@ -324,7 +374,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../dockerExecute/" title="dockerExecute" class="md-nav__link">
+    <a href="../steps/dockerExecute/" title="dockerExecute" class="md-nav__link">
       dockerExecute
     </a>
   </li>
@@ -336,7 +386,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../durationMeasure/" title="durationMeasure" class="md-nav__link">
+    <a href="../steps/durationMeasure/" title="durationMeasure" class="md-nav__link">
       durationMeasure
     </a>
   </li>
@@ -348,7 +398,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../handlePipelineStepErrors/" title="handlePipelineStepErrors" class="md-nav__link">
+    <a href="../steps/handlePipelineStepErrors/" title="handlePipelineStepErrors" class="md-nav__link">
       handlePipelineStepErrors
     </a>
   </li>
@@ -360,7 +410,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../influxWriteData/" title="influxWriteData" class="md-nav__link">
+    <a href="../steps/influxWriteData/" title="influxWriteData" class="md-nav__link">
       influxWriteData
     </a>
   </li>
@@ -372,7 +422,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../mavenExecute/" title="mavenExecute" class="md-nav__link">
+    <a href="../steps/mavenExecute/" title="mavenExecute" class="md-nav__link">
       mavenExecute
     </a>
   </li>
@@ -384,7 +434,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../mtaBuild/" title="mtaBuild" class="md-nav__link">
+    <a href="../steps/mtaBuild/" title="mtaBuild" class="md-nav__link">
       mtaBuild
     </a>
   </li>
@@ -396,7 +446,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../neoDeploy/" title="neoDeploy" class="md-nav__link">
+    <a href="../steps/neoDeploy/" title="neoDeploy" class="md-nav__link">
       neoDeploy
     </a>
   </li>
@@ -408,7 +458,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../pipelineExecute/" title="pipelineExecute" class="md-nav__link">
+    <a href="../steps/pipelineExecute/" title="pipelineExecute" class="md-nav__link">
       pipelineExecute
     </a>
   </li>
@@ -420,7 +470,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../pipelineStashFiles/" title="pipelineStashFiles" class="md-nav__link">
+    <a href="../steps/pipelineStashFiles/" title="pipelineStashFiles" class="md-nav__link">
       pipelineStashFiles
     </a>
   </li>
@@ -432,7 +482,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../prepareDefaultValues/" title="prepareDefaultValues" class="md-nav__link">
+    <a href="../steps/prepareDefaultValues/" title="prepareDefaultValues" class="md-nav__link">
       prepareDefaultValues
     </a>
   </li>
@@ -442,98 +492,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        setupCommonPipelineEnvironment
-      </label>
-    
-    <a href="./" title="setupCommonPipelineEnvironment" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../steps/setupCommonPipelineEnvironment/" title="setupCommonPipelineEnvironment" class="md-nav__link">
       setupCommonPipelineEnvironment
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#description" title="Description" class="md-nav__link">
-    Description
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" title="Prerequisites" class="md-nav__link">
-    Prerequisites
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#parameters" title="Parameters" class="md-nav__link">
-    Parameters
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-configuration" title="Step configuration" class="md-nav__link">
-    Step configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#return-value" title="Return value" class="md-nav__link">
-    Return value
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#side-effects" title="Side effects" class="md-nav__link">
-    Side effects
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exceptions" title="Exceptions" class="md-nav__link">
-    Exceptions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example" title="Example" class="md-nav__link">
-    Example
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -543,7 +506,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../toolValidate/" title="toolValidate" class="md-nav__link">
+    <a href="../steps/toolValidate/" title="toolValidate" class="md-nav__link">
       toolValidate
     </a>
   </li>
@@ -555,7 +518,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../transportRequestCreate/" title="transportRequestCreate" class="md-nav__link">
+    <a href="../steps/transportRequestCreate/" title="transportRequestCreate" class="md-nav__link">
       transportRequestCreate
     </a>
   </li>
@@ -567,7 +530,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../transportRequestRelease/" title="transportRequestRelease" class="md-nav__link">
+    <a href="../steps/transportRequestRelease/" title="transportRequestRelease" class="md-nav__link">
       transportRequestRelease
     </a>
   </li>
@@ -579,7 +542,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../transportRequestUploadFile/" title="transportRequestUploadFile" class="md-nav__link">
+    <a href="../steps/transportRequestUploadFile/" title="transportRequestUploadFile" class="md-nav__link">
       transportRequestUploadFile
     </a>
   </li>
@@ -596,7 +559,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../jenkins/requiredPlugins/" title="Required Plugins" class="md-nav__link">
+    <a href="../jenkins/requiredPlugins/" title="Required Plugins" class="md-nav__link">
       Required Plugins
     </a>
   </li>
@@ -623,57 +586,22 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#description" title="Description" class="md-nav__link">
-    Description
+  <a href="#collecting-telemetry-data" title="Collecting telemetry data" class="md-nav__link">
+    Collecting telemetry data
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" title="Prerequisites" class="md-nav__link">
-    Prerequisites
+  <a href="#example-configuration" title="Example configuration" class="md-nav__link">
+    Example configuration
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#parameters" title="Parameters" class="md-nav__link">
-    Parameters
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-configuration" title="Step configuration" class="md-nav__link">
-    Step configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#return-value" title="Return value" class="md-nav__link">
-    Return value
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#side-effects" title="Side effects" class="md-nav__link">
-    Side effects
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exceptions" title="Exceptions" class="md-nav__link">
-    Exceptions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example" title="Example" class="md-nav__link">
-    Example
+  <a href="#access-to-configuration-in-custom-library-steps" title="Access to configuration in custom library steps" class="md-nav__link">
+    Access to configuration in custom library steps
   </a>
   
 </li>
@@ -694,61 +622,80 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/SAP/jenkins-library/edit/master/documentation/docs/steps/setupCommonPipelineEnvironment.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/SAP/jenkins-library/edit/master/documentation/docs/configuration.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="setupcommonpipelineenvironment">setupCommonPipelineEnvironment<a class="headerlink" href="#setupcommonpipelineenvironment" title="Permanent link">&para;</a></h1>
-<h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
-<p>Initializes the <a href="../commonPipelineEnvironment/"><code>commonPipelineEnvironment</code></a>, which is used throughout the complete pipeline.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>This step needs to run at the beginning of a pipeline right after the SCM checkout.
-Then subsequent pipeline steps consume the information from <code>commonPipelineEnvironment</code>; it does not need to be passed to pipeline steps explicitly.</p>
+                <h1 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h1>
+<p>Configuration is done via a yml-file, located at <code>.pipeline/config.yml</code> in the <strong>master branch</strong> of your source code repository.</p>
+<p>Your configuration inherits from the default configuration located at <a href="https://github.com/SAP/jenkins-library/blob/master/resources/default_pipeline_environment.yml">https://github.com/SAP/jenkins-library/blob/master/resources/default_pipeline_environment.yml</a>.</p>
+<div class="admonition caution">
+<p class="admonition-title">Adding custom parameters</p>
+<p>Please note that adding custom parameters to the configuration is at your own risk.
+We may introduce new parameters at any time which may clash with your custom parameters.</p>
 </div>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>Configuration of the Piper steps as well the Piper templates can be done in a hierarchical manner.</p>
+<ol>
+<li>Directly passed step parameters will always take precedence over other configuration values and defaults</li>
+<li>Stage configuration parameters define a Jenkins pipeline stage dependent set of parameters (e.g. deployment options for the <code>Acceptance</code> stage)</li>
+<li>Step configuration defines how steps behave in general (e.g. step <code>cloudFoundryDeploy</code>)</li>
+<li>General configuration parameters define parameters which are available across step boundaries</li>
+<li>Default configuration comes with the Piper library and is always available</li>
+</ol>
+<p><img alt="Piper Configuration" src="../images/piper_config.png" /></p>
+<h2 id="collecting-telemetry-data">Collecting telemetry data<a class="headerlink" href="#collecting-telemetry-data" title="Permanent link">&para;</a></h2>
+<p>In order to improve this Jenkins library we are collecting telemetry data.
+Data is send using <a href="https://github.com/SAP/jenkins-library/blob/master/src/com/sap/piper/Utils.groovy"><code>com.sap.piper.pushToSWA</code></a></p>
+<p>Following data (non-personal) is collected for example:</p>
 <ul>
-<li>A <strong>configuration file</strong> with properties (default location: <code>.pipeline/config.properties</code>). The property values are used as default values in many pipeline steps.</li>
+<li>Hashed job url, e.g. <code>4944f745e03f5f79daf0001eec9276ce351d3035</code> hash calculation is done in your Jenkins server and no original values are transmitted</li>
+<li>Name of library step which has been executed, like e.g. <code>artifactSetVersion</code></li>
+<li>Certain parameters of the executed steps, e.g. <code>buildTool=maven</code></li>
 </ul>
-<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>parameter</th>
-<th>mandatory</th>
-<th>default</th>
-<th>possible values</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>script</code></td>
-<td>yes</td>
-<td>-</td>
-<td></td>
-</tr>
-<tr>
-<td><code>configFile</code></td>
-<td>no</td>
-<td><code>.pipeline/config.properties</code></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><code>script</code> - The reference to the pipeline script (Jenkinsfile). Normally <code>this</code> needs to be provided.</li>
-<li><code>configFile</code> - Property file defining project specific settings.</li>
-</ul>
-<h2 id="step-configuration">Step configuration<a class="headerlink" href="#step-configuration" title="Permanent link">&para;</a></h2>
-<p>none</p>
-<h2 id="return-value">Return value<a class="headerlink" href="#return-value" title="Permanent link">&para;</a></h2>
-<p>none</p>
-<h2 id="side-effects">Side effects<a class="headerlink" href="#side-effects" title="Permanent link">&para;</a></h2>
-<p>none</p>
-<h2 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h2>
-<p>none </p>
-<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="n">setupCommonPipelineEnvironment</span> <span class="nl">script:</span> <span class="k">this</span>
+<p><strong>We store the telemetry data for not longer than 6 months on premises of SAP SE.</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Disable collection of telemetry data</p>
+<p>If you do not want to send telemetry data which helps this open source project to improve you can easily deactivate this.</p>
+<p>This is done with either of the following two ways:</p>
+<ol>
+<li>
+<p>General deactivation in your <code>.pipeline/config.yml</code> file by setting the configuration parameter <code>general -&gt; collectTelemetryData: false</code> (default setting can be found in the <a href="https://github.com/SAP/jenkins-library/blob/master/resources/default_pipeline_environment.yml">library defaults</a>).</p>
+<p><strong>Please note: this will only take effect in all steps if you run <code>setupCommonPipelineEnvironment</code> at the beginning of your pipeline</strong></p>
+</li>
+<li>
+<p>Individual deactivation per step by passing the parameter <code>collectTelemetryData: false</code>, like e.g. <code>setVersion script:this, collectTelemetryData: false</code></p>
+</li>
+</ol>
+</div>
+<h2 id="example-configuration">Example configuration<a class="headerlink" href="#example-configuration" title="Permanent link">&para;</a></h2>
+<p><div class="codehilite"><pre><span></span>general:
+  gitSshKeyCredentialsId: GitHub_Test_SSH
+
+steps:
+  cloudFoundryDeploy:
+    deployTool: &#39;cf_native&#39;
+    cloudFoundry:
+      org: &#39;testOrg&#39;
+      space: &#39;testSpace&#39;
+      credentialsId: &#39;MY_CF_CREDENTIALSID_IN_JENKINS&#39;
+  newmanExecute:
+    newmanCollection: &#39;myNewmanCollection.file&#39;
+    newmanEnvironment: &#39;myNewmanEnvironment&#39;
+    newmanGlobals: &#39;myNewmanGlobals&#39;
+ ```
+
+## Access to configuration from custom scripts
+
+Configuration is loaded into `commonPipelineEnvironment` during step [setupCommonPipelineEnvironment](steps/setupCommonPipelineEnvironment.md).
+
+You can access the configuration values via `commonPipelineEnvironment.configuration` which will return you the complete configuration map.
+
+Thus following access is for example possible (accessing `gitSshKeyCredentialsId` from `general` section):
 </pre></div>
+commonPipelineEnvironment.configuration.general.gitSshKeyCredentialsId
+```</p>
+<h2 id="access-to-configuration-in-custom-library-steps">Access to configuration in custom library steps<a class="headerlink" href="#access-to-configuration-in-custom-library-steps" title="Permanent link">&para;</a></h2>
+<p>Within library steps the <code>ConfigurationHelper</code> object is used.</p>
+<p>You can see its usage in all the Piper steps, for example <a href="https://github.com/SAP/jenkins-library/blob/master/vars/newmanExecute.groovy#L23">newmanExecute</a>.</p>
                 
                   
                 
@@ -769,7 +716,7 @@ Then subsequent pipeline steps consume the information from <code>commonPipeline
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../prepareDefaultValues/" title="prepareDefaultValues" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href=".." title="Home" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -778,19 +725,19 @@ Then subsequent pipeline steps consume the information from <code>commonPipeline
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                prepareDefaultValues
+                Home
               </span>
             </div>
           </a>
         
         
-          <a href="../toolValidate/" title="toolValidate" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../steps/artifactSetVersion/" title="artifactSetVersion" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                toolValidate
+                artifactSetVersion
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -820,9 +767,9 @@ Then subsequent pipeline steps consume the information from <code>commonPipeline
       
     </div>
     
-      <script src="../../assets/javascripts/application.30f6b8b1.js"></script>
+      <script src="../assets/javascripts/application.30f6b8b1.js"></script>
       
-      <script>app.initialize({version:"0.17.5",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"0.17.5",url:{base:".."}})</script>
       
     
     
