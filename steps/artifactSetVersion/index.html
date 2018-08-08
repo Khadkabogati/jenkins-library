@@ -697,7 +697,7 @@ If you require strict reproducibility of your builds, this should be used.</p>
 <td>buildTool</td>
 <td>no</td>
 <td>maven</td>
-<td>maven, docker</td>
+<td>docker, dlang, golang, maven, mta, npm, pip, sbt</td>
 </tr>
 <tr>
 <td>commitVersion</td>
@@ -714,7 +714,7 @@ If you require strict reproducibility of your builds, this should be used.</p>
 <tr>
 <td>filePath</td>
 <td>no</td>
-<td>buildTool=<code>maven</code>: pom.xml <br />docker: Dockerfile</td>
+<td>buildTool=<code>docker</code>: Dockerfile <br />buildTool=<code>dlang</code>: dub.json <br />buildTool=<code>golang</code>: VERSION <br />buildTool=<code>maven</code>: pom.xml <br />buildTool=<code>mta</code>: mta.yaml <br />buildTool=<code>npm</code>: package.json <br />buildTool=<code>pip</code>: version.txt <br />buildTool=<code>sbt</code>: sbtDescriptor.json</td>
 <td></td>
 </tr>
 <tr>
@@ -724,7 +724,7 @@ If you require strict reproducibility of your builds, this should be used.</p>
 <td></td>
 </tr>
 <tr>
-<td>gitCredentialsId</td>
+<td>gitSshCredentialsId</td>
 <td>If <code>commitVersion</code> is <code>true</code></td>
 <td>as defined in custom configuration</td>
 <td></td>
@@ -768,7 +768,7 @@ If you require strict reproducibility of your builds, this should be used.</p>
 <tr>
 <td>versioningTemplate</td>
 <td>no</td>
-<td>depending on <code>buildTool</code><br />maven: <code>${version}-${timestamp}${commitId?"_"+commitId:""}</code></td>
+<td>buildTool=<code>docker</code>: <code>${version}-${timestamp}${commitId?"_"+commitId:""}</code><br> /&gt;buildTool=<code>dlang</code>: <code>${version}-${timestamp}${commitId?"+"+commitId:""}</code><br />buildTool=<code>golang</code>:<code>${version}-${timestamp}${commitId?"+"+commitId:""}</code><br />buildTool=<code>maven</code>: <code>${version}-${timestamp}${commitId?"_"+commitId:""}</code><br />buildTool=<code>mta</code>: <code>${version}-${timestamp}${commitId?"+"+commitId:""}</code><br />buildTool=<code>npm</code>: <code>${version}-${timestamp}${commitId?"+"+commitId:""}</code><br />buildTool=<code>pip</code>: <code>${version}.${timestamp}${commitId?"."+commitId:""}</code><br />buildTool=<code>sbt</code>: <code>${version}-${timestamp}${commitId?"+"+commitId:""}</code></td>
 <td></td>
 </tr>
 </tbody>
@@ -790,7 +790,7 @@ If you require strict reproducibility of your builds, this should be used.</p>
 <p>Using <code>filePath</code> you could define a custom path to the descriptor file.</p>
 </li>
 <li><code>gitCommitId</code> defines the version prefix of the automatically generated version. By default it will take the long commitId hash. You could pass any other string (e.g. the short commitId hash) to be used. In case you don't want to have the gitCommitId added to the automatic versioning string you could set the value to an empty string: <code>''</code>.</li>
-<li><code>gitCredentialsId</code>defines the ssh git credentials to be used for writing the tag.</li>
+<li><code>gitSshCredentialsId</code>defines the ssh git credentials to be used for writing the tag.</li>
 <li>The parameters <code>gitUserName</code> and <code>gitUserEMail</code> allow to overwrite the global git settings available on your Jenkins server</li>
 <li><code>gitSshUrl</code> defines the git ssh url to the source code repository.</li>
 <li><code>tagPrefix</code> defines the prefix wich is used for the git tag which is written during the versioning run.</li>
