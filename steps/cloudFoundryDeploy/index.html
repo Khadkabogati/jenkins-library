@@ -36,7 +36,7 @@
     
     
       
-        <title>prepareDefaultValues - Jenkins 2.0 Pipelines</title>
+        <title>cloudFoundryDeploy - Jenkins 2.0 Pipelines</title>
       
     
     
@@ -100,7 +100,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#preparedefaultvalues" tabindex="1" class="md-skip">
+      <a href="#cloudfoundrydeploy" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -126,7 +126,7 @@
                 Jenkins 2.0 Pipelines
               </span>
               <span class="md-header-nav__topic">
-                prepareDefaultValues
+                cloudFoundryDeploy
               </span>
             
           
@@ -310,11 +310,97 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../cloudFoundryDeploy/" title="cloudFoundryDeploy" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        cloudFoundryDeploy
+      </label>
+    
+    <a href="./" title="cloudFoundryDeploy" class="md-nav__link md-nav__link--active">
       cloudFoundryDeploy
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" title="Description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequsites" title="Prerequsites" class="md-nav__link">
+    Prerequsites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-cf_native" title="Option cf_native:" class="md-nav__link">
+    Option cf_native:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mta-deployment" title="MTA Deployment:" class="md-nav__link">
+    MTA Deployment:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-configuration" title="Step configuration" class="md-nav__link">
+    Step configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" title="Example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -442,77 +528,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        prepareDefaultValues
-      </label>
-    
-    <a href="./" title="prepareDefaultValues" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../prepareDefaultValues/" title="prepareDefaultValues" class="md-nav__link">
       prepareDefaultValues
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#description" title="Description" class="md-nav__link">
-    Description
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#parameters" title="Parameters" class="md-nav__link">
-    Parameters
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-configuration" title="Step configuration" class="md-nav__link">
-    Step configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exceptions" title="Exceptions" class="md-nav__link">
-    Exceptions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example" title="Example" class="md-nav__link">
-    Example
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -621,22 +641,42 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#prerequsites" title="Prerequsites" class="md-nav__link">
+    Prerequsites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#parameters" title="Parameters" class="md-nav__link">
     Parameters
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-cf_native" title="Option cf_native:" class="md-nav__link">
+    Option cf_native:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mta-deployment" title="MTA Deployment:" class="md-nav__link">
+    MTA Deployment:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#step-configuration" title="Step configuration" class="md-nav__link">
     Step configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exceptions" title="Exceptions" class="md-nav__link">
-    Exceptions
   </a>
   
 </li>
@@ -664,21 +704,188 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/SAP/jenkins-library/edit/master/documentation/docs/steps/prepareDefaultValues.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/SAP/jenkins-library/edit/master/documentation/docs/steps/cloudFoundryDeploy.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="preparedefaultvalues">prepareDefaultValues<a class="headerlink" href="#preparedefaultvalues" title="Permanent link">&para;</a></h1>
+                <h1 id="cloudfoundrydeploy">cloudFoundryDeploy<a class="headerlink" href="#cloudfoundrydeploy" title="Permanent link">&para;</a></h1>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
-<p>Loads the pipeline library default values from the file <code>resources/default_pipeline_environment.yml</code>.
-Afterwards the values can be loaded by the method: <code>ConfigurationLoader.defaultStepConfiguration</code> </p>
+<p>Application will be deployed to a test or production space within Cloud Foundry.
+Deployment can be done</p>
+<ul>
+<li>in a standard way</li>
+<li>in a zero downtime manner (using a <a href="https://martinfowler.com/bliki/BlueGreenDeployment.html">blue-green deployment approach</a>)</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Deployment supports multiple deployment tools</p>
+<p>Currently the following are supported:</p>
+<ul>
+<li>Standard <code>cf push</code> and <a href="https://github.com/bluemixgaragelondon/cf-blue-green-deploy#how-to-use">Bluemix blue-green plugin</a></li>
+<li><a href="https://github.com/cloudfoundry-incubator/multiapps-cli-plugin">MTA CF CLI Plugin</a></li>
+</ul>
+</div>
+<h2 id="prerequsites">Prerequsites<a class="headerlink" href="#prerequsites" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Cloud Foundry organization, space and deployment user are available</li>
+<li>
+<p>Credentials for deployment have been configured in Jenkins with a dedicated Id</p>
+<p><img alt="Jenkins credentials configuration" src="../../images/cf_credentials.png" /></p>
+</li>
+</ul>
 <h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
-<p>None</p>
+<table>
+<thead>
+<tr>
+<th>parameter</th>
+<th>mandatory</th>
+<th>default</th>
+<th>possible values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>script</td>
+<td>no</td>
+<td>empty <code>commonPipelineEnvironment</code></td>
+<td></td>
+</tr>
+<tr>
+<td>cloudFoundry</td>
+<td>yes</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>deployTool</td>
+<td>no</td>
+<td>cf_native</td>
+<td>cf_native, mtaDeployPlugin</td>
+</tr>
+<tr>
+<td>deployType</td>
+<td>no</td>
+<td>standard</td>
+<td>standard, blue-green</td>
+</tr>
+<tr>
+<td>dockerImage</td>
+<td>no</td>
+<td>s4sdk/docker-cf-cli</td>
+<td></td>
+</tr>
+<tr>
+<td>dockerWorkspace</td>
+<td>no</td>
+<td>/home/piper</td>
+<td></td>
+</tr>
+<tr>
+<td>mtaDeployParameters</td>
+<td></td>
+<td>-f</td>
+<td></td>
+</tr>
+<tr>
+<td>mtaExtensionDescriptor</td>
+<td>no</td>
+<td>''</td>
+<td></td>
+</tr>
+<tr>
+<td>mtaPath</td>
+<td>no</td>
+<td>''</td>
+<td></td>
+</tr>
+<tr>
+<td>smokeTestScript</td>
+<td>no</td>
+<td>blueGreenCheckScript.sh (provided by library). <br />Can be overwritten using config property 'smokeTestScript'</td>
+<td></td>
+</tr>
+<tr>
+<td>smokeTestStatusCode</td>
+<td>no</td>
+<td>200</td>
+<td></td>
+</tr>
+<tr>
+<td>stashContent</td>
+<td>no</td>
+<td>[]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>script</code> defines the global script environment of the Jenkinsfile run. Typically <code>this</code> is passed to this parameter. This allows the function to access the <a href="../commonPipelineEnvironment/"><code>commonPipelineEnvironment</code></a> for retrieving e.g. configuration parameters.</li>
+<li>
+<p><code>cloudFoundry</code> defines a map containing following properties:</p>
+<ul>
+<li><code>apiEndpoint</code>: Cloud Foundry API endpoint (default: <code>https://api.cf.eu10.hana.ondemand.com</code>)</li>
+<li><code>appName</code>: App name of application to be deployed (optional)</li>
+<li><code>credentialsId</code>: Credentials to be used for deployment (mandatory)</li>
+<li><code>manifest</code>: Manifest to be used for deployment</li>
+<li><code>org</code>: Cloud Foundry target organization (mandatory)</li>
+<li><code>space</code>: Cloud Foundry target space (mandatory)</li>
+</ul>
+<p>Example: <code>cloudFoundry: [apiEndpoint: 'https://test.server.com', appName:'cfAppName', credentialsId: 'cfCredentialsId', manifest: 'cfManifest', org: 'cfOrg', space: 'cfSpace']</code></p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is also possible to use following configuration parameters instead of <code>cloudFoundry</code> map:</p>
+<ul>
+<li>cfApiEndpoint</li>
+<li>cfAppName</li>
+<li>cfCredentialsId</li>
+<li>cfManifest</li>
+<li>cfOrg</li>
+<li>cfSpace</li>
+</ul>
+</div>
+<ul>
+<li><code>deployTool</code> defines the tool which should be used for deployment.</li>
+<li><code>deployType</code> defines the type of deployment, either <code>standard</code> deployment which results in a system downtime or a zero-downtime <code>blue-green</code> deployment.</li>
+<li><code>dockerImage</code> defines the Docker image containing the deployment tools (like cf cli, ...) and <code>dockerWorkspace</code> defines the home directory of the default user of the <code>dockerImage</code></li>
+<li><code>smokeTestScript</code> allows to specify a script which performs a check during blue-green deployment. The script gets the FQDN as parameter and returns <code>exit code 0</code> in case check returned <code>smokeTestStatusCode</code>. More details can be found <a href="https://github.com/bluemixgaragelondon/cf-blue-green-deploy#how-to-use">here</a> <br /> Currently this option is only considered for deployTool <code>cf_native</code>.</li>
+<li><code>stashContent</code> defines the stash names which should be unstashed at the beginning of the step. This makes the files available in case the step is started on an empty node.</li>
+</ul>
+<h4 id="option-cf_native">Option cf_native:<a class="headerlink" href="#option-cf_native" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>appName</code> in <code>cloudFoundry</code> map (or <code>cfAppName</code>) defines the name of the application which will be deployed to the Cloud Foundry space.</li>
+<li><code>manifest in</code>cloudFoundry<code>map</code> (or <code>cfManifest</code>) defines the manifest to be used for Cloud Foundry deployment.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Cloud Foundry supports the deployment of multiple applications using a single manifest file.
+This option is supported with Piper.</p>
+<p>In this case define <code>appName: ''</code> since the app name for the individual applications have to be defined via the manifest.
+You can find details in the <a href="https://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html#multi-apps">Cloud Foundry Documentation</a></p>
+</div>
+<h4 id="mta-deployment">MTA Deployment:<a class="headerlink" href="#mta-deployment" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>mtaPath</code> define path to *.mtar for deployment.</li>
+<li><code>mtaExtensionDescriptor</code> defines additional extension descriptor file for deployment.</li>
+<li><code>mtaDeployParameters</code> defines additional parameters passed to mta deployment.</li>
+</ul>
 <h2 id="step-configuration">Step configuration<a class="headerlink" href="#step-configuration" title="Permanent link">&para;</a></h2>
-<p>None</p>
-<h2 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h2>
-<p>None</p>
+<p>The following parameters can also be specified as step/stage/general parameters using the <a href="../../configuration/">global configuration</a>:</p>
+<ul>
+<li>cloudFoundry</li>
+<li>deployUser</li>
+<li>deployTool</li>
+<li>deployType</li>
+<li>dockerImage</li>
+<li>dockerWorkspace</li>
+<li>mtaDeployParameters</li>
+<li>mtaExtensionDescriptor</li>
+<li>mtaPath</li>
+<li>smokeTestScript</li>
+<li>smokeTestStatusCode</li>
+<li>stashContent</li>
+</ul>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="n">prepareDefaultValues</span><span class="o">()</span>
+<div class="codehilite"><pre><span></span><span class="n">artifactSetVersion</span> <span class="nl">script:</span> <span class="k">this</span><span class="o">,</span> <span class="nl">buildTool:</span> <span class="s1">&#39;maven&#39;</span>
 </pre></div>
                 
                   
@@ -700,7 +907,7 @@ Afterwards the values can be loaded by the method: <code>ConfigurationLoader.def
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../pipelineStashFiles/" title="pipelineStashFiles" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../checkChangeInDevelopment/" title="checkChangeInDevelopment" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -709,19 +916,19 @@ Afterwards the values can be loaded by the method: <code>ConfigurationLoader.def
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                pipelineStashFiles
+                checkChangeInDevelopment
               </span>
             </div>
           </a>
         
         
-          <a href="../setupCommonPipelineEnvironment/" title="setupCommonPipelineEnvironment" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../commonPipelineEnvironment/" title="commonPipelineEnvironment" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                setupCommonPipelineEnvironment
+                commonPipelineEnvironment
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

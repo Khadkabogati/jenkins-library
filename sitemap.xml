@@ -21,6 +21,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>/steps/cloudFoundryDeploy/</loc>
+     <lastmod>2018-08-15</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>/steps/commonPipelineEnvironment/</loc>
      <lastmod>2018-08-15</lastmod>
      <changefreq>daily</changefreq>
