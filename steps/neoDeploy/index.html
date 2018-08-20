@@ -790,7 +790,7 @@ needs to be extracted into the folder provided by <code>neoHome</code>. In case 
 </tr>
 <tr>
 <td><code>archivePath</code></td>
-<td>yes</td>
+<td>no</td>
 <td></td>
 <td></td>
 </tr>
@@ -851,7 +851,7 @@ needs to be extracted into the folder provided by <code>neoHome</code>. In case 
 <tbody>
 <tr>
 <td><code>archivePath</code></td>
-<td>yes</td>
+<td>no</td>
 <td></td>
 <td></td>
 </tr>
@@ -918,7 +918,7 @@ needs to be extracted into the folder provided by <code>neoHome</code>. In case 
 </tr>
 <tr>
 <td><code>archivePath</code></td>
-<td>yes</td>
+<td>no</td>
 <td></td>
 <td></td>
 </tr>
@@ -993,7 +993,7 @@ needs to be extracted into the folder provided by <code>neoHome</code>. In case 
 <ul>
 <li><code>account</code> - The SAP Cloud Platform account to deploy to.</li>
 <li><code>applicationName</code> - Name of the application you want to manage, configure, or deploy</li>
-<li><code>archivePath</code>- The path to the archive for deployment to SAP CP.</li>
+<li><code>archivePath</code>- The path to the archive for deployment to SAP CP. If not provided <code>mtarFilePath</code> from commom pipeline environment is used instead.</li>
 <li><code>deployAccount</code> - deprecated, use <code>account</code>. The SAP Cloud Platform account to deploy to.</li>
 <li><code>deployHost</code> - deprecated, use <code>host</code>. The SAP Cloud Platform host to deploy to.</li>
 <li><code>deployMode</code> - The deployment mode which should be used. Available options are <code>'mta'</code> (default), <code>'warParams'</code> (deploying WAR file and passing all the deployment parameters via the function call) and <code>'warPropertiesFile'</code> (deploying WAR file and putting all the deployment parameters in a .properties file)</li>
