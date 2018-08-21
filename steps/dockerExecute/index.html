@@ -389,8 +389,29 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#kubernetes-support" title="Kubernetes support" class="md-nav__link">
+    Kubernetes support
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#step-configuration" title="Step configuration" class="md-nav__link">
     Step configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#return-value" title="Return value" class="md-nav__link">
+    Return value
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#side-effects" title="Side effects" class="md-nav__link">
+    Side effects
   </a>
   
 </li>
@@ -403,8 +424,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example" title="Example" class="md-nav__link">
-    Example
+  <a href="#example-1-run-closure-inside-a-docker-container" title="Example 1: Run closure inside a docker container" class="md-nav__link">
+    Example 1: Run closure inside a docker container
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-2-run-closure-inside-a-container-in-a-kubernetes-pod" title="Example 2: Run closure inside a container in a kubernetes pod" class="md-nav__link">
+    Example 2: Run closure inside a container in a kubernetes pod
   </a>
   
 </li>
@@ -417,6 +445,18 @@
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dockerExecuteOnKubernetes/" title="dockerExecuteOnKubernetes" class="md-nav__link">
+      dockerExecuteOnKubernetes
+    </a>
   </li>
 
         
@@ -640,8 +680,29 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#kubernetes-support" title="Kubernetes support" class="md-nav__link">
+    Kubernetes support
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#step-configuration" title="Step configuration" class="md-nav__link">
     Step configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#return-value" title="Return value" class="md-nav__link">
+    Return value
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#side-effects" title="Side effects" class="md-nav__link">
+    Side effects
   </a>
   
 </li>
@@ -654,8 +715,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example" title="Example" class="md-nav__link">
-    Example
+  <a href="#example-1-run-closure-inside-a-docker-container" title="Example 1: Run closure inside a docker container" class="md-nav__link">
+    Example 1: Run closure inside a docker container
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-2-run-closure-inside-a-container-in-a-kubernetes-pod" title="Example 2: Run closure inside a container in a kubernetes pod" class="md-nav__link">
+    Example 2: Run closure inside a container in a kubernetes pod
   </a>
   
 </li>
@@ -696,6 +764,12 @@ Proxy environment variables defined on the Jenkins machine are also available in
 </thead>
 <tbody>
 <tr>
+<td><code>script</code></td>
+<td>no</td>
+<td>empty <code>globalPipelineEnvironment</code></td>
+<td></td>
+</tr>
+<tr>
 <td><code>dockerImage</code></td>
 <td>no</td>
 <td>''</td>
@@ -722,20 +796,39 @@ Proxy environment variables defined on the Jenkins machine are also available in
 </tbody>
 </table>
 <ul>
+<li><code>script</code> defines the global script environment of the Jenkinsfile run. Typically <code>this</code> is passed to this parameter. This allows the function to access the <a href="../commonPipelineEnvironment/"><code>commonPipelineEnvironment</code></a> for storing the measured duration.</li>
 <li><code>dockerImage</code> Name of the docker image that should be used. If empty, Docker is not used.</li>
 <li><code>dockerEnvVars</code> Environment variables to set in the container, e.g. [http_proxy:'proxy:8080']</li>
 <li><code>dockerOptions</code> Docker options to be set when starting the container. It can be a list or a string.</li>
 <li><code>dockerVolumeBind</code> Volumes that should be mounted into the container.</li>
 </ul>
+<h2 id="kubernetes-support">Kubernetes support<a class="headerlink" href="#kubernetes-support" title="Permanent link">&para;</a></h2>
+<p>If the Jenkins is setup on a Kubernetes cluster, then you can execute the closure inside a container of a pod by setting an environment variable <code>ON_K8S</code> to <code>true</code>. However, it will ignore both <code>dockeOptions</code> and <code>dockerVolumeBind</code> values.</p>
 <h2 id="step-configuration">Step configuration<a class="headerlink" href="#step-configuration" title="Permanent link">&para;</a></h2>
-<p>None</p>
+<p>none</p>
+<h2 id="return-value">Return value<a class="headerlink" href="#return-value" title="Permanent link">&para;</a></h2>
+<p>none</p>
+<h2 id="side-effects">Side effects<a class="headerlink" href="#side-effects" title="Permanent link">&para;</a></h2>
+<p>none</p>
 <h2 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h2>
-<p>None</p>
-<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
+<p>none</p>
+<h2 id="example-1-run-closure-inside-a-docker-container">Example 1: Run closure inside a docker container<a class="headerlink" href="#example-1-run-closure-inside-a-docker-container" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span></span><span class="n">dockerExecute</span><span class="o">(</span><span class="nl">dockerImage:</span> <span class="s1">&#39;maven:3.5-jdk-7&#39;</span><span class="o">){</span>
     <span class="n">sh</span> <span class="s2">&quot;mvn clean install&quot;</span>
 <span class="o">}</span>
 </pre></div>
+
+<h2 id="example-2-run-closure-inside-a-container-in-a-kubernetes-pod">Example 2: Run closure inside a container in a kubernetes pod<a class="headerlink" href="#example-2-run-closure-inside-a-container-in-a-kubernetes-pod" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><span class="c1"># set environment variable </span>
+<span class="nb">export</span> <span class="nv">ON_K8S</span><span class="o">=</span>true<span class="s2">&quot;</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span><span class="n">dockerExecute</span><span class="o">(</span><span class="nl">script:</span> <span class="k">this</span><span class="o">,</span> <span class="nl">dockerImage:</span> <span class="s1">&#39;maven:3.5-jdk-7&#39;</span><span class="o">){</span>
+    <span class="n">sh</span> <span class="s2">&quot;mvn clean install&quot;</span>
+<span class="o">}</span>
+</pre></div>
+
+<p>In the above example, the <code>dockerEcecute</code> step will internally invoke <a href="../dockerExecuteOnKubernetes/">dockerExecuteOnKubernetes</a> step and execute the closure inside a pod. </p>
                 
                   
                 
@@ -771,13 +864,13 @@ Proxy environment variables defined on the Jenkins machine are also available in
           </a>
         
         
-          <a href="../durationMeasure/" title="durationMeasure" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../dockerExecuteOnKubernetes/" title="dockerExecuteOnKubernetes" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                durationMeasure
+                dockerExecuteOnKubernetes
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

@@ -637,7 +637,7 @@
         }, 
         {
             "location": "/steps/dockerExecute/", 
-            "text": "dockerExecute\n\n\nDescription\n\n\nExecutes a closure inside a docker container with the specified docker image. \nThe workspace is mounted into the docker image.\nProxy environment variables defined on the Jenkins machine are also available in the Docker container.\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\ndockerImage\n\n\nno\n\n\n''\n\n\n\n\n\n\n\n\ndockerEnvVars\n\n\nno\n\n\n[:]\n\n\n\n\n\n\n\n\ndockerOptions\n\n\nno\n\n\n''\n\n\n\n\n\n\n\n\ndockerVolumeBind\n\n\nno\n\n\n[:]\n\n\n\n\n\n\n\n\n\n\n\n\ndockerImage\n Name of the docker image that should be used. If empty, Docker is not used.\n\n\ndockerEnvVars\n Environment variables to set in the container, e.g. [http_proxy:'proxy:8080']\n\n\ndockerOptions\n Docker options to be set when starting the container. It can be a list or a string.\n\n\ndockerVolumeBind\n Volumes that should be mounted into the container.\n\n\n\n\nStep configuration\n\n\nNone\n\n\nExceptions\n\n\nNone\n\n\nExample\n\n\ndockerExecute\n(\ndockerImage:\n \nmaven:3.5-jdk-7\n){\n\n    \nsh\n \nmvn clean install\n\n\n}", 
+            "text": "dockerExecute\n\n\nDescription\n\n\nExecutes a closure inside a docker container with the specified docker image. \nThe workspace is mounted into the docker image.\nProxy environment variables defined on the Jenkins machine are also available in the Docker container.\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nscript\n\n\nno\n\n\nempty \nglobalPipelineEnvironment\n\n\n\n\n\n\n\n\ndockerImage\n\n\nno\n\n\n''\n\n\n\n\n\n\n\n\ndockerEnvVars\n\n\nno\n\n\n[:]\n\n\n\n\n\n\n\n\ndockerOptions\n\n\nno\n\n\n''\n\n\n\n\n\n\n\n\ndockerVolumeBind\n\n\nno\n\n\n[:]\n\n\n\n\n\n\n\n\n\n\n\n\nscript\n defines the global script environment of the Jenkinsfile run. Typically \nthis\n is passed to this parameter. This allows the function to access the \ncommonPipelineEnvironment\n for storing the measured duration.\n\n\ndockerImage\n Name of the docker image that should be used. If empty, Docker is not used.\n\n\ndockerEnvVars\n Environment variables to set in the container, e.g. [http_proxy:'proxy:8080']\n\n\ndockerOptions\n Docker options to be set when starting the container. It can be a list or a string.\n\n\ndockerVolumeBind\n Volumes that should be mounted into the container.\n\n\n\n\nKubernetes support\n\n\nIf the Jenkins is setup on a Kubernetes cluster, then you can execute the closure inside a container of a pod by setting an environment variable \nON_K8S\n to \ntrue\n. However, it will ignore both \ndockeOptions\n and \ndockerVolumeBind\n values.\n\n\nStep configuration\n\n\nnone\n\n\nReturn value\n\n\nnone\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\nnone\n\n\nExample 1: Run closure inside a docker container\n\n\ndockerExecute\n(\ndockerImage:\n \nmaven:3.5-jdk-7\n){\n\n    \nsh\n \nmvn clean install\n\n\n}\n\n\n\n\n\nExample 2: Run closure inside a container in a kubernetes pod\n\n\n# set environment variable \n\n\nexport\n \nON_K8S\n=\ntrue\n\n\n\n\n\ndockerExecute\n(\nscript:\n \nthis\n,\n \ndockerImage:\n \nmaven:3.5-jdk-7\n){\n\n    \nsh\n \nmvn clean install\n\n\n}\n\n\n\n\n\nIn the above example, the \ndockerEcecute\n step will internally invoke \ndockerExecuteOnKubernetes\n step and execute the closure inside a pod.", 
             "title": "dockerExecute"
         }, 
         {
@@ -652,23 +652,98 @@
         }, 
         {
             "location": "/steps/dockerExecute/#parameters", 
-            "text": "parameter  mandatory  default  possible values      dockerImage  no  ''     dockerEnvVars  no  [:]     dockerOptions  no  ''     dockerVolumeBind  no  [:]       dockerImage  Name of the docker image that should be used. If empty, Docker is not used.  dockerEnvVars  Environment variables to set in the container, e.g. [http_proxy:'proxy:8080']  dockerOptions  Docker options to be set when starting the container. It can be a list or a string.  dockerVolumeBind  Volumes that should be mounted into the container.", 
+            "text": "parameter  mandatory  default  possible values      script  no  empty  globalPipelineEnvironment     dockerImage  no  ''     dockerEnvVars  no  [:]     dockerOptions  no  ''     dockerVolumeBind  no  [:]       script  defines the global script environment of the Jenkinsfile run. Typically  this  is passed to this parameter. This allows the function to access the  commonPipelineEnvironment  for storing the measured duration.  dockerImage  Name of the docker image that should be used. If empty, Docker is not used.  dockerEnvVars  Environment variables to set in the container, e.g. [http_proxy:'proxy:8080']  dockerOptions  Docker options to be set when starting the container. It can be a list or a string.  dockerVolumeBind  Volumes that should be mounted into the container.", 
             "title": "Parameters"
         }, 
         {
+            "location": "/steps/dockerExecute/#kubernetes-support", 
+            "text": "If the Jenkins is setup on a Kubernetes cluster, then you can execute the closure inside a container of a pod by setting an environment variable  ON_K8S  to  true . However, it will ignore both  dockeOptions  and  dockerVolumeBind  values.", 
+            "title": "Kubernetes support"
+        }, 
+        {
             "location": "/steps/dockerExecute/#step-configuration", 
-            "text": "None", 
+            "text": "none", 
             "title": "Step configuration"
         }, 
         {
+            "location": "/steps/dockerExecute/#return-value", 
+            "text": "none", 
+            "title": "Return value"
+        }, 
+        {
+            "location": "/steps/dockerExecute/#side-effects", 
+            "text": "none", 
+            "title": "Side effects"
+        }, 
+        {
             "location": "/steps/dockerExecute/#exceptions", 
-            "text": "None", 
+            "text": "none", 
             "title": "Exceptions"
         }, 
         {
-            "location": "/steps/dockerExecute/#example", 
+            "location": "/steps/dockerExecute/#example-1-run-closure-inside-a-docker-container", 
             "text": "dockerExecute ( dockerImage:   maven:3.5-jdk-7 ){ \n     sh   mvn clean install  }", 
-            "title": "Example"
+            "title": "Example 1: Run closure inside a docker container"
+        }, 
+        {
+            "location": "/steps/dockerExecute/#example-2-run-closure-inside-a-container-in-a-kubernetes-pod", 
+            "text": "# set environment variable   export   ON_K8S = true   dockerExecute ( script:   this ,   dockerImage:   maven:3.5-jdk-7 ){ \n     sh   mvn clean install  }   In the above example, the  dockerEcecute  step will internally invoke  dockerExecuteOnKubernetes  step and execute the closure inside a pod.", 
+            "title": "Example 2: Run closure inside a container in a kubernetes pod"
+        }, 
+        {
+            "location": "/steps/dockerExecuteOnKubernetes/", 
+            "text": "dockerExecuteOnKubernetes\n\n\nDescription\n\n\nExecutes a closure inside a container in a kubernetes pod. Proxy environment variables defined on the Jenkins machine are also available in the container.\n\n\nPrerequisites\n\n\n\n\nThe Jenkins should be running on kubernetes.\n\n\nAn environment variable \nON_K8S\n should be created on Jenkins and initialized to \ntrue\n.\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nparameter\n\n\nmandatory\n\n\ndefault\n\n\npossible values\n\n\n\n\n\n\n\n\n\n\nscript\n\n\nno\n\n\nempty \nglobalPipelineEnvironment\n\n\n\n\n\n\n\n\ndockerImage\n\n\nyes\n\n\n\n\n\n\n\n\n\n\ndockerEnvVars\n\n\nno\n\n\n[:]\n\n\n\n\n\n\n\n\ndockerWorkspace\n\n\nno\n\n\n''\n\n\n\n\n\n\n\n\ncontainerMap\n\n\nno\n\n\n[:]\n\n\n\n\n\n\n\n\n\n\n\n\nscript\n defines the global script environment of the Jenkins file run. Typically \nthis\n is passed to this parameter. This allows the function to access the \ncommonPipelineEnvironment\n for storing the measured duration.\n\n\ndockerImage\n Name of the docker image that should be used. If empty, Docker is not used.\n\n\ndockerEnvVars\n Environment variables to set in the container, e.g. [http_proxy:'proxy:8080']\n\n\ndockerWorkspace\n Docker options to be set when starting the container. It can be a list or a string.\n\n\ncontainerMap\n A map of docker image to the name of the container. The pod will be created with all the images from this map and they are labled based on the value field of each map entry.\n   Ex \n['maven:3.5-jdk-8-alpine': 'mavenExecute', 'famiko/jmeter-base': 'checkJMeter', 's4sdk/docker-cf-cli': 'cloudfoundry']\n\n\n\n\nStep configuration\n\n\nnone\n\n\nReturn value\n\n\nnone\n\n\nSide effects\n\n\nnone\n\n\nExceptions\n\n\nnone\n\n\nExample 1: Run a closure in a single container pod\n\n\n# set environment variable \n\n\nexport\n \nON_K8S\n=\ntrue\n\n\n\n\n\ndockerExecuteOnKubernetes\n(\nscript:\n \nscript\n,\n \ndockerImage:\n \nmaven:3.5-jdk-7\n){\n\n    \nsh\n \nmvn clean install\n \n\n}\n\n\n\n\n\nIn the above example, a pod will be created with a docker container of image \nmaven:3.5-jdk-7\n. The closure will be then executed inside the container.\n\n\nExample 2: Run a closure in a multi-container pod\n\n\n# set environment variable \n\n\nexport\n \nON_K8S\n=\ntrue\n\n\n\n\n\ndockerExecuteOnKubernetes\n(\nscript:\n \nscript\n,\n \ncontainerMap:\n \n[\nmaven:3.5-jdk-8-alpine\n:\n \nmaven\n,\n \ns4sdk/docker-cf-cli\n:\n \ncfcli\n]){\n\n    \ncontainer\n(\nmaven\n){\n\n        \nsh\n \nmvn clean install\n \n    \n}\n\n    \ncontainer\n(\ncfcli\n){\n\n        \nsh\n \ncf plugins\n\n    \n}\n\n\n}\n\n\n\n\n\nIn the above example, a pod will be created with multiple Docker containers that are passed as a \ncontainerMap\n. The containers can be chosen for executing by referring their labels as shown in the example.", 
+            "title": "dockerExecuteOnKubernetes"
+        }, 
+        {
+            "location": "/steps/dockerExecuteOnKubernetes/#dockerexecuteonkubernetes", 
+            "text": "", 
+            "title": "dockerExecuteOnKubernetes"
+        }, 
+        {
+            "location": "/steps/dockerExecuteOnKubernetes/#description", 
+            "text": "Executes a closure inside a container in a kubernetes pod. Proxy environment variables defined on the Jenkins machine are also available in the container.", 
+            "title": "Description"
+        }, 
+        {
+            "location": "/steps/dockerExecuteOnKubernetes/#prerequisites", 
+            "text": "The Jenkins should be running on kubernetes.  An environment variable  ON_K8S  should be created on Jenkins and initialized to  true .", 
+            "title": "Prerequisites"
+        }, 
+        {
+            "location": "/steps/dockerExecuteOnKubernetes/#parameters", 
+            "text": "parameter  mandatory  default  possible values      script  no  empty  globalPipelineEnvironment     dockerImage  yes      dockerEnvVars  no  [:]     dockerWorkspace  no  ''     containerMap  no  [:]       script  defines the global script environment of the Jenkins file run. Typically  this  is passed to this parameter. This allows the function to access the  commonPipelineEnvironment  for storing the measured duration.  dockerImage  Name of the docker image that should be used. If empty, Docker is not used.  dockerEnvVars  Environment variables to set in the container, e.g. [http_proxy:'proxy:8080']  dockerWorkspace  Docker options to be set when starting the container. It can be a list or a string.  containerMap  A map of docker image to the name of the container. The pod will be created with all the images from this map and they are labled based on the value field of each map entry.\n   Ex  ['maven:3.5-jdk-8-alpine': 'mavenExecute', 'famiko/jmeter-base': 'checkJMeter', 's4sdk/docker-cf-cli': 'cloudfoundry']", 
+            "title": "Parameters"
+        }, 
+        {
+            "location": "/steps/dockerExecuteOnKubernetes/#step-configuration", 
+            "text": "none", 
+            "title": "Step configuration"
+        }, 
+        {
+            "location": "/steps/dockerExecuteOnKubernetes/#return-value", 
+            "text": "none", 
+            "title": "Return value"
+        }, 
+        {
+            "location": "/steps/dockerExecuteOnKubernetes/#side-effects", 
+            "text": "none", 
+            "title": "Side effects"
+        }, 
+        {
+            "location": "/steps/dockerExecuteOnKubernetes/#exceptions", 
+            "text": "none", 
+            "title": "Exceptions"
+        }, 
+        {
+            "location": "/steps/dockerExecuteOnKubernetes/#example-1-run-a-closure-in-a-single-container-pod", 
+            "text": "# set environment variable   export   ON_K8S = true   dockerExecuteOnKubernetes ( script:   script ,   dockerImage:   maven:3.5-jdk-7 ){ \n     sh   mvn clean install   }   In the above example, a pod will be created with a docker container of image  maven:3.5-jdk-7 . The closure will be then executed inside the container.", 
+            "title": "Example 1: Run a closure in a single container pod"
+        }, 
+        {
+            "location": "/steps/dockerExecuteOnKubernetes/#example-2-run-a-closure-in-a-multi-container-pod", 
+            "text": "# set environment variable   export   ON_K8S = true   dockerExecuteOnKubernetes ( script:   script ,   containerMap:   [ maven:3.5-jdk-8-alpine :   maven ,   s4sdk/docker-cf-cli :   cfcli ]){ \n     container ( maven ){ \n         sh   mvn clean install  \n     } \n     container ( cfcli ){ \n         sh   cf plugins \n     }  }   In the above example, a pod will be created with multiple Docker containers that are passed as a  containerMap . The containers can be chosen for executing by referring their labels as shown in the example.", 
+            "title": "Example 2: Run a closure in a multi-container pod"
         }, 
         {
             "location": "/steps/durationMeasure/", 

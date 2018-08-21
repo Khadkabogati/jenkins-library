@@ -41,6 +41,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>/steps/dockerExecuteOnKubernetes/</loc>
+     <lastmod>2018-08-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>/steps/durationMeasure/</loc>
      <lastmod>2018-08-21</lastmod>
      <changefreq>daily</changefreq>
