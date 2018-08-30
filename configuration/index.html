@@ -296,6 +296,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#access-to-configuration-from-custom-scripts" title="Access to configuration from custom scripts" class="md-nav__link">
+    Access to configuration from custom scripts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#access-to-configuration-in-custom-library-steps" title="Access to configuration in custom library steps" class="md-nav__link">
     Access to configuration in custom library steps
   </a>
@@ -636,6 +643,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#access-to-configuration-from-custom-scripts" title="Access to configuration from custom scripts" class="md-nav__link">
+    Access to configuration from custom scripts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#access-to-configuration-in-custom-library-steps" title="Access to configuration in custom library steps" class="md-nav__link">
     Access to configuration in custom library steps
   </a>
@@ -703,7 +717,7 @@ Data is send using <a href="https://github.com/SAP/jenkins-library/blob/master/s
 </ol>
 </div>
 <h2 id="example-configuration">Example configuration<a class="headerlink" href="#example-configuration" title="Permanent link">&para;</a></h2>
-<p><div class="codehilite"><pre><span></span>general:
+<div class="codehilite"><pre><span></span>general:
   gitSshKeyCredentialsId: GitHub_Test_SSH
 
 steps:
@@ -717,18 +731,14 @@ steps:
     newmanCollection: &#39;myNewmanCollection.file&#39;
     newmanEnvironment: &#39;myNewmanEnvironment&#39;
     newmanGlobals: &#39;myNewmanGlobals&#39;
- ```
-
-## Access to configuration from custom scripts
-
-Configuration is loaded into `commonPipelineEnvironment` during step [setupCommonPipelineEnvironment](steps/setupCommonPipelineEnvironment.md).
-
-You can access the configuration values via `commonPipelineEnvironment.configuration` which will return you the complete configuration map.
-
-Thus following access is for example possible (accessing `gitSshKeyCredentialsId` from `general` section):
 </pre></div>
-commonPipelineEnvironment.configuration.general.gitSshKeyCredentialsId
-```</p>
+
+<h2 id="access-to-configuration-from-custom-scripts">Access to configuration from custom scripts<a class="headerlink" href="#access-to-configuration-from-custom-scripts" title="Permanent link">&para;</a></h2>
+<p>Configuration is loaded into <code>commonPipelineEnvironment</code> during step <a href="../steps/setupCommonPipelineEnvironment/">setupCommonPipelineEnvironment</a>.</p>
+<p>You can access the configuration values via <code>commonPipelineEnvironment.configuration</code> which will return you the complete configuration map.</p>
+<p>Thus following access is for example possible (accessing <code>gitSshKeyCredentialsId</code> from <code>general</code> section):
+<div class="codehilite"><pre><span></span>commonPipelineEnvironment.configuration.general.gitSshKeyCredentialsId
+</pre></div></p>
 <h2 id="access-to-configuration-in-custom-library-steps">Access to configuration in custom library steps<a class="headerlink" href="#access-to-configuration-in-custom-library-steps" title="Permanent link">&para;</a></h2>
 <p>Within library steps the <code>ConfigurationHelper</code> object is used.</p>
 <p>You can see its usage in all the Piper steps, for example <a href="https://github.com/SAP/jenkins-library/blob/master/vars/newmanExecute.groovy#L23">newmanExecute</a>.</p>
