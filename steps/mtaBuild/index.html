@@ -740,9 +740,12 @@
 <p>Note that a version is formed by <code>major.minor.patch</code>, and a version is compatible to another version if the minor and patch versions are higher, but the major version is not, e.g. if 3.39.10 is the expected version, 3.39.11 and 3.40.1 would be compatible versions, but 4.0.1 would not be a compatible version.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
+<li>A docker image meeting the following requirements<ul>
 <li><strong>SAP MTA Archive Builder 1.0.6 or compatible version</strong> - can be downloaded from <a href="https://tools.hana.ondemand.com/#cloud">SAP Development Tools</a>.</li>
 <li><strong>Java 8 or compatible version</strong> - necessary to run the <code>mta.jar</code> file.</li>
 <li><strong>NodeJS installed</strong> - the MTA Builder uses <code>npm</code> to download node module dependencies such as <code>grunt</code>.</li>
+</ul>
+</li>
 </ul>
 <h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
 <table>
@@ -759,6 +762,18 @@
 <td><code>script</code></td>
 <td>yes</td>
 <td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>dockerImage</code></td>
+<td>yes</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>dockerOptions</code></td>
+<td>no</td>
+<td>''</td>
 <td></td>
 </tr>
 <tr>
@@ -789,6 +804,10 @@
 </table>
 <ul>
 <li><code>script</code> - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the <code>this</code> parameter, as in <code>script: this</code>. This allows the function to access the <a href="../commonPipelineEnvironment/"><code>commonPipelineEnvironment</code></a> for retrieving, for example, configuration parameters.</li>
+<li><code>dockerImage</code> - The Docker image to execute the MTA build.
+  A custom built image needs to include Multi-target Application Archive Builder.
+  Refer to <a href="https://help.sap.com/viewer/58746c584026430a890170ac4d87d03b/Cloud/en-US/ba7dd5a47b7a4858a652d15f9673c28d.html">SAP Help Portal</a> for information on how to set it up.</li>
+<li><code>dockerOptions</code> Docker options to be set when starting the container. It can be a list or a string.</li>
 <li><code>buildTarget</code> - The target platform to which the mtar can be deployed.</li>
 <li><code>extension</code> - The path to the extension descriptor file.</li>
 <li><code>mtaJarLocation</code> - The location of the SAP Multitarget Application Archive Builder jar file, including file name and extension. First, the location is retrieved from the environment variables using the environment variable<code>MTA_JAR_LOCATION</code>. If no environment variable is provided, the location is retrieved from the parameters, or the step configuration using the key <code>mtaJarLocation</code>. If SAP Multitarget Application Archive Builder is not found on one of the previous locations an AbortException is thrown.
@@ -798,6 +817,7 @@ Note that the environment variable <code>MTA_JAR_LOCATION</code> has priority. I
 <h2 id="step-configuration">Step configuration<a class="headerlink" href="#step-configuration" title="Permanent link">&para;</a></h2>
 <p>The following parameters can also be specified as step parameters using the global configuration file:</p>
 <ul>
+<li><code>dockerImage</code></li>
 <li><code>buildTarget</code></li>
 <li><code>extension</code></li>
 <li><code>mtaJarLocation</code></li>
