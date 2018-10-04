@@ -437,6 +437,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#example-3-run-closure-inside-a-container-which-is-attached-to-a-sidecar-container-as-for-example-used-in-seleniumexecutetests" title="Example 3: Run closure inside a container which is attached to a sidecar container (as for example used in seleniumExecuteTests:" class="md-nav__link">
+    Example 3: Run closure inside a container which is attached to a sidecar container (as for example used in seleniumExecuteTests:
+  </a>
+  
+</li>
+      
       
       
       
@@ -564,6 +571,18 @@
   <li class="md-nav__item">
     <a href="../prepareDefaultValues/" title="prepareDefaultValues" class="md-nav__link">
       prepareDefaultValues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../seleniumExecuteTests/" title="seleniumExecuteTests" class="md-nav__link">
+      seleniumExecuteTests
     </a>
   </li>
 
@@ -728,6 +747,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#example-3-run-closure-inside-a-container-which-is-attached-to-a-sidecar-container-as-for-example-used-in-seleniumexecutetests" title="Example 3: Run closure inside a container which is attached to a sidecar container (as for example used in seleniumExecuteTests:" class="md-nav__link">
+    Example 3: Run closure inside a container which is attached to a sidecar container (as for example used in seleniumExecuteTests:
+  </a>
+  
+</li>
+      
       
       
       
@@ -749,7 +775,7 @@
                 
                 <h1 id="dockerexecute">dockerExecute<a class="headerlink" href="#dockerexecute" title="Permanent link">&para;</a></h1>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
-<p>Executes a closure inside a docker container with the specified docker image. 
+<p>Executes a closure inside a docker container with the specified docker image.
 The workspace is mounted into the docker image.
 Proxy environment variables defined on the Jenkins machine are also available in the Docker container.</p>
 <h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
@@ -764,48 +790,220 @@ Proxy environment variables defined on the Jenkins machine are also available in
 </thead>
 <tbody>
 <tr>
-<td><code>script</code></td>
-<td>no</td>
-<td>empty <code>globalPipelineEnvironment</code></td>
+<td>script</td>
+<td>yes</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
-<td><code>dockerImage</code></td>
+<td>containerPortMappings</td>
 <td>no</td>
-<td>''</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
-<td><code>dockerEnvVars</code></td>
+<td>dockerEnvVars</td>
 <td>no</td>
-<td>[:]</td>
+<td><code>[:]</code></td>
 <td></td>
 </tr>
 <tr>
-<td><code>dockerOptions</code></td>
+<td>dockerImage</td>
 <td>no</td>
-<td>''</td>
+<td><code>''</code></td>
 <td></td>
 </tr>
 <tr>
-<td><code>dockerVolumeBind</code></td>
+<td>dockerName</td>
 <td>no</td>
-<td>[:]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>dockerOptions</td>
+<td>no</td>
+<td><code>''</code></td>
+<td></td>
+</tr>
+<tr>
+<td>dockerVolumeBind</td>
+<td>no</td>
+<td><code>[:]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>dockerWorkspace</td>
+<td>no</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>jenkinsKubernetes</td>
+<td>no</td>
+<td><code>[jnlpAgent:s4sdk/jenkins-agent-k8s:latest]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>sidecarEnvVars</td>
+<td>no</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>sidecarImage</td>
+<td>no</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>sidecarName</td>
+<td>no</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>sidecarOptions</td>
+<td>no</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>sidecarVolumeBind</td>
+<td>no</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>sidecarWorkspace</td>
+<td>no</td>
+<td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
 <ul>
 <li><code>script</code> defines the global script environment of the Jenkinsfile run. Typically <code>this</code> is passed to this parameter. This allows the function to access the <a href="../commonPipelineEnvironment/"><code>commonPipelineEnvironment</code></a> for storing the measured duration.</li>
-<li><code>dockerImage</code> Name of the docker image that should be used. If empty, Docker is not used.</li>
-<li><code>dockerEnvVars</code> Environment variables to set in the container, e.g. [http_proxy:'proxy:8080']</li>
+<li><code>containerPortMappings</code>: Map which defines per docker image the port mappings, like <code>containerPortMappings: ['selenium/standalone-chrome': [[name: 'selPort', containerPort: 4444, hostPort: 4444]]]</code></li>
+<li><code>dockerEnvVars</code>: Environment variables to set in the container, e.g. [http_proxy:'proxy:8080']</li>
+<li><code>dockerImage</code>: Name of the docker image that should be used. If empty, Docker is not used and the command is executed directly on the Jenkins system.</li>
+<li><code>dockerName</code>: only relevant for Kubernetes case: Name of the container launching <code>dockerImage</code></li>
 <li><code>dockerOptions</code> Docker options to be set when starting the container. It can be a list or a string.</li>
 <li><code>dockerVolumeBind</code> Volumes that should be mounted into the container.</li>
+<li><code>dockerWorkspace</code>: only relevant for Kubernetes case: specifies a dedicated user home directory for the container which will be passed as value for environment variable <code>HOME</code></li>
+<li><code>sidecarEnvVars</code> defines environment variables for the sidecar container, similar to <code>dockerEnvVars</code></li>
+<li><code>sidecarImage</code>: Name of the docker image of the sidecar container. Do not provide this value if no sidecar container is required.</li>
+<li><code>sidecarName</code>: as <code>dockerName</code> for the sidecar container</li>
+<li><code>sidecarOptions</code>: as <code>dockerOptions</code> for the sidecar container</li>
+<li><code>sidecarVolumeBind</code>: as <code>dockerVolumeBind</code> for the sidecar container</li>
+<li><code>sidecarWorkspace</code>: as <code>dockerWorkspace</code> for the sidecar container</li>
 </ul>
 <h2 id="kubernetes-support">Kubernetes support<a class="headerlink" href="#kubernetes-support" title="Permanent link">&para;</a></h2>
-<p>If the Jenkins is setup on a Kubernetes cluster, then you can execute the closure inside a container of a pod by setting an environment variable <code>ON_K8S</code> to <code>true</code>. However, it will ignore both <code>dockeOptions</code> and <code>dockerVolumeBind</code> values.</p>
+<p>If the Jenkins is setup on a Kubernetes cluster, then you can execute the closure inside a container of a pod by setting an environment variable <code>ON_K8S</code> to <code>true</code>. However, it will ignore <code>containerPortMappings</code>, <code>dockerOptions</code> and <code>dockerVolumeBind</code> values.</p>
 <h2 id="step-configuration">Step configuration<a class="headerlink" href="#step-configuration" title="Permanent link">&para;</a></h2>
-<p>none</p>
+<p>We recommend to define values of step parameters via <a href="../../configuration/">config.yml file</a>.</p>
+<p>In following sections the configuration is possible:</p>
+<table>
+<thead>
+<tr>
+<th>parameter</th>
+<th>general</th>
+<th>step</th>
+<th>stage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>script</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>containerPortMappings</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr>
+<td>dockerEnvVars</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr>
+<td>dockerImage</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr>
+<td>dockerName</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr>
+<td>dockerOptions</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr>
+<td>dockerVolumeBind</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr>
+<td>dockerWorkspace</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr>
+<td>jenkinsKubernetes</td>
+<td>X</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>sidecarEnvVars</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr>
+<td>sidecarImage</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr>
+<td>sidecarName</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr>
+<td>sidecarOptions</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr>
+<td>sidecarVolumeBind</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr>
+<td>sidecarWorkspace</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+</tr>
+</tbody>
+</table>
 <h2 id="return-value">Return value<a class="headerlink" href="#return-value" title="Permanent link">&para;</a></h2>
 <p>none</p>
 <h2 id="side-effects">Side effects<a class="headerlink" href="#side-effects" title="Permanent link">&para;</a></h2>
@@ -819,7 +1017,7 @@ Proxy environment variables defined on the Jenkins machine are also available in
 </pre></div>
 
 <h2 id="example-2-run-closure-inside-a-container-in-a-kubernetes-pod">Example 2: Run closure inside a container in a kubernetes pod<a class="headerlink" href="#example-2-run-closure-inside-a-container-in-a-kubernetes-pod" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="c1"># set environment variable </span>
+<div class="codehilite"><pre><span></span><span class="c1"># set environment variable</span>
 <span class="nb">export</span> <span class="nv">ON_K8S</span><span class="o">=</span>true<span class="s2">&quot;</span>
 </pre></div>
 
@@ -828,7 +1026,23 @@ Proxy environment variables defined on the Jenkins machine are also available in
 <span class="o">}</span>
 </pre></div>
 
-<p>In the above example, the <code>dockerEcecute</code> step will internally invoke <a href="../dockerExecuteOnKubernetes/">dockerExecuteOnKubernetes</a> step and execute the closure inside a pod. </p>
+<p>In the above example, the <code>dockerEcecute</code> step will internally invoke <a href="../dockerExecuteOnKubernetes/">dockerExecuteOnKubernetes</a> step and execute the closure inside a pod.</p>
+<h2 id="example-3-run-closure-inside-a-container-which-is-attached-to-a-sidecar-container-as-for-example-used-in-seleniumexecutetests">Example 3: Run closure inside a container which is attached to a sidecar container (as for example used in <a href="../seleniumExecuteTests/">seleniumExecuteTests</a>:<a class="headerlink" href="#example-3-run-closure-inside-a-container-which-is-attached-to-a-sidecar-container-as-for-example-used-in-seleniumexecutetests" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><span class="n">dockerExecute</span><span class="o">(</span>
+        <span class="nl">script:</span> <span class="n">script</span><span class="o">,</span>
+        <span class="nl">containerPortMappings:</span> <span class="o">[</span><span class="nl">containerPortMappings:</span><span class="s1">&#39;selenium/standalone-chrome&#39;</span><span class="o">:[</span><span class="nl">containerPort:</span> <span class="mi">4444</span><span class="o">,</span> <span class="nl">hostPort:</span> <span class="mi">4444</span><span class="o">]],</span>
+        <span class="nl">dockerImage:</span> <span class="s1">&#39;node:8-stretch&#39;</span><span class="o">,</span>
+        <span class="nl">dockerName:</span> <span class="s1">&#39;node&#39;</span><span class="o">,</span>
+        <span class="nl">dockerWorkspace:</span> <span class="s1">&#39;/home/node&#39;</span><span class="o">,</span>
+        <span class="nl">sidecarImage:</span> <span class="s1">&#39;selenium/standalone-chrome&#39;</span><span class="o">,</span>
+        <span class="nl">sidecarName:</span> <span class="s1">&#39;selenium&#39;</span><span class="o">,</span>
+<span class="o">)</span> <span class="o">{</span>
+    <span class="n">git</span> <span class="nl">url:</span> <span class="s1">&#39;https://github.wdf.sap.corp/XXXXX/WebDriverIOTest.git&#39;</span>
+    <span class="n">sh</span> <span class="s1">&#39;&#39;&#39;npm install</span>
+<span class="s1">          node index.js</span>
+<span class="s1">    &#39;&#39;&#39;</span>
+<span class="o">}</span>
+</pre></div>
                 
                   
                 
