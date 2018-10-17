@@ -396,6 +396,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../gaugeExecuteTests/" title="gaugeExecuteTests" class="md-nav__link">
+      gaugeExecuteTests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../handlePipelineStepErrors/" title="handlePipelineStepErrors" class="md-nav__link">
       handlePipelineStepErrors
     </a>
@@ -952,15 +964,27 @@ webdriverio
 <td></td>
 </tr>
 <tr>
+<td>buildTool</td>
+<td>no</td>
+<td><code>npm</code></td>
+<td><code>maven</code>, <code>npm</code></td>
+</tr>
+<tr>
 <td>containerPortMappings</td>
 <td>no</td>
 <td><code>[selenium/standalone-chrome:[[containerPort:4444, hostPort:4444]]]</code></td>
 <td></td>
 </tr>
 <tr>
+<td>dockerEnvVars</td>
+<td>no</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>dockerImage</td>
 <td>no</td>
-<td>buildTool=<code>maven</code>: <code>maven:3.5-jdk-7</code><br />buildTool=<code>npm</code>: <code>node:8-stretch</code><br /></td>
+<td>buildTool=<code>maven</code>: <code>maven:3.5-jdk-8</code><br />buildTool=<code>npm</code>: <code>node:8-stretch</code><br /></td>
 <td></td>
 </tr>
 <tr>
@@ -1033,7 +1057,9 @@ webdriverio
 </table>
 <ul>
 <li><code>script</code> defines the global script environment of the Jenkinsfile run. Typically <code>this</code> is passed to this parameter. This allows the function to access the <a href="../commonPipelineEnvironment/"><code>commonPipelineEnvironment</code></a> for storing the measured duration.</li>
+<li><code>buildTool</code> defines the build tool to be used for the test execution.</li>
 <li><code>containerPortMappings</code>, see step <a href="../dockerExecute/">dockerExecute</a></li>
+<li><code>dockerEnvVars</code>, see step <a href="../dockerExecute/">dockerExecute</a></li>
 <li><code>dockerImage</code>, see step <a href="../dockerExecute/">dockerExecute</a></li>
 <li><code>dockerName</code>, see step <a href="../dockerExecute/">dockerExecute</a></li>
 <li><code>dockerWorkspace</code>, see step <a href="../dockerExecute/">dockerExecute</a></li>
@@ -1065,7 +1091,19 @@ webdriverio
 <td></td>
 </tr>
 <tr>
+<td>buildTool</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr>
 <td>containerPortMappings</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr>
+<td>dockerEnvVars</td>
 <td>X</td>
 <td>X</td>
 <td>X</td>
