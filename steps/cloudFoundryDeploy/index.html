@@ -891,6 +891,11 @@ Deployment can be done</p>
 <li>cfSpace</li>
 </ul>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Due to <a href="https://github.com/cloudfoundry/cli/issues/1445">an incompatible change</a> in the Cloud Foundry CLI, multiple buildpacks are not supported by this step.
+If your <code>application</code> contains a list of <code>buildpacks</code> instead a single <code>buildpack</code>, this will be automatically re-written by the step when blue-green deployment is used.</p>
+</div>
 <ul>
 <li><code>deployTool</code> defines the tool which should be used for deployment.</li>
 <li><code>deployType</code> defines the type of deployment, either <code>standard</code> deployment which results in a system downtime or a zero-downtime <code>blue-green</code> deployment.</li>
@@ -933,7 +938,12 @@ You can find details in the <a href="https://docs.cloudfoundry.org/devguide/depl
 <li>stashContent</li>
 </ul>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="n">artifactSetVersion</span> <span class="nl">script:</span> <span class="k">this</span><span class="o">,</span> <span class="nl">buildTool:</span> <span class="s1">&#39;maven&#39;</span>
+<div class="codehilite"><pre><span></span><span class="n">cloudFoundryDeploy</span><span class="o">(</span>
+    <span class="nl">script:</span> <span class="n">script</span><span class="o">,</span>
+    <span class="nl">deployType:</span> <span class="s1">&#39;blue-green&#39;</span><span class="o">,</span>
+    <span class="nl">cloudFoundry:</span> <span class="o">[</span><span class="nl">apiEndpoint:</span> <span class="s1">&#39;https://test.server.com&#39;</span><span class="o">,</span> <span class="nl">appName:</span><span class="s1">&#39;cfAppName&#39;</span><span class="o">,</span> <span class="nl">credentialsId:</span> <span class="s1">&#39;cfCredentialsId&#39;</span><span class="o">,</span> <span class="nl">manifest:</span> <span class="s1">&#39;cfManifest&#39;</span><span class="o">,</span> <span class="nl">org:</span> <span class="s1">&#39;cfOrg&#39;</span><span class="o">,</span> <span class="nl">space:</span> <span class="s1">&#39;cfSpace&#39;</span><span class="o">],</span>
+    <span class="nl">deployTool:</span> <span class="s1">&#39;cf_native&#39;</span>
+<span class="o">)</span>
 </pre></div>
                 
                   
