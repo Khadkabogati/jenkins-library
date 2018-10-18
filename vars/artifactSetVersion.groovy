@@ -83,7 +83,7 @@ void call(Map parameters = [:], Closure body = null) {
                             :script.commonPipelineEnvironment.getGitSshUrl())
                 .withMandatoryProperty('gitSshUrl')
                 .use()
-            
+
             def gitConfig = []
 
             if(config.gitUserEMail) gitConfig.add("-c user.email=\"${config.gitUserEMail}\"")

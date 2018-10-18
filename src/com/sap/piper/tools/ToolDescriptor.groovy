@@ -87,7 +87,7 @@ class ToolDescriptor implements Serializable {
     def verifyToolLocation(script, configuration) {
 
         def toolLocation = getToolLocation(script, configuration)
-        if (toolLocation) { 
+        if (toolLocation) {
             script.echo "Verifying $name location '$toolLocation'."
             FileUtils.validateDirectoryIsNotEmpty(script, toolLocation)
             script.echo "Verification success. $name location '$toolLocation' exists."

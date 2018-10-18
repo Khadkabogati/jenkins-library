@@ -131,7 +131,7 @@ def deployCfNative (config) {
         }
 
         sh """#!/bin/bash
-            set +x  
+            set +x
             export HOME=${config.dockerWorkspace}
             cf login -u \"${username}\" -p '${password}' -a ${config.cloudFoundry.apiEndpoint} -o \"${config.cloudFoundry.org}\" -s \"${config.cloudFoundry.space}\"
             cf plugins

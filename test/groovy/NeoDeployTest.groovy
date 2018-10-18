@@ -600,7 +600,7 @@ class NeoDeployTest extends BasePiperTest {
             this.opts.add(new MapEntry(key, value))
             return this
         }
-        
+
         CommandLineMatcher hasArgument(String arg) {
             this.args.add(arg)
             return this
