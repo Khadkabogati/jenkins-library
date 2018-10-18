@@ -1,0 +1,14 @@
+plugins:
+  codenarc:
+    enabled: true
+  editorconfig:
+    enabled: true
+    config:
+      editorconfig: .editorconfig
+  fixme:
+    enabled: true
+    config:
+      strings:
+      - FIXME
+      - TODO
+      - XXX
