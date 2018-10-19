@@ -9,7 +9,7 @@ void call(Map parameters = [:]) {
     handlePipelineStepErrors (stepName: 'prepareDefaultValues', stepParameters: parameters) {
         if(!DefaultValueCache.getInstance() || parameters.customDefaults) {
             def defaultValues = [:]
-            def configFileList = ['default_pipeline_environment.yml']
+            def configFileList = ['piper-os-defaults.yml']
             def customDefaults = parameters.customDefaults
 
             if(customDefaults in String)

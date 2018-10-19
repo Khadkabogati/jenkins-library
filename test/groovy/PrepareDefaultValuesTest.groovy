@@ -32,7 +32,7 @@ public class PrepareDefaultValuesTest extends BasePiperTest {
 
         helper.registerAllowedMethod("libraryResource", [String], { fileName ->
             switch(fileName) {
-                case 'default_pipeline_environment.yml': return "default: 'config'"
+                case 'piper-os-defaults.yml': return "default: 'config'"
                 case 'custom.yml': return "custom: 'myConfig'"
                 case 'not_found': throw new hudson.AbortException('No such library resource not_found could be found')
                 default: return "the:'end'"
@@ -114,7 +114,7 @@ public class PrepareDefaultValuesTest extends BasePiperTest {
 
         jsr.step.call(script: nullScript)
 
-        assert ! jlr.log.contains("Loading configuration file 'default_pipeline_environment.yml'")
+        assert ! jlr.log.contains("Loading configuration file 'piper-os-defaults.yml'")
     }
 
     @Test
@@ -122,7 +122,7 @@ public class PrepareDefaultValuesTest extends BasePiperTest {
 
         jsr.step.call(script: nullScript, customDefaults: ['custom.yml'])
 
-        assert jlr.log.contains("Loading configuration file 'default_pipeline_environment.yml'")
+        assert jlr.log.contains("Loading configuration file 'piper-os-defaults.yml'")
         assert jlr.log.contains("Loading configuration file 'custom.yml'")
     }
 }
