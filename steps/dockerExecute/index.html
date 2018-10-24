@@ -958,7 +958,7 @@ Proxy environment variables defined on the Jenkins machine are also available in
 <li><code>containerPortMappings</code>: Map which defines per docker image the port mappings, like <code>containerPortMappings: ['selenium/standalone-chrome': [[name: 'selPort', containerPort: 4444, hostPort: 4444]]]</code></li>
 <li><code>dockerEnvVars</code>: Environment variables to set in the container, e.g. [http_proxy:'proxy:8080']</li>
 <li><code>dockerImage</code>: Name of the docker image that should be used. If empty, Docker is not used and the command is executed directly on the Jenkins system.</li>
-<li><code>dockerName</code>: only relevant for Kubernetes case: Name of the container launching <code>dockerImage</code></li>
+<li><code>dockerName</code>: Kubernetes case: Name of the container launching <code>dockerImage</code>, SideCar: Name of the container in local network</li>
 <li><code>dockerOptions</code> Docker options to be set when starting the container. It can be a list or a string.</li>
 <li><code>dockerVolumeBind</code> Volumes that should be mounted into the container.</li>
 <li><code>dockerWorkspace</code>: only relevant for Kubernetes case: specifies a dedicated user home directory for the container which will be passed as value for environment variable <code>HOME</code></li>
