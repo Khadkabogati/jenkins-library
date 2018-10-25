@@ -805,7 +805,7 @@
                 
                 <h1 id="transportrequestuploadfile">transportRequestUploadFile<a class="headerlink" href="#transportrequestuploadfile" title="Permanent link">&para;</a></h1>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
-<p>Uploads a file to a Transport Request for a Change Document on the Solution Manager.</p>
+<p>Uploads a file to a Transport Request.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong><a href="http://central.maven.org/maven2/com/sap/devops/cmclient/dist.cli/">Change Management Client 2.0.0 or compatible version</a></strong> - available for download on Maven Central.</li>
@@ -829,7 +829,7 @@
 </tr>
 <tr>
 <td><code>changeDocumentId</code></td>
-<td>yes</td>
+<td><code>SOLMAN</code> only</td>
 <td></td>
 <td></td>
 </tr>
@@ -841,7 +841,7 @@
 </tr>
 <tr>
 <td><code>applicationId</code></td>
-<td>yes</td>
+<td><code>SOLMAN</code> only</td>
 <td></td>
 <td></td>
 </tr>
@@ -893,20 +893,27 @@
 <td><code>%b</code></td>
 <td>see <code>git log --help</code></td>
 </tr>
+<tr>
+<td><code>changeManagement/type</code></td>
+<td>no</td>
+<td><code>SOLMAN</code></td>
+<td><code>SOLMAN</code>, <code>CTS</code></td>
+</tr>
 </tbody>
 </table>
 <ul>
 <li><code>script</code> - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the <code>this</code> parameter, as in <code>script: this</code>. This allows the function to access the <a href="../commonPipelineEnvironment/"><code>commonPipelineEnvironment</code></a> for retrieving, for example, configuration parameters.</li>
-<li><code>changeDocumentId</code> - The id of the change document related to the transport request to release.</li>
-<li><code>transportRequestId</code> - The id of the transport request to release.</li>
-<li><code>applicationId</code> - The id of the application.</li>
+<li><code>changeDocumentId</code> - For type <code>SOLMAN</code> only. The id of the change document related to the transport request to release. Typically provided via commit history.</li>
+<li><code>transportRequestId</code> - The id of the transport request to release. Typically provided via commit history.</li>
+<li><code>applicationId</code> - For type <code>SOLMAN</code> only. The id of the application.</li>
 <li><code>filePath</code> - The path of the file to upload.</li>
-<li><code>changeManagement/credentialsId</code> - The credentials to connect to the Solution Manager.</li>
-<li><code>changeManagement/endpoint</code> - The address of the Solution Manager.</li>
-<li><code>changeManagement/git/from</code> - The starting point for retrieving the change document id</li>
-<li><code>changeManagement/git/to</code> - The end point for retrieving the change document id</li>
-<li><code>changeManagement/changeDocumentLabel</code> - A pattern used for identifying lines holding the change document id.</li>
+<li><code>changeManagement/credentialsId</code> - The credentials to connect to the service endpoint (Solution Manager, ABAP System).</li>
+<li><code>changeManagement/endpoint</code> - The service endpoint (Solution Manager, ABAP System).</li>
+<li><code>changeManagement/git/from</code> - The starting point for retrieving the change document id and/or transport request id</li>
+<li><code>changeManagement/git/to</code> - The end point for retrieving the change document id and/or transport request id</li>
+<li><code>changeManagement/changeDocumentLabel</code> - For type <code>SOLMAN</code> only. A pattern used for identifying lines holding the change document id.</li>
 <li><code>changeManagement/transportRequestLabel</code> - A pattern used for identifying lines holding the transport request id.</li>
+<li><code>changeManagement/type</code> Where/how the transport request is created (via SAP Solution Manager, ABAP).</li>
 <li><code>changeManagement/git/format</code> - Specifies what part of the commit is scanned. By default the body of the commit message is scanned.</li>
 </ul>
 <h2 id="step-configuration">Step configuration<a class="headerlink" href="#step-configuration" title="Permanent link">&para;</a></h2>
@@ -931,6 +938,7 @@ prepareDefaultValues script: this,
     changeDocumentLabel: &#39;ChangeDocument\s?:&#39;
     cmClientOpts: &#39;-Djavax.net.ssl.trustStore=&lt;path to truststore&gt;&#39;
     credentialsId: &#39;CM&#39;
+    type: &#39;SOLMAN&#39;
     endpoint: &#39;https://example.org/cm&#39;
     git:
       from: &#39;HEAD~1&#39;
@@ -945,6 +953,7 @@ prepareDefaultValues script: this,
     transportRequestUploadFile:
       applicationId: &#39;FOO&#39;
       changeManagement:
+        type: &#39;SOLMAN&#39;
         endpoint: &#39;https://example.org/cm&#39;
         [...]
 </pre></div>
@@ -955,9 +964,9 @@ prepareDefaultValues script: this,
 <h2 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>IllegalArgumentException</code>:<ul>
-<li>If the change id is not provided.</li>
+<li>If the change id is not provided (<code>SOLMAN</code> only).</li>
 <li>If the transport request id is not provided.</li>
-<li>If the application id is not provided.</li>
+<li>If the application id is not provided (<code>SOLMAN</code> only).</li>
 <li>If the file path is not provided.</li>
 </ul>
 </li>
@@ -967,12 +976,22 @@ prepareDefaultValues script: this,
 </li>
 </ul>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="n">transportRequestUploadFile</span> <span class="nl">script:</span><span class="k">this</span><span class="o">,</span>
-                           <span class="nl">changeDocumentId:</span> <span class="s1">&#39;001&#39;</span><span class="o">,</span>
-                           <span class="nl">transportRequestId:</span> <span class="s1">&#39;001&#39;</span><span class="o">,</span>
+<div class="codehilite"><pre><span></span><span class="c1">// SOLMAN</span>
+<span class="n">transportRequestUploadFile</span> <span class="nl">script:</span><span class="k">this</span><span class="o">,</span>
+                           <span class="nl">changeDocumentId:</span> <span class="s1">&#39;001&#39;</span><span class="o">,</span>   <span class="c1">// typically provided via git commit history</span>
+                           <span class="nl">transportRequestId:</span> <span class="s1">&#39;001&#39;</span><span class="o">,</span> <span class="c1">// typically provided via git commit history</span>
                            <span class="nl">applicationId:</span> <span class="s1">&#39;001&#39;</span><span class="o">,</span>
                            <span class="nl">filePath:</span> <span class="s1">&#39;/path&#39;</span><span class="o">,</span>
                            <span class="nl">changeManagement:</span><span class="o">[</span>
+                             <span class="nl">type:</span> <span class="s1">&#39;SOLMAN&#39;</span>
+                             <span class="nl">endpoint:</span> <span class="s1">&#39;https://example.org/cm&#39;</span>
+                           <span class="o">]</span>
+<span class="c1">// CTS</span>
+<span class="n">transportRequestUploadFile</span> <span class="nl">script:</span><span class="k">this</span><span class="o">,</span>
+                           <span class="nl">transportRequestId:</span> <span class="s1">&#39;001&#39;</span><span class="o">,</span> <span class="c1">// typically provided via git commit history</span>
+                           <span class="nl">filePath:</span> <span class="s1">&#39;/path&#39;</span><span class="o">,</span>
+                           <span class="nl">changeManagement:</span><span class="o">[</span>
+                             <span class="nl">type:</span> <span class="s1">&#39;CTS&#39;</span>
                              <span class="nl">endpoint:</span> <span class="s1">&#39;https://example.org/cm&#39;</span>
                            <span class="o">]</span>
 </pre></div>

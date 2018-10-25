@@ -805,7 +805,11 @@
                 
                 <h1 id="transportrequestcreate">transportRequestCreate<a class="headerlink" href="#transportrequestcreate" title="Permanent link">&para;</a></h1>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
-<p>Creates a Transport Request for a Change Document on the Solution Manager.</p>
+<p>Creates</p>
+<ul>
+<li>a Transport Request for a Change Document on the Solution Manager (type <code>SOLMAN</code>) or</li>
+<li>a Transport Request inside an ABAP system (type<code>CTS</code>)</li>
+</ul>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong><a href="http://central.maven.org/maven2/com/sap/devops/cmclient/dist.cli/">Change Management Client 2.0.0 or compatible version</a></strong> - available for download on Maven Central.</li>
@@ -829,8 +833,26 @@
 </tr>
 <tr>
 <td><code>changeDocumentId</code></td>
-<td>yes</td>
+<td>for <code>SOLMAN</code></td>
 <td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>transportType</code></td>
+<td>for <code>CTS</code></td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td><code>targetSystem</code></td>
+<td>for <code>CTS</code></td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>for <code>CTS</code></td>
+<td>no</td>
 <td></td>
 </tr>
 <tr>
@@ -875,18 +897,28 @@
 <td><code>%b</code></td>
 <td>see <code>git log --help</code></td>
 </tr>
+<tr>
+<td><code>changeManagement/type</code></td>
+<td>no</td>
+<td><code>SOLMAN</code></td>
+<td><code>SOLMAN</code>, <code>CTS</code></td>
+</tr>
 </tbody>
 </table>
 <ul>
 <li><code>script</code> - The common script environment of the Jenkinsfile running. Typically the reference to the script calling the pipeline step is provided with the <code>this</code> parameter, as in <code>script: this</code>. This allows the function to access the <a href="../commonPipelineEnvironment/"><code>commonPipelineEnvironment</code></a> for retrieving, for example, configuration parameters.</li>
-<li><code>changeDocumentId</code> - The id of the change document to transport.</li>
-<li><code>changeManagement/credentialsId</code> - The credentials to connect to the Solution Manager.</li>
-<li><code>changeManagement/endpoint</code> - The address of the Solution Manager.</li>
+<li><code>changeDocumentId</code> - for <code>SOLMAN</code> only. The id of the change document to that the transport request is bound to. Typically this value is provided via commit message in the commit history.</li>
+<li><code>changeManagement/type</code> Where/how the transport request is created (via SAP Solution Manager, ABAP).</li>
+<li><code>changeManagement/credentialsId</code> - The credentials to connect to the service endpoint (Solution Manager, ABAP System).</li>
+<li><code>changeManagement/endpoint</code> - The service endpoint (Solution Manager, ABAP System).</li>
 <li><code>changeManagement/clientOpts</code>- Options forwarded to JVM used by the CM client, like <code>JAVA_OPTS</code></li>
 <li><code>changeManagement/git/from</code> - The starting point for retrieving the change document id</li>
 <li><code>changeManagement/git/to</code> - The end point for retrieving the change document id</li>
-<li><code>changeManagement/changeDocumentLabel</code> - A pattern used for identifying lines holding the change document id.</li>
+<li><code>changeManagement/changeDocumentLabel</code> - For type <code>SOLMAN</code> only. A pattern used for identifying lines holding the change document id.</li>
 <li><code>changeManagement/git/format</code> - Specifies what part of the commit is scanned. By default the body of the commit message is scanned.</li>
+<li><code>description</code> - for <code>CTS</code> only. The description of the transport request.</li>
+<li><code>targetSystem</code> - for <code>CTS</code> only. The system receiving the transport request.</li>
+<li><code>transportType</code> - for type <code>CTS</code> only. Typically <code>W</code> (workbench) or <code>C</code> customizing.</li>
 </ul>
 <h2 id="step-configuration">Step configuration<a class="headerlink" href="#step-configuration" title="Permanent link">&para;</a></h2>
 <p>The step is configured using a customer configuration file provided as
@@ -910,6 +942,7 @@ prepareDefaultValues script: this,
     changeDocumentLabel: &#39;ChangeDocument\s?:&#39;
     cmClientOpts: &#39;-Djavax.net.ssl.trustStore=&lt;path to truststore&gt;&#39;
     credentialsId: &#39;CM&#39;
+    type: &#39;SOLMAN&#39;
     endpoint: &#39;https://example.org/cm&#39;
     git:
       from: &#39;HEAD~1&#39;
@@ -924,6 +957,7 @@ all change managment related steps.</p>
   steps:
     transportRequestCreate:
       changeManagement:
+        type: &#39;SOLMAN&#39;
         endpoint: &#39;https://example.org/cm&#39;
         [...]
 </pre></div>
@@ -943,9 +977,20 @@ all change managment related steps.</p>
 </li>
 </ul>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="kt">def</span> <span class="n">transportRequestId</span> <span class="o">=</span> <span class="n">transportRequestCreate</span> <span class="nl">script:</span><span class="k">this</span><span class="o">,</span>
+<div class="codehilite"><pre><span></span><span class="c1">// SOLMAN</span>
+<span class="kt">def</span> <span class="n">transportRequestId</span> <span class="o">=</span> <span class="n">transportRequestCreate</span> <span class="nl">script:</span><span class="k">this</span><span class="o">,</span>
                                                 <span class="nl">changeDocumentId:</span> <span class="s1">&#39;001,&#39;</span>
                                                 <span class="nl">changeManagement:</span> <span class="o">[</span>
+                                                  <span class="nl">type:</span> <span class="s1">&#39;SOLMAN&#39;</span>
+                                                  <span class="nl">endpoint:</span> <span class="s1">&#39;https://example.org/cm&#39;</span>
+                                                <span class="o">]</span>
+<span class="c1">// CTS</span>
+<span class="kt">def</span> <span class="n">transportRequestId</span> <span class="o">=</span> <span class="n">transportRequestCreate</span> <span class="nl">script:</span><span class="k">this</span><span class="o">,</span>
+                                                <span class="nl">transportType:</span> <span class="s1">&#39;W&#39;</span><span class="o">,</span>
+                                                <span class="nl">targetSystem:</span> <span class="s1">&#39;XYZ&#39;</span><span class="o">,</span>
+                                                <span class="nl">description:</span> <span class="s1">&#39;the description&#39;</span><span class="o">,</span>
+                                                <span class="nl">changeManagement:</span> <span class="o">[</span>
+                                                  <span class="nl">type:</span> <span class="s1">&#39;CTS&#39;</span>
                                                   <span class="nl">endpoint:</span> <span class="s1">&#39;https://example.org/cm&#39;</span>
                                                 <span class="o">]</span>
 </pre></div>
