@@ -802,6 +802,12 @@
 </thead>
 <tbody>
 <tr>
+<td><code>script</code></td>
+<td>yes</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td><code>dockerImage</code></td>
 <td>no</td>
 <td>'maven:3.5-jdk-7'</td>
@@ -858,6 +864,10 @@
 </tbody>
 </table>
 <ul>
+<li><code>script</code> defines the global script environment of the Jenkinsfile run.
+    Typically <code>this</code> is passed to this parameter. This allows the function
+    to access the commonPipelineEnvironment for retrieving, for example,
+    configuration parameters.</li>
 <li><code>dockerImage</code> Name of the docker image that should be used.</li>
 <li><code>globalSettingsFile</code> Path or url to the mvn settings file that should be used as global settings file. </li>
 <li><code>projectSettingsFile</code> Path or url to the mvn settings file that should be used as project settings file.</li>
