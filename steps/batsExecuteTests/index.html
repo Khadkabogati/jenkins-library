@@ -892,13 +892,14 @@
 <li>
 <p>You can pass environment variables to the test execution by defining parameter <code>envVars</code>.</p>
 <p>With <code>envVars</code> it is possible to pass either fixed values but also templates using <a href="../commonPipelineEnvironment/"><code>commonPipelineEnvironment</code></a>.</p>
-<p>Example:
-<div class="codehilite"><pre><span></span>batsExecuteTests script: this, envVars = [
-  FIX_VALUE: &#39;my fixed value&#39;,
-  CONTAINER_NAME: &#39;${commonPipelineEnvironment.configuration.steps.executeBatsTests.dockerContainerName}&#39;,
-  IMAGE_NAME: &#39;${return commonPipelineEnvironment.getDockerImageNameAndTag()}&#39;
-]
-</pre></div></p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">batsExecuteTests script</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">this, envVars = [</span>
+  <span class="l l-Scalar l-Scalar-Plain">FIX_VALUE</span><span class="p p-Indicator">:</span> <span class="s">&#39;my</span><span class="nv"> </span><span class="s">fixed</span><span class="nv"> </span><span class="s">value&#39;</span><span class="err">,</span>
+  <span class="l l-Scalar l-Scalar-Plain">CONTAINER_NAME</span><span class="p p-Indicator">:</span> <span class="s">&#39;${commonPipelineEnvironment.configuration.steps.executeBatsTests.dockerContainerName}&#39;</span><span class="err">,</span>
+  <span class="l l-Scalar l-Scalar-Plain">IMAGE_NAME</span><span class="p p-Indicator">:</span> <span class="s">&#39;${return</span><span class="nv"> </span><span class="s">commonPipelineEnvironment.getDockerImageNameAndTag()}&#39;</span>
+<span class="err">]</span>
+</pre></div>
+
 <p>This means within the test one could refer to environment variables by calling e.g.
 <code>run docker run --rm -i --name $CONTAINER_NAME --entrypoint /bin/bash $IMAGE_NAME echo "Test"</code></p>
 </li>

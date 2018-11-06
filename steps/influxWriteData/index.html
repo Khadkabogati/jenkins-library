@@ -1047,21 +1047,13 @@ docker run -d -p 3000:3000 --name grafana --restart=always --link influxdb:influ
 </div>
 <p>You can perform the above steps via commandline:</p>
 <ul>
-<li>
-<p>The following command will create a database with name &lt;databasename&gt;</p>
-<div class="codehilite"><pre><span></span>`curl -i -XPOST http://localhost:8086/query --data-urlencode &quot;q=CREATE DATABASE \&lt;databasename\&gt;&quot;`
-</pre></div>
-
-
-</li>
-<li>
-<p>The admin user with the name &lt;adminusername&gt; and the password &lt;adminuserpwd&gt; can be created with</p>
-<div class="codehilite"><pre><span></span>`curl -i -XPOST http://localhost:8086/query --data-urlencode &quot;q=CREATE USER \&lt;adminusername\&gt; WITH PASSWORD &#39;\&lt;adminuserpwd\&gt;&#39; WITH ALL PRIVILEGES&quot;`
-</pre></div>
-
-
-</li>
+<li>The following command will create a database with name &lt;databasename&gt;</li>
 </ul>
+<p><code>curl -i -XPOST http://localhost:8086/query --data-urlencode "q=CREATE DATABASE \&lt;databasename\&gt;"</code></p>
+<ul>
+<li>The admin user with the name &lt;adminusername&gt; and the password &lt;adminuserpwd&gt; can be created with</li>
+</ul>
+<p><code>curl -i -XPOST http://localhost:8086/query --data-urlencode "q=CREATE USER \&lt;adminusername\&gt; WITH PASSWORD '\&lt;adminuserpwd\&gt;' WITH ALL PRIVILEGES"</code></p>
 <p>Once you have started both docker containers and Influx and Grafana are running you need to configure the Jenkins Plugin according to your settings.</p>
 <h2 id="pipeline-configuration">Pipeline configuration<a class="headerlink" href="#pipeline-configuration" title="Permanent link">&para;</a></h2>
 <p>To setup your Jenkins you need to do two configuration steps:</p>
@@ -1134,16 +1126,18 @@ docker run -d -p 3000:3000 --name grafana --restart=always --link influxdb:influ
 <h2 id="work-with-influxdb-and-grafana">Work with InfluxDB and Grafana<a class="headerlink" href="#work-with-influxdb-and-grafana" title="Permanent link">&para;</a></h2>
 <p>You can access your <strong>Grafana</strong> via Web-UI: &lt;host of your grafana(-docker)&gt;:&lt;port3000&gt;
 (or another port in case you have defined another one when starting your docker)</p>
-<p>As a first step you need to add your InfluxDB as Data source to your Grafana:
-- Login as user admin (PW as defined when starting your docker)
-- in the navigation go to data sources -&gt; add data source:
-  - name
-  - type: InfluxDB
-  - Url: \http://&lt;host of your InfluxDB server&gt;:&lt;port&gt;
-  - Access: direct (not via proxy)
-  - database: &lt;name of the DB as specified above&gt;
-  - User: &lt;name of the admin user as specified in step above&gt;
-  - Password: &lt;password of the admin user as specified in step above&gt;</p>
+<p>As a first step you need to add your InfluxDB as Data source to your Grafana:</p>
+<ul>
+<li>Login as user admin (PW as defined when starting your docker)</li>
+<li>in the navigation go to data sources -&gt; add data source:</li>
+<li>name</li>
+<li>type: InfluxDB</li>
+<li>Url: <code>http://&lt;host of your InfluxDB server&gt;:&lt;port&gt;</code></li>
+<li>Access: direct (not via proxy)</li>
+<li>database: <code>&lt;name of the DB as specified above&gt;</code></li>
+<li>User: <code>&lt;name of the admin user as specified in step above&gt;</code></li>
+<li>Password: <code>&lt;password of the admin user as specified in step above&gt;</code></li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Jenkins as a Service</p>
 <p>For Jenkins as a Service the data source configuration is already available.</p>
@@ -1229,19 +1223,19 @@ Example:</p>
 <p>Please keep this in mind when specifying your project_name for a InfluxDB query.</p>
 </div>
 <h4 id="example-1-select-last-10-successful-builds">Example 1: Select last 10 successful builds<a class="headerlink" href="#example-1-select-last-10-successful-builds" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span>select top(build_number,10), build_result from jenkins_data WHERE build_result = &#39;SUCCESS&#39;
+<div class="codehilite"><pre><span></span><span class="k">select</span> <span class="n">top</span><span class="p">(</span><span class="n">build_number</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">build_result</span> <span class="k">from</span> <span class="n">jenkins_data</span> <span class="k">WHERE</span> <span class="n">build_result</span> <span class="o">=</span> <span class="s1">&#39;SUCCESS&#39;</span>
 </pre></div>
 
 <h4 id="example-2-select-last-10-step-names-of-failed-builds">Example 2: Select last 10 step names of failed builds<a class="headerlink" href="#example-2-select-last-10-step-names-of-failed-builds" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span>select top(build_number,10), build_result, build_step from jenkins_custom_data WHERE build_result = &#39;FAILURE&#39;
+<div class="codehilite"><pre><span></span><span class="k">select</span> <span class="n">top</span><span class="p">(</span><span class="n">build_number</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">build_result</span><span class="p">,</span> <span class="n">build_step</span> <span class="k">from</span> <span class="n">jenkins_custom_data</span> <span class="k">WHERE</span> <span class="n">build_result</span> <span class="o">=</span> <span class="s1">&#39;FAILURE&#39;</span>
 </pre></div>
 
 <h4 id="example-3-select-build-duration-of-step-for-a-specific-project">Example 3: Select build duration of step for a specific project<a class="headerlink" href="#example-3-select-build-duration-of-step-for-a-specific-project" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span>select build_duration / 1000 from &quot;pipeline_data&quot; WHERE project_name=&#39;PiperTestOrg_piper_test_master&#39;
+<div class="codehilite"><pre><span></span><span class="k">select</span> <span class="n">build_duration</span> <span class="o">/</span> <span class="mi">1000</span> <span class="k">from</span> <span class="ss">&quot;pipeline_data&quot;</span> <span class="k">WHERE</span> <span class="n">project_name</span><span class="o">=</span><span class="s1">&#39;PiperTestOrg_piper_test_master&#39;</span>
 </pre></div>
 
 <h4 id="example-4-get-transparency-about-successfulfailed-steps-for-a-specific-project">Example 4: Get transparency about successful/failed steps for a specific project<a class="headerlink" href="#example-4-get-transparency-about-successfulfailed-steps-for-a-specific-project" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span>select top(build_number,10) AS &quot;Build&quot;, build_url, build_quality, fortify, gauge, vulas, opa from step_data WHERE project_name=&#39;PiperTestOrg_piper_test_master&#39;
+<div class="codehilite"><pre><span></span><span class="k">select</span> <span class="n">top</span><span class="p">(</span><span class="n">build_number</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="k">AS</span> <span class="ss">&quot;Build&quot;</span><span class="p">,</span> <span class="n">build_url</span><span class="p">,</span> <span class="n">build_quality</span><span class="p">,</span> <span class="n">fortify</span><span class="p">,</span> <span class="n">gauge</span><span class="p">,</span> <span class="n">vulas</span><span class="p">,</span> <span class="n">opa</span> <span class="k">from</span> <span class="n">step_data</span> <span class="k">WHERE</span> <span class="n">project_name</span><span class="o">=</span><span class="s1">&#39;PiperTestOrg_piper_test_master&#39;</span>
 </pre></div>
 
 <div class="admonition note">

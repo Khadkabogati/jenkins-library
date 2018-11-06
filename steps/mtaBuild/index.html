@@ -836,12 +836,10 @@
 <p>Note that a version is formed by <code>major.minor.patch</code>, and a version is compatible to another version if the minor and patch versions are higher, but the major version is not, e.g. if 3.39.10 is the expected version, 3.39.11 and 3.40.1 would be compatible versions, but 4.0.1 would not be a compatible version.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
-<li>A docker image meeting the following requirements<ul>
+<li>A docker image meeting the following requirements</li>
 <li><strong>SAP MTA Archive Builder 1.0.6 or compatible version</strong> - can be downloaded from <a href="https://tools.hana.ondemand.com/#cloud">SAP Development Tools</a>.</li>
 <li><strong>Java 8 or compatible version</strong> - necessary to run the <code>mta.jar</code> file.</li>
 <li><strong>NodeJS installed</strong> - the MTA Builder uses <code>npm</code> to download node module dependencies such as <code>grunt</code>.</li>
-</ul>
-</li>
 </ul>
 <h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
 <table>
@@ -906,8 +904,8 @@
 <li><code>dockerOptions</code> Docker options to be set when starting the container. It can be a list or a string.</li>
 <li><code>buildTarget</code> - The target platform to which the mtar can be deployed.</li>
 <li><code>extension</code> - The path to the extension descriptor file.</li>
-<li><code>mtaJarLocation</code> - The location of the SAP Multitarget Application Archive Builder jar file, including file name and extension. First, the location is retrieved from the environment variables using the environment variable<code>MTA_JAR_LOCATION</code>. If no environment variable is provided, the location is retrieved from the parameters, or the step configuration using the key <code>mtaJarLocation</code>. If SAP Multitarget Application Archive Builder is not found on one of the previous locations an AbortException is thrown.
-Note that the environment variable <code>MTA_JAR_LOCATION</code> has priority. In case that the script runs on multiple nodes, SAP Multitarget Application Archive Builder must be located on all the nodes, therefore the environment variable must be also configured on all the nodes.</li>
+<li><code>mtaJarLocation</code> - The location of the SAP Multitarget Application Archive Builder jar file, including file name and extension. First, the location is retrieved from the environment variables using the environment variable <code>MTA_JAR_LOCATION</code>. If no environment variable is provided, the location is retrieved from the parameters, or the step configuration using the key <code>mtaJarLocation</code>. If SAP Multitarget Application Archive Builder is not found on one of the previous locations an AbortException is thrown.
+  Note that the environment variable <code>MTA_JAR_LOCATION</code> has priority. In case that the script runs on multiple nodes, SAP Multitarget Application Archive Builder must be located on all the nodes, therefore the environment variable must be also configured on all the nodes.</li>
 <li><code>applicationName</code> - The name of the application which is being built. If the parameter has been provided and no <code>mta.yaml</code> exists, the <code>mta.yaml</code> will be automatically generated using this parameter and the information (<code>name</code> and <code>version</code>) from <code>package.json</code> before the actual build starts.</li>
 </ul>
 <h2 id="step-configuration">Step configuration<a class="headerlink" href="#step-configuration" title="Permanent link">&para;</a></h2>
@@ -927,12 +925,10 @@ Note that the environment variable <code>MTA_JAR_LOCATION</code> has priority. I
 </ol>
 <h2 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>AbortException</code>:<ul>
+<li><code>AbortException</code>:</li>
 <li>If SAP Multitarget Application Archive Builder is not found.</li>
 <li>If there is an invalid <code>buildTarget</code>.</li>
 <li>If there is no key <code>ID</code> inside the <code>mta.yaml</code> file.</li>
-</ul>
-</li>
 </ul>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span></span><span class="kt">def</span> <span class="n">mtarFileName</span>

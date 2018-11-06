@@ -790,13 +790,15 @@
                 <h1 id="gaugeexecutetests">gaugeExecuteTests<a class="headerlink" href="#gaugeexecutetests" title="Permanent link">&para;</a></h1>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
 <p>In this step Gauge (<a href="http:getgauge.io">getgauge.io</a>) acceptance tests are executed.
-Using Gauge it will be possible to have a three-tier test layout:
-<em> Acceptance Criteria
-</em> Test implemenation layer
-* Application driver layer</p>
+Using Gauge it will be possible to have a three-tier test layout:</p>
+<ul>
+<li>Acceptance Criteria</li>
+<li>Test implemenation layer</li>
+<li>Application driver layer</li>
+</ul>
 <p>This layout is propagated by Jez Humble and Dave Farley in their book "Continuous Delivery" as a way to create maintainable acceptance test suites (see "Continuous Delivery", p. 190ff).</p>
 <p>Using Gauge it is possible to write test specifications in <a href="http://daringfireball.net/projects/markdown/syntax">Markdown syntax</a> and therefore allow e.g. product owners to write the relevant acceptance test specifications. At the same time it allows the developer to implement the steps described in the specification in her development environment.</p>
-<p>You can use the sample projects of Gauge, for example: https://github.com/getgauge/gauge-mvn-archetypes</p>
+<p>You can use the <a href="https://github.com/getgauge/gauge-mvn-archetypes">sample projects</a> of Gauge.</p>
 <div class="admonition note">
 <p class="admonition-title">Make sure to run against a Selenium Hub configuration</p>
 <p>In the test example of <em>gauge-archetype-selenium</em> please make sure to allow it to run against a Selenium hub:</p>
@@ -814,9 +816,10 @@ Using Gauge it will be possible to have a three-tier test layout:
 <h2 id="prerequsites">Prerequsites<a class="headerlink" href="#prerequsites" title="Permanent link">&para;</a></h2>
 <p>none</p>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
-<p>Pipeline step:
+<p>Pipeline step:</p>
 <div class="codehilite"><pre><span></span><span class="n">gaugeExecuteTests</span> <span class="nl">script:</span> <span class="k">this</span><span class="o">,</span> <span class="nl">testServerUrl:</span> <span class="s1">&#39;http://test.url&#39;</span>
-</pre></div></p>
+</pre></div>
+
 <h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -861,7 +864,7 @@ Using Gauge it will be possible to have a three-tier test layout:
 <tr>
 <td>dockerWorkspace</td>
 <td>no</td>
-<td>buildTool=<code>maven</code>: <code>`&lt;br /&gt;buildTool=</code>npm<code>:</code>/home/node`<br /></td>
+<td>buildTool=<code>maven</code>: <br />buildTool=<code>npm</code>: <code>/home/node</code><br /></td>
 <td></td>
 </tr>
 <tr>

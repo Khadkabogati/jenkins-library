@@ -912,11 +912,13 @@ If you require strict reproducibility of your builds, this should be used.</p>
 <li><code>commitVersion</code> controls if the changed version is committed and pushed to the git repository. If this is enabled (which is the default), you need to provide <code>gitCredentialsId</code> and <code>gitSshUrl</code>.</li>
 <li>
 <p><code>dockerVersionSource</code> specifies the source to be used for the main version which is used for generating the automatic version.</p>
-<ul>
-<li>This can either be the version of the base image - as retrieved from the <code>FROM</code> statement within the Dockerfile, e.g. <code>FROM jenkins:2.46.2</code></li>
+</li>
+<li>
+<p>This can either be the version of the base image - as retrieved from the <code>FROM</code> statement within the Dockerfile, e.g. <code>FROM jenkins:2.46.2</code></p>
+</li>
 <li>Alternatively the name of an environment variable defined in the Docker image can be used which contains the version number, e.g. <code>ENV MY_VERSION 1.2.3</code></li>
-<li>The third option <code>appVersion</code> applies only to the artifactType <code>appContainer</code>. Here the version of the app which is packaged into the container will be used as version for the container itself.</li>
-</ul>
+<li>
+<p>The third option <code>appVersion</code> applies only to the artifactType <code>appContainer</code>. Here the version of the app which is packaged into the container will be used as version for the container itself.</p>
 </li>
 <li>
 <p>Using <code>filePath</code> you could define a custom path to the descriptor file.</p>

@@ -916,42 +916,42 @@
 <h2 id="step-configuration">Step configuration<a class="headerlink" href="#step-configuration" title="Permanent link">&para;</a></h2>
 <p>The step is configured using a customer configuration file provided as
 resource in an custom shared library.</p>
-<div class="codehilite"><pre><span></span>@Library(&#39;piper-library-os@master&#39;) _
+<div class="codehilite"><pre><span></span><span class="nd">@Library</span><span class="o">(</span><span class="s1">&#39;piper-library-os@master&#39;</span><span class="o">)</span> <span class="n">_</span>
 
-// the shared lib containing the additional configuration
-// needs to be configured in Jenkins
-@Library(foo@master&#39;) __
+<span class="c1">// the shared lib containing the additional configuration</span>
+<span class="c1">// needs to be configured in Jenkins</span>
+<span class="nd">@Library</span><span class="o">(</span><span class="s1">&#39;foo@master&#39;</span><span class="o">)</span> <span class="n">__</span>
 
-// inside the shared lib denoted by &#39;foo&#39; the additional configuration file
-// needs to be located under &#39;resources&#39; (&#39;resoures/myConfig.yml&#39;)
-prepareDefaultValues script: this,
-                             customDefaults: &#39;myConfig.yml&#39;
+<span class="c1">// inside the shared lib denoted by &#39;foo&#39; the additional configuration file</span>
+<span class="c1">// needs to be located under &#39;resources&#39; (&#39;resoures/myConfig.yml&#39;)</span>
+<span class="n">prepareDefaultValues</span> <span class="nl">script:</span> <span class="k">this</span><span class="o">,</span>
+                             <span class="nl">customDefaults:</span> <span class="s1">&#39;myConfig.yml&#39;</span>
 </pre></div>
 
 <p>Example content of <code>'resources/myConfig.yml'</code> in branch <code>'master'</code> of the repository denoted by
 <code>'foo'</code>:</p>
-<div class="codehilite"><pre><span></span>general:
-  changeManagement:
-    changeDocumentLabel: &#39;ChangeDocument\s?:&#39;
-    cmClientOpts: &#39;-Djavax.net.ssl.trustStore=&lt;path to truststore&gt;&#39;
-    credentialsId: &#39;CM&#39;
-    type: &#39;SOLMAN&#39;
-    endpoint: &#39;https://example.org/cm&#39;
-    git:
-      from: &#39;HEAD~1&#39;
-      to: &#39;HEAD&#39;
-      format: &#39;%b&#39;
+<div class="codehilite"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">general</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">changeManagement</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">changeDocumentLabel</span><span class="p p-Indicator">:</span> <span class="s">&#39;ChangeDocument\s?:&#39;</span>
+    <span class="l l-Scalar l-Scalar-Plain">cmClientOpts</span><span class="p p-Indicator">:</span> <span class="s">&#39;-Djavax.net.ssl.trustStore=&lt;path</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">truststore&gt;&#39;</span>
+    <span class="l l-Scalar l-Scalar-Plain">credentialsId</span><span class="p p-Indicator">:</span> <span class="s">&#39;CM&#39;</span>
+    <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&#39;SOLMAN&#39;</span>
+    <span class="l l-Scalar l-Scalar-Plain">endpoint</span><span class="p p-Indicator">:</span> <span class="s">&#39;https://example.org/cm&#39;</span>
+    <span class="l l-Scalar l-Scalar-Plain">git</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">from</span><span class="p p-Indicator">:</span> <span class="s">&#39;HEAD~1&#39;</span>
+      <span class="l l-Scalar l-Scalar-Plain">to</span><span class="p p-Indicator">:</span> <span class="s">&#39;HEAD&#39;</span>
+      <span class="l l-Scalar l-Scalar-Plain">format</span><span class="p p-Indicator">:</span> <span class="s">&#39;%b&#39;</span>
 </pre></div>
 
 <p>The properties configured in section <code>'general/changeManagement'</code> are shared between all change managment related steps.</p>
 <p>The properties can also be configured on a per-step basis:</p>
-<div class="codehilite"><pre><span></span>  [...]
-  steps:
-    transportRequestRelease:
-      changeManagement:
-        type: &#39;SOLMAN&#39;
-        endpoint: &#39;https://example.org/cm&#39;
-        [...]
+<div class="codehilite"><pre><span></span>  <span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+  <span class="l l-Scalar l-Scalar-Plain">steps</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">transportRequestRelease</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">changeManagement</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&#39;SOLMAN&#39;</span>
+        <span class="l l-Scalar l-Scalar-Plain">endpoint</span><span class="p p-Indicator">:</span> <span class="s">&#39;https://example.org/cm&#39;</span>
+        <span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
 </pre></div>
 
 <p>The parameters can also be provided when the step is invoked. For examples see below.</p>
@@ -959,15 +959,11 @@ prepareDefaultValues script: this,
 <p>None.</p>
 <h2 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>IllegalArgumentException</code>:<ul>
+<li><code>IllegalArgumentException</code>:</li>
 <li>If the change id is not provided (<code>SOLMAN</code> only)</li>
 <li>If the transport request id is not provided.</li>
-</ul>
-</li>
-<li><code>AbortException</code>:<ul>
+<li><code>AbortException</code>:</li>
 <li>If the release of the transport request fails.</li>
-</ul>
-</li>
 </ul>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span></span><span class="c1">// SOLMAN</span>

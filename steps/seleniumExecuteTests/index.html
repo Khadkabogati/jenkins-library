@@ -913,9 +913,11 @@
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
 <p>Enables UI test execution with Selenium in a sidecar container.</p>
 <p>The step executes a closure (see example below) connecting to a sidecar container with a Selenium Server.</p>
-<p>When executing in a
-<em> local Docker environment, please make sure to set Selenium host to <strong><code>selenium</code></strong> in your tests.
-</em> Kubernetes environment, plese make sure to set Seleniums host to <strong><code>localhost</code></strong> in your tests.</p>
+<p>When executing in a</p>
+<ul>
+<li>local Docker environment, please make sure to set Selenium host to <strong><code>selenium</code></strong> in your tests.</li>
+<li>Kubernetes environment, plese make sure to set Seleniums host to <strong><code>localhost</code></strong> in your tests.</li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Proxy Environments</p>
 <p>If work in an environment containing a proxy, please make sure that <code>localhost</code>/<code>selenium</code> is added to your proxy exclusion list, e.g. via environment variable <code>NO_PROXY</code> &amp; <code>no_proxy</code>. You can pass those via parameters <code>dockerEnvVars</code> and <code>sidecarEnvVars</code> directly to the containers if required.</p>
@@ -933,41 +935,41 @@
 <h3 id="example-test-using-webdriverio">Example test using WebdriverIO<a class="headerlink" href="#example-test-using-webdriverio" title="Permanent link">&para;</a></h3>
 <p>Example based on http://webdriver.io/guide/getstarted/modes.html and http://webdriver.io/guide.html</p>
 <h4 id="configuration-for-local-docker-environment">Configuration for Local Docker Environment<a class="headerlink" href="#configuration-for-local-docker-environment" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span>var webdriverio = require(&#39;webdriverio&#39;);
-var options = {
-    host: &#39;selenium&#39;,
-    port: 4444,
-    desiredCapabilities: {
-        browserName: &#39;chrome&#39;
-    }
-};
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">webdriverio</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;webdriverio&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">host</span><span class="o">:</span> <span class="s1">&#39;selenium&#39;</span><span class="p">,</span>
+    <span class="nx">port</span><span class="o">:</span> <span class="mi">4444</span><span class="p">,</span>
+    <span class="nx">desiredCapabilities</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">browserName</span><span class="o">:</span> <span class="s1">&#39;chrome&#39;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
 </pre></div>
 
 <h4 id="configuration-for-kubernetes-environment">Configuration for Kubernetes Environment<a class="headerlink" href="#configuration-for-kubernetes-environment" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span>var webdriverio = require(&#39;webdriverio&#39;);
-var options = {
-    host: &#39;localhost&#39;,
-    port: 4444,
-    desiredCapabilities: {
-        browserName: &#39;chrome&#39;
-    }
-};
+<div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">webdriverio</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;webdriverio&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">host</span><span class="o">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+    <span class="nx">port</span><span class="o">:</span> <span class="mi">4444</span><span class="p">,</span>
+    <span class="nx">desiredCapabilities</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">browserName</span><span class="o">:</span> <span class="s1">&#39;chrome&#39;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
 </pre></div>
 
 <h4 id="test-code-indexjs">Test Code (index.js)<a class="headerlink" href="#test-code-indexjs" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span>// ToDo: add configuration from above
+<div class="codehilite"><pre><span></span><span class="c1">// ToDo: add configuration from above</span>
 
-webdriverio
-    .remote(options)
-    .init()
-    .url(&#39;http://www.google.com&#39;)
-    .getTitle().then(function(title) {
-        console.log(&#39;Title was: &#39; + title);
-    })
-    .end()
-    .catch(function(err) {
-        console.log(err);
-    });
+<span class="nx">webdriverio</span>
+    <span class="p">.</span><span class="nx">remote</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">init</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">url</span><span class="p">(</span><span class="s1">&#39;http://www.google.com&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">getTitle</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">title</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Title was: &#39;</span> <span class="o">+</span> <span class="nx">title</span><span class="p">);</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="nx">end</span><span class="p">()</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+    <span class="p">});</span>
 </pre></div>
 
 <h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
@@ -1020,7 +1022,7 @@ webdriverio
 <tr>
 <td>dockerWorkspace</td>
 <td>no</td>
-<td>buildTool=<code>maven</code>: <code>`&lt;br /&gt;buildTool=</code>npm<code>:</code>/home/node`<br /></td>
+<td>buildTool=<code>maven</code>: <br />buildTool=<code>npm</code>: <code>/home/node</code><br /></td>
 <td></td>
 </tr>
 <tr>

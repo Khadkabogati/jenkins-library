@@ -871,9 +871,7 @@
 <p><img alt="Jenkins credentials configuration" src="../../images/neo_credentials.png" /></p>
 <ul>
 <li>
-<p><strong>Neo Java Web SDK 3.39.10 or compatible version</strong> - can be downloaded from <a href="http://central.maven.org/maven2/com/sap/cloud/neo-java-web-sdk/">Maven Central</a>. The Neo Java Web SDK
-needs to be extracted into the folder provided by <code>neoHome</code>. In case this parameters is not provided and there is no NEO_HOME parameter in the environment
-<code>&lt;neoRoot&gt;/tools</code> needs to be in the <code>PATH</code>. This step is also capable of triggering the neo deploy tool provided inside a docker image.</p>
+<p><strong>Neo Java Web SDK 3.39.10 or compatible version</strong> - can be downloaded from <a href="http://central.maven.org/maven2/com/sap/cloud/neo-java-web-sdk/">Maven Central</a>. The Neo Java Web SDK needs to be extracted into the folder provided by <code>neoHome</code>. In case this parameters is not provided and there is no NEO_HOME parameter in the environment <code>&lt;neoRoot&gt;/tools</code> needs to be in the <code>PATH</code>. This step is also capable of triggering the neo deploy tool provided inside a docker image.</p>
 </li>
 <li>
 <p><strong>Java 8 or compatible version</strong> - needed by the <em>Neo-Java-Web-SDK</em></p>
@@ -1133,36 +1131,30 @@ needs to be extracted into the folder provided by <code>neoHome</code>. In case 
 <p>none</p>
 <h2 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>Exception</code>:<ul>
+<li><code>Exception</code>:</li>
 <li>If <code>archivePath</code> is not provided.</li>
 <li>If <code>propertiesFile</code> is not provided (when using <code>'WAR_PROPERTIESFILE'</code> deployment mode).</li>
 <li>If <code>applicationName</code> is not provided (when using <code>'WAR_PARAMS'</code> deployment mode).</li>
 <li>If <code>runtime</code> is not provided (when using <code>'WAR_PARAMS'</code> deployment mode).</li>
 <li>If <code>runtime-version</code> is not provided (when using <code>'WAR_PARAMS'</code> deployment mode).</li>
-</ul>
-</li>
-<li><code>AbortException</code>:<ul>
+<li><code>AbortException</code>:</li>
 <li>If neo-java-web-sdk is not installed, or <code>neoHome</code>is wrong.</li>
 <li>If <code>deployHost</code> is wrong.</li>
 <li>If <code>deployAccount</code> is wrong.</li>
-</ul>
-</li>
-<li><code>CredentialNotFoundException</code>:<ul>
+<li><code>CredentialNotFoundException</code>:</li>
 <li>If the credentials cannot be resolved.</li>
-</ul>
-</li>
 </ul>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span></span><span class="n">neoDeploy</span> <span class="nl">script:</span> <span class="k">this</span><span class="o">,</span> <span class="nl">archivePath:</span> <span class="s1">&#39;path/to/archiveFile.mtar&#39;</span><span class="o">,</span> <span class="nl">credentialsId:</span> <span class="s1">&#39;my-credentials-id&#39;</span>
 </pre></div>
 
 <p>Example configuration:</p>
-<div class="codehilite"><pre><span></span>steps:
-  &lt;...&gt;
-  neoDeploy:
+<div class="codehilite"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">steps</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">&lt;...&gt;</span>
+  <span class="l l-Scalar l-Scalar-Plain">neoDeploy</span><span class="p p-Indicator">:</span>
 
-        account: &lt;myDeployAccount&gt;
-        host: hana.example.org
+        <span class="l l-Scalar l-Scalar-Plain">account</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;myDeployAccount&gt;</span>
+        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">hana.example.org</span>
 </pre></div>
                 
                   

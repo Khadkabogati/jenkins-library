@@ -385,15 +385,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#option-cf_native" title="Option cf_native:" class="md-nav__link">
-    Option cf_native:
+  <a href="#deployment-with-cf_native" title="Deployment with cf_native" class="md-nav__link">
+    Deployment with cf_native
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#mta-deployment" title="MTA Deployment:" class="md-nav__link">
-    MTA Deployment:
+  <a href="#deployment-with-mtadeployplugin" title="Deployment with mtaDeployPlugin" class="md-nav__link">
+    Deployment with mtaDeployPlugin
   </a>
   
 </li>
@@ -776,15 +776,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#option-cf_native" title="Option cf_native:" class="md-nav__link">
-    Option cf_native:
+  <a href="#deployment-with-cf_native" title="Deployment with cf_native" class="md-nav__link">
+    Deployment with cf_native
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#mta-deployment" title="MTA Deployment:" class="md-nav__link">
-    MTA Deployment:
+  <a href="#deployment-with-mtadeployplugin" title="Deployment with mtaDeployPlugin" class="md-nav__link">
+    Deployment with mtaDeployPlugin
   </a>
   
 </li>
@@ -938,16 +938,14 @@ Deployment can be done</p>
 </table>
 <ul>
 <li><code>script</code> defines the global script environment of the Jenkinsfile run. Typically <code>this</code> is passed to this parameter. This allows the function to access the <a href="../commonPipelineEnvironment/"><code>commonPipelineEnvironment</code></a> for retrieving e.g. configuration parameters.</li>
-<li>
-<p><code>cloudFoundry</code> defines a map containing following properties:</p>
-<ul>
+<li><code>cloudFoundry</code> defines a map containing following properties:</li>
 <li><code>apiEndpoint</code>: Cloud Foundry API endpoint (default: <code>https://api.cf.eu10.hana.ondemand.com</code>)</li>
 <li><code>appName</code>: App name of application to be deployed (optional)</li>
 <li><code>credentialsId</code>: Credentials to be used for deployment (mandatory)</li>
 <li><code>manifest</code>: Manifest to be used for deployment</li>
 <li><code>org</code>: Cloud Foundry target organization (mandatory)</li>
-<li><code>space</code>: Cloud Foundry target space (mandatory)</li>
-</ul>
+<li>
+<p><code>space</code>: Cloud Foundry target space (mandatory)</p>
 <p>Example: <code>cloudFoundry: [apiEndpoint: 'https://test.server.com', appName:'cfAppName', credentialsId: 'cfCredentialsId', manifest: 'cfManifest', org: 'cfOrg', space: 'cfSpace']</code></p>
 </li>
 </ul>
@@ -975,10 +973,10 @@ If your <code>application</code> contains a list of <code>buildpacks</code> inst
 <li><code>smokeTestScript</code> allows to specify a script which performs a check during blue-green deployment. The script gets the FQDN as parameter and returns <code>exit code 0</code> in case check returned <code>smokeTestStatusCode</code>. More details can be found <a href="https://github.com/bluemixgaragelondon/cf-blue-green-deploy#how-to-use">here</a> <br /> Currently this option is only considered for deployTool <code>cf_native</code>.</li>
 <li><code>stashContent</code> defines the stash names which should be unstashed at the beginning of the step. This makes the files available in case the step is started on an empty node.</li>
 </ul>
-<h4 id="option-cf_native">Option cf_native:<a class="headerlink" href="#option-cf_native" title="Permanent link">&para;</a></h4>
+<h3 id="deployment-with-cf_native">Deployment with cf_native<a class="headerlink" href="#deployment-with-cf_native" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>appName</code> in <code>cloudFoundry</code> map (or <code>cfAppName</code>) defines the name of the application which will be deployed to the Cloud Foundry space.</li>
-<li><code>manifest in</code>cloudFoundry<code>map</code> (or <code>cfManifest</code>) defines the manifest to be used for Cloud Foundry deployment.</li>
+<li><code>manifest</code> in <code>cloudFoundry</code> maps (or <code>cfManifest</code>) defines the manifest to be used for Cloud Foundry deployment.</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -987,7 +985,7 @@ This option is supported with Piper.</p>
 <p>In this case define <code>appName: ''</code> since the app name for the individual applications have to be defined via the manifest.
 You can find details in the <a href="https://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html#multi-apps">Cloud Foundry Documentation</a></p>
 </div>
-<h4 id="mta-deployment">MTA Deployment:<a class="headerlink" href="#mta-deployment" title="Permanent link">&para;</a></h4>
+<h3 id="deployment-with-mtadeployplugin">Deployment with mtaDeployPlugin<a class="headerlink" href="#deployment-with-mtadeployplugin" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>mtaPath</code> define path to *.mtar for deployment.</li>
 <li><code>mtaExtensionDescriptor</code> defines additional extension descriptor file for deployment.</li>

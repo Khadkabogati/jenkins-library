@@ -868,10 +868,13 @@
 <ul>
 <li><code>stepParameters</code> - The parameters from the step to be executed. The list of parameters is then shown in the console output.</li>
 <li><code>stepName</code> - The name of the step executed to be shown in the console output.</li>
-<li><code>echoDetails</code> - If set to true the following will be output to the console:<ol>
+<li>
+<p><code>echoDetails</code> - If set to true the following will be output to the console:</p>
+<ol>
 <li>Step beginning: <code>--- BEGIN LIBRARY STEP: ${stepName}.groovy ---</code></li>
 <li>Step end: <code>--- END LIBRARY STEP: ${stepName}.groovy ---</code></li>
-<li>Step errors: 
+<li>Step errors:</li>
+</ol>
 <div class="codehilite"><pre><span></span>----------------------------------------------------------
 --- ERROR OCCURED IN LIBRARY STEP: ${stepName}
 ----------------------------------------------------------
@@ -888,8 +891,8 @@ FURTHER INFORMATION:
 * Pipeline documentation: https://...
 * GitHub repository for pipeline steps: https://...
 ----------------------------------------------------------
-</pre></div></li>
-</ol>
+</pre></div>
+
 </li>
 </ul>
 <h2 id="step-configuration">Step configuration<a class="headerlink" href="#step-configuration" title="Permanent link">&para;</a></h2>

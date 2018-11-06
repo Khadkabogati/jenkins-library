@@ -813,28 +813,29 @@ Data is send using <a href="https://github.com/SAP/jenkins-library/blob/master/s
 </ol>
 </div>
 <h2 id="example-configuration">Example configuration<a class="headerlink" href="#example-configuration" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>general:
-  gitSshKeyCredentialsId: GitHub_Test_SSH
+<div class="codehilite"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">general</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">gitSshKeyCredentialsId</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">GitHub_Test_SSH</span>
 
-steps:
-  cloudFoundryDeploy:
-    deployTool: &#39;cf_native&#39;
-    cloudFoundry:
-      org: &#39;testOrg&#39;
-      space: &#39;testSpace&#39;
-      credentialsId: &#39;MY_CF_CREDENTIALSID_IN_JENKINS&#39;
-  newmanExecute:
-    newmanCollection: &#39;myNewmanCollection.file&#39;
-    newmanEnvironment: &#39;myNewmanEnvironment&#39;
-    newmanGlobals: &#39;myNewmanGlobals&#39;
+<span class="l l-Scalar l-Scalar-Plain">steps</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">cloudFoundryDeploy</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">deployTool</span><span class="p p-Indicator">:</span> <span class="s">&#39;cf_native&#39;</span>
+    <span class="l l-Scalar l-Scalar-Plain">cloudFoundry</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">org</span><span class="p p-Indicator">:</span> <span class="s">&#39;testOrg&#39;</span>
+      <span class="l l-Scalar l-Scalar-Plain">space</span><span class="p p-Indicator">:</span> <span class="s">&#39;testSpace&#39;</span>
+      <span class="l l-Scalar l-Scalar-Plain">credentialsId</span><span class="p p-Indicator">:</span> <span class="s">&#39;MY_CF_CREDENTIALSID_IN_JENKINS&#39;</span>
+  <span class="l l-Scalar l-Scalar-Plain">newmanExecute</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">newmanCollection</span><span class="p p-Indicator">:</span> <span class="s">&#39;myNewmanCollection.file&#39;</span>
+    <span class="l l-Scalar l-Scalar-Plain">newmanEnvironment</span><span class="p p-Indicator">:</span> <span class="s">&#39;myNewmanEnvironment&#39;</span>
+    <span class="l l-Scalar l-Scalar-Plain">newmanGlobals</span><span class="p p-Indicator">:</span> <span class="s">&#39;myNewmanGlobals&#39;</span>
 </pre></div>
 
 <h2 id="access-to-configuration-from-custom-scripts">Access to configuration from custom scripts<a class="headerlink" href="#access-to-configuration-from-custom-scripts" title="Permanent link">&para;</a></h2>
 <p>Configuration is loaded into <code>commonPipelineEnvironment</code> during step <a href="../steps/setupCommonPipelineEnvironment/">setupCommonPipelineEnvironment</a>.</p>
 <p>You can access the configuration values via <code>commonPipelineEnvironment.configuration</code> which will return you the complete configuration map.</p>
-<p>Thus following access is for example possible (accessing <code>gitSshKeyCredentialsId</code> from <code>general</code> section):
-<div class="codehilite"><pre><span></span>commonPipelineEnvironment.configuration.general.gitSshKeyCredentialsId
-</pre></div></p>
+<p>Thus following access is for example possible (accessing <code>gitSshKeyCredentialsId</code> from <code>general</code> section):</p>
+<div class="codehilite"><pre><span></span><span class="n">commonPipelineEnvironment</span><span class="o">.</span><span class="na">configuration</span><span class="o">.</span><span class="na">general</span><span class="o">.</span><span class="na">gitSshKeyCredentialsId</span>
+</pre></div>
+
 <h2 id="access-to-configuration-in-custom-library-steps">Access to configuration in custom library steps<a class="headerlink" href="#access-to-configuration-in-custom-library-steps" title="Permanent link">&para;</a></h2>
 <p>Within library steps the <code>ConfigurationHelper</code> object is used.</p>
 <p>You can see its usage in all the Piper steps, for example <a href="https://github.com/SAP/jenkins-library/blob/master/vars/newmanExecute.groovy#L23">newmanExecute</a>.</p>
