@@ -834,6 +834,7 @@
 <li>a Transport Request for a Change Document on the Solution Manager (type <code>SOLMAN</code>) or</li>
 <li>a Transport Request inside an ABAP system (type<code>CTS</code>)</li>
 </ul>
+<p>The id of the transport request is availabe via <a href="../commonPipelineEnvironment/">commonPipelineEnvironment.getTransportRequestId()</a></p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong><a href="http://central.maven.org/maven2/com/sap/devops/cmclient/dist.cli/">Change Management Client 2.0.0 or compatible version</a></strong> - available for download on Maven Central.</li>
@@ -988,7 +989,7 @@ all change managment related steps.</p>
 
 <p>The parameters can also be provided when the step is invoked. For examples see below.</p>
 <h2 id="return-value">Return value<a class="headerlink" href="#return-value" title="Permanent link">&para;</a></h2>
-<p>The id of the Transport Request that has been created.</p>
+<p>none</p>
 <h2 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>AbortException</code>:</li>
