@@ -1,7 +1,8 @@
+import com.sap.piper.AnalyticsUtils
+
 import static com.sap.piper.Prerequisites.checkScript
 
 import com.sap.piper.ConfigurationHelper
-import com.sap.piper.Utils
 import groovy.transform.Field
 
 @Field String STEP_NAME = getClass().getName()
@@ -28,7 +29,7 @@ void call(Map parameters = [:]) {
             .withMandatoryProperty('testServerUrl')
             .use()
 
-        new Utils().pushToSWA([step: STEP_NAME], config)
+        AnalyticsUtils.instance.notifyAndPushToSWA([step: STEP_NAME], config)
 
         def checkUrl = config.testServerUrl
         if(config.healthEndpoint){

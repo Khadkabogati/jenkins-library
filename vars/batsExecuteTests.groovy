@@ -1,3 +1,5 @@
+import com.sap.piper.AnalyticsUtils
+
 import static com.sap.piper.Prerequisites.checkScript
 
 import com.sap.piper.ConfigurationHelper
@@ -43,8 +45,8 @@ void call(Map parameters = [:]) {
             .use()
 
         // report to SWA
-        utils.pushToSWA([step: STEP_NAME,
-                        stepParam1: parameters?.script == null], config)
+        AnalyticsUtils.instance.notifyAndPushToSWA([step      : STEP_NAME,
+                                                    stepParam1: parameters?.script == null], config)
 
         script.commonPipelineEnvironment.setInfluxStepData('bats', false)
 

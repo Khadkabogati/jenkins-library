@@ -1,10 +1,11 @@
+import com.sap.piper.AnalyticsUtils
+
 import static com.sap.piper.Prerequisites.checkScript
 
 import com.cloudbees.groovy.cps.NonCPS
 
 import com.sap.piper.ConfigurationHelper
 import com.sap.piper.MapUtils
-import com.sap.piper.Utils
 import groovy.transform.Field
 
 @Field List TOOLS = [
@@ -40,8 +41,8 @@ void call(Map parameters = [:]) {
             .mixin(parameters, PARAMETER_KEYS)
             .use()
 
-        new Utils().pushToSWA([step: STEP_NAME,
-                                stepParam1: parameters?.script == null], configuration)
+        AnalyticsUtils.instance.notifyAndPushToSWA([step      : STEP_NAME,
+                                                    stepParam1: parameters?.script == null], configuration)
 
         // UNIT TESTS
         publishJUnitReport(configuration.get('junit'))

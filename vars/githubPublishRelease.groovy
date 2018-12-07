@@ -1,6 +1,7 @@
+import com.sap.piper.AnalyticsUtils
+
 import static com.sap.piper.Prerequisites.checkScript
 
-import com.sap.piper.Utils
 import com.sap.piper.ConfigurationHelper
 
 import groovy.transform.Field
@@ -42,7 +43,7 @@ void call(Map parameters = [:]) {
             .withMandatoryProperty('version')
             .use()
 
-        new Utils().pushToSWA([step: STEP_NAME], config)
+        AnalyticsUtils.instance.notifyAndPushToSWA([step: STEP_NAME], config)
 
         withCredentials([string(credentialsId: config.githubTokenCredentialsId, variable: 'TOKEN')]) {
             def releaseBody = config.releaseBodyHeader?"${config.releaseBodyHeader}<br />":''

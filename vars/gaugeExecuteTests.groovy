@@ -1,9 +1,10 @@
+import com.sap.piper.AnalyticsUtils
+
 import static com.sap.piper.Prerequisites.checkScript
 
 import com.sap.piper.Utils
 import com.sap.piper.ConfigurationHelper
 import com.sap.piper.GitUtils
-import groovy.text.SimpleTemplateEngine
 import groovy.transform.Field
 
 @Field String STEP_NAME = getClass().getName()
@@ -47,7 +48,7 @@ void call(Map parameters = [:]) {
             .dependingOn('buildTool').mixin('testOptions')
             .use()
 
-        utils.pushToSWA([step: STEP_NAME, stepParam1: config.buildTool, stepParam2: config.dockerName], config)
+        AnalyticsUtils.instance.notifyAndPushToSWA([step: STEP_NAME, stepParam1: config.buildTool, stepParam2: config.dockerName], config)
 
         if(!config.dockerEnvVars.TARGET_SERVER_URL && config.testServerUrl)
             config.dockerEnvVars.TARGET_SERVER_URL = config.testServerUrl

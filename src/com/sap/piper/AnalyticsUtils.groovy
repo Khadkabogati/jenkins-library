@@ -3,7 +3,7 @@ package com.sap.piper
 import org.jenkinsci.plugins.workflow.steps.MissingContextVariableException
 
 @Singleton
-class Analytics {
+class AnalyticsUtils {
 
     Map eventListeners = [:]
 

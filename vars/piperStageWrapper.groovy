@@ -1,8 +1,10 @@
+import com.sap.piper.AnalyticsUtils
 import com.sap.piper.Utils
 import com.sap.piper.ConfigurationHelper
 import com.sap.piper.ConfigurationLoader
 import com.sap.piper.k8s.ContainerMap
 import groovy.transform.Field
+import hudson.model.Result
 
 import static com.sap.piper.Prerequisites.checkScript
 
@@ -103,6 +105,17 @@ private void executeStage(script, originalStage, stageName, config, utils) {
         deleteDir()
 
         def duration = System.currentTimeMillis() - startTime
-        utils.pushToSWA([eventType: 'library-os-stage', stageName: stageName, custom1: "${script.currentBuild.currentResult}", custom2: "${startTime}", custom3: "${duration}", custom4: "${projectExtensions}", custom5: "${globalExtensions}"], config)
+
+        AnalyticsUtils.instance.notifyAndPushToSWA([
+            eventType: 'library-os-stage',
+            stageName: stageName,
+            currentResult: Result.fromString(currentBuild.currentResult),
+            startTime: startTime,
+            duration: duration,
+            projectExtensions: projectExtensions,
+            globalExtensions: globalExtensions
+        ],config)
+
+        //AnalyticsUtils.instance.notifyAndPushToSWA([eventType: 'library-os-stage', stageName: stageName, custom1: "${script.currentBuild.currentResult}", custom2: "${startTime}", custom3: "${duration}", custom4: "${projectExtensions}", custom5: "${globalExtensions}"], config)
     }
 }

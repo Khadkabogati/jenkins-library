@@ -1,8 +1,9 @@
+import com.sap.piper.AnalyticsUtils
+
 import static com.sap.piper.Prerequisites.checkScript
 
 import com.sap.piper.ConfigurationHelper
 import com.sap.piper.MtaUtils
-import com.sap.piper.Utils
 import com.sap.piper.tools.JavaArchiveDescriptor
 import com.sap.piper.tools.ToolDescriptor
 
@@ -36,8 +37,8 @@ void call(Map parameters = [:]) {
             .mixin(parameters, PARAMETER_KEYS)
             .use()
 
-        new Utils().pushToSWA([step: STEP_NAME,
-                                stepParam1: parameters?.script == null], configuration)
+        AnalyticsUtils.instance.notifyAndPushToSWA([step      : STEP_NAME,
+                                                    stepParam1: parameters?.script == null], configuration)
 
         dockerExecute(script: script, dockerImage: configuration.dockerImage, dockerOptions: configuration.dockerOptions) {
             def java = new ToolDescriptor('Java', 'JAVA_HOME', '', '/bin/', 'java', '1.8.0', '-version 2>&1')

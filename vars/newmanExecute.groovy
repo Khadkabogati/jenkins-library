@@ -1,3 +1,5 @@
+import com.sap.piper.AnalyticsUtils
+
 import static com.sap.piper.Prerequisites.checkScript
 
 import com.sap.piper.ConfigurationHelper
@@ -42,8 +44,8 @@ void call(Map parameters = [:]) {
             .mixin(parameters, PARAMETER_KEYS)
             .use()
 
-        new Utils().pushToSWA([step: STEP_NAME,
-                                stepParam1: parameters?.script == null], config)
+        AnalyticsUtils.instance.notifyAndPushToSWA([step      : STEP_NAME,
+                                                    stepParam1: parameters?.script == null], config)
 
         config.stashContent = config.testRepository
             ?[GitUtils.handleTestRepository(this, config)]

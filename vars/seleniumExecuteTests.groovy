@@ -1,11 +1,11 @@
+import com.sap.piper.AnalyticsUtils
+
 import static com.sap.piper.Prerequisites.checkScript
 
 import com.sap.piper.ConfigurationHelper
 import com.sap.piper.GitUtils
 import com.sap.piper.Utils
-import com.sap.piper.k8s.ContainerMap
 import groovy.transform.Field
-import groovy.text.SimpleTemplateEngine
 
 @Field String STEP_NAME = getClass().getName()
 
@@ -48,8 +48,8 @@ void call(Map parameters = [:], Closure body) {
             .dependingOn('buildTool').mixin('dockerWorkspace')
             .use()
 
-        utils.pushToSWA([step: STEP_NAME,
-                        stepParam1: parameters?.script == null], config)
+        AnalyticsUtils.instance.notifyAndPushToSWA([step      : STEP_NAME,
+                                                    stepParam1: parameters?.script == null], config)
 
         dockerExecute(
                 script: script,

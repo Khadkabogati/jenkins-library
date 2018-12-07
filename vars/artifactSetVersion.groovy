@@ -1,8 +1,9 @@
+import com.sap.piper.AnalyticsUtils
+
 import static com.sap.piper.Prerequisites.checkScript
 
 import com.sap.piper.ConfigurationHelper
 import com.sap.piper.GitUtils
-import com.sap.piper.Utils
 import com.sap.piper.versioning.ArtifactVersioning
 
 import groovy.transform.Field
@@ -61,7 +62,7 @@ void call(Map parameters = [:], Closure body = null) {
         config = configHelper.addIfEmpty('timestamp', getTimestamp(config.timestampTemplate))
                              .use()
 
-        new Utils().pushToSWA([step: STEP_NAME, stepParam1: config.buildTool, stepParam2: config.artifactType, stepParam3: parameters?.script == null], config)
+        AnalyticsUtils.instance.notifyAndPushToSWA([step: STEP_NAME, stepParam1: config.buildTool, stepParam2: config.artifactType, stepParam3: parameters?.script == null], config)
 
         def artifactVersioning = ArtifactVersioning.getArtifactVersioning(config.buildTool, script, config)
         def currentVersion = artifactVersioning.getVersion()

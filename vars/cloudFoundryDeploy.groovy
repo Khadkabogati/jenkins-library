@@ -1,3 +1,5 @@
+import com.sap.piper.AnalyticsUtils
+
 import static com.sap.piper.Prerequisites.checkScript
 
 import com.sap.piper.Utils
@@ -54,7 +56,7 @@ void call(Map parameters = [:]) {
             .withMandatoryProperty('cloudFoundry/credentialsId')
             .use()
 
-        utils.pushToSWA([step: STEP_NAME, stepParam1: config.deployTool, stepParam2: config.deployType, stepParam3: parameters?.script == null], config)
+        AnalyticsUtils.instance.notifyAndPushToSWA([step: STEP_NAME, stepParam1: config.deployTool, stepParam2: config.deployType, stepParam3: parameters?.script == null], config)
 
         echo "[${STEP_NAME}] General parameters: deployTool=${config.deployTool}, deployType=${config.deployType}, cfApiEndpoint=${config.cloudFoundry.apiEndpoint}, cfOrg=${config.cloudFoundry.org}, cfSpace=${config.cloudFoundry.space}, cfCredentialsId=${config.cloudFoundry.credentialsId}, deployUser=${config.deployUser}"
 

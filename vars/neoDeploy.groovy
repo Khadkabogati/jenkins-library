@@ -1,3 +1,5 @@
+import com.sap.piper.AnalyticsUtils
+
 import static com.sap.piper.Prerequisites.checkScript
 
 import com.sap.piper.ConfigurationHelper
@@ -102,7 +104,7 @@ void call(parameters = [:]) {
             .mixin(parameters, PARAMETER_KEYS)
             .use()
 
-        utils.pushToSWA([
+        AnalyticsUtils.instance.notifyAndPushToSWA([
             step: STEP_NAME,
             stepParam1: configuration.deployMode == 'mta'?'mta':'war', // ['mta', 'warParams', 'warPropertiesFile']
             stepParam2: configuration.warAction == 'rolling-update'?'blue-green':'standard', // ['deploy', 'deploy-mta', 'rolling-update']

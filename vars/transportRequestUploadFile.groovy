@@ -1,6 +1,7 @@
+import com.sap.piper.AnalyticsUtils
+
 import static com.sap.piper.Prerequisites.checkScript
 
-import com.sap.piper.Utils
 import groovy.transform.Field
 
 import com.sap.piper.ConfigurationHelper
@@ -61,9 +62,9 @@ void call(parameters = [:]) {
             .withMandatoryProperty('changeManagement/git/format')
             .withMandatoryProperty('filePath')
 
-        new Utils().pushToSWA([step: STEP_NAME,
-                                stepParam1: configuration.changeManagement.type,
-                                stepParam2: parameters?.script == null], configuration)
+        AnalyticsUtils.instance.notifyAndPushToSWA([step      : STEP_NAME,
+                                                    stepParam1: configuration.changeManagement.type,
+                                                    stepParam2: parameters?.script == null], configuration)
 
         def changeDocumentId = null
 

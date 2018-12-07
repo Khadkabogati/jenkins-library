@@ -1,6 +1,7 @@
+import com.sap.piper.AnalyticsUtils
+
 import static com.sap.piper.Prerequisites.checkScript
 
-import com.sap.piper.Utils
 import groovy.transform.Field
 
 import com.sap.piper.ConfigurationHelper
@@ -58,8 +59,8 @@ void call(parameters = [:]) {
 
         configuration = configHelper.use()
 
-        new Utils().pushToSWA([step: STEP_NAME,
-                                stepParam1: parameters?.script == null], configuration)
+        AnalyticsUtils.instance.notifyAndPushToSWA([step      : STEP_NAME,
+                                                    stepParam1: parameters?.script == null], configuration)
 
         def changeDocumentId = null
         def transportRequestId = getTransportRequestId(cm, script, configuration)

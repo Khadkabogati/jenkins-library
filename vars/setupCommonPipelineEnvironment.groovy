@@ -1,7 +1,8 @@
+import com.sap.piper.AnalyticsUtils
+
 import static com.sap.piper.Prerequisites.checkScript
 
 import com.sap.piper.ConfigurationHelper
-import com.sap.piper.Utils
 import groovy.transform.Field
 
 @Field String STEP_NAME = getClass().getName()
@@ -24,9 +25,11 @@ void call(Map parameters = [:]) {
             .mixinGeneralConfig(script.commonPipelineEnvironment, GENERAL_CONFIG_KEYS)
             .use()
 
-        (parameters.utils ?: new Utils())
-                   .pushToSWA([step: STEP_NAME, stepParam4: parameters.customDefaults?'true':'false',
-                                                stepParam5: Boolean.toString( ! (script?.commonPipelineEnvironment?.getConfigProperties() ?: [:]).isEmpty())], config)
+        AnalyticsUtils.instance.notifyAndPushToSWA([
+            step : STEP_NAME,
+            stepParam4: parameters.customDefaults?'true':'false',
+            stepParam5: Boolean.toString( ! (script?.commonPipelineEnvironment?.getConfigProperties() ?: [:]).isEmpty())
+        ], config)
     }
 }
 

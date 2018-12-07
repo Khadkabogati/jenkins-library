@@ -1,3 +1,5 @@
+import com.sap.piper.AnalyticsUtils
+
 import static com.sap.piper.Prerequisites.checkScript
 
 import com.sap.piper.Utils
@@ -32,8 +34,8 @@ void call(Map parameters = [:]) {
             .mixin(parameters, PARAMETER_KEYS)
             .use()
 
-        new Utils().pushToSWA([step: STEP_NAME,
-                                stepParam1: parameters?.script == null], config)
+        AnalyticsUtils.instance.notifyAndPushToSWA([step      : STEP_NAME,
+                                                    stepParam1: parameters?.script == null], config)
 
         if (config.runOpaTests){
             utils.stash('opa5', config.stashIncludes?.get('opa5')?config.stashIncludes.opa5:'**/*.*', config.stashExcludes?.get('opa5')?config.stashExcludes.opa5:'')

@@ -1,7 +1,8 @@
+import com.sap.piper.AnalyticsUtils
+
 import static com.sap.piper.Prerequisites.checkScript
 
 import com.sap.piper.ConfigurationHelper
-import com.sap.piper.Utils
 import groovy.text.SimpleTemplateEngine
 import groovy.transform.Field
 
@@ -41,7 +42,7 @@ void call(Map parameters = [:]) {
             .mixin(parameters, PARAMETER_KEYS)
             .use()
 
-        new Utils().pushToSWA([step: STEP_NAME], config)
+        AnalyticsUtils.instance.notifyAndPushToSWA([step: STEP_NAME], config)
 
         //this takes care that terminated builds due to milestone-locking do not cause an error
         if (script.commonPipelineEnvironment.getBuildResult() == 'ABORTED') return

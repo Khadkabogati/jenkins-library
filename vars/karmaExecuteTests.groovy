@@ -1,10 +1,9 @@
+import com.sap.piper.AnalyticsUtils
+
 import static com.sap.piper.Prerequisites.checkScript
 
 import com.sap.piper.ConfigurationHelper
-import com.sap.piper.GitUtils
 import com.sap.piper.Utils
-
-import groovy.text.SimpleTemplateEngine
 import groovy.transform.Field
 
 @Field String STEP_NAME = getClass().getName()
@@ -51,7 +50,7 @@ void call(Map parameters = [:]) {
             .mixin(parameters, PARAMETER_KEYS)
             .use()
 
-        utils.pushToSWA([step: STEP_NAME], config)
+        AnalyticsUtils.instance.notifyAndPushToSWA([step: STEP_NAME], config)
 
         def testJobs = [:]
         def options = [
