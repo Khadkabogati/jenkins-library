@@ -367,13 +367,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#return-value" title="Return value" class="md-nav__link">
-    Return value
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#exceptions" title="Exceptions" class="md-nav__link">
     Exceptions
   </a>
@@ -788,13 +781,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#return-value" title="Return value" class="md-nav__link">
-    Return value
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#exceptions" title="Exceptions" class="md-nav__link">
     Exceptions
   </a>
@@ -833,6 +819,8 @@
 can also be provided via parameter <code>changeDocumentId</code>. Any value provided as parameter has a higher precedence than a value from the commit history.</p>
 <p>By default the git commit messages between <code>origin/master</code> and <code>HEAD</code> are scanned for a line like <code>ChangeDocument : &lt;changeDocumentId&gt;</code>. The commit
 range and the pattern can be configured. For details see 'parameters' table.</p>
+<p>In case the change is not in status 'in development' an <code>hudson.AbortException</code> is thrown. In case <code>failIfStatusIsNotInDevelopment</code>
+is set to <code>false</code>, no <code>hudson.AbortException</code> will be thrown. In this case there is only a message in the log stating the change is not in status 'in development'.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong><a href="http://central.maven.org/maven2/com/sap/devops/cmclient/dist.cli/">Change Management Client 2.0.0 or compatible version</a></strong> - available for download on Maven Central.</li>
@@ -956,9 +944,6 @@ resource in an custom shared library.</p>
 </pre></div>
 
 <p>The parameters can also be provided when the step is invoked. For examples see below.</p>
-<h2 id="return-value">Return value<a class="headerlink" href="#return-value" title="Permanent link">&para;</a></h2>
-<p><code>true</code> in case the change document is in status 'in development'. Otherwise an hudson.AbortException is thrown. In case <code>failIfStatusIsNotInDevelopment</code>
-is set to <code>false</code>, <code>false</code> is returned in case the change document is not in status 'in development'</p>
 <h2 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>AbortException</code>:</li>
